@@ -61,13 +61,13 @@ def inter_server_error(e):
 
 # 应用情景
 # 第一次请求的时候做初始化导航栏nav数据
-@supervisor_app.before_first_request
-def print_request_info():
-    supervisor_app.logger.info("启动项目中,正在初始化导航栏nav....")
-    navs = Nav.query.all()
-    g.navs= navs
-    print("=====")
-    print(navs)
+# @supervisor_app.before_first_request
+# def print_request_info():
+#     supervisor_app.logger.info("启动项目中,正在初始化导航栏nav....")
+#     navs = Nav.query.all()
+#     g.navs= navs
+#     print("=====")
+#     print(navs)
 
 
 #def get_db():
