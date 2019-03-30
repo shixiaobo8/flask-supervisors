@@ -10,6 +10,27 @@ from ..utils import generate_response,CustomFlaskErr
 from flask import request,current_app
 import json
 
+class LoginApi(Resource):
+    def __init__(self):
+        self.reqparse = reqparse.RequestParser()
+        self.json_args = request.json
+        self.reqparse.add_argument('username', type=str, required=True,
+                                   help='用户名或密码不正确', location='json')
+        self.reqparse.add_argument('password', type=str, required=True,
+                                   help='用户名或密码不正确', location='json')
+
+    # 登录查询
+    def post(self):
+        print(self.json_args)
+        username = self.json_args['username']
+        password = self.json_args['password']
+        res_data = "ok"
+        code = '20000'
+        if not username == 'houtai' and not password == 'houtai':
+            res_data  = "not ok"
+            code = '20002'
+        return({"data":res_data,"code":code})
+
 # 测试api 类
 class ApiTest(Resource):
     # 参数检查
