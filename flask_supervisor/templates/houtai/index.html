@@ -15,14 +15,21 @@
 
 <script type="text/javascript">
     // 登录操作
-    var login = function login(){
-            $('#login_btn').click(function () {
+    //var login = function login(){
+    function login(){
                 d = {};
                 var t = $('form').serializeArray();
                 $.each(t, function() {
                   d[this.name] = this.value;
                 });
-                console.log(d);
+                if(d.username==''){
+                    toastr.info("用户名为空");
+                    return;
+                }
+                if(d.password==''){
+                    toastr.info("密码为空");
+                    return;
+                }
                 $.ajax({
                     type: 'POST',
                     url: '/houtai/Login',
@@ -30,15 +37,17 @@
                     dataType: "json",
                     contentType: "application/json",
                     success: function (res) {
-                        // if
-                        toastr.success("验证成功!");
-                        window.location.href="/"
+                        if (res.code == '20000'){
+                            toastr.success("验证成功!",2000);
+                            window.location.href="/"
+                        }else{
+                            toastr.error("验证失败,用户名或密码不正确！",2000);
+                        }
                     },
                     error: function () {
-                        toastr.error("服务器错误,请联系管理员!");
+                        toastr.error("服务器错误,请联系管理员!",2000);
                     }
                 });
-            })
     }
 </script>
 
