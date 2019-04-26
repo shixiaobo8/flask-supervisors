@@ -1,0 +1,390 @@
+{% extends "base/frame_boot_base.html" %}
+{% load staticfiles %}
+{% load static %}
+{% block title %}文件上传管理页面 {% endblock %}
+{% block content %}
+<!--<script type="text/javascript" src="{% static 'ueditor/ueditor.config.js' %}"></script>-->
+<!--<script type="text/javascript" src="{% static 'ueditor/ueditor.all.js' %}"></script>-->
+<!--<script type="text/javascript" src="{% static 'ueditor/zh-cn.js' %}"></script>-->
+<script src="http://cdn.bootcss.com/ace/1.2.4/ace.js"></script>
+<script src="http://cdn.bootcss.com/ace/1.2.4/ext-language_tools.js"></script>
+<script src="http://cdn.bootcss.com/ace/1.2.4/ext-old_ie.js"></script>
+<script src="http://cdn.bootcss.com/ace/1.2.4/theme-monokai.js"></script>
+<script type="text/javascript" src="{% static 'ace_editor/source-code-pro.js' %}"></script>
+<style>
+
+textarea {
+    outline: 0 none;
+    border-color: rgba(82, 168, 236, 0.8);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
+}
+</style>
+<script>
+            // 文件上传
+            $(document).ready(function () {
+              $.ajaxSetup({
+                data: {csrfmiddlewaretoken: '{{ csrf_token }}'},
+              });
+              // 上传新文件
+              $("#newfile").fileinput({
+                'previewFileType': 'any',
+                showUpload: true,
+                language: 'zh',
+                uploadAsync: true,
+                dropZoneEnabled: true,
+                uploadUrl: '/file/upload/n_saveFiles',
+                maxFileCount: 100,
+                maxImageWidth: 600,
+                resizeImage: true,
+                showCaption: true,
+                showPreview: true,
+                allowedFileExtensions: [],
+                previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+                uploadExtraData: {data: {csrfmiddlewaretoken: '{{ csrf_token }}'}}
+              }).on('fileerror', function (event, data, msg) {
+
+              }).on("fileuploaded", function (event, data) {
+                if (data.response) {
+                  alert("文件上传成功！点击确认2秒后自动刷新页面");
+                  setTimeout("location.href='{{ request.get_full_path }}'", 2000);
+                }
+              });
+            })
+
+
+            // 修改文件名
+            function chfilename(fid) {
+                     var new_filename = $("#chfilenametext"+fid).val();
+                     if (new_filename == fid.replace('_slash_','/').replace('_sep_','.')){
+                         alert("亲，文件名不能重复！！");
+                          return;
+                      }
+                    if (new_filename == "") {
+                      alert("亲，文件名不能为空！！");
+                      return;
+                    }
+                    $.post("/file/chfilename", {
+                      "new_filename": new_filename,
+                      "old_filename":fid
+                    }, function (res) {
+                      var data = JSON.parse(res);
+                      if (data['code'] == '200') {
+                        alert("文件名修改成功！点击确认2秒后自动刷新页面");
+                        setTimeout("location.href='{{ request.get_full_path }}'", 2000);
+                      } else {
+                        alert(data['data']);
+                      }})
+            }
+
+
+            // 删除文件
+            function DeleteFile(filename) {
+              bootbox.confirm({
+                message: "确定要删除该文件",
+                buttons: {
+                  confirm: {
+                    label: '确定',
+                    className: 'btn-success'
+                  },
+                  cancel: {
+                    label: '算了,就这样吧！',
+                    className: 'btn-danger'
+                  }
+                },
+                callback: function (result) {
+                  if (result) {
+                    $.post("/upload/DelteFile", {
+                      "filename": filename
+                    }, function (res) {
+                      var res = JSON.parse(res);
+                      if (res['code'] == '200') {
+                        alert(res['data'])
+                        window.location.href = "{{ request.get_full_path }}"
+                      } else {
+                        alert(res['data']);
+                      }
+                    })
+                  } else {
+                    return;
+                  }
+                }
+              })
+            }
+
+
+</script>
+
+<style>
+    td, tr {
+        text-align: center;
+    }
+    td > .btn {
+        font-size:0px;
+    }
+    u{
+        font-size:14px;
+    }
+
+</style>
+
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">服务器文件管理列表</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <table id="filelistTab" class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                            <th>文件名称</th>
+                            <th>大小</th>
+                            <th>最后修改时间</th>
+                            <th>文件创建时间</th>
+                            <th>最后修改人</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for file in files %}
+                        <tr>
+                            <td>{{ file.filename }}</td>
+                            <td>{{ file.filesize }}</td>
+                            <td>{{ file.mtime }}</td>
+                            <td>{{ file.ctime }}</td>
+                            <td> ---</td>
+                            <td>
+                                <!-- 文件重命名 start -->
+                                <button class="btn btn-primary" style="text-shadow:2px 2px 8px #FF0000"
+                                        data-toggle="modal"
+                                        data-target="#chfilename{{ file.fid }}">
+                                    <span class="glyphicon glyphicon-repeat"></span>&nbsp;&nbsp;<u style='font-size:14px;'>重命名</u></button>
+                                <div class="modal fade" id="chfilename{{ file.fid }}" tabindex="-1" role="dialog"
+                                     aria-labelledby="myModalLabel"
+                                     aria-hidden="true" style="margin-top:100px;">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-hidden="true">×
+                                                </button>
+                                                <h4 class="modal-title" id="myModalLabe2">
+                                                    修改文件名
+                                                </h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control"
+                                                           id="chfilenametext{{ file.fid }}">
+                                                    <span class="input-group-addon">新文件名</span>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="submit" class="btn btn-primary"
+                                                        id="chfilenamebt{{ file.fid }}"
+                                                        onclick="chfilename('{{ file.fid }}','{{ file.filename }}')">
+                                                    提交更改
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 文件重命名 end -->
+                                <!-- 删除文件 start -->
+                                <a type="button" class="btn btn-danger" href="#" onclick="DeleteFile('{{ file.fid }}')"><span
+                                        class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;<u style='font-size:14px;'>删除</u></a>
+                                <!-- 删除文件 end -->
+                                <!-- 下载文件 start -->
+                                <a type="button" class="btn btn-link" href="/file/dl?fid={{ file.fid }}"
+                                   target="_blank"><span
+                                        class="glyphicon glyphicon-download-alt"></span>&nbsp;&nbsp;<u style='font-size:14px;'>下载</u></a>
+                                <!-- 下载文件 end -->
+                                <!-- 文件在线编辑 start -->
+                                {% if file.is_text %}
+                                <a type="button" class="btn btn-primary" style="text-shadow: black 5px 3px 3px;" disabled="disabled"
+                                   data-toggle="modal"
+                                   data-target="#editfiles{{ file.fid }}"><span class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;<u style='font-size:14px;'>编辑</u></a>
+                                <div class="modal fade" id="editfiles{{ file.fid }}" tabindex="-1" role="dialog"
+                                     aria-labelledby="myModalLabel"
+                                     aria-hidden="true" style="margin-top:100px;">
+                                    <div class="modal-dialog" style="width:1100px;">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-hidden="true">×
+                                                </button>
+                                                <h4 class="modal-title{{ file.fid }}" id="myModalLabe3" name="editH4{{ file.fid }}">
+                                                    正在编辑文件  {{ file.filename }} ....
+                                                </h4>
+                                            </div>
+                                            <div class="modal-body" hight:1000px;>
+                                                        <div id="editor{{ file.fid }}" style="position: absolute;top: 0;right: 0;bottom: 0;left: 0;height:600px;">{{ file.content | safe }}</div>
+                                                        <script src="http://cdn.bootcss.com/ace/1.2.4/ace.js" type="text/javascript" charset="utf-8"></script>
+                                                        <script>
+                                                            require("ace/ext/old_ie");
+                                                            var langTools = ace.require("ace/ext/language_tools");
+                                                            var editor{{ file.fid }} = ace.edit("editor{{ file.fid }}");
+                                                            editor{{ file.fid }}.setTheme("ace/theme/monokai");
+                                                            editor{{ file.fid }}.$blockScrolling = Infinity;
+                                                            editor{{ file.fid }}.setFontSize(16);
+                                                            editor{{ file.fid }}.session.setMode("ace/mode/c_cpp");
+                                                            editor{{ file.fid }}.setOptions({
+                                                                enableBasicAutocompletion: true,
+                                                                enableSnippets: true,
+                                                                enableLiveAutocompletion: true
+                                                            });
+                                                            // 代码自动补全
+                                                            editor{{ file.fid }}.setOptions({enableBasicAutocompletion: true});
+                                                            // uses http://rhymebrain.com/api.html
+                                                            var rhymeCompleter = {
+                                                                getCompletions: function(editor{{ file.fid }}, session, pos, prefix, callback) {
+                                                                    if (prefix.length === 0) { callback(null, []); return }
+                                                                    $.getJSON(
+                                                                        "http://rhymebrain.com/talk?function=getRhymes&word=" + prefix,
+                                                                        function(wordList) {
+                                                                            // wordList like [{"word":"flow","freq":24,"score":300,"flags":"bc","syllables":"1"}]
+                                                                            callback(null, wordList.map(function(ea) {
+                                                                                return {name: ea.word, value: ea.word, score: ea.score, meta: "rhyme"}
+                                                                            }));
+                                                                        })
+                                                                }
+                                                            }
+                                                            // 全屏编辑
+                                                            editor{{ file.fid }}.commands.addCommand({
+                                                                name: "fullscreen",
+                                                                bindKey: {win: "Ctrl-Enter", mac: "Command-Enter"},
+                                                                exec: function(editor{{ file.fid }}) {
+                                                                    var vp = cantkGetViewPort();
+                                                                    if(editor{{ file.fid }}.isFullScreen) {
+                                                                        div.style.width = editorW + "px";
+                                                                        div.style.height = editorH + "px";
+                                                                        div.style.position = "absolute";
+                                                                        div.style.left = editorX + "px";
+                                                                        div.style.top = (scrollTop + editorY) + "px";
+                                                                        editor{{ file.fid }}.resize();
+                                                                        editor{{ file.fid }}.isFullScreen = false;
+                                                                        document.body.style.overflow = "auto";
+                                                                    }
+                                                                    else {
+                                                                        div.style.width = vp.width+ "px";
+                                                                        div.style.height = vp.height+ "px";
+                                                                        div.style.position = "absolute";
+                                                                        div.style.left = 0 + "px";
+                                                                        div.style.top = (scrollTop + 0) + "px";
+                                                                        editor{{ file.fid }}.resize();
+                                                                        editor{{ file.fid }}.isFullScreen = true;
+                                                                        document.body.style.overflow = "hidden";
+                                                                    }
+                                                                }
+                                                            });
+                                                            // 代码折叠
+                                                            editor{{ file.fid }}.getSession().setUseWrapMode(true);
+                                                            langTools.addCompleter(rhymeCompleter);
+                                                            // ajax 提交保存文件内容
+                                                               function saveContent{{ file.fid }}({{ file.fid }}){
+                                                                    // editor 为div 内容实例的id前缀
+                                                                    var new_content = editor{{ file.fid }}.getValue();
+                                                                    console.log(editor{{ file.fid }});
+                                                                    console.log(new_content);
+                                                                    $(".modal-title"+{{ file.fid }}).html("正在向服务器保存文件....").attr("style","color:red;");
+                                                                     $.post("/file/upload/editsave", {
+                                                                          "fid":{{file.fid}},
+                                                                          "content":new_content
+                                                                        }, function (res) {
+                                                                          var res = JSON.parse(res);
+                                                                          if (res['code'] == '200') {
+                                                                            alert(res['data'])
+                                                                            window.location.href = "{{ request.get_full_path }}"
+                                                                          } else {
+                                                                            alert(res['data']);
+                                                                          }
+                                                                        })
+                                                               }
+                                                        </script>
+                                                </div>
+                                                <div class="modal-footer" style="margin-top:600px;">
+                                                    <button onclick="saveContent{{ file.fid }}('{{ file.fid }}')" class="btn btn-primary"
+                                                            id="editfilename{{ file.fid }}">
+                                                        保存更改
+                                                    </button>
+                                                </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% else %}
+                                <a type="button" class="btn btn-primary" disabled="disabled"
+                                   style="text-shadow: black 5px 3px 3px;"><span
+                                        class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;<u style='font-size:14px;'>编辑</u></a>
+                                {% endif %}
+
+                                <!-- 文件在线编辑 end -->
+
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <div style="margin-left:20px;">
+                        <!-- 上传新文件 start -->
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#upnewfiles">上传新文件
+                        </button>
+                        <div class="modal fade" id="upnewfiles" tabindex="-1" role="dialog"
+                             aria-labelledby="myModalLabel"
+                             aria-hidden="true" style="margin-top:100px;">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal"
+                                                aria-hidden="true">×
+                                        </button>
+                                        <h4 class="modal-title" id="myModalLabel">
+                                            新文件上传
+                                        </h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <label class="control-label">请选择文件</label>
+                                        <input id="newfile" name="newfile" type="file" multiple
+                                               class="file-loading">
+                                    </div>
+                                    <div class="modal-footer">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="alert">
+                            <a href="#" class="close" data-dismiss="alert">
+                                &times;
+                            </a>
+                            <strong>说明:</strong>&nbsp;&nbsp;&nbsp;&nbsp;1.暂不支持目录上传,请上传压缩包文件!&nbsp;&nbsp;&nbsp;&nbsp;2.暂不支持文件在线编辑!
+                            &nbsp;&nbsp;&nbsp;&nbsp;3.有特殊文字符号的请重新上传覆盖即可
+                        </div>
+                        <!-- 上传新文件 end -->
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</section>
+<!-- page script -->
+<script>
+  $(function () {
+    $('#filelistTab').DataTable({
+      'paging'      : true,
+      'lengthChange': true,
+      'searching'   : true,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : true
+    })
+  })
+
+</script>
+{% endblock %}

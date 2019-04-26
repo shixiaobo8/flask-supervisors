@@ -1,0 +1,244 @@
+{% extends "base/frame_boot_base.html" %}
+{% load staticfiles %}
+{% load static %}
+{% block title %}服务器状态管理 {% endblock %}
+{% block content %}
+<style>
+
+</style>
+<div id="toolbar" class="btn-group">
+            <button id="btn_add" type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
+            </button>
+            <button id="btn_edit" type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>修改
+            </button>
+            <button id="btn_delete" type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>删除
+            </button><button id="btn_detail" type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>查看
+            </button>
+</div>
+<table id="table"></table>
+
+
+<div class="modal fade" id="NoPermissionModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" onclick="window.location.reload();">×</button>
+                <h4 class="modal-title" id="NoPermissionModalLabel">这是一个对话框</h4>
+            </div>
+            <div class="modal-body" style="height:600px">
+                <iframe id="NoPermissioniframe" width="100%" height="100%" frameborder="0"></iframe>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default"  type="button" onclick="window.location.reload();" >    关  闭    </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+ $(function () {
+
+    //1.初始化Table
+    TableInit();
+
+})
+
+function DoOnMsoNumberFormat(cell, row, col) {
+       var result = "";
+       if (row > 0 && col == 0)
+           result = "\\@";
+       return result;
+}
+
+function TableInit() {
+    $("#table").bootstrapTable({
+         url: "/server/getJkListbsJson",   //服务器数据加载地址，与末尾sidePagination参数设置为server对应。
+         columns: [{
+          checkbox: true,
+          visible: true                  //是否显示复选框
+        }, {             //列配置项,橙名为列参数，本文介绍有限，具体有哪些可以详细看文档介绍。
+                  field: 'id',
+                  title: 'ID'},
+       {
+          field: 'service_name',
+          title: '服务名'
+
+        }, {
+          field: 'locate_service_name',
+          title: '本地服务名',
+          sortable: true,
+          editable:true
+        }, {
+          field: 'is_bin',
+          title: 'bin目录'
+        }, {
+          field: 'is_config',
+          title: '配置文件',
+          formatter: function(value, row, index) {
+                                if(typeof(value) == 'undefined' || value == 'No') {
+                                   return "无";
+                                }
+                                if(value == 'Yes') {
+                                   return "有";
+                                }
+                             }
+        }, {
+          field: 'sup_group',
+          title: 'supvisor分组',
+          sortable: true
+        }, {
+          field: 'suffix',
+          title: '开发语言'
+        }, {
+          field: 'service_dir',
+          title: '部署目录'
+        }, {
+          field: 'ctime',
+          title: '创建时间'
+        }, {
+          field: 'mtime',
+          title: 'last修改时间'
+        },
+         {
+           field: 'opt',
+           title: '操作',
+           width:100,
+           icons:'icon-cog',
+           formatter: function(value, row, index) {
+                                var str = "<div class='dropdown'><button class='btn btn-default dropdown-toggle' type='button' id='row_opt' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'><span class='glyphicon glyphicon-cog' style='color:#24f4acc;' aria-hidden='true'>操作</span><span class='caret'></span></button><ul class='dropdown-menu' aria-labelledby='dropdownMenu2'><li><a type='button' id='ch_rowbt' ><span class='glyphicon glyphicon-edit' style='color:blue;'>编辑</span></a></li><li><a type='button' id='row_detail' target='dialog' ><span class='glyphicon glyphicon-search' style='color: rgb(255, 140, 60);'>查看</span></a></li><li><a type='button' target='dialog' id='row_delete'><span class='glyphicon glyphicon-trash' style='color:red;'>删除</span></a></li></ul></div>"
+                                return str;
+                             },
+           events: {
+                   //编辑点击事件
+                  'click  #ch_rowbt': function (e, value, row, index) {
+                              var  id = row.id;
+                              var frameSrc = "/server/jenkins/list_form?id="+id;
+                                $("#NoPermissioniframe").attr("src", frameSrc);
+                                $('#NoPermissionModal').modal({ show: true, backdrop: 'static' });
+                    },
+                    // 查看点击事件
+                    'click  #row_detail': function (e, value, row, index) {
+                                var  id = row.id;
+                                var frameSrc = "/server/jenkins/detail_form?id="+id;
+                                $("#NoPermissioniframe").attr("src", frameSrc);
+                                $('#NoPermissionModal').modal({ show: true, backdrop: 'static' });
+                     },
+                     // 删除点击时间
+                     'click  #row_delete': function (e, value, row, index) {
+                                var  id = row.id;
+                                bootbox.confirm({
+                                    message:'确定要删除id为'+ id + '的数据吗?',
+                                    buttons: {
+                                        confirm: {
+                                            label: '确定要删除吗?',
+                                            className: 'btn-success'
+                                        },
+                                        cancel: {
+                                            label: '我再检查下',
+                                            className: 'btn-danger'
+                                        }
+                                    },
+                                    callback: function (result) {
+                                        if(result){
+                                            var json_data = JSON.stringify([{'id':id}]);
+                                            console.log(json_data);
+                                            $.ajax({
+                                                 type: "post",
+                                                 url: "/server/jenkinsList/del",
+                                                 data: {"data":json_data},
+                                                 dataType: "json",
+                                                 success: function(data){
+                                                     console.log(data.status);
+                                                     if(data.status == 200){
+                                                         toastr.info(data.info);
+                                                        setTimeout(function(){ window.location.reload(); }, 3000);
+                                                     }else {
+                                                         toastr.error("数据转换错误,请联系管理员!");
+                                                     }
+                                                 }
+                                            });
+                                        }
+                                    }
+                            });
+                     }
+                  }
+             }],
+             toolbar: "#toolbar",  //一个jQuery 选择器，指明自定义的toolbar（工具栏），将需要的功能放置在表格工具栏（默认）位置。
+             sidePagination: "server",  //设置在哪里进行分页，可选值为 'client' 或者 'server'.设置 'server'时，必须设置 服务器数据地址（url）或者重写ajax方法
+             pageNumber: 1,    //如果设置了分页，首页页码
+             pageSize: 10,   //如果设置了分页，页面数据条数
+             pageList: [
+                 10, 20, 50, 100, 200   //如果设置了分页，设置可供选择的页面数据条数。设置为All 则显示所有记录。
+             ],
+             pagination: true,  //设置为 true 会在表格底部显示分页条
+             showRefresh: true, //显示 刷新按钮
+             showColumns: true, //是否显示 内容列下拉框
+             searchOnEnterKey: true,  //设置为 true时，按回车触发搜索方法，否则自动触发搜索方法
+             search:true,  //是否启用搜索框
+             exportTypes: ['json', 'xml', 'csv', 'txt', 'sql', 'excel'],
+             showExport:true,  // 显示(启用)导出
+              exportDataType: "selected",
+              exportOptions:{   // 导出选项配置
+               ignoreColumn: [0,1],  //忽略某一列的索引
+               fileName: '总台帐报表',  //文件名称设置
+               worksheetName: 'sheet1',  //表格工作区名称
+               tableName: '总台帐报表',
+               excelstyles: ['background-color', 'color', 'font-size', 'font-weight'],
+               onMsoNumberFormat: DoOnMsoNumberFormat,
+           },
+              clickToSelect: true, //是否启用点击选中行
+              searchOnEnterKey:true,//设置为 true时，按回车触发搜索方法，否则自动触发搜索方法
+              striped: true,   //是否显示行间隔色
+              showColumns:true,
+               onLoadSuccess:function(data){   //表格数据加载成功事件
+               rowCount = data.length-1;
+               $("#datatable").bootstrapTable('hideRow', {index:rowCount});
+               $("#datatable td").attr("data-tableexport-msonumberformat","\@");
+               $("#datatable tr").attr("data-tableexport-display","always");
+           },
+           onPageChange:function(number,size){  //表格翻页事件
+               $("#datatable").bootstrapTable('hideRow', {index:rowCount});
+               $("#datatable td").attr("data-tableexport-msonumberformat","\@");
+               $("#datatable tr").attr("data-tableexport-display","always");
+
+           }
+      });
+}
+
+
+</script>
+
+<script>
+    //search按钮绑定查询事件
+    $('.pull-right input').click(function() {
+
+        var params = $('#table').bootstrapTable('getOptions')
+        params.queryParams = function(params) {
+
+            //定义参数
+            var search = {};
+            //遍历form 组装json
+            $.each($("#searchform").serializeArray(), function(i, field) {
+                console.info(field.name + ":" + field.value + " ");
+                //可以添加提交验证
+
+                search[field.name] = field.value;
+            });
+
+            //参数转为json字符串，并赋给search变量 ,JSON.stringify <ie7不支持，有第三方解决插件
+            params.search = JSON.stringify(search)
+            console.info(params);
+            return params;
+        }
+
+        $('#table-pagination').bootstrapTable('refresh', params)
+        console.info(params);
+    });
+
+</script>
+{% endblock %}

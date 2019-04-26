@@ -1,0 +1,174 @@
+{% load staticfiles %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>layui</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="{% static 'layui/css/layui.css' %}" media="all">
+    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+    <!-- jQuery 3 -->
+    <script src="{% static 'js/adminlte/jquery.min.js'%}"></script>
+</head>
+<body>
+
+<div>
+    <hr/>
+    <form class="layui-form">
+        <div class="layui-form-item">
+            <label class="layui-form-label">服务名</label>
+
+            <div class="layui-input-block">
+                <input type="text" name="service_name" style="width:200px;height:33px;" required lay-verify="required"
+                       autocomplete="off" value="{{ data.service_name }}" placeholder="请输入服务名称" class="layui-input"
+                       value="" disabled="disabled">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">本地服务名</label>
+
+            <div class="layui-input-block">
+                <input type="text" name="locate_service_name" style="width:200px;height:33px;" required
+                       lay-verify="required" autocomplete="off" placeholder="请输入本地服务名称"
+                       value="{{ data.locate_service_name}}" class="layui-input" value="" disabled="disabled">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">配置文件</label>
+
+            <div class="layui-input-block">
+                {% if data.is_config == 'Yes' %}
+                <input type="radio" name="is_config" value="Yes" title="有" checked="checked" disabled="disabled">
+                {% else %}
+                <input type="radio" name="is_config" value="No" title="有" checked="" disabled="disabled">
+                {% endif %}
+
+                {% if data.is_config == 'No' %}
+                <input type="radio" name="is_config" value="No" title="无" checked="checked" disabled="disabled">
+                {% else %}
+                <input type="radio" name="is_config" value="No" title="无" disabled="disabled">
+                {% endif %}
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">bin目录</label>
+
+            <div class="layui-input-block">
+                {% if data.is_bin == 'Yes' %}
+                <input type="radio" name="is_bin" value="Yes" title="有" checked="checked" disabled="disabled">
+                {% else %}
+                <input type="radio" name="is_bin" value="Yes" title="有" checked="" disabled="disabled">
+                {% endif %}
+
+                {% if data.is_bin == 'No' %}
+                <input type="radio" name="is_bin" value="No" title="无" checked="checked" disabled="disabled">
+                {% else %}
+                <input type="radio" name="is_bin" value="No" title="无" disabled="disabled">
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">所属产品</label>
+
+            <div class="layui-input-block">
+                <input type="text" name="project_name" style="width:200px;height:33px;" required lay-verify="required"
+                       autocomplete="off" placeholder="请输入所属产品名称" value="{{ data.project_name}}" class="layui-input"
+                       value="" disabled="disabled">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">服务启动名</label>
+
+            <div class="layui-input-block">
+                <input type="text" name="service_app_name" style="width:200px;height:33px;" required
+                       lay-verify="required" autocomplete="off" placeholder="请输入服务启动名"
+                       value="{{ data.service_app_name}}" class="layui-input" value="" disabled="disabled">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">supvisor组</label>
+
+            <div class="layui-input-inline">
+                <select name="sup_group" lay-verify="required" lay-search="" lay-filter="sup_group" disabled="disabled">
+                    <option value="{{data.sup_group}}" selected="selected">{{data.sup_group}}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">开发语言</label>
+
+            <div class="layui-input-block">
+                <input type="text" name="suffix" style="width:200px;height:33px;" required lay-verify="required"
+                       value="{{data.suffix}}" disabled="disabled" autocomplete="off" placeholder="请输入可执行文件后缀名" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">部署目录</label>
+
+            <div class="layui-input-block">
+                <input type="text" name="service_dir" style="width:200px;height:33px;" required lay-verify="required"
+                       value="{{data.service_dir}}" autocomplete="off" placeholder="部署目录" disabled="disabled" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">创建时间</label>
+
+            <div class="layui-input-block">
+                <input type="text" name="ctime" style="width:200px;height:33px;" required lay-verify="required"
+                       value="{{data.ctime}}" disabled="disabled" autocomplete="off" placeholder="创建时间" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">最后一次修改时间</label>
+
+            <div class="layui-input-block">
+                <input type="text" name="mtime" style="width:200px;height:33px;" required lay-verify="required"
+                       value="{{data.mtime}}" autocomplete="off" disabled="disabled" placeholder="最后一次修改时间" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">是否已逻辑删除</label>
+
+            <div class="layui-input-block">
+                <input type="text" name="is_del" style="width:200px;height:33px;" required lay-verify="required"
+                       value="{{data.is_del}}" disabled="disabled" autocomplete="off" placeholder="是否已逻辑删除" class="layui-input">
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<script src="{% static 'layui/layui.js' %}" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>
+    layui.use(['form', 'layedit', 'laydate'], function () {
+        var form = layui.form
+                , layer = layui.layer
+                , layedit = layui.layedit
+                , laydate = layui.laydate;
+
+        //日期
+        laydate.render({
+            elem: '#date'
+        });
+        laydate.render({
+            elem: '#date1'
+        });
+
+})
+
+</script>
+
+</body>
+</html>

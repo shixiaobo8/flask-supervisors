@@ -1,0 +1,290 @@
+{% extends "base/frame_boot_base.html" %}
+{% load staticfiles %}
+{% load static %}
+{% block title %}服务器状态管理 {% endblock %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'layui/css/layui.css' %}" media="all">
+<!-- select-2 -->
+<!--<link rel="stylesheet" href="{% static 'select2/select2.min.css' %}">-->
+<!--<script src="{% static 'select2/select2.min.js' %}"></script>-->
+<!--<script src="{% static 'select2/zh-CN.js' %}"></script>-->
+<!--<div style="margin-bottom: 5px;">-->
+
+<!--&lt;!&ndash; 示例-970 &ndash;&gt;-->
+<!--<ins class="adsbygoogle" style="display:inline-block;width:970px;height:90px" data-ad-client="ca-pub-6111334333458862" data-ad-slot="3820120620"></ins>-->
+
+<!--</div>-->
+<div class="panel panel-default">
+        <div class="panel-heading"><h3>jenkins服务列表全局查询条件</h3></div>
+        <div class="panel-body">
+            <form id="formSearch" class="form-horizontal">
+                <div class="form-group" style="margin-top:15px">
+                    <label class="control-label col-sm-1" for="search_field">选择字段</label>
+                    <div class="col-sm-2">
+                        <select class="selectpicker" name="selectpickerField" title="请选择字段" id="selectpickerField" data-live-search="true">
+                            <option value="service_name">服务名</option>
+                            <option value="project_name">所属产品</option>
+                            <option value="suffix">开发语言</option>
+                            <option value="is_del">已删除</option>
+                        </select>
+                    </div>
+                    <!--<label class="control-label col-sm-1" for="txt_search_statu">操作</label>-->
+                    <!--<div class="col-sm-2">-->
+                        <!--<input type="text" class="form-control" id="txt_search_statu" placeholder="操作(=!^><)">-->
+                    <!--</div>-->
+                    <label class="control-label col-sm-1">模糊值</label>
+                    <div class="col-sm-2">
+                        <select title="请选择字段值" id="selectpickerValue"  name="selectpickerValue" class="selectpicker show-tick form-control" multiple required data-live-search="true">
+                            <!--<option value="">请选择</option>-->
+                            <!--<option value="project_name">所属产品</option>-->
+                            <!--<option value="suffix">开发语言</option>-->
+                        </select>
+                        <!--<input type="text" class="form-control" id="txt_search_value" placeholder="操作值">-->
+                    </div>
+                    <div class="col-sm-2" style="text-align:left;">
+                        <button type="button" style="margin-left:150px" id="btn_query" class="btn btn-primary"><i class="layui-icon">&#xe615;<span>&nbsp;查询</span></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+<div class="layui-btn-group demoTable">
+  <!--<button class="layui-btn" data-type="getCheckData">获取选中行数据</button>-->
+  <!--<button class="layui-btn" data-type="getCheckLength">获取选中数目</button>-->
+  <!--<button class="layui-btn" data-type="isAll">验证是否全选</button>-->
+    <button class="layui-btn" id="new_rowbt" onclick="new_row()" style="background-color:#5FB878;"><i class="layui-icon">&#xe61f;<span>&nbsp;新增</span></i></button>
+    <button class="layui-btn" id="del_rowbt" onclick="del_row()" style="background-color:#ff1a1a;"><i class="layui-icon">&#xe640;<span>&nbsp;删除</span></i></button>
+    <button class="layui-btn" id="ch_rowbt" onclick="ch_row()" style="background-color:#01AAED;"><i class="layui-icon">&#xe642;<span>&nbsp;修改</span></i></button>
+    <button class="layui-btn" id="detail_rowbt" onclick="detail_row()" style="background-color:#00994d;"><i class="layui-icon">&#xe615;<span>&nbsp;查看</span></i></button>
+</div>
+
+<table  id="jklist" lay-filter="demo" lay-data="{id: 'idTest'}"></table>
+
+<script type="text/html" id="barDemo">
+  <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
+  <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+  <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+
+
+<script src="{% static 'layui/layui.js' %}" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>
+// bootstrap 搜索条件 js初始化,设置选定的值
+
+// $('.selectpicker').selectpicker('val','mustard');
+
+// $('.selectpicker').selectpicker('val',['mustard','relish']);
+
+// 更新UI
+
+ $('.selectpicker').selectpicker('refresh');
+
+// 选中事件
+$('#selectpickerField').on('changed.bs.select',function(e){
+        var selectField = $('#selectpickerField').selectpicker('val');
+        //获取动态值数据
+            $.ajax({
+                type: "post",
+                data: {"selectField":selectField},
+                url: '/server/jenkins/selectFiledValue',
+                dataType: 'json',
+                success: function(data) {
+                        var optionStr = '';
+                        for(var i=0; i<data.length; i++){
+                            if(data[i] == 0){
+                                data[i] = 'No';
+                            }
+                            if(data[i] == 1){
+                                data[i] = 'Yes';
+                            }
+                            optionStr+="<option  value='"+data[i]+"'>  "+data[i]+"</option>";
+                        }  
+                        $("#selectpickerValue").html("");  
+                        $('#selectpickerValue').append(optionStr);
+                        $('#selectpickerValue').selectpicker('refresh');
+                }
+            })
+});
+
+
+
+
+// layui 部分
+layui.use('table', function(){
+  var table = layui.table;
+
+  //第一个实例
+  table.render({
+    elem: '#jklist'
+    ,url: '/server/getJkListJson' //数据接口
+    ,page: true //开启分页
+    ,response: {
+           statusName: 'status' //数据状态的字段名称，默认：code
+          ,statusCode: 200 //成功的状态码，默认：0
+          ,msgName: 'hint' //状态信息的字段名称，默认：msg
+          ,countName: 'total' //数据总数的字段名称，默认：count
+          ,dataName: 'rows' //数据列表的字段名称，默认：data
+    }
+    ,cols: [[ //表头
+       {type:'checkbox', fixed: 'left'}
+      ,{field:'id', width:60, sort: true,title:"<b style='font-size:13px;color:#393D49;'>ID</b>",align:'center'}
+      ,{field:'service_name', width:200,title:"<b style='font-size:13px;color:#393D49;'>服务名</b>",align:'center'}
+      ,{field:'locate_service_name', width:200, sort: true,title:"<b style='font-size:13px;color:#393D49;'>本地服务名</b>",align:'center'}
+      ,{field:'service_app_name', width:200,title:"<b style='font-size:13px;color:#393D49;'>服务启动名称</b>",align:'center'}
+      ,{field:'project_name', width:200,title:"<b style='font-size:13px;color:#393D49;'>所属产品</b>",align:'center'},{field:'is_config', width:90,title:"<b style='font-size:13px;color:#393D49;'>配置文件</b>",align:'center'}
+      ,{field:'is_bin', width:90,title:"<b style='font-size:13px;color:#393D49;'>bin目录</b>",align:'center'}
+      ,{field:'sup_group', width:140, sort: true,title:"<b style='font-size:13px;color:#393D49;'>supvisor组</b>",align:'center'}
+      ,{field:'suffix', width:120,title:"<b style='font-size:13px;color:#393D49;'>开发语言</b>",align:'center',sort: true,}
+      ,{field:'service_dir', width:240, sort: true,title:"<b style='font-size:13px;color:#393D49;'>部署目录</b>",align:'left'}
+     // ,{field:'ctime', width:165, sort: true, fixed: 'right',title:"<b style='font-size:13px;color:#393D49;'>创建时间</b>",align:'center'}
+     // ,{field:'mtime', width:165, sort: true, fixed: 'right',title:"<b style='font-size:13px;color:#393D49;'>last修改时间</b>",align:'center'}
+     // ,{fixed: 'right', width:165, align:'center',title:"<b style='font-size:13px;color:red;'>操作</b>",toolbar: '#barDemo'}
+      ]]
+  });
+  //监听表格复选框选择
+  table.on('checkbox(demo)', function(obj){
+    console.log(obj)
+  });
+  //监听工具条
+  table.on('tool(demo)', function(obj){
+    var data = obj.data;
+    if(obj.event === 'detail'){
+      layer.alert('编辑行：<br>'+ JSON.stringify(data));
+    } else if(obj.event === 'del'){
+      layer.confirm('真的删除行么', function(index){
+        obj.del();
+        layer.close(index);
+      });
+    } else if(obj.event === 'edit'){
+      ch_row();
+    }
+  });
+
+  var $ = layui.$, active = {
+    getCheckData: function(){ //获取选中数据
+      var checkStatus = table.checkStatus('jklist')
+      ,data = checkStatus.data;
+      layer.alert(JSON.stringify(data));
+    }
+    ,getCheckLength: function(){ //获取选中数目
+      var checkStatus = table.checkStatus('jklist')
+      ,data = checkStatus.data;
+      layer.msg('选中了：'+ data.length + ' 个');
+      return data.length;
+    }
+    ,isAll: function(){ //验证是否全选
+      var checkStatus = table.checkStatus('jklist');
+      layer.msg(checkStatus.isAll ? '全选': '未全选')
+    }
+  };
+
+  $('.demoTable .layui-btn').on('click', function(){
+    var type = $(this).data('type');
+    active[type] ? active[type].call(this) : '';
+  });
+   new_row = function(){
+       layer.open({
+                    type:2,
+                    title:"<h3 style='color:green;font-family:KaiTi;'>正在新增jenkins服务信息....</h3>",
+                    area: ['480px', '640px'],
+                    fixed: false, //不固定
+                    maxmin: true,
+                    content: '/server/jenkins/add_form.html'
+                });
+    }
+
+   ch_row = function(){
+        var checkStatus = table.checkStatus('jklist');
+        var data = checkStatus.data;
+        var json_data = JSON.stringify(data);
+        var select_length = data.length;
+        if(select_length == 1){
+                layer.open({
+                    type:2,
+                    title:"<h3 style='color:#FF5722;font-family:KaiTi;'>正在修改ID为"+data[0].id + '的详细信息....</h3>',
+                    area: ['480px', '640px'],
+                    fixed: false, //不固定
+                    maxmin: true,
+                    content: '/server/jenkins/list_form?id='+data[0].id,
+                });
+        }else if(select_length != 1){
+            layer.msg('对不起只能同时修改一条数据');
+            return;
+        }
+    }
+
+    // 查看行详情
+    detail_row = function(){
+        var checkStatus = table.checkStatus('jklist');
+        var data = checkStatus.data;
+        var json_data = JSON.stringify(data);
+        var select_length = data.length;
+        if(select_length == 1){
+                layer.open({
+                    type:2,
+                    title:"<h3 style='color:#FF5722;font-family:KaiTi;'>以下是ID为"+data[0].id + '的详细信息....</h3>',
+                    area: ['480px', '640px'],
+                    fixed: true, //不固定
+                    maxmin: true,
+                    content: '/server/jenkins/detail_form?id='+data[0].id,
+                });
+        }else if(select_length != 1){
+            layer.msg('对不起只能同时查看一条数据');
+            return;
+        }
+    }
+
+    // 删除行
+   del_row = function(){
+        var checkStatus = table.checkStatus('jklist');
+        var data = checkStatus.data;
+        var json_data = JSON.stringify(data);
+        var select_length = data.length;
+        if(select_length == 0){
+                layer.msg("没有选择有效的行数据!");
+                return;
+        }else{
+            layer.confirm("您已经选择了" + select_length + "行数据,真的删除行么?", function(index){
+                 $.ajax({
+                     type: "post",
+                     url: "/server/jenkinsList/del",
+                     data: {"data":json_data},
+                     dataType: "json",
+                     success: function(data){
+                        layer.msg(data.info);
+                        // 重新渲染表格数据
+                        table.reload('jklist', {
+                            url: '/server/getJkListJson'
+                         });
+                     }
+                 });
+                layer.close(index);
+             });
+         }
+    }
+
+    // 搜索框提交btn_query 监听
+     $(function () {
+        $('#btn_query').on('click', function(){
+                // 获取表单数据json对象
+                var f_data = {};
+                // 组装json数据
+                var selectpickerField = $("#selectpickerField").val();
+                var selectpickerValue = $("#selectpickerValue").val();
+                f_data['selectpickerField'] = selectpickerField
+                f_data['selectpickerValue'] = selectpickerValue
+                // 重新渲染表格
+                table.reload('jklist', {
+                    url: '/server/getJkListJson',
+                    where:{
+                        "where":JSON.stringify(f_data),
+                    }
+                 });
+         });
+     })
+
+});
+</script>
+{% endblock %}

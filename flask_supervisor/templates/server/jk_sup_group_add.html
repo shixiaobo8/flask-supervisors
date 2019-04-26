@@ -1,0 +1,102 @@
+{% load staticfiles %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>sup_group增加</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="{% static 'layui/css/layui.css' %}" media="all">
+    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+    <!-- jQuery 3 -->
+    <script src="{% static 'js/adminlte/jquery.min.js'%}"></script>
+</head>
+<body>
+
+<div>
+    <hr/>
+    <form class="layui-form" action="/jenkins/sup_group_add" method="post" id="to_add">
+        <div class="layui-form-item">
+            <label class="layui-form-label">supvisor组名称</label>
+            <div class="layui-input-block">
+                <input type="text" name="supervisor_group_name" id="supervisor_group_name_input" style="width:200px;height:33px;" required lay-verify="required"
+                       autocomplete="off" value="" placeholder="请输入supvisor分组名称" class="layui-input"
+                       value=""><span id="supervisor_group_name_ajax" name="supervisor_group_name_ajax"></span>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" id="submit" type="button">新增</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<script src="{% static 'layui/layui.js' %}" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>
+    layui.use(['form', 'layedit', 'laydate'], function () {
+        var form = layui.form
+                , layer = layui.layer
+                , layedit = layui.layedit
+                , laydate = layui.laydate;
+
+
+            $(function () {
+                $('#supervisor_group_name_input').blur(function () {  // #supervisor_group_name_input为输入框的id，当该输入框失去焦点是触发函数
+                    var new_supervisor_group_name = $('#supervisor_group_name_input').val();
+                    if (!new_supervisor_group_name) {
+                        layer.msg("请输入要创建的名称");
+                        return;
+                    }
+                    json_data = {
+                        'new_supervisor_group_name': new_supervisor_group_name,  // 获取输入框和隐藏字段的数值
+                    }
+                    $.getJSON('/server/jenkins/checkSupervisorGroupName', json_data, function (data) { //ajax发送
+                        $('#supervisor_group_name_ajax').empty();
+                        if (data['code'] == '200') { //status返回1为验证码正确， status返回0为验证码错误， 在输入框的后面写入提示信息
+                            $('#supervisor_group_name_ajax').text('supervisor组名称正确');
+                            $("#supervisor_group_name_ajax").removeAttr("style");
+                            $('#supervisor_group_name_ajax').css("color", "green");
+                        } else if (data['code'] == '202') {
+                            $('#supervisor_group_name_ajax').text('supervisor组名称已存在');
+                            $("#supervisor_group_name_ajax").removeAttr("style");
+                            $('#supervisor_group_name_ajax').css("color", "yellow");
+                        } else {
+                            alert("参数错误,请将该错误反馈给系统管理员");
+                        }
+                    });
+                });
+               // 提交
+                $("#submit").click(function () {
+                    var new_supervisor_group_name = $('#supervisor_group_name_input').val();
+                    if (new_supervisor_group_name == '') {
+                        layer.msg("请输入要创建的名称");
+                        return;
+                    } else {
+                        if(($("#supervisor_group_name_ajax").html()) == 'supervisor组名称正确'){
+                            $.post("/jenkins/sup_group_add",{"new_supervisor_group_name":new_supervisor_group_name},function(res){
+                                if(res.status == 200){
+                                    layer.msg(res.info + '添加成功', {time: 2000});
+                                }else{
+                                    if(res.info){
+                                         layer.msg(res,info, {time: 2000});
+                                    }else{
+                                        layer.msg("服务器错误,请联系管理员", {time: 2000});
+                                    }
+                                }
+                            },'json');
+                         }
+                    }
+                 });
+            });
+    });
+</script>
+
+</body>
+</html>

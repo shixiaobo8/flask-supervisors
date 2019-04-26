@@ -1,0 +1,311 @@
+{% load staticfiles %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>layui</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="{% static 'layui/css/layui.css' %}" media="all">
+    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+    <!-- jQuery 3 -->
+    <script src="{% static 'js/adminlte/jquery.min.js'%}"></script>
+</head>
+
+<div id="to_adddiv">
+    <hr/>
+    <form class="layui-form" action="/jenkins/sup_group_add" method="post" id="to_add">
+        <div class="layui-form-item">
+            <label class="layui-form-label">supvisor组名称</label>
+            <div class="layui-input-block">
+                <input type="text" name="supervisor_group_name" id="supervisor_group_name_input" style="width:200px;height:33px;" required lay-verify="required"
+                       autocomplete="off" value="" placeholder="请输入supvisor分组名称" class="layui-input"
+                       value=""><span id="supervisor_group_name_ajax" name="supervisor_group_name_ajax"></span>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" id="submit" type="button">新增</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<body>
+
+<div>
+    <hr/>
+    <form class="layui-form">
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">supvisor组</label>
+
+            <div class="layui-input-inline">
+                <select name="sup_group" lay-verify="required" lay-search="" lay-filter="sup_group" id="sup_group">
+                </select>
+            </div>
+            <a  type="button" id="new_sup_group" target="_blank" style="color: green;"><i class="layui-icon">&#xe61f;<span>&nbsp;&nbsp;&nbsp;新增</span></i></a>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">服务名</label>
+
+            <div class="layui-input-block">
+                <input type="text" name="service_name" style="width:200px;height:33px;" required lay-verify="required"
+                       autocomplete="off" value="{{ data.service_name }}" placeholder="请输入服务名称" class="layui-input"
+                       value="">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">本地服务名</label>
+
+            <div class="layui-input-block">
+                <input type="text" name="locate_service_name" style="width:200px;height:33px;" required
+                       lay-verify="required" autocomplete="off" placeholder="请输入本地服务名称"
+                       value="{{ data.locate_service_name}}" class="layui-input" value="">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">配置文件</label>
+
+            <div class="layui-input-block">
+                <input type="radio" name="is_config" value="1" title="有" checked="">
+                <input type="radio" name="is_config" value="0" title="无" checked="">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">bin目录</label>
+
+            <div class="layui-input-block">
+                <input type="radio" name="is_bin" value="1" title="有" checked="">
+                <input type="radio" name="is_bin" value="0" title="无" checked="">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">所属产品</label>
+
+            <div class="layui-input-block">
+                <input type="text" name="project_name" style="width:200px;height:33px;" required lay-verify="required"
+                       autocomplete="off" placeholder="请输入所属产品名称" value="{{ data.project_name}}" class="layui-input"
+                       value="">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">服务启动名</label>
+
+            <div class="layui-input-block">
+                <input type="text" name="service_app_name" style="width:200px;height:33px;" required
+                       lay-verify="required" autocomplete="off" placeholder="请输入服务启动名"
+                       value="{{ data.service_app_name}}" class="layui-input" value="">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">开发语言</label>
+
+            <div class="layui-input-block">
+                <input type="text" name="suffix" style="width:200px;height:33px;" required lay-verify="required"
+                       value="{{data.suffix}}" autocomplete="off" placeholder="请输入可执行文件后缀名" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">部署目录</label>
+
+            <div class="layui-input-block">
+                <input type="text" name="service_dir" style="width:200px;height:33px;" required lay-verify="required"
+                       value="{{data.service_dir}}" autocomplete="off" placeholder="部署目录" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit="" lay-filter="demo1">新增提交</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<script src="{% static 'layui/layui.js' %}" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>
+    layui.use(['form', 'layedit', 'laydate'], function () {
+        var form = layui.form
+                , layer = layui.layer
+                , layedit = layui.layedit
+                , laydate = layui.laydate;
+
+        //日期
+        laydate.render({
+            elem: '#date'
+        });
+        laydate.render({
+            elem: '#date1'
+        });
+
+
+         //重新渲染表单
+         function renderForm(){
+           layui.use('form', function(){
+                 var form = layui.form;
+                 form.render();
+            });
+         }
+
+
+        // 主页面隐藏sup_group ass
+        $(function(){
+            $("#to_adddiv").hide();
+        });
+
+        //创建一个编辑器
+        var editIndex = layedit.build('LAY_demo_editor');
+
+        //监听指定开关
+        form.on('switch(switchTest)', function (data) {
+            layer.msg('开关checked：' + (this.checked ? 'true' : 'false'), {
+                offset: '6px'
+            });
+            layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
+        });
+
+        $(function(){
+            $("#new_sup_group").click(function(){
+                layer.open({
+                      type: 1,
+                      skin: 'layui-layer-demo', //样式类名
+                      title:"新增supvisor组",
+                      area: ['400px', '180px'],
+                      content: $("#to_adddiv")
+                      });
+             });
+         });
+
+        // 新增sup_group
+        $(function () {
+                $('#supervisor_group_name_input').blur(function () {  // #supervisor_group_name_input为输入框的id，当该输入框失去焦点是触发函数
+                    var new_supervisor_group_name = $('#supervisor_group_name_input').val();
+                    if (!new_supervisor_group_name) {
+                        layer.msg("请输入要创建的名称");
+                        return;
+                    }
+                    json_data = {
+                        'new_supervisor_group_name': new_supervisor_group_name,  // 获取输入框和隐藏字段的数值
+                    }
+                    $.getJSON('/server/jenkins/checkSupervisorGroupName', json_data, function (data) { //ajax发送
+                        $('#supervisor_group_name_ajax').empty();
+                        if (data['code'] == '200') { //status返回1为验证码正确， status返回0为验证码错误， 在输入框的后面写入提示信息
+                            $('#supervisor_group_name_ajax').text('supervisor组名称正确');
+                            $("#supervisor_group_name_ajax").removeAttr("style");
+                            $('#supervisor_group_name_ajax').css("color", "green");
+                        } else if (data['code'] == '202') {
+                            $('#supervisor_group_name_ajax').text('supervisor组名称已存在');
+                            $("#supervisor_group_name_ajax").removeAttr("style");
+                            $('#supervisor_group_name_ajax').css("color", "red");
+                        } else {
+                            alert("参数错误,请将该错误反馈给系统管理员");
+                        }
+                    });
+                });
+
+               // 提交新增组
+                $("#submit").click(function () {
+                    var new_supervisor_group_name = $('#supervisor_group_name_input').val();
+                    if (new_supervisor_group_name == '') {
+                        layer.msg("请输入要创建的名称");
+                        return;
+                    } else {
+                        if(($("#supervisor_group_name_ajax").html()) == 'supervisor组名称正确'){
+                            var  frameindex= parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+                            $.post("/jenkins/sup_group_add",{"new_supervisor_group_name":new_supervisor_group_name},function(res){
+                                if(res.status == 200){
+                                    layer.msg('添加成功', {time: 2000});
+                                    layer.close(frameindex);
+                                    location.reload();
+                                 }else{
+                                    if(res.info){
+                                         layer.msg(res,info, {time: 2000});
+                                    }else{
+                                        layer.msg("服务器错误,请联系管理员", {time: 2000});
+                                    }
+                                }
+                            },'json');
+                         }
+                    }
+                 });
+            });
+
+                // 下拉菜单监听
+                $(function ()  {
+                    $.ajax({
+                        url: "/server/jenkins/supGroupList",
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function (data, textStatus) {
+                            var sup_group = $("#sup_group");
+                            var dl = $('select[name="sup_group"]').next().find('.layui-anim');
+                            if (data.length > 0) {
+                                sup_group.show();
+                                dl.show();
+                                sup_group.empty();
+                                dl.empty();
+                                for (i = 0; i < data.length; i++) {
+                                   sup_group.append("<option value=" + data[i][2] + ">" + data[i][2] + "</option>");
+                                   dl.append('<dd lay-value="' + data[i][2] + '">' + data[i][2] + '</dd>');
+                                }
+                                sup_group.hide();
+                                renderForm();//表单重新渲染，要不然添加完显示不出来新的option
+                             }else {
+                                 $("#sup_group").hide();
+                                 dl.hide();
+                               }
+                            }
+                    });
+                })
+
+        form.on('select(sup_group)', function(data){
+             var OptionIndex = data.elem.selectedIndex; //得到选中的下标
+             var text = data.elem.options[OptionIndex].text; //得到选中下标的文本信息
+        });
+
+        //监听提交
+        form.on('submit(demo1)', function (data) {
+            var f_data = data.field;
+            if (JSON.stringify(f_data) == "{}") {
+                layer.alert("填写数据为空！不想改动请关闭x", {
+                    title: '敬告',
+                });
+            }else{
+                 var  frameindex= parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+                $.post("/server/jenkins/add",{data:JSON.stringify(f_data)},function(res){
+                    if(res.status == 200){
+                        layer.msg(res.info + '即将跳转到主页面', {time: 2000});
+                        var url = "/server/jenkins/prolist"; // 成功后跳转到列表页面
+                        setTimeout(parent.location.href = url,5000);
+                    }else{
+                        if(res.info){
+                             layer.msg(res.info, {time: 2000});
+                        }else{
+                            layer.msg("服务器错误,请联系管理员", {time: 2000});
+                        }
+                    }
+                },'json');
+            }
+            return false; // 防止表单跳转
+        });
+
+    });
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,102 @@
+{% load staticfiles %}
+{% load static %}
+<!doctype html>
+<title>登陆</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link rel="stylesheet" href='{% static "css/reg-style.css" %}' />
+<!--toastr css-->
+<link rel="stylesheet" href="{% static 'toastr/toastr.css' %}">
+<script src='{% static "js/jquery-1.10.2.min.js" %}'></script>
+<script src='{% static "js/common.js" %}'></script>
+<!--背景图片自动更换-->
+<script src='{% static "js/supersized.3.2.7.min.js" %}'></script>
+<!--表单验证-->
+<script src='{% static "js/jquery.validate.min.js?var1.14.0" %}'></script>
+<!-- toastr -->
+<script src="{% static 'toastr/toastr.min.js' %}"></script>
+    <script>
+        jQuery(function($){
+
+    $.supersized({
+
+        // 鍔熻兘
+        slide_interval     : 4000,
+        transition         : 1,
+        transition_speed   : 1000,
+        performance        : 1,
+
+        // 澶у皬鍜屼綅缃�
+        min_width          : 0,
+        min_height         : 0,
+        vertical_center    : 1,
+        horizontal_center  : 1,
+        fit_always         : 0,
+        fit_portrait       : 1,
+        fit_landscape      : 0,
+
+        // 缁勪欢
+        slide_links        : 'blank',
+        slides             : [
+                                 {image : '{% static "img/1.jpg" %}' },
+                                 {image : '{% static "img/2.jpg" %}' },
+                                 {image : '{% static "img/3.jpg" %}' },
+                       ],
+
+    });
+    });
+
+
+    </script>
+<body>
+
+<div class="login-container">
+	<h1>xxxx运维管理系统-登陆</h1>
+
+	<div class="connect">
+		<p>xxxxxx-omsa</p>
+	</div>
+
+	<form action="/index/login" method="post" id="loginForm">
+		<div>
+			<input type="text" name="username" class="username" placeholder="域用户名" autocomplete="off"/>
+		</div>
+		<div>
+			<input type="password" name="password" class="password" placeholder="域密码" oncontextmenu="return false" onpaste="return false" />
+		</div>
+		<button id="submit" type="submit">登 陆</button>
+	</form>
+
+	<a href="/reg">
+		<button type="button" class="register-tis">还有没有账号？</button>
+	</a>
+
+</div>
+</body>
+</html>
+
+
+<script>
+	$(function(){
+        toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-top-left",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        };
+    })
+    {% if error %}
+		toastr.error("{{ error }}");
+	{% endif %}
+</script>

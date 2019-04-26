@@ -1,0 +1,81 @@
+{% load staticfiles %}
+{% load static %}
+<!doctype html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>注册</title>
+<link rel="stylesheet" href='{% static "css/reg-style.css" %}' />
+<script src='{% static "js/jquery-1.10.2.min.js" %}'></script>
+<script src='{% static "js/common.js" %}'></script>
+<!--背景图片自动更换-->
+<script src='{% static "js/supersized.3.2.7.min.js" %}'></script>
+<!--表单验证-->
+<script src='{% static "js/jquery.validate.min.js?var1.14.0" %}'></script>
+    <script>
+        jQuery(function($){
+
+    $.supersized({
+
+        // 鍔熻兘
+        slide_interval     : 4000,
+        transition         : 1,
+        transition_speed   : 1000,
+        performance        : 1,
+
+        // 澶у皬鍜屼綅缃�
+        min_width          : 0,
+        min_height         : 0,
+        vertical_center    : 1,
+        horizontal_center  : 1,
+        fit_always         : 0,
+        fit_portrait       : 1,
+        fit_landscape      : 0,
+
+        // 缁勪欢
+        slide_links        : 'blank',
+        slides             : [
+                                 {image : '{% static "img/1.jpg" %}' },
+                                 {image : '{% static "img/2.jpg" %}' },
+                                 {image : '{% static "img/3.jpg" %}' },
+                       ],
+
+    });
+    });
+    </script>
+<body>
+
+<div class="register-container">
+	<h1>微保运维管理系统-注册</h1>
+
+	<div class="connect">
+		<p>wesure-omsa</p>
+	</div>
+
+	<form action="" method="post" id="registerForm">
+		<div>
+			<input type="text" name="username" class="username" placeholder="您的用户名" autocomplete="off"/>
+		</div>
+		<div>
+			<input type="password" name="password" class="password" placeholder="输入密码" oncontextmenu="return false" onpaste="return false" />
+		</div>
+		<div>
+			<input type="password" name="confirm_password" class="confirm_password" placeholder="再次输入密码" oncontextmenu="return false" onpaste="return false" />
+		</div>
+		<div>
+			<input type="text" name="phone_number" class="phone_number" placeholder="输入手机号码" autocomplete="off" id="number"/>
+		</div>
+		<div>
+			<input type="email" name="email" class="email" placeholder="输入邮箱地址" oncontextmenu="return false" onpaste="return false" />
+		</div>
+
+		<button id="submit" type="submit">注 册</button>
+	</form>
+	<a href="/login">
+		<button type="button" class="register-tis">已经有账号？</button>
+	</a>
+
+</div>
+
+</body>
+</html>

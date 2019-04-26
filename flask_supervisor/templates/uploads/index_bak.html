@@ -1,0 +1,47 @@
+{% extends "base/base.html" %}
+{% load staticfiles %}
+{% load static %}
+{% block title %}文件上传管理页面 {% endblock %}
+{% block privi_check %}
+
+<link type="text/css" rel="stylesheet" href='{% static "css/fileinput.css" %}'/>
+<script type="text/javascript" src='{% static "js/fileinput.js" %}'></script>
+<script type="text/javascript" src='{% static "js/fileinput-zh.js" %}'></script>
+<script>
+        $(document).ready(function () {
+            $.ajaxSetup({
+                data: {csrfmiddlewaretoken: '{{ csrf_token }}'},
+            });
+            // 修改头像
+            $("#touxiang").fileinput({
+                'previewFileType': 'any',
+                showUpload: true,
+                language: 'zh',
+                uploadAsync: true,
+                dropZoneEnabled: true,
+                uploadUrl: '/change_touxiang',
+                maxFileCount: 1,
+                maxImageWidth: 600,
+                resizeImage: true,
+                showCaption: true,
+                showPreview: true,
+                allowedFileExtensions: ['jpg', 'png', 'jpeg'],
+                previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+                uploadExtraData: {data: {csrfmiddlewaretoken: '{{ csrf_token }}'}}
+            }).on('fileerror', function (event, data, msg) {
+
+            }).on("fileuploaded", function (event, data) {
+                if (data.response) {
+                    alert("图像修改成功！点击确认2秒后自动刷新页面");
+                    setTimeout("location.href='{{ request.get_full_path }}'", 2000);
+                }
+            })
+        });
+</script>
+
+    <from>
+    <label class="control-label">请选择头像文件</label>
+                                        <input id="touxiang" name="touxiang" type="file" multiple
+                                               class="file-loading">
+ </form>
+{% endblock %}

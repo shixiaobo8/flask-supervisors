@@ -1,0 +1,67 @@
+{% extends "base/frame_boot_base.html" %}
+{% load staticfiles %}
+{% load static %}
+{% block title %}文件上传管理页面 {% endblock %}
+{% block content %}
+<title>ACE in Action</title>
+<div id="wrapper">
+<div class="content" style="width: 950px">
+    <div class="column1" style="margin-top: 47px">
+        <textarea id="textarea" style="width:800px; height:500px">
+{{ content }}
+function foo() {
+    var bar = true;
+}
+        </textarea>
+    </div>
+</div>
+
+<script>
+
+function inject(options, callback) {
+    var baseUrl = options.baseUrl || "/static/ace_editor";
+
+    var load = function(path, callback) {
+        var head = document.getElementsByTagName('head')[0];
+        var s = document.createElement('script');
+
+        s.src = baseUrl + "/" + path;
+        head.appendChild(s);
+
+        s.onload = s.onreadystatechange = function(_, isAbort) {
+            if (isAbort || !s.readyState || s.readyState == "loaded" || s.readyState == "complete") {
+                s = s.onload = s.onreadystatechange = null;
+                if (!isAbort)
+                    callback();
+            }
+        };
+    };
+
+    load("ace.js", function() {
+        ace.config.loadModule("ace/ext/textarea", function() {
+            var event = ace.require("ace/lib/event");
+            var areas = document.getElementsByTagName("textarea");
+            for (var i = 0; i < areas.length; i++) {
+                event.addListener(areas[i], "click", function(e) {
+                    if (e.detail == 3) {
+                        ace.transformTextarea(e.target, options.ace);
+                    }
+                });
+            }
+            callback && callback();
+        });
+    });
+}
+
+// Call the inject function to load the ace files.
+var textAce;
+inject({}, function () {
+    // Transform the textarea on the page into an ace editor.
+    var t = document.querySelector("textarea");
+    textAce = ace.require("ace/ext/textarea").transformTextarea(t);
+    setTimeout(function(){textAce.setDisplaySettings(false)});
+});
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,169 @@
+{% extends "base/frame_boot_base.html" %}
+{% load staticfiles %}
+{% load static %}
+{% block title %}h5上传流程 {% endblock %}
+{% block content %}
+<style>
+	.pager li>a, .pager li>span {
+		margin-top:30px;
+		background-color:#2fe;
+	}
+
+	.col-sm-11 {
+		margin-top:20px;
+	}
+</style>
+<div class="span11">
+			<div class="span11">
+              <h2>h5发布流程</h2>
+              	<div id="rootwizard">
+					<div class="navbar">
+					  <div class="navbar-inner">
+					    <div class="container">
+					<ul>
+						<li><a href="#tab2" data-toggle="tab">选择构建任务</a></li>
+						<li><a href="#tab3" data-toggle="tab">h5构建压缩包确认</a></li>
+						<li><a href="#tab4" data-toggle="tab">开始构建</a></li>
+						<li><a href="#tab4" data-toggle="tab">构建结果</a></li>
+					</ul>
+					 </div>
+					  </div>
+					</div>
+					<div id="bar" class="progress progress-striped active">
+					  <div class="progress-bar"></div>
+					</div>
+					<hr />
+					<div class="tab-content">
+					    <div class="tab-pane" id="tab2" >
+							<div class="form-group">
+								<label for="txt_tag_value" class="control-label col-sm-1">tag</label>
+								<div class="col-sm-11">
+								  <input type="text" class="form-control" id="txt_tag_value" placeholder="请输入tag,输入指定需发布得编译包tag,查询和提取指定的tag编译包" required="required">
+								</div>
+
+								<label for="checkbox_project" class="control-label col-sm-1">project</label>
+								<div class="col-sm-11">
+									<div class="checkbox" id="checkbox_project">
+										<label>
+										  <input type="checkbox" name="checkbox_project" value="Checkbox 1">
+										  Checkbox 1
+										</label>
+                  					</div>
+									<div class="checkbox">
+										<label>
+										  <input type="checkbox" name="checkbox_project" value="Checkbox 2">
+										  Checkbox 2
+										</label>
+                  					</div>
+									<div class="checkbox">
+										<label>
+										  <input type="checkbox" name="checkbox_project" value="Checkbox 3">
+										  Checkbox 3
+										</label>
+                  					</div>
+									<div class="checkbox">
+										<label>
+										  <input type="checkbox" name="checkbox_project" value="Checkbox 4">
+										  Checkbox 4
+										</label>
+                  					</div>
+								</div>
+
+								<label for="selectpickerAnsiblePath" class="control-label col-sm-1" >ansible_path</label>
+								<div class="col-sm-11">
+								  	<select title="请选择发布服务节点,指定发布时读取的ansible配置文件" id="selectpickerAnsiblePath"  name="selectpickerAnsiblePath" class="selectpicker show-tick form-control"  required data-live-search="true">
+									<option value="">请选择</option>
+										<option value="project_name">所属产品</option>
+										<option value="suffix">开发语言</option>
+									</select>
+								</div>
+
+								<label for="selectpickerSuffix" class="control-label col-sm-1" >suffix</label>
+								<div class="col-sm-11">
+								  	<select title="请选择发布文件后缀名" id="selectpickerSuffix"  name="selectpickerSuffix" class="selectpicker show-tick form-control" required data-live-search="true">
+									<option value="">请选择</option>
+										<option value="project_name">所属产品</option>
+										<option value="suffix">开发语言</option>
+									</select>
+								</div>
+							  </div>
+
+					    </div>
+						<div class="tab-pane" id="tab3">
+							3
+					    </div>
+						<div class="tab-pane" id="tab4">
+							4
+					    </div>
+						<div class="tab-pane" id="tab5">
+							5
+					    </div>
+						<p></p>
+						<ul class="pager wizard">
+							<li class="previous first" style="display:none;"><a href="javascript:;">第一步</a></li>
+							<li class="previous"><a href="javascript:;">上一步</a></li>
+							<li class="next last" style="display:none;"><a href="javascript:;">最后一步</a></li>
+						  	<li class="next"><a href="javascript:;">下一步</a></li>
+						</ul>
+					</div>
+				</div>
+            </div><!--/span-->
+			{{jps}}
+          </div><!--/row-->
+        </div><!--/span-->
+      </div><!--/row-->
+
+      <hr>
+
+
+    </div><!--/.fluid-container-->
+	<script src="{% static 'wizard/jquery.bootstrap.wizard.js' %}"></script>
+	<script>
+	$(document).ready(function() {
+		$('#rootwizard').bootstrapWizard({onNext: function(tab, navigation, index) {
+				if(index==1) {
+					// tag 号验证
+					if(!$('#txt_tag_value').val()) {
+						alert('请输入tag号');
+						$('#txt_tag_value').focus();
+						return false;
+					}
+					// project 验证
+					var project_names =[];//定义一个数组
+					 $('input[name="checkbox_project"]:checked').each(function(){//遍历每一个名字为interest的复选框，其中选中的执行函数
+					 	 console.log($(this));
+					 	 project_names.push($(this).val());//将选中的值添加到数组chk_value中
+					 });
+					console.log(project_names);
+					if(project_names == '') {
+						alert('请选择project');
+						return false;
+					}
+					// ansible_path 验证
+					var ansible_path =$("#selectpickerAnsiblePath").val();//定义一个数组
+					console.log(ansible_path);
+					if(ansible_path == '') {
+						alert('请选择ansible_path');
+						return false;
+					}
+					// suffix 验证
+					var suffix =$("#selectpickerSuffix").val();//定义一个数组
+					console.log(suffix);
+					if(suffix == '') {
+						alert('请选择suffix');
+						return false;
+					}
+				}
+
+				// Set the name for the next tab
+				$('#tab3').html('Hello, ' + $('#name').val());
+
+			}, onTabShow: function(tab, navigation, index) {
+				var $total = navigation.find('li').length;
+				var $current = index+1;
+				var $percent = ($current/$total) * 100;
+				$('#rootwizard .progress-bar').css({width:$percent+'%'});
+			}});
+});
+	</script>
+{% endblock %}

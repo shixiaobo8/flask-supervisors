@@ -1,0 +1,17 @@
+{% extends "base/frame_boot_base.html" %}
+{% load staticfiles %}
+{% load static %}
+{% block title %}404{% endblock %}
+{% block content %}
+
+<section class="content-header">
+      <h1 style="color:red;">
+        {{ database_error }}
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Examples</a></li>
+        <li class="active">error</li>
+      </ol>
+</section>
+{% endblock %}

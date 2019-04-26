@@ -1,0 +1,38 @@
+/* 自定义后台样式 */
+*{margin:0;padding:0}
+a{text-decoration-color: currentcolor;
+    text-decoration-line: none;
+    text-decoration-style: solid;}
+ul,ol,li{list-style-image: none;list-style-type: none;}
+#top_nav{background-color: #2f4050;position: relative;z-index: 2;width: 100%;float: left}
+.top_logo{float: left;padding:10px 0 6px 18px;text-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);width: 192px;}
+.top_menu{float: left;height:50px;overflow:hidden;}
+.top_menu ul{margin-left: -1px;margin-top:3px;}
+.top_menu ul li{border-left-color: rgba(255, 255, 255, 0.25);border-left-style: solid;border-left-width: 1px;box-shadow: -1px 0 0 rgba(0, 0, 0, 0.15);height: 10px;line-height: 10px;margin:19px 0;}
+.top_nc_row{font-size: 0 !important;}
+.top_nc_row li{display: inline-block !important;font-size: 12px;letter-spacing: normal;vertical-align: top;}
+.top_nc_row li a{color: #fff;display: block;font-size: 15px;height: 20px;line-height: 20px;margin-left: 1px;margin-right: 2px;margin-top: -21px;height:50px;opacity: 0.8;padding:14px 25px;text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.25);z-index: 100}
+.top_nc_row li.active a{ background-attachment: scroll;background-clip: border-box;background-color: rgba(0, 0, 0, 0.15); background-image: none;background-origin: padding-box;background-repeat: repeat;background-size: auto auto;opacity: 1;}
+.top_nc_row li a:hover{ background-attachment: scroll;background-clip: border-box;background-color: rgba(255, 255, 255, 0.15); background-image: none;background-origin: padding-box;background-repeat: repeat;background-size: auto auto;opacity: 1;z-index: 100}
+.top_dent{float: left;line-height: 50px;}
+.top_dent a{color: #fff;text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.25);}
+.navbar-minimalize{margin-right: 5px;}
+.roll-right.btn-group{right:0;}
+.roll-right.J_tabRight{right:80px;}
+
+.module_tips{color:#848C8E;background-color: #ecf8fc;height: 40px;border: 10px;line-height: 40px;font-size: 12px;margin-bottom: 30px;}
+.module_tips span.tip{color: #ff7754}
+.module_tips span.tip_close{float:right;cursor:pointer}
+
+.top_right{height:50px;float: right;}
+.top_right li{float:left;}
+.top_right_style{line-height: 22px;}
+.nav li a:hover{background-color: rgba(255, 255, 255, 0.15)}
+
+.access_div input{margin-right: 5px;}
+.nav_row{background-color: #fbf8f8;height: 40px;padding-left: 10px;line-height: 40px;margin-bottom:30px;}
+.access_ul li{float:left;margin-right:20px;}
+.access_dd{line-height: 30px;}
+.access_ul{margin-left: 20px;}
+
+.no-data-tip{display: block;text-align: center;color:#999;}

@@ -1,0 +1,108 @@
+{% extends "base/frame_boot_base.html" %}
+{% load staticfiles %}
+{% load static %}
+{% block title %}服务器状态管理 {% endblock %}
+{% block content %}
+<!--第二步：添加如下 HTML 代码-->
+<div class="container">
+    <table id="jklist" class="display" cellpadding="1" cellspacing="1" border="0" width="100%" class="table table-striped table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>服务名</th>
+                <th>服务启动名</th>
+                <th>本地服务名</th>
+                <th>所属产品</th>
+                <th>服务本地目录</th>
+                <th>supvisor分组</th>
+                <th>开发语言</th>
+                <th>bin目录</th>
+                <th>配置文件</th>
+                <th>创建时间</th>
+                <th>修改时间</th>
+                <th>是否删除</th>
+                <th>操作</th>
+            </tr>
+            <!-- tbody 是必须的 -->
+            <tbody>
+
+            </tbody>
+    </table>
+</div>
+
+<!-- Modal -->
+<div id="myModal" class="modal hide fade" data-backdrop="false">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"
+                aria-hidden="true">×
+        </button>
+        <h3 id="myModalLabel">用户信息</h3>
+    </div>
+    <div class="modal-body">
+        <form class="form-horizontal" id="resForm">
+            <input type="hidden" id="objectId"/>
+
+            <div class="control-group">
+                <label class="control-label" for="inputName">昵称：</label> <input
+                    type="text" id="inputName" name="name"/>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="inputJob">技能：</label> <input
+                    type="text" id="inputJob" name="job"/>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="inputNote">备注：</label>
+                <textarea name="note" id="inputNote" cols="30" rows="4"></textarea>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" id="btnSave">确定</button>
+        <button class="btn btn-primary" id="btnEdit">保存</button>
+        <button class="btn btn-danger" data-dismiss="modal"
+                aria-hidden="true">取消
+        </button>
+    </div>
+</div>
+
+
+<!--第三步：初始化Datatables-->
+<script>
+// 表格初始化
+$(document).ready( function () {
+    var t = $('#jklist').DataTable({
+        ajax: {
+            //指定数据源
+            url: "/server/getJkListbJson"
+        },
+        //每页显示三条数据
+        pageLength: 10,
+        columns: [
+            { data: 'id' },
+            { data: 'service_name' },
+            { data: 'service_app_name' },
+            { data: 'locate_service_name' },
+            { data: 'project_name' },
+            { data: 'service_dir' },
+            { data: 'sup_group' },
+            { data: 'suffix' },
+            { data: 'is_bin' },
+            { data: 'is_config' },
+            { data: 'ctime' },
+           { data: 'mtime' },
+            { data: 'is_del' },
+            {"data": null}],
+            "columnDefs": [{
+                "render": function(data, type, row, meta) {
+                    var html_str = "<div class='btn-group open'><a class='btn btn-primary' href='#'><i class='icon-user'></i></a><a class='btn btn-primary dropdown-toggle' data-toggle='dropdown' href='#'><span class='icon-caret-down'></span></a><ul class='dropdown-menu'><li><a href='#'><i class='icon-pencil'></i> Edit</a></li><li><a href='#'><i class='icon-trash'></i> Delete</a></li><li><a href='#'><i class='icon-ban-circle'></i> Ban</a></li><li class='divider'></li><li><a href='#'><i class='i'></i> Make admin</a></li></ul></div>";
+                    return html_str;
+                    },
+                //指定是第几列
+                "targets": 13
+            }]
+    });
+} );
+
+
+</script>
+{% endblock %}

@@ -1,0 +1,89 @@
+{% extends "base/frame_boot_base.html" %}
+{% load staticfiles %}
+{% load static %}
+{% block title %}服务器状态管理 {% endblock %}
+{% block content %}
+
+<link rel="stylesheet" type="text/css" media="screen"
+      href="http://blog.mn886.net/jqGrid/javascript/jqgrid/css/css/redmond/jquery-ui-1.8.16.custom.css"/>
+
+<link rel="stylesheet" type="text/css" media="screen"
+      href="http://blog.mn886.net/jqGrid/javascript/jqgrid/css/ui.jqgrid.css"/>
+<script type="text/javascript" src="http://blog.mn886.net/jqGrid/javascript/jqgrid/js/jquery.jqGrid.src.js"></script>
+<script type="text/javascript" src="http://blog.mn886.net/jqGrid/javascript/jqgrid/js/i18n/grid.locale-cn.js"></script>
+
+
+<table id="list14"></table>
+<div id="pager14"></div>
+
+<script type="text/javascript">
+	var ctx = "/";
+	var console = console||new Object();
+	console.info = console.info||function(){};
+</script>
+
+<script>
+$(function(){
+  pageInit();
+
+});
+
+//enable datepicker
+function pickDate( cellvalue, options, cell ) {
+		setTimeout(function(){
+			$(cell) .find('input[type=text]')
+			.datepicker({format:'yyyy-mm-dd' , autoclose:true});
+			}, 0);
+		}
+
+
+function pageInit(){
+  jQuery("#list14").jqGrid(
+      {
+        url : '/server/status/list/JSONData',
+        datatype : "json",
+        height : 200,
+        colNames : [ '服务器ip','服务名称','运行状态', '版本号', '运行时间','上个版本','操作'],
+        colModel : [{name:'ip',index:'ip', width:60,align:"center", sorttype:"int", editable: false},
+						{name:'service_name',index:'service_name',width:90,align:"center", editable:true, sorttype:"date",unformat: pickDate},
+						{name:'status',index:'status', width:150,align:"center",editable: true,editoptions:{size:"20",maxlength:"30"}},
+						{name:'current_version',index:'c_version', width:70,align:"center", editable: true,edittype:"checkbox",editoptions: {value:"Yes:No"}},
+						{name:'service_time',index:'service_time', width:90, align:"center",editable: true,edittype:"select",editoptions:{value:"FE:FedEx;IN:InTime;TN:TNT;AR:ARAMEX"}},
+						{name:'last_version',index:'last_version', width:150,align:"center", sortable:false,editable: true,edittype:"textarea", editoptions:{rows:"2",cols:"10"}},
+						{name:'myac',index:'', width:80, fixed:false, sortable:true, resize:false,
+							formatter:'actions',
+							formatoptions:{
+								keys:true,
+								editbutton:false,
+								// 关闭删除按钮
+								delbutton: true,//disable delete button
+								editformbutton:true,
+								delOptions:{recreateForm: true},
+							}
+						}
+					],
+        rowNum : 10,
+        rowList : [ 10, 20, 30 ],
+        pager : '#pager14',
+        sortname : 'id',
+        viewrecords : true,
+        sortorder : "desc",
+        multiselect : false,
+        subGrid : true,
+        subGridUrl : '/server/status/list/SubGrid',
+        subGridModel : [ {
+          name : [ 'No', 'Item', 'Qty', 'Unit', 'Line Total' ],
+          width : [ 55, 200, 80, 80, 80 ],
+          params : [ 'invdate' ]
+        } ],
+        caption : "Subgrid with JSON Data"
+      });
+  jQuery("#list14").jqGrid('navGrid', '#pager14', {
+    edit : false,
+    add : false,
+    del : false
+  });
+}
+</script>
+
+{% endblock %}
