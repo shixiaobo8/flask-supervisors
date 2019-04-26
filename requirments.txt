@@ -1,3 +1,5 @@
 Flask==1.0.2
 Flask-SQLAlchemy==2.3.2
 Flask-Migrate==2.3.0
+Flask-login
+mysql-connector

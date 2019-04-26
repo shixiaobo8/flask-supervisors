@@ -5,6 +5,7 @@ from flask_supervisor import create_app
 from flask_script import Manager,Server,Shell
 from flask_supervisor.commands import Hello
 from flask_migrate import MigrateCommand
+from flask import current_app
 # 导入自定义错误类
 from flask_supervisor.utils import CustomFlaskErr
 # 导入所有migrate需要操作的model 类

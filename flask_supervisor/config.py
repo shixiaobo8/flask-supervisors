@@ -78,7 +78,7 @@ class ProductionConfig(Config):
     MONGOALCHEMY_CONNECTION_STRING='mongodb://127.0.0.1:27017/flask_blog'
     MONGOALCHEMY_DATABASE = 'flask_blog'
     # mysql 连接
-    SQLALCHEMY_DATABASE_URI='mysql+pymysql://root:123456@localhost:3306/flask_blog'
+    SQLALCHEMY_DATABASE_URI='mysql+mysqlconnector://root:123456@localhost:3306/flask_blog'
     SQLALCHEMY_TRACK_MODIFICATIONS = True
     # 域名配置
     SERVER_NAME = 'demo.devops89.cn'
@@ -107,7 +107,7 @@ class DevelopmentConfig(Config):
     MONGOALCHEMY_CONNECTION_STRING='mongodb://127.0.0.1:27017/flask_blog'
     MONGOALCHEMY_DATABASE = 'flask_blog'
     # mysql 连接
-    SQLALCHEMY_DATABASE_URI="mysql+pymysql://root:123456@127.0.0.1:3306/flask_blog"
+    SQLALCHEMY_DATABASE_URI="mysql+mysqlconnector://root:123456@127.0.0.1:3306/flask_blog"
     SQLALCHEMY_ECHO = True
     SQLALCHEMY_TRACK_MODIFICATIONS = True
     # 域名配置 正式环境必须配置这个参数
