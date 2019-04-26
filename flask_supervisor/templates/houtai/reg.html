@@ -44,16 +44,16 @@
                 }
                 $.ajax({
                     type: 'POST',
-                    url: '/houtai/register',
+                    url: '/houtai/user/info',
                     data: JSON.stringify(d),
                     dataType: "json",
                     contentType: "application/json",
                     success: function (res) {
                         if (res.code == '20000'){
-                            toastr.success("注册成功!",2000);
+                            toastr.success(res.data,2000);
                             window.location.href="/"
                         }else{
-                            toastr.error("注册失败,用户填写信息不符合要求！",2000);
+                            toastr.error(res.data,2000);
                         }
                     },
                     error: function () {

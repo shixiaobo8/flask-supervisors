@@ -5,7 +5,7 @@
 """
 from flask_restful import abort,Resource,reqparse,fields,marshal_with,marshal
 # from flask_supervisor.supervisor.models import Nav,subNav
-# from .. import mysql_db
+from flask_supervisor import mysql_db
 from sqlalchemy import and_
 from flask_supervisor.supervisor.models import Host,Group,Node,User
 from flask_login import login_user,logout_user,LoginManager
@@ -79,7 +79,24 @@ class UserApi(Resource):
 
     # 增加一个
     def post(self):
-        pass
+        username = self.json_args['username']
+        password = self.json_args['password']
+        email = self.json_args['email']
+        res_data = ""
+        code = '20002'
+        is_username = User.query.filter_by(username=username).first()
+        is_email = User.query.filter_by(email=email).first()
+        if is_username is not None:
+            res_data = "用户名已被占用!"
+        elif is_email is not None:
+            res_data = "邮箱已被使用!"
+        else:
+            res_data  = "注册用户信息正确!"
+            code = '20000'
+            new_user = User(username,email,password)
+            mysql_db.session.add(new_user)
+            mysql_db.session.commit()
+        return({"data":res_data,"code":code})
 
     # 修改一个
     def put(self):
