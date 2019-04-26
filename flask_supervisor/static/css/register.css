@@ -1,5 +1,5 @@
 body{
-    background: url('../../static/img/7.jpg');
+    background: url('../../static/img/4.jpg') no-repeat fixed top;;
     animation-name:myfirst;
     animation-duration:12s;
     /*变换时间*/

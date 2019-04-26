@@ -6,12 +6,17 @@ from flask_login import login_required,logout_user,current_user
 from flask import redirect
 from flask_supervisor.supervisor.models import  User
 
+# 注册页面
+@backend.route('/register')
+def register():
+    return render_template("houtai/reg.html")
+
+
 # 登陆首页
 @login_required
 @backend.route('/')
 def index():
     return render_template("houtai/index.html")
-
 
 # 退出登陆
 @backend.route('/Logout',methods=('GET','POST'))
