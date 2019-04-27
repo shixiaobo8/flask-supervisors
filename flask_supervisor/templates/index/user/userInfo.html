@@ -73,45 +73,43 @@
                     <el-button type="primary" icon="el-icon-edit" size="mini"
                                @click="handleEdit(scope.$index, scope.row)">编辑
                     </el-button>
-                    <el-dialog title="用户个人信息" :visible.sync="dialogFormVisible">
-                        <el-form :model="userform" name="userform" status-icon :rules="rules" ref="ruleForm">
-                            <el-form-item label="用户名" :label-width="formLabelWidth" prop="username">
-                                <el-input v-model="userform.username" auto-complete="off" name="username"></el-input>
-                            </el-form-item>
-                            <el-form-item label="密码" :label-width="formLabelWidth" prop="password">
-                                <el-input v-model="userform.password" auto-complete="off" show-password
-                                          name="password"></el-input>
-                            </el-form-item>
-                            <el-form-item label="密码确认" :label-width="formLabelWidth" prop="checkPass">
-                                <el-input v-model="userform.checkPass" auto-complete="off" show-password
-                                          name="password"></el-input>
-                            </el-form-item>
-                            <el-form-item label="邮箱" :label-width="formLabelWidth" prop="email">
-                                <el-input v-model="userform.email" auto-complete="off" name="email"></el-input>
-                            </el-form-item>
-                            <el-form-item label="微信号" :label-width="formLabelWidth" prop="weixin_name">
-                                <el-input v-model="userform.weixin_name" auto-complete="off"
-                                          name="weixin_name"></el-input>
-                            </el-form-item>
-                            <el-form-item label="手机号" :label-width="formLabelWidth" prop="phone">
-                                <el-input v-model="userform.phone" auto-complete="off" name="phone"></el-input>
-                            </el-form-item>
-                            <el-form-item label="头像" :label-width="formLabelWidth" prop="touxiang">
-                                <el-input v-model="userform.touxiang" auto-complete="off" name="touxiang"></el-input>
-                            </el-form-item>
-                        </el-form>
-                        <div slot="footer" class="dialog-footer">
-                            <el-form-item>
-                                <el-button type="primary" @click="submitForm('userform')">提交</el-button>
+                        <el-dialog title="用户个人信息" :visible.sync="dialogFormVisible">
+                            <el-form :model="userform" name="userform" status-icon :rules="rules" ref="userform">
+                                <el-form-item label="用户名" :label-width="formLabelWidth" prop="username">
+                                    <el-input v-model="userform.username" auto-complete="off" name="username"></el-input>
+                                </el-form-item>
+                                <el-form-item label="密码" :label-width="formLabelWidth" prop="password">
+                                    <el-input v-model="userform.password" auto-complete="off" show-password
+                                              name="password"></el-input>
+                                </el-form-item>
+                                <el-form-item label="密码确认" :label-width="formLabelWidth" prop="checkPass">
+                                    <el-input v-model="userform.checkPass" auto-complete="off" show-password
+                                              name="password"></el-input>
+                                </el-form-item>
+                                <el-form-item label="邮箱" :label-width="formLabelWidth" prop="email">
+                                    <el-input v-model="userform.email" auto-complete="off" name="email"></el-input>
+                                </el-form-item>
+                                <el-form-item label="微信号" :label-width="formLabelWidth" prop="weixin_name">
+                                    <el-input v-model="userform.weixin_name" auto-complete="off"
+                                              name="weixin_name"></el-input>
+                                </el-form-item>
+                                <el-form-item label="手机号" :label-width="formLabelWidth" prop="phone">
+                                    <el-input v-model="userform.phone" auto-complete="off" name="phone"></el-input>
+                                </el-form-item>
+                                <el-form-item label="头像" :label-width="formLabelWidth" prop="touxiang">
+                                    <el-input v-model="userform.touxiang" auto-complete="off" name="touxiang"></el-input>
+                                </el-form-item>
+                            </el-form>
+                            <div slot="footer" class="dialog-footer">
                                 <el-button @click="resetForm('userform')">重置</el-button>
-                            </el-form-item>
-                        </div>
-                    </el-dialog>
-                    <!--</el-row>-->
+                                <el-button type="primary" @click="submitForm('userform')">提交</el-button>
+                            </div>
+                        </el-dialog>
                 </template>
             </el-table-column>
         </el-table>
-        <!-- Form -->
+            <!--</el-row>-->
+    <!-- Form -->
     </template>
 </div>
 <script>
@@ -125,11 +123,27 @@
                     return callback(new Error('用户名不能为空'));
                 }
                 setTimeout(() => {
-                    if (!String.length(value) == 0) {
+                    if (value.length == 0) {
                         callback(new Error('请输入用户名'));
                     } else {
-                        if (String.length(value) < 18) {
-                            callback(new Error('用户名必须小于18位'));
+                        if (value.length > 18 || value.length < 6) {
+                            callback(new Error('用户名必须小于18位并且大于等于6位!'));
+                        } else {
+                            callback();
+                        }
+                    }
+                }, 1000);
+            };
+            var checkweixin_name = (rule, value, callback) => {
+                if (!value) {
+                    return callback(new Error('微信名称不能为空'));
+                }
+                setTimeout(() => {
+                    if (value.length == 0) {
+                        callback(new Error('请输入微信名称'));
+                    } else {
+                        if (value.length > 18 || value.length < 6) {
+                            callback(new Error('微信名称必须小于18位并且大于等于6位!'));
                         } else {
                             callback();
                         }
@@ -140,8 +154,12 @@
                 if (value === '') {
                     callback(new Error('请输入密码'));
                 } else {
-                    if (this.ruleForm.checkPass !== '') {
-                        this.$refs.ruleForm.validateField('checkPass');
+                    if (value.length > 18 || value.length < 6) {
+                            callback(new Error('密码必须小于18位并且大于等于6位!'));
+                    }else if(this.userform.checkPass !== ''){
+                        this.$refs.userform.validateField('checkPass');
+                    } else {
+                            callback();
                     }
                     callback();
                 }
@@ -149,17 +167,39 @@
             var validatePass2 = (rule, value, callback) => {
                 if (value === '') {
                     callback(new Error('请再次输入密码'));
-                } else if (value !== this.ruleForm.pass) {
+                }else if (value.length > 18 || value.length < 6) {
+                            callback(new Error('密码必须小于18位并且大于等于6位!'));
+                } else if (value !== this.userform.password) {
                     callback(new Error('两次输入密码不一致!'));
                 } else {
                     callback();
                 }
             };
+            var checkPhone = (rule, value, callback) => {
+                const phoneReg = /^1[3|4|5|7|8][0-9]{9}$/
+                if (!value) {
+                  return callback(new Error("电话号码不能为空"))
+                }
+                setTimeout(() => {
+                  // Number.isInteger是es6验证数字是否为整数的方法,但是我实际用的时候输入的数字总是识别成字符串
+                  // 所以我就在前面加了一个+实现隐式转换
+
+                  if (!Number.isInteger(+value)) {
+                    callback(new Error("请输入数字值"))
+                  } else {
+                    if (phoneReg.test(value)) {
+                      callback()
+                    } else {
+                      callback(new Error("电话号码格式不正确"))
+                    }
+                  }
+                }, 100)
+            };
             return {
                 tableData: [],
                 dialogFormVisible: false,
-                form: {
-                    username: "{[ this.scope.row.username ]}",
+                userform: {
+                    username: "",
                     password: "",
                     checkPass: "",
                     weixin_name: "",
@@ -167,23 +207,39 @@
                     email: "",
                     touxiang: "",
                     resource: '',
-                    desc: ''
+                    desc: '',
                 },
-                formLabelWidth: '100px',
+                formLabelWidth: '80px',
+                centerDialogVisible: true,
+                top:"30px",
                 rules: {
-                    username: [{validator: checkUsername, required: true, message: '请输入', trigger: 'blur'}],
-                    email: [{required: true, message: '请输入', trigger: 'blur'}],
-                    password: [{validator: validatePass, required: true, message: '请输入', trigger: 'blur'}],
-                    checkPass: [{validator: validatePass2, required: true, message: '请输入', trigger: 'blur'}],
-                    phone: [{required: true, message: '请输入', trigger: 'blur'}],
-                    weixin_name: [{required: true, message: '请输入', trigger: 'blur'}],
-                    touxiang: [{required: true, message: '请输入', trigger: 'blur'}],
+                    username: [
+                        {validator: checkUsername, trigger: ['blur', 'change']}
+                    ],
+                    email: [
+                        {type: 'email', message: '请输入正确的邮箱地址', trigger: ['blur', 'change']},
+                        {required: true, message: '请输入邮箱', trigger: 'blur'}
+                    ],
+                    password: [
+                        {validator: validatePass, required: true,  trigger: 'blur'}
+                    ],
+                    checkPass: [
+                        {validator: validatePass2, required: true, trigger: 'blur'}
+                    ],
+                    phone: [
+                        {validator: checkPhone,required: true, trigger: 'blur'}
+                    ],
+                    weixin_name: [
+                        {validator:checkweixin_name,required: true, trigger: 'blur'}
+                        ],
+                    touxiang: [
+                        {type:'url',message:"请填写正确的头像url",trigger:['blur','change']},
+                        {message:"请输入头像地址url",required: true,trigger: 'blur'}
+                        ],
                 },
-            },
-                mounted
-        :
-
-            function () {
+            }
+        },
+        mounted: function () {
                 var _this = this;  //很重要！！
                 axios({
                     method: 'get',
@@ -199,36 +255,34 @@
                     .catch(function (error) {
                         console.log(error);
                     });
-            };
         },
-                methods: {
-                    // 查看
-                    handleClick(row) {
-                        this.editFormVisible = false;
-                        // this.form = Object.assign({}, row); //这句是关键！！！
-                    },
-                    // 编辑
-                    handleEdit(index, row) {
-                        //显示弹框
-                        this.dialogFormVisible = true;
-                    },
-                    submitForm(formName) {
-                        this.$refs[formName].validate((valid) => {
-                            if (valid) {
-                                alert('submit!');
-                            } else {
-                                console.log('error submit!!');
-                                return false;
-                            }
-                        });
-                    },
-                    resetForm(formName) {
-                        this.$refs[formName].resetFields();
-                    }
-                }
+        methods: {
+            // 查看
+            handleClick(row) {
+                this.editFormVisible = false;
+                this.userform = Object.assign({}, row); //这句是关键！！！
             },
-            var Ctor = Vue.extend(Main);
-            new Ctor().$mount('#app');
-        };
+            // 编辑
+            handleEdit(index, row) {
+                //显示弹框
+                this.dialogFormVisible = true;
+            },
+            submitForm(formName) {
+                this.$refs[formName].validate((valid) => {
+                    if (valid) {
+                        console.log(this.userform);
+                    } else {
+                        console.log('error submit!!');
+                        return false;
+                    }
+                });
+            },
+            resetForm(formName) {
+                this.$refs[formName].resetFields();
+            }
+        }
+    };
+    var Ctor = Vue.extend(Main);
+    new Ctor().$mount('#app');
 </script>
 {% endblock %}

@@ -179,7 +179,7 @@ class User(mysql_db.Model,UserMixin):
     # 用户名
     username = mysql_db.Column(mysql_db.String(80), unique=True,comment='用户名')
     # 头像
-    avatar = mysql_db.Column(mysql_db.String(120),default='img/user/default.jpg',comment='头像')
+    avatar = mysql_db.Column(mysql_db.String(120),default='img/users/default.jpg',comment='头像')
     # 邮箱
     email = mysql_db.Column(mysql_db.String(120), unique=True,comment='邮箱')
     # 微信昵称
