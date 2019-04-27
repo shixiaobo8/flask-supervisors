@@ -103,7 +103,7 @@ class UserApi(Resource):
         # 获取request json 参数
         json_args = self.json_args
         # 获取二级导航栏参数
-        sNavs = json_args['sNavs']
+        email = json_args['email']
         # 查询是否含有相同的菜单名称和url
         # exists_fName = Nav.query.filter_by(navTitle=json_args['fNavName']).first()
         # exists_fUrl = ''
