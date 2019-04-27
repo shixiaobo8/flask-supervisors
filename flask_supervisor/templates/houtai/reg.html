@@ -51,7 +51,7 @@
                     success: function (res) {
                         if (res.code == '20000'){
                             toastr.success(res.data,2000);
-                            window.location.href="/"
+                            window.location.href="/supervisor/reg_success"
                         }else{
                             toastr.error(res.data,2000);
                         }

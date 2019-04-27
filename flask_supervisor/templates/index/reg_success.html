@@ -1,0 +1,45 @@
+<!doctype html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+#d1{
+   height:40px;
+   weight:800px;
+   magin:auto;
+   top:300px;
+   background-color:green;
+}
+#tip,#s2{
+       color:red;
+       font-size:30px; 
+    }
+    a{
+    magin:auto;
+    }
+</style>
+<script type="text/javascript">
+var i = 2 ;
+var Interval = setInterval(function() {
+document.getElementById("s2").innerHTML = i +"";
+i--;
+if (i==0) {
+clearInterval(Interval);
+window.location="/";
+}
+},1000);
+
+</script>
+</head>
+<body>
+<h1>注册成功！！</h1>
+
+
+<div id="d1">
+<a href="/">立即跳转</a><br/> 
+<span id="s2">3</span>秒后自动跳转到登录页面
+</div>
+
+
+</body>
+</html>

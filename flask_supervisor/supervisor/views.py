@@ -12,6 +12,6 @@ def index():
     return render_template('base/frame_boot_base.html')
 
 
-@supervisor.route('/test')
-def test():
-    return render_template("houtai/index.html")
+@supervisor.route('/reg_success')
+def info():
+    return render_template("index/reg_success.html")
