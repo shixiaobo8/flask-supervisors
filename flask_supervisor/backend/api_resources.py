@@ -14,6 +14,7 @@ from flask import request,current_app
 from flask import jsonify
 from datetime import timedelta
 from flask_supervisor import login_manager
+import time
 
 class TouXiangUrl(fields.Raw):
     def format(self, value):
@@ -102,33 +103,28 @@ class UserApi(Resource):
     def put(self):
         # 获取request json 参数
         json_args = self.json_args
-        # 获取二级导航栏参数
+        # 获取修改参数
         email = json_args['email']
-        # 查询是否含有相同的菜单名称和url
-        # exists_fName = Nav.query.filter_by(navTitle=json_args['fNavName']).first()
-        # exists_fUrl = ''
-        # if json_args['fNavUrl'] != '':
-        #     exists_fUrl = Nav.query.filter_by(navUrl=json_args['fNavUrl']).first()
-        # if exists_fUrl or exists_fName:
-        #     current_app.logger.error("查询出错: 已存在相同的一级导航栏信息")
-        #     raise CustomFlaskErr("vAlreadyExistsError1")
-        # else:
-        #     # 先添加一级菜单,然后关联二级菜单
-        #     firstNav = Nav(json_args['fNavName'],json_args['fNavUrl'],int(json_args['type']),int(json_args['navPris'][0]))
-        #     for secondNav in sNavs:
-        #         # 检查是否含有存在的二级菜单
-        #         exists_sNav = subNav.query.filter_by(title=secondNav['sNavName'],nav_url=secondNav['sNavUrl']).first()
-        #         if exists_sNav:
-        #             current_app.logger.error("查询出错: 已存在相同的二级导航栏信息")
-        #             raise CustomFlaskErr("NavAlreadyExistsError2")
-        #         else:
-        #             sub_nav = subNav(secondNav['sNavName'],secondNav['sNavUrl'])
-        #             mysql_db.session.add(sub_nav)
-        #             # 关联二级菜单
-        #             firstNav.subnavs.append(sub_nav)
-        #     mysql_db.session.add(firstNav)
-        #     mysql_db.session.commit()
-        # return generate_response(data=json_args)
+        username = json_args['username']
+        password = json_args['password']
+        phone = json_args['phone']
+        weixin_name = json_args['weixin_name']
+        message = "更新成功!"
+        code = '20000'
+        try:
+            user = User.query.filter_by(username=username).first()
+            user.email=email
+            user.username=username
+            user.phone=phone
+            user.weixin_name=weixin_name
+            user.password_hash=password
+            user.last_modify = time.strftime("%Y-%m-%d %H:%M:%S",time.localtime())
+            mysql_db.session.commit()
+        except Exception as e:
+            print(e)
+            code = '20002'
+            message = "更新失败!"
+        return jsonify({"code":code,'message':message})
 
     # 删除一个
     def delete(self):
