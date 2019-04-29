@@ -7,7 +7,7 @@ backend = Blueprint('backend',__name__)
 from . import views,api_resources
 from flask import make_response
 from flask_restful import Resource,Api
-from .api_resources import LoginApi,UserApi
+from .api_resources import LoginApi,UserApi,UserTouXiangApi
 # from .api_resources import ApiTest,NavApi,NavListApi,LoginApi
 import json
 
@@ -20,3 +20,4 @@ api = Api(backend,catch_all_404s=True)
 # api.add_resource(NavListApi,'/NavList','NavListApi')
 api.add_resource(LoginApi,'/Login','LoginApi')
 api.add_resource(UserApi,'/user/info','UserApi')
+api.add_resource(UserTouXiangApi,'/user/info/touxiang','UserTouXiangApi')

@@ -1,0 +1,87 @@
+Index: flask_supervisor/templates/index/reg_success.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- flask_supervisor/templates/index/reg_success.html	(date 1556329834671)
++++ flask_supervisor/templates/index/reg_success.html	(date 1556329834671)
+@@ -0,0 +1,45 @@
++<!doctype html>
++<head>
++<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
++<title>Insert title here</title>
++<style type="text/css">
++#d1{
++   height:40px;
++   weight:800px;
++   magin:auto;
++   top:300px;
++   background-color:green;
++}
++#tip,#s2{
++       color:red;
++       font-size:30px; 
++    }
++    a{
++    magin:auto;
++    }
++</style>
++<script type="text/javascript">
++var i = 2 ;
++var Interval = setInterval(function() {
++document.getElementById("s2").innerHTML = i +"";
++i--;
++if (i==0) {
++clearInterval(Interval);
++window.location="/";
++}
++},1000);
++
++</script>
++</head>
++<body>
++<h1>注册成功！！</h1>
++
++
++<div id="d1">
++<a href="/">立即跳转</a><br/> 
++<span id="s2">3</span>秒后自动跳转到登录页面
++</div>
++
++
++</body>
++</html>
+\ No newline at end of file
+Index: flask_supervisor/supervisor/views.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- flask_supervisor/supervisor/views.py	(revision 3afc762d980fa17907210d89c8a9dd9692036674)
++++ flask_supervisor/supervisor/views.py	(date 1556329340512)
+@@ -12,6 +12,6 @@
+     return render_template('base/frame_boot_base.html')
+ 
+ 
+-@supervisor.route('/test')
+-def test():
+-    return render_template("houtai/index.html")
++@supervisor.route('/reg_success')
++def info():
++    return render_template("index/reg_success.html")
+Index: flask_supervisor/templates/houtai/reg.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- flask_supervisor/templates/houtai/reg.html	(revision 3afc762d980fa17907210d89c8a9dd9692036674)
++++ flask_supervisor/templates/houtai/reg.html	(date 1556329513260)
+@@ -51,7 +51,7 @@
+                     success: function (res) {
+                         if (res.code == '20000'){
+                             toastr.success(res.data,2000);
+-                            window.location.href="/"
++                            window.location.href="/supervisor/reg_success"
+                         }else{
+                             toastr.error(res.data,2000);
+                         }

@@ -10,7 +10,7 @@ from sqlalchemy import and_
 from flask_supervisor.supervisor.models import Host,Group,Node,User
 from flask_login import login_user,logout_user,LoginManager
 from ..utils import generate_response,CustomFlaskErr
-from flask import request,current_app
+from flask import request,current_app,logging
 from flask import jsonify
 from datetime import timedelta
 from flask_supervisor import login_manager
@@ -42,6 +42,7 @@ class LoginApi(Resource):
         user = User.query.filter(and_(User.username==username,User.password_hash==password)).first()
         if user:
             login_user(user,duration=timedelta(minutes=1))
+            current_app.logger.info("用户"+username+"登录了...")
         if not user:
             res_data  = "not ok"
             code = '20002'
@@ -60,7 +61,7 @@ user_fields = {
     'touxiang': TouXiangUrl(attribute="avatar")
 }
 
-# 导航栏 单个处理类
+# 用户信息 单个处理类
 class UserApi(Resource):
     # 请求参数处理
     def __init__(self):
@@ -129,6 +130,84 @@ class UserApi(Resource):
     # 删除一个
     def delete(self):
         pass
+
+
+user_touxiang_fields = {
+    'username':fields.String(attribute='username'),
+    'touxiang': TouXiangUrl(attribute="avatar")
+}
+
+# 用户头像 单个处理类
+class UserTouXiangApi(Resource):
+    # 请求参数处理
+    def __init__(self):
+        self.reqparse = reqparse.RequestParser()
+        self.args = self.reqparse.parse_args()
+        # 获取request json 参数
+        self.json_args = request.json
+        self.reqparse.add_argument('username', type=str,location='args',required=True)
+
+    # 查询头像信息
+    def get(self):
+        try:
+            args = self.reqparse.parse_args()
+            username = args['username']
+            # user = User.query.with_entities(User.username,User.avatar).filter_by(username=username).first()
+            user_touxiang = mysql_db.session.query(User.avatar).filter_by(username=username).first()
+            mysql_db.session.commit()
+            return jsonify([{"username":username,"touxiang":user_touxiang[0]}])
+        except Exception as e:
+
+            return
+
+    # 上传头像
+    def post(self):
+        # 获取request json 参数
+        args = self.args
+        # 获取修改参数
+        username = args['username']
+        message = "更新成功!"
+        code = '20000'
+        # 上传图片
+
+        try:
+            user = User.query.filter_by(username=username).first()
+            user.username = username
+            # user.avatar=avater
+            user.last_modify = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+            mysql_db.session.commit()
+        except Exception as e:
+            print(e)
+            code = '20002'
+            message = "更新失败!"
+        return jsonify({"code": code, 'message': message})
+
+    # 修改头像
+    def put(self):
+        # 获取request json 参数
+        args = self.args
+        # 获取修改参数
+        username = args['username']
+        message = "更新成功!"
+        code = '20000'
+        # 上传图片
+
+        try:
+            user = User.query.filter_by(username=username).first()
+            user.username=username
+            # user.avatar=avater
+            user.last_modify = time.strftime("%Y-%m-%d %H:%M:%S",time.localtime())
+            mysql_db.session.commit()
+        except Exception as e:
+            print(e)
+            code = '20002'
+            message = "更新失败!"
+        return jsonify({"code":code,'message':message})
+
+    # 删除头像
+    def delete(self):
+        pass
+
 
 
 # 输出字段
