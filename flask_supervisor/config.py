@@ -64,11 +64,15 @@ dictConfig({
 
 class Config:
     SQLALCHEMY_RECORD_QUERIES = True
-    SQLALCHEMY_NATIVE_UNICODE = 'utf8'  
+    SQLALCHEMY_NATIVE_UNICODE = 'utf8'
+    UPLOAD_FOLDER = 'flask_supervisor'+os.sep+'static'+os.sep+'img'+os.sep+'users'
+    ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
 
 # 生产环境配置
 class ProductionConfig(Config):
+    UPLOAD_FOLDER = 'flask_supervisor' + os.sep + 'static' + os.sep + 'img' + os.sep + 'users'
+    ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
     ENV = 'production'
     # 调试模式
     DEBUG = False
@@ -98,6 +102,8 @@ class ProductionConfig(Config):
 
 # 开发环境配置
 class DevelopmentConfig(Config):
+    UPLOAD_FOLDER = 'flask_supervisor' + os.sep + 'static' + os.sep + 'img' + os.sep + 'users'
+    ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
     ENV = 'development'
     # 调试模式
     DEBUG = True

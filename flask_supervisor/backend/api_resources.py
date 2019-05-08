@@ -11,10 +11,12 @@ from flask_supervisor.supervisor.models import Host,Group,Node,User
 from flask_login import login_user,logout_user,LoginManager
 from ..utils import generate_response,CustomFlaskErr
 from flask import request,current_app,logging
-from flask import jsonify
+from flask import jsonify,flash,redirect
 from datetime import timedelta
 from flask_supervisor import login_manager
-import time
+from werkzeug.utils import secure_filename
+import werkzeug
+import time,os
 
 class TouXiangUrl(fields.Raw):
     def format(self, value):
@@ -162,18 +164,33 @@ class UserTouXiangApi(Resource):
 
     # 上传头像
     def post(self):
-        # 获取request json 参数
-        args = self.args
-        # 获取修改参数
-        username = args['username']
+        parser = reqparse.RequestParser()
+        parser.add_argument('file', type=werkzeug.datastructures.FileStorage, location='files')
+        username = request.form['username']
         message = "更新成功!"
         code = '20000'
         # 上传图片
-
         try:
+            # check if the post request has the file part
+            if 'file' not in request.files:
+                flash('No file part')
+                message='No file part'
+                return redirect(request.url)
+            file = request.files['file']
+            # if user does not select file, browser also
+            # submit an empty part without filename
+            if file.filename == '':
+                flash('No selected file')
+                message='No selected file'
+            if file:
+                filename = secure_filename(file.filename)
+                print(filename)
+                if not os.path.exists(os.getcwd()+os.sep+os.path.join(current_app.config['UPLOAD_FOLDER']+os.sep+username, filename)):
+                    os.mkdir(os.getcwd()+os.sep+current_app.config['UPLOAD_FOLDER']+os.sep+username)
+                file.save(os.path.join(os.getcwd()+os.sep+current_app.config['UPLOAD_FOLDER']+os.sep+username, filename))
             user = User.query.filter_by(username=username).first()
             user.username = username
-            # user.avatar=avater
+            user.avatar=os.path.join(current_app.config['UPLOAD_FOLDER']+os.sep+username, filename).replace("flask_supervisor"+os.sep,'').replace('static'+os.sep,'')
             user.last_modify = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
             mysql_db.session.commit()
         except Exception as e:
@@ -184,25 +201,7 @@ class UserTouXiangApi(Resource):
 
     # 修改头像
     def put(self):
-        # 获取request json 参数
-        args = self.args
-        # 获取修改参数
-        username = args['username']
-        message = "更新成功!"
-        code = '20000'
-        # 上传图片
-
-        try:
-            user = User.query.filter_by(username=username).first()
-            user.username=username
-            # user.avatar=avater
-            user.last_modify = time.strftime("%Y-%m-%d %H:%M:%S",time.localtime())
-            mysql_db.session.commit()
-        except Exception as e:
-            print(e)
-            code = '20002'
-            message = "更新失败!"
-        return jsonify({"code":code,'message':message})
+        self.post()
 
     # 删除头像
     def delete(self):

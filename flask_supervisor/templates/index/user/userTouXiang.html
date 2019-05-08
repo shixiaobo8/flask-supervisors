@@ -1,0 +1,45 @@
+<div id="app">
+    <template>
+        <el-button type="primary" icon="el-icon-upload el-icon--right" size="mini" @click="changeTouXiang">更换头像
+        </el-button>
+        <el-dialog title="正在修改头像" :visible.sync="dialogVisible" width="30%" :before-close="handleClose"
+                   :modal-append-to-body='false'>
+            <el-upload
+                    class="avatar-uploader"
+                    action="https://jsonplaceholder.typicode.com/posts/"
+                    :show-file-list="false"
+                    :on-success="handleAvatarSuccess"
+                    :before-upload="beforeAvatarUpload">
+                <img v-if="imageUrl" :src="imageUrl" class="avatar">
+                <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+            </el-upload>
+            <span slot="footer" class="dialog-footer">
+    <el-button @click="dialogVisible = false">取 消</el-button>
+    <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+  </span>
+        </el-dialog>
+    </template>
+</div>
+<script>
+    new Vue({
+        el: "#app",
+        data() {
+            return {
+                dialogVisible: false
+            };
+        },
+        methods: {
+            handleClose(done) {
+                this.$confirm('确认关闭？')
+                    .then(_ => {
+                        done();
+                    })
+                    .catch(_ => {
+                    });
+            },
+            changeTouXiang(){
+                console.log(234243);
+            }
+        }
+    })
+</script>
