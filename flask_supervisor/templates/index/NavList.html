@@ -402,9 +402,15 @@
             //获取用户数据
             getUsers() {
                 this.loading = true;
-                OGet().then(res => {
-                    this.users = res.datas;
-                    this.total_rows = res.datas.total_rows;
+                axios({
+                    method: 'get',
+                    url: '/houtai/NavList',
+                    params: {
+                        username: '{{ current_user.username }}'
+                }
+                }).then(res => {
+                    this.users = res.data.data;
+                    this.total_rows = res.data.count;
                     this.loading = false;
                     console.log(res);
                 }, err => {
@@ -417,7 +423,14 @@
                     if (valid) {
                         this.create.id = getuuid();
                         this.createLoading = true;
-                        OPost().then(res => {
+                        axios({
+                    method: 'post',
+                    url: '/houtai/Nav',
+                    params: {
+                        username: '{{ current_user.username }}'
+                }
+                })
+                        .then(res => {
                             this.$message.success('创建用户成功！');
                             this.dialogCreateVisible = false;
                             this.createLoading = false;
@@ -444,8 +457,14 @@
                 this.$refs.update.validate((valid) => {
                     if (valid) {
                         this.updateLoading = true;
-                        OUpdate(this.currentId, this.update).then(res => {
-                            this.$message.success('修改用户资料成功！');
+                        axios({
+                    method: 'put',
+                    url: '/houtai/Nav',
+                    params: {
+                        username: '{{ current_user.username }}'
+                }
+                }).then(res => {
+                           this.$message.success('修改用户资料成功！');
                             this.dialogUpdateVisible = false;
                             this.updateLoading = false;
                             this.getUsers();
@@ -470,7 +489,14 @@
                 this.$confirm('此操作将永久删除用户 ' + user.username + ', 是否继续?', '提示', {
                     type: 'warning'
                 }).then(() => {
-                    this.Oremove(user).then(res => {
+                    axios({
+                    method: 'delete',
+                    url: '/houtai/nav_delete',
+                    params: {
+                        username: '{{ current_user.username }}'
+                }
+                })
+                    .then(res => {
                         this.$message.success('成功删除了用户' + user.username + '!');
                         this.getUsers();
                         console.log(user.id);
@@ -487,7 +513,14 @@
                 this.$confirm('此操作将永久删除 ' + this.selected.length + ' 个用户, 是否继续?', '提示', {
                     type: 'warning'
                 }).then(() => {
-                    this.Oremoves().then(res => {
+                    axios({
+                    method: 'delete',
+                    url: '/houtai/navs_delete',
+                    params: {
+                        username: '{{ current_user.username }}'
+                }
+                })
+                    .then(res => {
                         this.$message.success('删除了' + this.selected.length + '个用户!');
                         this.getUsers();
                     }).catch((res) => {
@@ -498,7 +531,7 @@
                 });
             }
         },
-    }
+    };
 
     var Ctor = Vue.extend(Main);
     new Ctor().$mount('#app');

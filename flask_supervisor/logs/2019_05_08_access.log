@@ -1,0 +1,969 @@
+2019-05-08 14:07:48,245 [MainThread:4484 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Restarting with stat
+2019-05-08 14:07:49,069 [MainThread:5144 in _internal:] [task_id:werkzeug] [werkzeug:88] [WARNING]-  * Debugger is active!
+2019-05-08 14:07:49,080 [MainThread:5144 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Debugger PIN: 100-716-097
+2019-05-08 14:07:49,086 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2019-05-08 14:07:49,156 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:07:49] "GET /houtai/ HTTP/1.1" 200 -
+2019-05-08 14:07:49,184 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:07:49] "GET /static/js/jquery.min.js HTTP/1.1" 304 -
+2019-05-08 14:07:49,197 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:07:49] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 -
+2019-05-08 14:07:49,487 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:07:49] "GET /static/css/login.css HTTP/1.1" 304 -
+2019-05-08 14:07:49,489 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:07:49] "GET /static/css/toastr.css HTTP/1.1" 304 -
+2019-05-08 14:07:49,491 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:07:49] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 -
+2019-05-08 14:07:49,493 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:07:49] "GET /static/js/toastr.js HTTP/1.1" 304 -
+2019-05-08 14:07:49,814 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:07:49] "GET /static/img/7.jpg HTTP/1.1" 304 -
+2019-05-08 14:07:50,059 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:07:50] "GET /favicon.ico HTTP/1.1" 404 -
+2019-05-08 14:07:51,125 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:07:51] "GET /houtai/ HTTP/1.1" 200 -
+2019-05-08 14:07:52,607 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:07:52] "GET /houtai/register HTTP/1.1" 200 -
+2019-05-08 14:07:52,870 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:07:52] "GET /static/css/register.css HTTP/1.1" 304 -
+2019-05-08 14:07:53,180 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:07:53] "GET /static/img/4.jpg HTTP/1.1" 304 -
+2019-05-08 14:07:54,331 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:07:54] "GET /houtai/register HTTP/1.1" 200 -
+2019-05-08 14:07:55,889 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:07:55] "GET / HTTP/1.1" 302 -
+2019-05-08 14:07:56,191 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:07:56] "GET /houtai/?next=%2F HTTP/1.1" 200 -
+2019-05-08 14:07:57,457 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:07:57] "GET /houtai/?next=%2F HTTP/1.1" 200 -
+2019-05-08 14:08:06,666 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SHOW VARIABLES LIKE 'sql_mode'
+2019-05-08 14:08:06,666 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {}
+2019-05-08 14:08:06,677 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT DATABASE()
+2019-05-08 14:08:06,678 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {}
+2019-05-08 14:08:06,681 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT CAST('test plain returns' AS CHAR(60)) AS anon_1
+2019-05-08 14:08:06,682 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {}
+2019-05-08 14:08:06,684 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT CAST('test unicode returns' AS CHAR(60)) AS anon_1
+2019-05-08 14:08:06,684 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {}
+2019-05-08 14:08:06,685 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-08 14:08:06,687 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.username = %(username_1)s AND sv_users.password_hash = %(password_hash_1)s 
+ LIMIT %(param_1)s
+2019-05-08 14:08:06,688 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'username_1': 'houtai', 'password_hash_1': 'houtai', 'param_1': 1}
+2019-05-08 14:08:06,696 [Thread-1:6428 in api_resources:] [task_id:flask.app] [flask.app:45] [INFO]- 用户houtai登录了...
+2019-05-08 14:08:06,698 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-08 14:08:06,699 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:08:06] "POST /houtai/Login HTTP/1.1" 200 -
+2019-05-08 14:08:06,717 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-08 14:08:06,719 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.id = %(param_1)s
+2019-05-08 14:08:06,720 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'param_1': 1}
+2019-05-08 14:08:06,779 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-08 14:08:06,780 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:08:06] "GET / HTTP/1.1" 200 -
+2019-05-08 14:08:07,019 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:08:07] "GET /static/css/adminlte/font-awesome.min.css HTTP/1.1" 304 -
+2019-05-08 14:08:07,143 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:08:07] "GET /static/css/adminlte/ionicons.min.css HTTP/1.1" 304 -
+2019-05-08 14:08:07,145 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:08:07] "GET /static/css/adminlte/AdminLTE.min.css HTTP/1.1" 304 -
+2019-05-08 14:08:07,148 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:08:07] "GET /static/css/adminlte/_all-skins.min.css HTTP/1.1" 304 -
+2019-05-08 14:08:07,150 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:08:07] "GET /static/css/adminlte/morris.css HTTP/1.1" 304 -
+2019-05-08 14:08:07,153 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:08:07] "GET /static/css/adminlte/jquery-jvectormap.css HTTP/1.1" 304 -
+2019-05-08 14:08:07,325 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:08:07] "GET /static/css/adminlte/bootstrap-datepicker.min.css HTTP/1.1" 304 -
+2019-05-08 14:08:07,447 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:08:07] "GET /static/css/adminlte/daterangepicker.css HTTP/1.1" 304 -
+2019-05-08 14:08:07,450 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:08:07] "GET /static/css/adminlte/dataTables.bootstrap.min.css HTTP/1.1" 304 -
+2019-05-08 14:08:07,453 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:08:07] "GET /static/css/adminlte/bootstrap3-wysihtml5.min.css HTTP/1.1" 304 -
+2019-05-08 14:08:07,458 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:08:07] "GET /static/css/fileinput.css HTTP/1.1" 304 -
+2019-05-08 14:08:07,459 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:08:07] "GET /static/toastr/toastr.css HTTP/1.1" 304 -
+2019-05-08 14:08:07,643 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:08:07] "GET /static/bootstrap-select/bootstrap-select.css HTTP/1.1" 304 -
+2019-05-08 14:08:07,753 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:08:07] "GET /static/css/adminlte/css.css%20 HTTP/1.1" 304 -
+2019-05-08 14:08:07,756 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:08:07] "GET /static/bootstrap-table/bootstrap-table.min.css HTTP/1.1" 304 -
+2019-05-08 14:08:07,759 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:08:07] "GET /static/bootstrap-table/bootstrap-editable.css HTTP/1.1" 304 -
+2019-05-08 14:08:07,761 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:08:07] "GET /static/css/font-awesome.min.css HTTP/1.1" 304 -
+2019-05-08 14:08:07,763 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:08:07] "GET /static/js/adminlte/jquery.min.js HTTP/1.1" 304 -
+2019-05-08 14:08:07,948 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:08:07] "GET /static/js/jquery.searchFilter.js HTTP/1.1" 304 -
+2019-05-08 14:08:08,059 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:08:08] "GET /static/js/adminlte/jquery-ui.min.js HTTP/1.1" 304 -
+2019-05-08 14:08:08,062 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:08:08] "GET /static/toastr/toastr.min.js HTTP/1.1" 304 -
+2019-05-08 14:08:08,065 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:08:08] "GET /static/bootstrap-select/bootstrap-select.js HTTP/1.1" 304 -
+2019-05-08 14:08:08,067 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:08:08] "GET /static/bootstrap-select/defaults-zh_CN.min.js HTTP/1.1" 304 -
+2019-05-08 14:08:08,106 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:08:08] "GET /static/bootstrap-table/bootstrap-table.min.js HTTP/1.1" 304 -
+2019-05-08 14:08:08,253 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:08:08] "GET /static/bootstrap-table/bootstrap-table-export.js HTTP/1.1" 304 -
+2019-05-08 14:08:08,364 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:08:08] "GET /static/bootstrap-table/bootstrap-table-editable.js HTTP/1.1" 304 -
+2019-05-08 14:08:08,368 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:08:08] "GET /static/bootstrap-table/bootstrap-editable.js HTTP/1.1" 304 -
+2019-05-08 14:08:08,371 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:08:08] "GET /static/bootstrap-table/FileSaver.min.js HTTP/1.1" 304 -
+2019-05-08 14:08:08,374 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:08:08] "GET /static/bootstrap-table/xlsx.core.min.js HTTP/1.1" 304 -
+2019-05-08 14:08:08,412 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:08:08] "GET /static/bootstrap-table/bootstrap-table-zh-CN.js HTTP/1.1" 304 -
+2019-05-08 14:08:08,562 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:08:08] "GET /static/fonts/fontawesome-webfont93e3.woff2?v=4.4.0 HTTP/1.1" 304 -
+2019-05-08 14:08:08,682 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:08:08] "GET /static/css/fonts/fontawesome-webfont.woff2?v=4.7.0 HTTP/1.1" 304 -
+2019-05-08 14:08:08,802 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:08:08] "GET /static/js/adminlte/raphael.min.js HTTP/1.1" 304 -
+2019-05-08 14:08:08,804 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:08:08] "GET /static/js/adminlte/morris.min.js HTTP/1.1" 304 -
+2019-05-08 14:08:08,806 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:08:08] "GET /static/js/adminlte/bootstrap.min.js HTTP/1.1" 304 -
+2019-05-08 14:08:08,820 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:08:08] "GET /static/js/adminlte/jquery.sparkline.min.js HTTP/1.1" 304 -
+2019-05-08 14:08:08,868 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:08:08] "GET /static/js/adminlte/jquery-jvectormap-1.2.2.min.js HTTP/1.1" 304 -
+2019-05-08 14:08:08,988 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:08:08] "GET /static/js/adminlte/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 -
+2019-05-08 14:08:09,142 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:08:09] "GET /static/js/adminlte/jquery.knob.min.js HTTP/1.1" 304 -
+2019-05-08 14:08:09,144 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:08:09] "GET /static/js/adminlte/moment.min.js HTTP/1.1" 304 -
+2019-05-08 14:08:09,147 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:08:09] "GET /static/js/adminlte/daterangepicker.js HTTP/1.1" 304 -
+2019-05-08 14:08:09,158 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:08:09] "GET /static/js/fileinput.js HTTP/1.1" 304 -
+2019-05-08 14:08:09,179 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:08:09] "GET /static/js/fileinput-zh.js HTTP/1.1" 304 -
+2019-05-08 14:08:09,301 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:08:09] "GET /static/js/bootbox.min.js HTTP/1.1" 304 -
+2019-05-08 14:08:09,472 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:08:09] "GET /static/js/adminlte/bootstrap-datepicker.min.js HTTP/1.1" 304 -
+2019-05-08 14:08:09,474 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:08:09] "GET /static/js/adminlte/bootstrap3-wysihtml5.all.min.js HTTP/1.1" 304 -
+2019-05-08 14:08:09,477 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:08:09] "GET /static/js/adminlte/jquery.slimscroll.min.js HTTP/1.1" 304 -
+2019-05-08 14:08:09,479 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:08:09] "GET /static/js/adminlte/fastclick.js HTTP/1.1" 304 -
+2019-05-08 14:08:09,497 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:08:09] "GET /static/img/boot1.jpg HTTP/1.1" 304 -
+2019-05-08 14:08:09,608 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:08:09] "GET /static/js/adminlte/adminlte.min.js HTTP/1.1" 304 -
+2019-05-08 14:08:09,824 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:08:09] "GET /static/js/adminlte/jquery.dataTables.min.js HTTP/1.1" 304 -
+2019-05-08 14:08:09,826 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:08:09] "GET /static/js/adminlte/dataTables.bootstrap.min.js HTTP/1.1" 304 -
+2019-05-08 14:08:09,829 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:08:09] "GET /static/js/adminlte/demo.js HTTP/1.1" 304 -
+2019-05-08 14:08:09,832 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:08:09] "GET /static/img/favicon.ico HTTP/1.1" 304 -
+2019-05-08 14:08:15,760 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-08 14:08:15,762 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.id = %(param_1)s
+2019-05-08 14:08:15,763 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'param_1': 1}
+2019-05-08 14:08:15,791 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-08 14:08:15,792 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:08:15] "GET /houtai/userinfo HTTP/1.1" 200 -
+2019-05-08 14:08:16,075 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-08 14:08:16,077 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.username = %(username_1)s 
+ LIMIT %(param_1)s
+2019-05-08 14:08:16,078 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'username_1': 'houtai', 'param_1': 1}
+2019-05-08 14:08:16,081 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-08 14:08:16,083 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:08:16] "GET /houtai/user/info?username=houtai HTTP/1.1" 200 -
+2019-05-08 14:08:16,174 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:08:16] "GET /static/img/users/default.jpg HTTP/1.1" 304 -
+2019-05-08 14:12:44,296 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:12:44] "GET /static/toastr/toastr.js.map HTTP/1.1" 404 -
+2019-05-08 14:12:44,464 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:12:44] "GET /static/css/bootstrap.min.css.map HTTP/1.1" 304 -
+2019-05-08 14:12:44,467 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:12:44] "GET /static/bootstrap-select/bootstrap-select.css.map HTTP/1.1" 404 -
+2019-05-08 14:20:02,458 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:20:02] "POST /houtai/user/info/touxiang HTTP/1.1" 500 -
+2019-05-08 14:21:23,816 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-08 14:21:23,819 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.id = %(param_1)s
+2019-05-08 14:21:23,821 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'param_1': 1}
+2019-05-08 14:21:23,849 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-08 14:21:23,850 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:21:23] "GET /houtai/userinfo HTTP/1.1" 200 -
+2019-05-08 14:21:24,492 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:21:24] "GET /static/toastr/toastr.js.map HTTP/1.1" 404 -
+2019-05-08 14:21:24,512 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:21:24] "GET /static/bootstrap-select/bootstrap-select.css.map HTTP/1.1" 404 -
+2019-05-08 14:21:24,846 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-08 14:21:24,848 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.username = %(username_1)s 
+ LIMIT %(param_1)s
+2019-05-08 14:21:24,850 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'username_1': 'houtai', 'param_1': 1}
+2019-05-08 14:21:24,852 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-08 14:21:24,853 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:21:24] "GET /houtai/user/info?username=houtai HTTP/1.1" 200 -
+2019-05-08 14:21:31,820 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:21:31] "POST /houtai/user/info/touxiang HTTP/1.1" 500 -
+2019-05-08 14:33:22,149 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-08 14:33:22,151 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.id = %(param_1)s
+2019-05-08 14:33:22,153 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'param_1': 1}
+2019-05-08 14:33:22,180 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-08 14:33:22,182 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:33:22] "GET /houtai/userinfo HTTP/1.1" 200 -
+2019-05-08 14:33:22,468 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:33:22] "GET /static/toastr/toastr.js.map HTTP/1.1" 404 -
+2019-05-08 14:33:22,475 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:33:22] "GET /static/bootstrap-select/bootstrap-select.css.map HTTP/1.1" 404 -
+2019-05-08 14:33:23,230 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-08 14:33:23,232 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.username = %(username_1)s 
+ LIMIT %(param_1)s
+2019-05-08 14:33:23,234 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'username_1': 'houtai', 'param_1': 1}
+2019-05-08 14:33:23,236 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-08 14:33:23,237 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:33:23] "GET /houtai/user/info?username=houtai HTTP/1.1" 200 -
+2019-05-08 14:35:18,175 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-08 14:35:18,178 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.id = %(param_1)s
+2019-05-08 14:35:18,179 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'param_1': 1}
+2019-05-08 14:35:18,208 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-08 14:35:18,208 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:35:18] "GET /houtai/userinfo HTTP/1.1" 200 -
+2019-05-08 14:35:18,492 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:35:18] "GET /static/toastr/toastr.js.map HTTP/1.1" 404 -
+2019-05-08 14:35:18,501 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:35:18] "GET /static/bootstrap-select/bootstrap-select.css.map HTTP/1.1" 404 -
+2019-05-08 14:35:19,264 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-08 14:35:19,266 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.username = %(username_1)s 
+ LIMIT %(param_1)s
+2019-05-08 14:35:19,267 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'username_1': 'houtai', 'param_1': 1}
+2019-05-08 14:35:19,269 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-08 14:35:19,269 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:35:19] "GET /houtai/user/info?username=houtai HTTP/1.1" 200 -
+2019-05-08 14:35:59,618 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-08 14:35:59,620 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.id = %(param_1)s
+2019-05-08 14:35:59,621 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'param_1': 1}
+2019-05-08 14:35:59,649 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-08 14:35:59,651 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:35:59] "GET /houtai/userinfo HTTP/1.1" 200 -
+2019-05-08 14:35:59,936 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:35:59] "GET /static/toastr/toastr.js.map HTTP/1.1" 404 -
+2019-05-08 14:35:59,944 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:35:59] "GET /static/bootstrap-select/bootstrap-select.css.map HTTP/1.1" 404 -
+2019-05-08 14:36:00,701 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-08 14:36:00,703 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.username = %(username_1)s 
+ LIMIT %(param_1)s
+2019-05-08 14:36:00,704 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'username_1': 'houtai', 'param_1': 1}
+2019-05-08 14:36:00,707 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-08 14:36:00,707 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:36:00] "GET /houtai/user/info?username=houtai HTTP/1.1" 200 -
+2019-05-08 14:38:54,912 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-08 14:38:54,914 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.id = %(param_1)s
+2019-05-08 14:38:54,915 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'param_1': 1}
+2019-05-08 14:38:54,944 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-08 14:38:54,945 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:38:54] "GET /houtai/userinfo HTTP/1.1" 200 -
+2019-05-08 14:38:55,211 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:38:55] "GET /static/toastr/toastr.js.map HTTP/1.1" 404 -
+2019-05-08 14:38:55,231 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:38:55] "GET /static/bootstrap-select/bootstrap-select.css.map HTTP/1.1" 404 -
+2019-05-08 14:38:55,965 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-08 14:38:55,967 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.username = %(username_1)s 
+ LIMIT %(param_1)s
+2019-05-08 14:38:55,969 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'username_1': 'houtai', 'param_1': 1}
+2019-05-08 14:38:55,971 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-08 14:38:55,971 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:38:55] "GET /houtai/user/info?username=houtai HTTP/1.1" 200 -
+2019-05-08 14:42:00,131 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-08 14:42:00,132 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.id = %(param_1)s
+2019-05-08 14:42:00,133 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'param_1': 1}
+2019-05-08 14:42:00,162 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-08 14:42:00,163 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:42:00] "GET /houtai/userinfo HTTP/1.1" 200 -
+2019-05-08 14:42:00,440 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:42:00] "GET /static/toastr/toastr.js.map HTTP/1.1" 404 -
+2019-05-08 14:42:00,450 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:42:00] "GET /static/bootstrap-select/bootstrap-select.css.map HTTP/1.1" 404 -
+2019-05-08 14:42:16,921 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-08 14:42:16,924 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.id = %(param_1)s
+2019-05-08 14:42:16,925 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'param_1': 1}
+2019-05-08 14:42:16,960 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-08 14:42:16,961 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:42:16] "GET /houtai/userinfo HTTP/1.1" 200 -
+2019-05-08 14:42:17,263 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:42:17] "GET /static/toastr/toastr.js.map HTTP/1.1" 404 -
+2019-05-08 14:42:17,272 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:42:17] "GET /static/bootstrap-select/bootstrap-select.css.map HTTP/1.1" 404 -
+2019-05-08 14:42:17,913 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-08 14:42:17,915 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.username = %(username_1)s 
+ LIMIT %(param_1)s
+2019-05-08 14:42:17,916 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'username_1': 'houtai', 'param_1': 1}
+2019-05-08 14:42:17,917 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-08 14:42:17,918 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:42:17] "GET /houtai/user/info?username=houtai HTTP/1.1" 200 -
+2019-05-08 14:43:56,214 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-08 14:43:56,217 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.id = %(param_1)s
+2019-05-08 14:43:56,218 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'param_1': 1}
+2019-05-08 14:43:56,247 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-08 14:43:56,249 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:43:56] "GET /houtai/userinfo HTTP/1.1" 200 -
+2019-05-08 14:43:56,525 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:43:56] "GET /static/toastr/toastr.js.map HTTP/1.1" 404 -
+2019-05-08 14:43:56,551 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:43:56] "GET /static/bootstrap-select/bootstrap-select.css.map HTTP/1.1" 404 -
+2019-05-08 14:43:57,308 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-08 14:43:57,309 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.username = %(username_1)s 
+ LIMIT %(param_1)s
+2019-05-08 14:43:57,311 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'username_1': 'houtai', 'param_1': 1}
+2019-05-08 14:43:57,313 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-08 14:43:57,314 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:43:57] "GET /houtai/user/info?username=houtai HTTP/1.1" 200 -
+2019-05-08 14:44:31,135 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-08 14:44:31,137 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.id = %(param_1)s
+2019-05-08 14:44:31,138 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'param_1': 1}
+2019-05-08 14:44:31,166 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-08 14:44:31,167 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:44:31] "GET /houtai/userinfo HTTP/1.1" 200 -
+2019-05-08 14:44:31,456 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:44:31] "GET /static/toastr/toastr.js.map HTTP/1.1" 404 -
+2019-05-08 14:44:31,463 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:44:31] "GET /static/bootstrap-select/bootstrap-select.css.map HTTP/1.1" 404 -
+2019-05-08 14:44:32,092 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-08 14:44:32,094 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.username = %(username_1)s 
+ LIMIT %(param_1)s
+2019-05-08 14:44:32,095 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'username_1': 'houtai', 'param_1': 1}
+2019-05-08 14:44:32,097 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-08 14:44:32,098 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:44:32] "GET /houtai/user/info?username=houtai HTTP/1.1" 200 -
+2019-05-08 14:44:38,004 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:44:38] "POST /houtai/user/info/touxiang HTTP/1.1" 500 -
+2019-05-08 14:45:51,097 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-08 14:45:51,099 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.id = %(param_1)s
+2019-05-08 14:45:51,099 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'param_1': 1}
+2019-05-08 14:45:51,131 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-08 14:45:51,132 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:45:51] "GET /houtai/userinfo HTTP/1.1" 200 -
+2019-05-08 14:45:51,359 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:45:51] "GET /static/toastr/toastr.js.map HTTP/1.1" 404 -
+2019-05-08 14:45:51,375 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:45:51] "GET /static/bootstrap-select/bootstrap-select.css.map HTTP/1.1" 404 -
+2019-05-08 14:45:51,988 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-08 14:45:51,990 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.username = %(username_1)s 
+ LIMIT %(param_1)s
+2019-05-08 14:45:51,992 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'username_1': 'houtai', 'param_1': 1}
+2019-05-08 14:45:51,994 [Thread-1:6428 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-08 14:45:51,995 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:45:51] "GET /houtai/user/info?username=houtai HTTP/1.1" 200 -
+2019-05-08 14:45:56,298 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:45:56] "POST /houtai/user/info/touxiang HTTP/1.1" 500 -
+2019-05-08 14:46:11,847 [Thread-1:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:46:11] "POST /houtai/user/info/touxiang HTTP/1.1" 500 -
+2019-05-08 14:47:05,953 [MainThread:5144 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Detected change in 'D:\\www\\flask_supervisors\\flask_supervisors\\flask_supervisor\\backend\\api_resources.py', reloading
+2019-05-08 14:47:06,116 [MainThread:4484 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Restarting with stat
+2019-05-08 14:47:06,982 [MainThread:8572 in _internal:] [task_id:werkzeug] [werkzeug:88] [WARNING]-  * Debugger is active!
+2019-05-08 14:47:06,993 [MainThread:8572 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Debugger PIN: 100-716-097
+2019-05-08 14:47:07,000 [Thread-1:8792 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2019-05-08 14:47:09,502 [Thread-1:8792 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:47:09] "POST /houtai/user/info/touxiang HTTP/1.1" 500 -
+2019-05-08 14:48:30,311 [MainThread:8572 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Detected change in 'D:\\www\\flask_supervisors\\flask_supervisors\\flask_supervisor\\backend\\api_resources.py', reloading
+2019-05-08 14:48:30,411 [MainThread:4484 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Restarting with stat
+2019-05-08 14:48:31,520 [MainThread:9120 in _internal:] [task_id:werkzeug] [werkzeug:88] [WARNING]-  * Debugger is active!
+2019-05-08 14:48:31,537 [MainThread:9120 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Debugger PIN: 100-716-097
+2019-05-08 14:48:31,546 [Thread-1:7224 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2019-05-08 14:48:37,202 [MainThread:9120 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Detected change in 'D:\\www\\flask_supervisors\\flask_supervisors\\flask_supervisor\\backend\\api_resources.py', reloading
+2019-05-08 14:48:37,290 [MainThread:4484 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Restarting with stat
+2019-05-08 14:48:38,154 [MainThread:1884 in _internal:] [task_id:werkzeug] [werkzeug:88] [WARNING]-  * Debugger is active!
+2019-05-08 14:48:38,165 [MainThread:1884 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Debugger PIN: 100-716-097
+2019-05-08 14:48:38,170 [Thread-1:8196 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2019-05-08 14:48:40,028 [Thread-1:8196 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SHOW VARIABLES LIKE 'sql_mode'
+2019-05-08 14:48:40,029 [Thread-1:8196 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {}
+2019-05-08 14:48:40,034 [Thread-1:8196 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT DATABASE()
+2019-05-08 14:48:40,035 [Thread-1:8196 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {}
+2019-05-08 14:48:40,037 [Thread-1:8196 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT CAST('test plain returns' AS CHAR(60)) AS anon_1
+2019-05-08 14:48:40,037 [Thread-1:8196 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {}
+2019-05-08 14:48:40,039 [Thread-1:8196 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT CAST('test unicode returns' AS CHAR(60)) AS anon_1
+2019-05-08 14:48:40,039 [Thread-1:8196 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {}
+2019-05-08 14:48:40,040 [Thread-1:8196 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-08 14:48:40,041 [Thread-1:8196 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.id = %(param_1)s
+2019-05-08 14:48:40,042 [Thread-1:8196 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'param_1': 1}
+2019-05-08 14:48:40,123 [Thread-1:8196 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-08 14:48:40,124 [Thread-1:8196 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:48:40] "GET /houtai/userinfo HTTP/1.1" 200 -
+2019-05-08 14:48:40,416 [Thread-1:8196 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:48:40] "GET /static/toastr/toastr.js.map HTTP/1.1" 404 -
+2019-05-08 14:48:40,426 [Thread-1:8196 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:48:40] "GET /static/bootstrap-select/bootstrap-select.css.map HTTP/1.1" 404 -
+2019-05-08 14:48:41,177 [Thread-1:8196 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-08 14:48:41,178 [Thread-1:8196 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.username = %(username_1)s 
+ LIMIT %(param_1)s
+2019-05-08 14:48:41,180 [Thread-1:8196 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'username_1': 'houtai', 'param_1': 1}
+2019-05-08 14:48:41,182 [Thread-1:8196 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-08 14:48:41,183 [Thread-1:8196 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:48:41] "GET /houtai/user/info?username=houtai HTTP/1.1" 200 -
+2019-05-08 14:48:46,792 [Thread-1:8196 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:48:46] "POST /houtai/user/info/touxiang HTTP/1.1" 500 -
+2019-05-08 14:49:27,199 [MainThread:1884 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Detected change in 'D:\\www\\flask_supervisors\\flask_supervisors\\flask_supervisor\\backend\\api_resources.py', reloading
+2019-05-08 14:49:27,315 [MainThread:4484 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Restarting with stat
+2019-05-08 14:49:28,193 [MainThread:8612 in _internal:] [task_id:werkzeug] [werkzeug:88] [WARNING]-  * Debugger is active!
+2019-05-08 14:49:28,204 [MainThread:8612 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Debugger PIN: 100-716-097
+2019-05-08 14:49:28,208 [Thread-1:7412 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2019-05-08 14:49:32,444 [Thread-1:7412 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SHOW VARIABLES LIKE 'sql_mode'
+2019-05-08 14:49:32,445 [Thread-1:7412 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {}
+2019-05-08 14:49:32,450 [Thread-1:7412 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT DATABASE()
+2019-05-08 14:49:32,450 [Thread-1:7412 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {}
+2019-05-08 14:49:32,452 [Thread-1:7412 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT CAST('test plain returns' AS CHAR(60)) AS anon_1
+2019-05-08 14:49:32,453 [Thread-1:7412 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {}
+2019-05-08 14:49:32,454 [Thread-1:7412 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT CAST('test unicode returns' AS CHAR(60)) AS anon_1
+2019-05-08 14:49:32,454 [Thread-1:7412 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {}
+2019-05-08 14:49:32,455 [Thread-1:7412 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-08 14:49:32,458 [Thread-1:7412 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.id = %(param_1)s
+2019-05-08 14:49:32,458 [Thread-1:7412 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'param_1': 1}
+2019-05-08 14:49:32,540 [Thread-1:7412 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-08 14:49:32,541 [Thread-1:7412 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:49:32] "GET /houtai/userinfo HTTP/1.1" 200 -
+2019-05-08 14:49:32,854 [Thread-1:7412 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:49:32] "GET /static/toastr/toastr.js.map HTTP/1.1" 404 -
+2019-05-08 14:49:32,861 [Thread-1:7412 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:49:32] "GET /static/bootstrap-select/bootstrap-select.css.map HTTP/1.1" 404 -
+2019-05-08 14:49:33,469 [Thread-1:7412 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-08 14:49:33,471 [Thread-1:7412 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.username = %(username_1)s 
+ LIMIT %(param_1)s
+2019-05-08 14:49:33,472 [Thread-1:7412 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'username_1': 'houtai', 'param_1': 1}
+2019-05-08 14:49:33,480 [Thread-1:7412 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-08 14:49:33,482 [Thread-1:7412 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:49:33] "GET /houtai/user/info?username=houtai HTTP/1.1" 200 -
+2019-05-08 14:49:38,901 [Thread-1:7412 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:49:38] "POST /houtai/user/info/touxiang HTTP/1.1" 400 -
+2019-05-08 14:51:30,953 [MainThread:8612 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Detected change in 'D:\\www\\flask_supervisors\\flask_supervisors\\flask_supervisor\\backend\\api_resources.py', reloading
+2019-05-08 14:51:31,050 [MainThread:4484 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Restarting with stat
+2019-05-08 14:51:31,920 [MainThread:8840 in _internal:] [task_id:werkzeug] [werkzeug:88] [WARNING]-  * Debugger is active!
+2019-05-08 14:51:31,931 [MainThread:8840 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Debugger PIN: 100-716-097
+2019-05-08 14:51:31,937 [Thread-1:9108 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2019-05-08 14:51:52,683 [MainThread:8840 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Detected change in 'D:\\www\\flask_supervisors\\flask_supervisors\\flask_supervisor\\backend\\api_resources.py', reloading
+2019-05-08 14:51:52,777 [MainThread:4484 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Restarting with stat
+2019-05-08 14:51:53,634 [MainThread:4288 in _internal:] [task_id:werkzeug] [werkzeug:88] [WARNING]-  * Debugger is active!
+2019-05-08 14:51:53,645 [MainThread:4288 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Debugger PIN: 100-716-097
+2019-05-08 14:51:53,651 [Thread-1:4660 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2019-05-08 14:52:38,225 [MainThread:4288 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Detected change in 'D:\\www\\flask_supervisors\\flask_supervisors\\flask_supervisor\\backend\\api_resources.py', reloading
+2019-05-08 14:52:38,314 [MainThread:4484 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Restarting with stat
+2019-05-08 14:52:39,166 [MainThread:8748 in _internal:] [task_id:werkzeug] [werkzeug:88] [WARNING]-  * Debugger is active!
+2019-05-08 14:52:39,177 [MainThread:8748 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Debugger PIN: 100-716-097
+2019-05-08 14:52:39,183 [Thread-1:8936 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2019-05-08 14:52:42,124 [Thread-1:8936 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SHOW VARIABLES LIKE 'sql_mode'
+2019-05-08 14:52:42,125 [Thread-1:8936 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {}
+2019-05-08 14:52:42,130 [Thread-1:8936 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT DATABASE()
+2019-05-08 14:52:42,130 [Thread-1:8936 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {}
+2019-05-08 14:52:42,132 [Thread-1:8936 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT CAST('test plain returns' AS CHAR(60)) AS anon_1
+2019-05-08 14:52:42,133 [Thread-1:8936 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {}
+2019-05-08 14:52:42,134 [Thread-1:8936 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT CAST('test unicode returns' AS CHAR(60)) AS anon_1
+2019-05-08 14:52:42,135 [Thread-1:8936 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {}
+2019-05-08 14:52:42,136 [Thread-1:8936 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-08 14:52:42,138 [Thread-1:8936 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.id = %(param_1)s
+2019-05-08 14:52:42,139 [Thread-1:8936 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'param_1': 1}
+2019-05-08 14:52:42,221 [Thread-1:8936 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-08 14:52:42,223 [Thread-1:8936 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:52:42] "GET /houtai/userinfo HTTP/1.1" 200 -
+2019-05-08 14:52:42,526 [Thread-1:8936 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:52:42] "GET /static/toastr/toastr.js.map HTTP/1.1" 404 -
+2019-05-08 14:52:42,532 [Thread-1:8936 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:52:42] "GET /static/bootstrap-select/bootstrap-select.css.map HTTP/1.1" 404 -
+2019-05-08 14:52:43,294 [Thread-1:8936 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-08 14:52:43,296 [Thread-1:8936 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.username = %(username_1)s 
+ LIMIT %(param_1)s
+2019-05-08 14:52:43,297 [Thread-1:8936 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'username_1': 'houtai', 'param_1': 1}
+2019-05-08 14:52:43,299 [Thread-1:8936 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-08 14:52:43,300 [Thread-1:8936 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:52:43] "GET /houtai/user/info?username=houtai HTTP/1.1" 200 -
+2019-05-08 14:52:49,346 [Thread-1:8936 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:52:49] "POST /houtai/user/info/touxiang HTTP/1.1" 500 -
+2019-05-08 14:53:35,725 [MainThread:8748 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Detected change in 'D:\\www\\flask_supervisors\\flask_supervisors\\flask_supervisor\\backend\\api_resources.py', reloading
+2019-05-08 14:53:35,826 [MainThread:4484 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Restarting with stat
+2019-05-08 14:53:36,733 [MainThread:6488 in _internal:] [task_id:werkzeug] [werkzeug:88] [WARNING]-  * Debugger is active!
+2019-05-08 14:53:36,745 [MainThread:6488 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Debugger PIN: 100-716-097
+2019-05-08 14:53:36,750 [Thread-1:8456 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2019-05-08 14:53:56,298 [MainThread:6488 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Detected change in 'D:\\www\\flask_supervisors\\flask_supervisors\\flask_supervisor\\backend\\api_resources.py', reloading
+2019-05-08 14:53:56,403 [MainThread:4484 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Restarting with stat
+2019-05-08 14:53:57,291 [MainThread:8984 in _internal:] [task_id:werkzeug] [werkzeug:88] [WARNING]-  * Debugger is active!
+2019-05-08 14:53:57,302 [MainThread:8984 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Debugger PIN: 100-716-097
+2019-05-08 14:53:57,308 [Thread-1:2352 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2019-05-08 14:53:59,020 [Thread-1:2352 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SHOW VARIABLES LIKE 'sql_mode'
+2019-05-08 14:53:59,021 [Thread-1:2352 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {}
+2019-05-08 14:53:59,025 [Thread-1:2352 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT DATABASE()
+2019-05-08 14:53:59,026 [Thread-1:2352 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {}
+2019-05-08 14:53:59,028 [Thread-1:2352 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT CAST('test plain returns' AS CHAR(60)) AS anon_1
+2019-05-08 14:53:59,029 [Thread-1:2352 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {}
+2019-05-08 14:53:59,030 [Thread-1:2352 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT CAST('test unicode returns' AS CHAR(60)) AS anon_1
+2019-05-08 14:53:59,030 [Thread-1:2352 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {}
+2019-05-08 14:53:59,031 [Thread-1:2352 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-08 14:53:59,034 [Thread-1:2352 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.id = %(param_1)s
+2019-05-08 14:53:59,035 [Thread-1:2352 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'param_1': 1}
+2019-05-08 14:53:59,115 [Thread-1:2352 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-08 14:53:59,116 [Thread-1:2352 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:53:59] "GET /houtai/userinfo HTTP/1.1" 200 -
+2019-05-08 14:53:59,409 [Thread-1:2352 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:53:59] "GET /static/toastr/toastr.js.map HTTP/1.1" 404 -
+2019-05-08 14:53:59,419 [Thread-1:2352 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:53:59] "GET /static/bootstrap-select/bootstrap-select.css.map HTTP/1.1" 404 -
+2019-05-08 14:54:00,208 [Thread-1:2352 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-08 14:54:00,210 [Thread-1:2352 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.username = %(username_1)s 
+ LIMIT %(param_1)s
+2019-05-08 14:54:00,211 [Thread-1:2352 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'username_1': 'houtai', 'param_1': 1}
+2019-05-08 14:54:00,213 [Thread-1:2352 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-08 14:54:00,214 [Thread-1:2352 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:54:00] "GET /houtai/user/info?username=houtai HTTP/1.1" 200 -
+2019-05-08 14:54:04,125 [Thread-1:2352 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:54:04] "POST /houtai/user/info/touxiang HTTP/1.1" 500 -
+2019-05-08 14:54:55,967 [MainThread:8984 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Detected change in 'D:\\www\\flask_supervisors\\flask_supervisors\\flask_supervisor\\backend\\api_resources.py', reloading
+2019-05-08 14:54:56,080 [MainThread:4484 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Restarting with stat
+2019-05-08 14:54:56,969 [MainThread:9120 in _internal:] [task_id:werkzeug] [werkzeug:88] [WARNING]-  * Debugger is active!
+2019-05-08 14:54:56,980 [MainThread:9120 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Debugger PIN: 100-716-097
+2019-05-08 14:54:56,986 [Thread-1:8796 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2019-05-08 14:56:23,536 [MainThread:9120 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Detected change in 'D:\\www\\flask_supervisors\\flask_supervisors\\flask_supervisor\\backend\\api_resources.py', reloading
+2019-05-08 14:56:23,625 [MainThread:4484 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Restarting with stat
+2019-05-08 14:56:24,503 [MainThread:9072 in _internal:] [task_id:werkzeug] [werkzeug:88] [WARNING]-  * Debugger is active!
+2019-05-08 14:56:24,514 [MainThread:9072 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Debugger PIN: 100-716-097
+2019-05-08 14:56:24,522 [Thread-1:6292 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2019-05-08 14:56:31,438 [Thread-1:6292 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:56:31] "POST /houtai/user/info/touxiang HTTP/1.1" 500 -
+2019-05-08 14:57:08,937 [MainThread:9072 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Detected change in 'D:\\www\\flask_supervisors\\flask_supervisors\\flask_supervisor\\backend\\api_resources.py', reloading
+2019-05-08 14:57:09,030 [MainThread:4484 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Restarting with stat
+2019-05-08 14:57:09,879 [MainThread:8788 in _internal:] [task_id:werkzeug] [werkzeug:88] [WARNING]-  * Debugger is active!
+2019-05-08 14:57:09,890 [MainThread:8788 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Debugger PIN: 100-716-097
+2019-05-08 14:57:09,896 [Thread-1:8456 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2019-05-08 14:57:12,814 [Thread-1:8456 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 14:57:12] "POST /houtai/user/info/touxiang HTTP/1.1" 500 -
+2019-05-08 14:59:48,674 [MainThread:8788 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Detected change in 'D:\\www\\flask_supervisors\\flask_supervisors\\flask_supervisor\\backend\\api_resources.py', reloading
+2019-05-08 14:59:48,763 [MainThread:4484 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Restarting with stat
+2019-05-08 14:59:49,635 [MainThread:7564 in _internal:] [task_id:werkzeug] [werkzeug:88] [WARNING]-  * Debugger is active!
+2019-05-08 14:59:49,646 [MainThread:7564 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Debugger PIN: 100-716-097
+2019-05-08 14:59:49,652 [Thread-1:9156 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2019-05-08 14:59:59,531 [MainThread:7564 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Detected change in 'D:\\www\\flask_supervisors\\flask_supervisors\\flask_supervisor\\backend\\api_resources.py', reloading
+2019-05-08 14:59:59,622 [MainThread:4484 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Restarting with stat
+2019-05-08 15:00:00,464 [MainThread:7124 in _internal:] [task_id:werkzeug] [werkzeug:88] [WARNING]-  * Debugger is active!
+2019-05-08 15:00:00,475 [MainThread:7124 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Debugger PIN: 100-716-097
+2019-05-08 15:00:00,481 [Thread-1:8540 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2019-05-08 15:00:26,527 [MainThread:7124 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Detected change in 'D:\\www\\flask_supervisors\\flask_supervisors\\flask_supervisor\\backend\\api_resources.py', reloading
+2019-05-08 15:00:26,627 [MainThread:4484 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Restarting with stat
+2019-05-08 15:00:27,465 [MainThread:2412 in _internal:] [task_id:werkzeug] [werkzeug:88] [WARNING]-  * Debugger is active!
+2019-05-08 15:00:27,477 [MainThread:2412 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Debugger PIN: 100-716-097
+2019-05-08 15:00:27,483 [Thread-1:8432 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2019-05-08 15:00:33,581 [Thread-1:8432 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:00:33] "POST /houtai/user/info/touxiang HTTP/1.1" 200 -
+2019-05-08 15:02:12,805 [MainThread:2412 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Detected change in 'D:\\www\\flask_supervisors\\flask_supervisors\\flask_supervisor\\backend\\api_resources.py', reloading
+2019-05-08 15:02:12,908 [MainThread:4484 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Restarting with stat
+2019-05-08 15:02:13,789 [MainThread:9020 in _internal:] [task_id:werkzeug] [werkzeug:88] [WARNING]-  * Debugger is active!
+2019-05-08 15:02:13,799 [MainThread:9020 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Debugger PIN: 100-716-097
+2019-05-08 15:02:13,805 [Thread-1:1040 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2019-05-08 15:02:18,626 [Thread-1:1040 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:02:18] "POST /houtai/user/info/touxiang HTTP/1.1" 400 -
+2019-05-08 15:02:38,818 [MainThread:9020 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Detected change in 'D:\\www\\flask_supervisors\\flask_supervisors\\flask_supervisor\\backend\\api_resources.py', reloading
+2019-05-08 15:02:38,912 [MainThread:4484 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Restarting with stat
+2019-05-08 15:02:39,776 [MainThread:8772 in _internal:] [task_id:werkzeug] [werkzeug:88] [WARNING]-  * Debugger is active!
+2019-05-08 15:02:39,787 [MainThread:8772 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Debugger PIN: 100-716-097
+2019-05-08 15:02:39,793 [Thread-1:8804 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2019-05-08 15:02:43,447 [Thread-1:8804 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:02:43] "POST /houtai/user/info/touxiang HTTP/1.1" 500 -
+2019-05-08 15:02:56,083 [MainThread:8772 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Detected change in 'D:\\www\\flask_supervisors\\flask_supervisors\\flask_supervisor\\backend\\api_resources.py', reloading
+2019-05-08 15:02:56,177 [MainThread:4484 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Restarting with stat
+2019-05-08 15:02:57,055 [MainThread:9016 in _internal:] [task_id:werkzeug] [werkzeug:88] [WARNING]-  * Debugger is active!
+2019-05-08 15:02:57,067 [MainThread:9016 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Debugger PIN: 100-716-097
+2019-05-08 15:02:57,072 [Thread-1:2412 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2019-05-08 15:04:34,619 [MainThread:9016 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Detected change in 'D:\\www\\flask_supervisors\\flask_supervisors\\flask_supervisor\\backend\\api_resources.py', reloading
+2019-05-08 15:04:34,711 [MainThread:4484 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Restarting with stat
+2019-05-08 15:04:35,565 [MainThread:6460 in _internal:] [task_id:werkzeug] [werkzeug:88] [WARNING]-  * Debugger is active!
+2019-05-08 15:04:35,578 [MainThread:6460 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Debugger PIN: 100-716-097
+2019-05-08 15:04:35,583 [Thread-1:8728 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2019-05-08 15:04:40,724 [Thread-1:8728 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:04:40] "POST /houtai/user/info/touxiang HTTP/1.1" 500 -
+2019-05-08 15:06:52,920 [MainThread:6460 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Detected change in 'D:\\www\\flask_supervisors\\flask_supervisors\\flask_supervisor\\config.py', reloading
+2019-05-08 15:06:53,071 [MainThread:4484 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Restarting with stat
+2019-05-08 15:06:54,024 [MainThread:8284 in _internal:] [task_id:werkzeug] [werkzeug:88] [WARNING]-  * Debugger is active!
+2019-05-08 15:06:54,036 [MainThread:8284 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Debugger PIN: 100-716-097
+2019-05-08 15:06:54,043 [Thread-1:1040 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2019-05-08 15:07:20,108 [MainThread:8284 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Detected change in 'D:\\www\\flask_supervisors\\flask_supervisors\\flask_supervisor\\config.py', reloading
+2019-05-08 15:07:20,201 [MainThread:4484 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Restarting with stat
+2019-05-08 15:07:21,032 [MainThread:7640 in _internal:] [task_id:werkzeug] [werkzeug:88] [WARNING]-  * Debugger is active!
+2019-05-08 15:07:21,042 [MainThread:7640 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Debugger PIN: 100-716-097
+2019-05-08 15:07:21,048 [Thread-1:7624 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2019-05-08 15:07:44,875 [MainThread:7640 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Detected change in 'D:\\www\\flask_supervisors\\flask_supervisors\\flask_supervisor\\backend\\api_resources.py', reloading
+2019-05-08 15:07:44,963 [MainThread:4484 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Restarting with stat
+2019-05-08 15:07:45,790 [MainThread:9152 in _internal:] [task_id:werkzeug] [werkzeug:88] [WARNING]-  * Debugger is active!
+2019-05-08 15:07:45,801 [MainThread:9152 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Debugger PIN: 100-716-097
+2019-05-08 15:07:45,807 [Thread-1:7124 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2019-05-08 15:08:36,592 [MainThread:9152 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Detected change in 'D:\\www\\flask_supervisors\\flask_supervisors\\flask_supervisor\\backend\\api_resources.py', reloading
+2019-05-08 15:08:36,703 [MainThread:4484 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Restarting with stat
+2019-05-08 15:08:37,557 [MainThread:9036 in _internal:] [task_id:werkzeug] [werkzeug:88] [WARNING]-  * Debugger is active!
+2019-05-08 15:08:37,568 [MainThread:9036 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Debugger PIN: 100-716-097
+2019-05-08 15:08:37,574 [Thread-1:7848 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2019-05-08 15:09:16,602 [MainThread:9036 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Detected change in 'D:\\www\\flask_supervisors\\flask_supervisors\\flask_supervisor\\backend\\api_resources.py', reloading
+2019-05-08 15:09:16,690 [MainThread:4484 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Restarting with stat
+2019-05-08 15:14:17,962 [MainThread:8816 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Restarting with stat
+2019-05-08 15:14:18,791 [MainThread:8556 in _internal:] [task_id:werkzeug] [werkzeug:88] [WARNING]-  * Debugger is active!
+2019-05-08 15:14:18,801 [MainThread:8556 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Debugger PIN: 100-716-097
+2019-05-08 15:14:18,807 [Thread-1:8236 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2019-05-08 15:14:50,169 [MainThread:8556 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Detected change in 'D:\\www\\flask_supervisors\\flask_supervisors\\flask_supervisor\\backend\\api_resources.py', reloading
+2019-05-08 15:14:50,261 [MainThread:8816 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Restarting with stat
+2019-05-08 15:14:51,096 [MainThread:5856 in _internal:] [task_id:werkzeug] [werkzeug:88] [WARNING]-  * Debugger is active!
+2019-05-08 15:14:51,106 [MainThread:5856 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Debugger PIN: 100-716-097
+2019-05-08 15:14:51,112 [Thread-1:9016 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2019-05-08 15:15:16,063 [MainThread:5856 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Detected change in 'D:\\www\\flask_supervisors\\flask_supervisors\\flask_supervisor\\backend\\api_resources.py', reloading
+2019-05-08 15:15:16,174 [MainThread:8816 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Restarting with stat
+2019-05-08 15:15:17,048 [MainThread:4412 in _internal:] [task_id:werkzeug] [werkzeug:88] [WARNING]-  * Debugger is active!
+2019-05-08 15:15:17,058 [MainThread:4412 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Debugger PIN: 100-716-097
+2019-05-08 15:15:17,064 [Thread-1:8496 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2019-05-08 15:16:05,710 [MainThread:4412 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Detected change in 'D:\\www\\flask_supervisors\\flask_supervisors\\flask_supervisor\\backend\\api_resources.py', reloading
+2019-05-08 15:16:05,805 [MainThread:8816 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Restarting with stat
+2019-05-08 15:16:06,723 [MainThread:8340 in _internal:] [task_id:werkzeug] [werkzeug:88] [WARNING]-  * Debugger is active!
+2019-05-08 15:16:06,734 [MainThread:8340 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Debugger PIN: 100-716-097
+2019-05-08 15:16:06,740 [Thread-1:8656 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2019-05-08 15:17:44,141 [MainThread:8340 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Detected change in 'D:\\www\\flask_supervisors\\flask_supervisors\\flask_supervisor\\backend\\api_resources.py', reloading
+2019-05-08 15:17:44,229 [MainThread:8816 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Restarting with stat
+2019-05-08 15:17:45,084 [MainThread:8632 in _internal:] [task_id:werkzeug] [werkzeug:88] [WARNING]-  * Debugger is active!
+2019-05-08 15:17:45,095 [MainThread:8632 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Debugger PIN: 100-716-097
+2019-05-08 15:17:45,101 [Thread-1:8284 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2019-05-08 15:18:37,018 [MainThread:8632 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Detected change in 'D:\\www\\flask_supervisors\\flask_supervisors\\flask_supervisor\\backend\\api_resources.py', reloading
+2019-05-08 15:18:37,110 [MainThread:8816 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Restarting with stat
+2019-05-08 15:18:37,972 [MainThread:6620 in _internal:] [task_id:werkzeug] [werkzeug:88] [WARNING]-  * Debugger is active!
+2019-05-08 15:18:37,984 [MainThread:6620 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Debugger PIN: 100-716-097
+2019-05-08 15:18:37,990 [Thread-1:9056 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2019-05-08 15:18:47,085 [Thread-1:9056 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:18:47] "POST /houtai/user/info/touxiang HTTP/1.1" 500 -
+2019-05-08 15:19:09,419 [MainThread:6620 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Detected change in 'D:\\www\\flask_supervisors\\flask_supervisors\\flask_supervisor\\backend\\api_resources.py', reloading
+2019-05-08 15:19:09,513 [MainThread:8816 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Restarting with stat
+2019-05-08 15:19:10,375 [MainThread:8324 in _internal:] [task_id:werkzeug] [werkzeug:88] [WARNING]-  * Debugger is active!
+2019-05-08 15:19:10,387 [MainThread:8324 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Debugger PIN: 100-716-097
+2019-05-08 15:19:10,393 [Thread-1:4288 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2019-05-08 15:19:14,199 [Thread-1:4288 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:19:14] "POST /houtai/user/info/touxiang HTTP/1.1" 200 -
+2019-05-08 15:19:49,385 [MainThread:8324 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Detected change in 'D:\\www\\flask_supervisors\\flask_supervisors\\flask_supervisor\\backend\\api_resources.py', reloading
+2019-05-08 15:19:49,482 [MainThread:8816 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Restarting with stat
+2019-05-08 15:19:50,339 [MainThread:8936 in _internal:] [task_id:werkzeug] [werkzeug:88] [WARNING]-  * Debugger is active!
+2019-05-08 15:19:50,349 [MainThread:8936 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Debugger PIN: 100-716-097
+2019-05-08 15:19:50,355 [Thread-1:7464 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2019-05-08 15:20:45,526 [MainThread:8936 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Detected change in 'D:\\www\\flask_supervisors\\flask_supervisors\\flask_supervisor\\backend\\api_resources.py', reloading
+2019-05-08 15:20:45,617 [MainThread:8816 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Restarting with stat
+2019-05-08 15:20:46,477 [MainThread:8540 in _internal:] [task_id:werkzeug] [werkzeug:88] [WARNING]-  * Debugger is active!
+2019-05-08 15:20:46,488 [MainThread:8540 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Debugger PIN: 100-716-097
+2019-05-08 15:20:46,494 [Thread-1:7412 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2019-05-08 15:21:08,131 [Thread-1:7412 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:21:08] "POST /houtai/user/info/touxiang HTTP/1.1" 200 -
+2019-05-08 15:21:47,149 [MainThread:8540 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Detected change in 'D:\\www\\flask_supervisors\\flask_supervisors\\flask_supervisor\\backend\\api_resources.py', reloading
+2019-05-08 15:21:47,240 [MainThread:8816 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Restarting with stat
+2019-05-08 15:21:48,112 [MainThread:8532 in _internal:] [task_id:werkzeug] [werkzeug:88] [WARNING]-  * Debugger is active!
+2019-05-08 15:21:48,124 [MainThread:8532 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Debugger PIN: 100-716-097
+2019-05-08 15:21:48,129 [Thread-1:9120 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2019-05-08 15:21:52,004 [Thread-1:9120 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:21:52] "POST /houtai/user/info/touxiang HTTP/1.1" 200 -
+2019-05-08 15:22:48,632 [MainThread:8532 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Detected change in 'D:\\www\\flask_supervisors\\flask_supervisors\\flask_supervisor\\backend\\api_resources.py', reloading
+2019-05-08 15:22:48,724 [MainThread:8816 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Restarting with stat
+2019-05-08 15:22:49,590 [MainThread:7424 in _internal:] [task_id:werkzeug] [werkzeug:88] [WARNING]-  * Debugger is active!
+2019-05-08 15:22:49,601 [MainThread:7424 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Debugger PIN: 100-716-097
+2019-05-08 15:22:49,607 [Thread-1:8724 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2019-05-08 15:22:54,073 [Thread-1:8724 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:22:54] "POST /houtai/user/info/touxiang HTTP/1.1" 200 -
+2019-05-08 15:24:03,118 [MainThread:7424 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Detected change in 'D:\\www\\flask_supervisors\\flask_supervisors\\flask_supervisor\\config.py', reloading
+2019-05-08 15:24:03,224 [MainThread:8816 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Restarting with stat
+2019-05-08 15:24:04,092 [MainThread:3528 in _internal:] [task_id:werkzeug] [werkzeug:88] [WARNING]-  * Debugger is active!
+2019-05-08 15:24:04,104 [MainThread:3528 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Debugger PIN: 100-716-097
+2019-05-08 15:24:04,111 [Thread-1:8476 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2019-05-08 15:24:08,672 [Thread-1:8476 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:24:08] "POST /houtai/user/info/touxiang HTTP/1.1" 200 -
+2019-05-08 15:24:20,421 [MainThread:2296 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Restarting with stat
+2019-05-08 15:24:21,271 [MainThread:8972 in _internal:] [task_id:werkzeug] [werkzeug:88] [WARNING]-  * Debugger is active!
+2019-05-08 15:24:21,281 [MainThread:8972 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Debugger PIN: 100-716-097
+2019-05-08 15:24:21,287 [Thread-1:8340 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2019-05-08 15:24:24,896 [Thread-1:8340 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:24:24] "POST /houtai/user/info/touxiang HTTP/1.1" 200 -
+2019-05-08 15:25:52,224 [MainThread:8972 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Detected change in 'D:\\www\\flask_supervisors\\flask_supervisors\\flask_supervisor\\backend\\api_resources.py', reloading
+2019-05-08 15:25:52,312 [MainThread:2296 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Restarting with stat
+2019-05-08 15:25:53,155 [MainThread:8252 in _internal:] [task_id:werkzeug] [werkzeug:88] [WARNING]-  * Debugger is active!
+2019-05-08 15:25:53,165 [MainThread:8252 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Debugger PIN: 100-716-097
+2019-05-08 15:25:53,171 [Thread-1:6064 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2019-05-08 15:25:58,281 [Thread-1:6064 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:25:58] "POST /houtai/user/info/touxiang HTTP/1.1" 200 -
+2019-05-08 15:27:55,480 [MainThread:8252 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Detected change in 'D:\\www\\flask_supervisors\\flask_supervisors\\flask_supervisor\\backend\\api_resources.py', reloading
+2019-05-08 15:27:55,591 [MainThread:2296 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Restarting with stat
+2019-05-08 15:27:56,504 [MainThread:9208 in _internal:] [task_id:werkzeug] [werkzeug:88] [WARNING]-  * Debugger is active!
+2019-05-08 15:27:56,515 [MainThread:9208 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Debugger PIN: 100-716-097
+2019-05-08 15:27:56,521 [Thread-1:8844 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2019-05-08 15:28:00,090 [Thread-1:8844 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:28:00] "POST /houtai/user/info/touxiang HTTP/1.1" 200 -
+2019-05-08 15:28:21,510 [MainThread:9208 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Detected change in 'D:\\www\\flask_supervisors\\flask_supervisors\\flask_supervisor\\backend\\api_resources.py', reloading
+2019-05-08 15:28:21,606 [MainThread:2296 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Restarting with stat
+2019-05-08 15:28:22,492 [MainThread:2352 in _internal:] [task_id:werkzeug] [werkzeug:88] [WARNING]-  * Debugger is active!
+2019-05-08 15:28:22,502 [MainThread:2352 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Debugger PIN: 100-716-097
+2019-05-08 15:28:22,508 [Thread-1:9080 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2019-05-08 15:28:25,374 [Thread-1:9080 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:28:25] "POST /houtai/user/info/touxiang HTTP/1.1" 200 -
+2019-05-08 15:29:58,789 [MainThread:2352 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Detected change in 'D:\\www\\flask_supervisors\\flask_supervisors\\flask_supervisor\\backend\\api_resources.py', reloading
+2019-05-08 15:29:58,890 [MainThread:2296 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Restarting with stat
+2019-05-08 15:29:59,749 [MainThread:8892 in _internal:] [task_id:werkzeug] [werkzeug:88] [WARNING]-  * Debugger is active!
+2019-05-08 15:29:59,759 [MainThread:8892 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Debugger PIN: 100-716-097
+2019-05-08 15:29:59,767 [Thread-1:7520 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2019-05-08 15:30:17,212 [MainThread:8892 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Detected change in 'D:\\www\\flask_supervisors\\flask_supervisors\\flask_supervisor\\backend\\api_resources.py', reloading
+2019-05-08 15:30:17,322 [MainThread:2296 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Restarting with stat
+2019-05-08 15:30:18,194 [MainThread:9032 in _internal:] [task_id:werkzeug] [werkzeug:88] [WARNING]-  * Debugger is active!
+2019-05-08 15:30:18,211 [MainThread:9032 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Debugger PIN: 100-716-097
+2019-05-08 15:30:18,217 [Thread-1:7684 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2019-05-08 15:30:24,389 [Thread-1:7684 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:30:24] "POST /houtai/user/info/touxiang HTTP/1.1" 200 -
+2019-05-08 15:31:24,270 [MainThread:9032 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Detected change in 'D:\\www\\flask_supervisors\\flask_supervisors\\flask_supervisor\\backend\\api_resources.py', reloading
+2019-05-08 15:31:24,375 [MainThread:2296 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Restarting with stat
+2019-05-08 15:31:25,237 [MainThread:6716 in _internal:] [task_id:werkzeug] [werkzeug:88] [WARNING]-  * Debugger is active!
+2019-05-08 15:31:25,248 [MainThread:6716 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Debugger PIN: 100-716-097
+2019-05-08 15:31:25,253 [Thread-1:8208 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2019-05-08 15:31:27,943 [Thread-1:8208 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:31:27] "POST /houtai/user/info/touxiang HTTP/1.1" 200 -
+2019-05-08 15:32:33,574 [MainThread:6716 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Detected change in 'D:\\www\\flask_supervisors\\flask_supervisors\\flask_supervisor\\config.py', reloading
+2019-05-08 15:32:33,672 [MainThread:2296 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Restarting with stat
+2019-05-08 15:32:34,534 [MainThread:8764 in _internal:] [task_id:werkzeug] [werkzeug:88] [WARNING]-  * Debugger is active!
+2019-05-08 15:32:34,544 [MainThread:8764 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Debugger PIN: 100-716-097
+2019-05-08 15:32:34,550 [Thread-1:8496 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2019-05-08 15:32:38,330 [Thread-1:8496 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:32:38] "POST /houtai/user/info/touxiang HTTP/1.1" 200 -
+2019-05-08 15:34:19,591 [MainThread:8764 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Detected change in 'D:\\www\\flask_supervisors\\flask_supervisors\\flask_supervisor\\config.py', reloading
+2019-05-08 15:34:19,688 [MainThread:2296 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Restarting with stat
+2019-05-08 15:34:20,543 [MainThread:8800 in _internal:] [task_id:werkzeug] [werkzeug:88] [WARNING]-  * Debugger is active!
+2019-05-08 15:34:20,554 [MainThread:8800 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Debugger PIN: 100-716-097
+2019-05-08 15:34:20,560 [Thread-1:8632 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2019-05-08 15:34:23,500 [Thread-1:8632 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SHOW VARIABLES LIKE 'sql_mode'
+2019-05-08 15:34:23,501 [Thread-1:8632 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {}
+2019-05-08 15:34:23,508 [Thread-1:8632 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT DATABASE()
+2019-05-08 15:34:23,509 [Thread-1:8632 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {}
+2019-05-08 15:34:23,512 [Thread-1:8632 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT CAST('test plain returns' AS CHAR(60)) AS anon_1
+2019-05-08 15:34:23,512 [Thread-1:8632 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {}
+2019-05-08 15:34:23,513 [Thread-1:8632 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT CAST('test unicode returns' AS CHAR(60)) AS anon_1
+2019-05-08 15:34:23,514 [Thread-1:8632 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {}
+2019-05-08 15:34:23,515 [Thread-1:8632 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-08 15:34:23,516 [Thread-1:8632 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.username = %(username_1)s 
+ LIMIT %(param_1)s
+2019-05-08 15:34:23,517 [Thread-1:8632 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'username_1': 'houtai', 'param_1': 1}
+2019-05-08 15:34:23,520 [Thread-1:8632 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- UPDATE sv_users SET avatar=%(avatar)s, last_modify=%(last_modify)s WHERE sv_users.id = %(sv_users_id)s
+2019-05-08 15:34:23,521 [Thread-1:8632 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'avatar': 'flask_supervisor\\static\\img\\users\\houtai\\logo.jpg', 'last_modify': '2019-05-08 15:34:23', 'sv_users_id': 1}
+2019-05-08 15:34:23,531 [Thread-1:8632 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- COMMIT
+2019-05-08 15:34:23,534 [Thread-1:8632 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:34:23] "POST /houtai/user/info/touxiang HTTP/1.1" 200 -
+2019-05-08 15:34:51,316 [Thread-1:8632 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:34:51] "GET /houtai/userinfo HTTP/1.1" 302 -
+2019-05-08 15:34:51,333 [Thread-1:8632 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:34:51] "GET /houtai/?next=%2Fhoutai%2Fuserinfo HTTP/1.1" 200 -
+2019-05-08 15:34:58,267 [Thread-1:8632 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-08 15:34:58,269 [Thread-1:8632 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.username = %(username_1)s AND sv_users.password_hash = %(password_hash_1)s 
+ LIMIT %(param_1)s
+2019-05-08 15:34:58,270 [Thread-1:8632 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'username_1': 'houtai', 'password_hash_1': 'houtai', 'param_1': 1}
+2019-05-08 15:34:58,272 [Thread-1:8632 in api_resources:] [task_id:flask.app] [flask.app:47] [INFO]- 用户houtai登录了...
+2019-05-08 15:34:58,274 [Thread-1:8632 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-08 15:34:58,274 [Thread-1:8632 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:34:58] "POST /houtai/Login HTTP/1.1" 200 -
+2019-05-08 15:34:58,598 [Thread-1:8632 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-08 15:34:58,600 [Thread-1:8632 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.id = %(param_1)s
+2019-05-08 15:34:58,602 [Thread-1:8632 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'param_1': 1}
+2019-05-08 15:34:58,663 [Thread-1:8632 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-08 15:34:58,664 [Thread-1:8632 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:34:58] "GET / HTTP/1.1" 200 -
+2019-05-08 15:34:58,944 [Thread-1:8632 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:34:58] "GET /static/toastr/toastr.js.map HTTP/1.1" 404 -
+2019-05-08 15:34:58,953 [Thread-1:8632 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:34:58] "GET /static/bootstrap-select/bootstrap-select.css.map HTTP/1.1" 404 -
+2019-05-08 15:35:01,162 [Thread-1:8632 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-08 15:35:01,163 [Thread-1:8632 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.id = %(param_1)s
+2019-05-08 15:35:01,165 [Thread-1:8632 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'param_1': 1}
+2019-05-08 15:35:01,192 [Thread-1:8632 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-08 15:35:01,193 [Thread-1:8632 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:35:01] "GET /houtai/userinfo HTTP/1.1" 200 -
+2019-05-08 15:35:01,483 [Thread-1:8632 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:35:01] "GET /static/toastr/toastr.js.map HTTP/1.1" 404 -
+2019-05-08 15:35:01,490 [Thread-1:8632 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:35:01] "GET /static/bootstrap-select/bootstrap-select.css.map HTTP/1.1" 404 -
+2019-05-08 15:35:02,061 [Thread-1:8632 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-08 15:35:02,062 [Thread-1:8632 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.username = %(username_1)s 
+ LIMIT %(param_1)s
+2019-05-08 15:35:02,063 [Thread-1:8632 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'username_1': 'houtai', 'param_1': 1}
+2019-05-08 15:35:02,065 [Thread-1:8632 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-08 15:35:02,067 [Thread-1:8632 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:35:02] "GET /houtai/user/info?username=houtai HTTP/1.1" 200 -
+2019-05-08 15:35:02,311 [Thread-1:8632 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:35:02] "GET /static/flask_supervisor/static/img/users/houtai/logo.jpg HTTP/1.1" 404 -
+2019-05-08 15:36:19,146 [MainThread:8800 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Detected change in 'D:\\www\\flask_supervisors\\flask_supervisors\\flask_supervisor\\backend\\api_resources.py', reloading
+2019-05-08 15:36:19,245 [MainThread:2296 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Restarting with stat
+2019-05-08 15:36:20,133 [MainThread:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [WARNING]-  * Debugger is active!
+2019-05-08 15:36:20,143 [MainThread:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Debugger PIN: 100-716-097
+2019-05-08 15:36:20,150 [Thread-1:8320 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2019-05-08 15:36:44,078 [MainThread:6428 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Detected change in 'D:\\www\\flask_supervisors\\flask_supervisors\\flask_supervisor\\backend\\api_resources.py', reloading
+2019-05-08 15:36:44,165 [MainThread:2296 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Restarting with stat
+2019-05-08 15:36:45,031 [MainThread:1040 in _internal:] [task_id:werkzeug] [werkzeug:88] [WARNING]-  * Debugger is active!
+2019-05-08 15:36:45,041 [MainThread:1040 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Debugger PIN: 100-716-097
+2019-05-08 15:36:45,047 [Thread-1:5800 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2019-05-08 15:36:48,756 [Thread-1:5800 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SHOW VARIABLES LIKE 'sql_mode'
+2019-05-08 15:36:48,757 [Thread-1:5800 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {}
+2019-05-08 15:36:48,761 [Thread-1:5800 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT DATABASE()
+2019-05-08 15:36:48,761 [Thread-1:5800 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {}
+2019-05-08 15:36:48,764 [Thread-1:5800 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT CAST('test plain returns' AS CHAR(60)) AS anon_1
+2019-05-08 15:36:48,765 [Thread-1:5800 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {}
+2019-05-08 15:36:48,768 [Thread-1:5800 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT CAST('test unicode returns' AS CHAR(60)) AS anon_1
+2019-05-08 15:36:48,768 [Thread-1:5800 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {}
+2019-05-08 15:36:48,769 [Thread-1:5800 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-08 15:36:48,774 [Thread-1:5800 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.username = %(username_1)s 
+ LIMIT %(param_1)s
+2019-05-08 15:36:48,775 [Thread-1:5800 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'username_1': 'houtai', 'param_1': 1}
+2019-05-08 15:36:48,778 [Thread-1:5800 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- UPDATE sv_users SET avatar=%(avatar)s, last_modify=%(last_modify)s WHERE sv_users.id = %(sv_users_id)s
+2019-05-08 15:36:48,779 [Thread-1:5800 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'avatar': 'static\\img\\users\\houtai\\logo.jpg', 'last_modify': '2019-05-08 15:36:48', 'sv_users_id': 1}
+2019-05-08 15:36:48,780 [Thread-1:5800 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- COMMIT
+2019-05-08 15:36:48,808 [Thread-1:5800 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:36:48] "POST /houtai/user/info/touxiang HTTP/1.1" 200 -
+2019-05-08 15:36:58,526 [Thread-1:5800 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-08 15:36:58,528 [Thread-1:5800 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.id = %(param_1)s
+2019-05-08 15:36:58,529 [Thread-1:5800 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'param_1': 1}
+2019-05-08 15:36:58,612 [Thread-1:5800 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-08 15:36:58,615 [Thread-1:5800 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:36:58] "GET /houtai/userinfo HTTP/1.1" 200 -
+2019-05-08 15:36:58,838 [Thread-1:5800 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:36:58] "GET /static/toastr/toastr.js.map HTTP/1.1" 404 -
+2019-05-08 15:36:59,159 [Thread-1:5800 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-08 15:36:59,160 [Thread-1:5800 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.username = %(username_1)s 
+ LIMIT %(param_1)s
+2019-05-08 15:36:59,161 [Thread-1:5800 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'username_1': 'houtai', 'param_1': 1}
+2019-05-08 15:36:59,164 [Thread-1:5800 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-08 15:36:59,165 [Thread-1:5800 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:36:59] "GET /houtai/user/info?username=houtai HTTP/1.1" 200 -
+2019-05-08 15:36:59,409 [Thread-1:5800 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:36:59] "GET /static/bootstrap-select/bootstrap-select.css.map HTTP/1.1" 404 -
+2019-05-08 15:36:59,421 [Thread-1:5800 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:36:59] "GET /static/static/img/users/houtai/logo.jpg HTTP/1.1" 404 -
+2019-05-08 15:37:35,220 [MainThread:1040 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Detected change in 'D:\\www\\flask_supervisors\\flask_supervisors\\flask_supervisor\\backend\\api_resources.py', reloading
+2019-05-08 15:37:35,324 [MainThread:2296 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Restarting with stat
+2019-05-08 15:37:36,184 [MainThread:1976 in _internal:] [task_id:werkzeug] [werkzeug:88] [WARNING]-  * Debugger is active!
+2019-05-08 15:37:36,195 [MainThread:1976 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Debugger PIN: 100-716-097
+2019-05-08 15:37:36,201 [Thread-1:7520 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2019-05-08 15:37:41,090 [Thread-1:7520 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SHOW VARIABLES LIKE 'sql_mode'
+2019-05-08 15:37:41,091 [Thread-1:7520 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {}
+2019-05-08 15:37:41,096 [Thread-1:7520 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT DATABASE()
+2019-05-08 15:37:41,096 [Thread-1:7520 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {}
+2019-05-08 15:37:41,099 [Thread-1:7520 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT CAST('test plain returns' AS CHAR(60)) AS anon_1
+2019-05-08 15:37:41,100 [Thread-1:7520 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {}
+2019-05-08 15:37:41,101 [Thread-1:7520 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT CAST('test unicode returns' AS CHAR(60)) AS anon_1
+2019-05-08 15:37:41,102 [Thread-1:7520 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {}
+2019-05-08 15:37:41,104 [Thread-1:7520 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-08 15:37:41,106 [Thread-1:7520 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.username = %(username_1)s 
+ LIMIT %(param_1)s
+2019-05-08 15:37:41,107 [Thread-1:7520 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'username_1': 'houtai', 'param_1': 1}
+2019-05-08 15:37:41,110 [Thread-1:7520 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- UPDATE sv_users SET avatar=%(avatar)s, last_modify=%(last_modify)s WHERE sv_users.id = %(sv_users_id)s
+2019-05-08 15:37:41,111 [Thread-1:7520 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'avatar': 'img\\users\\houtai\\logo.jpg', 'last_modify': '2019-05-08 15:37:41', 'sv_users_id': 1}
+2019-05-08 15:37:41,112 [Thread-1:7520 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- COMMIT
+2019-05-08 15:37:41,114 [Thread-1:7520 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:37:41] "POST /houtai/user/info/touxiang HTTP/1.1" 200 -
+2019-05-08 15:37:43,050 [Thread-1:7520 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-08 15:37:43,052 [Thread-1:7520 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.id = %(param_1)s
+2019-05-08 15:37:43,053 [Thread-1:7520 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'param_1': 1}
+2019-05-08 15:37:43,137 [Thread-1:7520 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-08 15:37:43,139 [Thread-1:7520 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:37:43] "GET /houtai/userinfo HTTP/1.1" 200 -
+2019-05-08 15:37:43,368 [Thread-1:7520 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:37:43] "GET /static/toastr/toastr.js.map HTTP/1.1" 404 -
+2019-05-08 15:37:43,674 [Thread-1:7520 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-08 15:37:43,676 [Thread-1:7520 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.username = %(username_1)s 
+ LIMIT %(param_1)s
+2019-05-08 15:37:43,677 [Thread-1:7520 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'username_1': 'houtai', 'param_1': 1}
+2019-05-08 15:37:43,679 [Thread-1:7520 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-08 15:37:43,680 [Thread-1:7520 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:37:43] "GET /houtai/user/info?username=houtai HTTP/1.1" 200 -
+2019-05-08 15:37:43,968 [Thread-1:7520 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:37:43] "GET /static/bootstrap-select/bootstrap-select.css.map HTTP/1.1" 404 -
+2019-05-08 15:37:44,108 [Thread-1:7520 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:37:44] "GET /static/img/users/houtai/logo.jpg HTTP/1.1" 200 -
+2019-05-08 15:39:27,171 [MainThread:1976 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Detected change in 'D:\\www\\flask_supervisors\\flask_supervisors\\flask_supervisor\\backend\\api_resources.py', reloading
+2019-05-08 15:39:27,288 [MainThread:2296 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Restarting with stat
+2019-05-08 15:39:28,193 [MainThread:8444 in _internal:] [task_id:werkzeug] [werkzeug:88] [WARNING]-  * Debugger is active!
+2019-05-08 15:39:28,204 [MainThread:8444 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Debugger PIN: 100-716-097
+2019-05-08 15:39:28,208 [Thread-1:8844 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2019-05-08 15:40:28,583 [Thread-1:8844 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:40:28] "POST /houtai/user/info/touxiang HTTP/1.1" 200 -
+2019-05-08 15:40:32,595 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SHOW VARIABLES LIKE 'sql_mode'
+2019-05-08 15:40:32,597 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {}
+2019-05-08 15:40:32,601 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT DATABASE()
+2019-05-08 15:40:32,602 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {}
+2019-05-08 15:40:32,604 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT CAST('test plain returns' AS CHAR(60)) AS anon_1
+2019-05-08 15:40:32,605 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {}
+2019-05-08 15:40:32,606 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT CAST('test unicode returns' AS CHAR(60)) AS anon_1
+2019-05-08 15:40:32,606 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {}
+2019-05-08 15:40:32,607 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-08 15:40:32,609 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.id = %(param_1)s
+2019-05-08 15:40:32,610 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'param_1': 1}
+2019-05-08 15:40:32,694 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-08 15:40:32,696 [Thread-1:8844 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:40:32] "GET /houtai/userinfo HTTP/1.1" 200 -
+2019-05-08 15:40:33,164 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-08 15:40:33,166 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.username = %(username_1)s 
+ LIMIT %(param_1)s
+2019-05-08 15:40:33,166 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'username_1': 'houtai', 'param_1': 1}
+2019-05-08 15:40:33,168 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-08 15:40:33,169 [Thread-1:8844 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:40:33] "GET /houtai/user/info?username=houtai HTTP/1.1" 200 -
+2019-05-08 15:40:36,904 [Thread-1:8844 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:40:36] "GET /static/toastr/toastr.js.map HTTP/1.1" 404 -
+2019-05-08 15:40:37,104 [Thread-1:8844 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:40:37] "GET /static/bootstrap-select/bootstrap-select.css.map HTTP/1.1" 404 -
+2019-05-08 15:43:30,769 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-08 15:43:30,771 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.id = %(param_1)s
+2019-05-08 15:43:30,772 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'param_1': 1}
+2019-05-08 15:43:30,801 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-08 15:43:30,803 [Thread-1:8844 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:43:30] "GET /houtai/userinfo HTTP/1.1" 200 -
+2019-05-08 15:43:31,403 [Thread-1:8844 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:43:31] "GET /static/toastr/toastr.js.map HTTP/1.1" 404 -
+2019-05-08 15:43:31,420 [Thread-1:8844 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:43:31] "GET /static/bootstrap-select/bootstrap-select.css.map HTTP/1.1" 404 -
+2019-05-08 15:43:31,796 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-08 15:43:31,798 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.username = %(username_1)s 
+ LIMIT %(param_1)s
+2019-05-08 15:43:31,800 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'username_1': 'houtai', 'param_1': 1}
+2019-05-08 15:43:31,802 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-08 15:43:31,803 [Thread-1:8844 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:43:31] "GET /houtai/user/info?username=houtai HTTP/1.1" 200 -
+2019-05-08 15:43:38,162 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-08 15:43:38,164 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.username = %(username_1)s 
+ LIMIT %(param_1)s
+2019-05-08 15:43:38,165 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'username_1': 'houtai', 'param_1': 1}
+2019-05-08 15:43:38,167 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- UPDATE sv_users SET last_modify=%(last_modify)s WHERE sv_users.id = %(sv_users_id)s
+2019-05-08 15:43:38,167 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'last_modify': '2019-05-08 15:43:38', 'sv_users_id': 1}
+2019-05-08 15:43:38,169 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- COMMIT
+2019-05-08 15:43:38,170 [Thread-1:8844 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:43:38] "POST /houtai/user/info/touxiang HTTP/1.1" 200 -
+2019-05-08 15:45:19,553 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-08 15:45:19,555 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.id = %(param_1)s
+2019-05-08 15:45:19,557 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'param_1': 1}
+2019-05-08 15:45:19,585 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-08 15:45:19,587 [Thread-1:8844 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:45:19] "GET /houtai/userinfo HTTP/1.1" 200 -
+2019-05-08 15:45:19,872 [Thread-1:8844 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:45:19] "GET /static/toastr/toastr.js.map HTTP/1.1" 404 -
+2019-05-08 15:45:19,878 [Thread-1:8844 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:45:19] "GET /static/bootstrap-select/bootstrap-select.css.map HTTP/1.1" 404 -
+2019-05-08 15:45:20,646 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-08 15:45:20,648 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.username = %(username_1)s 
+ LIMIT %(param_1)s
+2019-05-08 15:45:20,649 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'username_1': 'houtai', 'param_1': 1}
+2019-05-08 15:45:20,651 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-08 15:45:20,651 [Thread-1:8844 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:45:20] "GET /houtai/user/info?username=houtai HTTP/1.1" 200 -
+2019-05-08 15:45:27,959 [Thread-1:8844 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:45:27] "POST /houtai/user/info/touxiang HTTP/1.1" 200 -
+2019-05-08 15:45:28,277 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-08 15:45:28,278 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.id = %(param_1)s
+2019-05-08 15:45:28,279 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'param_1': 1}
+2019-05-08 15:45:28,289 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-08 15:45:28,292 [Thread-1:8844 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:45:28] "GET /houtai/userinfo HTTP/1.1" 200 -
+2019-05-08 15:45:28,587 [Thread-1:8844 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:45:28] "GET /static/toastr/toastr.js.map HTTP/1.1" 404 -
+2019-05-08 15:45:28,594 [Thread-1:8844 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:45:28] "GET /static/bootstrap-select/bootstrap-select.css.map HTTP/1.1" 404 -
+2019-05-08 15:45:29,231 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-08 15:45:29,233 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.username = %(username_1)s 
+ LIMIT %(param_1)s
+2019-05-08 15:45:29,235 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'username_1': 'houtai', 'param_1': 1}
+2019-05-08 15:45:29,237 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-08 15:45:29,239 [Thread-1:8844 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:45:29] "GET /houtai/user/info?username=houtai HTTP/1.1" 200 -
+2019-05-08 15:45:53,041 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-08 15:45:53,042 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.id = %(param_1)s
+2019-05-08 15:45:53,043 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'param_1': 1}
+2019-05-08 15:45:53,052 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-08 15:45:53,053 [Thread-1:8844 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:45:53] "GET /houtai/userinfo HTTP/1.1" 200 -
+2019-05-08 15:45:53,369 [Thread-1:8844 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:45:53] "GET /static/toastr/toastr.js.map HTTP/1.1" 404 -
+2019-05-08 15:45:53,376 [Thread-1:8844 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:45:53] "GET /static/bootstrap-select/bootstrap-select.css.map HTTP/1.1" 404 -
+2019-05-08 15:45:53,961 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-08 15:45:53,965 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.username = %(username_1)s 
+ LIMIT %(param_1)s
+2019-05-08 15:45:53,966 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'username_1': 'houtai', 'param_1': 1}
+2019-05-08 15:45:53,969 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-08 15:45:53,969 [Thread-1:8844 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:45:53] "GET /houtai/user/info?username=houtai HTTP/1.1" 200 -
+2019-05-08 15:45:59,621 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-08 15:45:59,623 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.id = %(param_1)s
+2019-05-08 15:45:59,624 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'param_1': 1}
+2019-05-08 15:45:59,632 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-08 15:45:59,633 [Thread-1:8844 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:45:59] "GET /houtai/userinfo HTTP/1.1" 200 -
+2019-05-08 15:45:59,920 [Thread-1:8844 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:45:59] "GET /static/toastr/toastr.js.map HTTP/1.1" 404 -
+2019-05-08 15:46:00,220 [Thread-1:8844 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:46:00] "GET /static/bootstrap-select/bootstrap-select.css.map HTTP/1.1" 404 -
+2019-05-08 15:46:00,538 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-08 15:46:00,540 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.username = %(username_1)s 
+ LIMIT %(param_1)s
+2019-05-08 15:46:00,544 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'username_1': 'houtai', 'param_1': 1}
+2019-05-08 15:46:00,546 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-08 15:46:00,548 [Thread-1:8844 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:46:00] "GET /houtai/user/info?username=houtai HTTP/1.1" 200 -
+2019-05-08 15:46:43,014 [Thread-1:8844 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:46:43] "POST /houtai/user/info/touxiang HTTP/1.1" 200 -
+2019-05-08 15:46:43,259 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-08 15:46:43,263 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.id = %(param_1)s
+2019-05-08 15:46:43,264 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'param_1': 1}
+2019-05-08 15:46:43,273 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-08 15:46:43,274 [Thread-1:8844 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:46:43] "GET /houtai/userinfo HTTP/1.1" 200 -
+2019-05-08 15:46:43,485 [Thread-1:8844 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:46:43] "GET /static/toastr/toastr.js.map HTTP/1.1" 404 -
+2019-05-08 15:46:43,792 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-08 15:46:43,793 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.username = %(username_1)s 
+ LIMIT %(param_1)s
+2019-05-08 15:46:43,795 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'username_1': 'houtai', 'param_1': 1}
+2019-05-08 15:46:43,798 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-08 15:46:43,799 [Thread-1:8844 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:46:43] "GET /houtai/user/info?username=houtai HTTP/1.1" 200 -
+2019-05-08 15:46:44,043 [Thread-1:8844 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:46:44] "GET /static/bootstrap-select/bootstrap-select.css.map HTTP/1.1" 404 -
+2019-05-08 15:47:13,822 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-08 15:47:13,825 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.id = %(param_1)s
+2019-05-08 15:47:13,826 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'param_1': 1}
+2019-05-08 15:47:13,834 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-08 15:47:13,835 [Thread-1:8844 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:47:13] "GET /houtai/userinfo HTTP/1.1" 200 -
+2019-05-08 15:47:14,032 [Thread-1:8844 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:47:14] "GET /static/toastr/toastr.js.map HTTP/1.1" 404 -
+2019-05-08 15:47:14,072 [Thread-1:8844 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:47:14] "GET /static/bootstrap-select/bootstrap-select.css.map HTTP/1.1" 404 -
+2019-05-08 15:47:14,633 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-08 15:47:14,634 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.username = %(username_1)s 
+ LIMIT %(param_1)s
+2019-05-08 15:47:14,636 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'username_1': 'houtai', 'param_1': 1}
+2019-05-08 15:47:14,638 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-08 15:47:14,639 [Thread-1:8844 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:47:14] "GET /houtai/user/info?username=houtai HTTP/1.1" 200 -
+2019-05-08 15:53:12,939 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-08 15:53:12,941 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.id = %(param_1)s
+2019-05-08 15:53:12,942 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'param_1': 1}
+2019-05-08 15:53:12,972 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-08 15:53:12,973 [Thread-1:8844 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:53:12] "GET /houtai/userinfo HTTP/1.1" 200 -
+2019-05-08 15:53:13,346 [Thread-1:8844 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:53:13] "GET /static/toastr/toastr.js.map HTTP/1.1" 404 -
+2019-05-08 15:53:13,354 [Thread-1:8844 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:53:13] "GET /static/bootstrap-select/bootstrap-select.css.map HTTP/1.1" 404 -
+2019-05-08 15:53:14,089 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-08 15:53:14,092 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.username = %(username_1)s 
+ LIMIT %(param_1)s
+2019-05-08 15:53:14,093 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'username_1': 'houtai', 'param_1': 1}
+2019-05-08 15:53:14,096 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-08 15:53:14,097 [Thread-1:8844 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:53:14] "GET /houtai/user/info?username=houtai HTTP/1.1" 200 -
+2019-05-08 15:53:28,808 [Thread-1:8844 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:53:28] "POST /houtai/user/info/touxiang HTTP/1.1" 200 -
+2019-05-08 15:53:29,056 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-08 15:53:29,059 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.id = %(param_1)s
+2019-05-08 15:53:29,060 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'param_1': 1}
+2019-05-08 15:53:29,069 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-08 15:53:29,070 [Thread-1:8844 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:53:29] "GET /houtai/userinfo HTTP/1.1" 200 -
+2019-05-08 15:53:29,407 [Thread-1:8844 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:53:29] "GET /static/toastr/toastr.js.map HTTP/1.1" 404 -
+2019-05-08 15:53:29,716 [Thread-1:8844 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:53:29] "GET /static/bootstrap-select/bootstrap-select.css.map HTTP/1.1" 404 -
+2019-05-08 15:53:29,967 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-08 15:53:29,971 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.username = %(username_1)s 
+ LIMIT %(param_1)s
+2019-05-08 15:53:29,972 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'username_1': 'houtai', 'param_1': 1}
+2019-05-08 15:53:29,975 [Thread-1:8844 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-08 15:53:29,977 [Thread-1:8844 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [08/May/2019 15:53:29] "GET /houtai/user/info?username=houtai HTTP/1.1" 200 -

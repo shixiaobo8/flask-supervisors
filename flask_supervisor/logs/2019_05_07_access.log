@@ -1,0 +1,138 @@
+2019-05-07 20:53:12,818 [MainThread:6772 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Restarting with stat
+2019-05-07 20:53:13,720 [MainThread:7280 in _internal:] [task_id:werkzeug] [werkzeug:88] [WARNING]-  * Debugger is active!
+2019-05-07 20:53:13,733 [MainThread:7280 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Debugger PIN: 100-716-097
+2019-05-07 20:53:13,740 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]-  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2019-05-07 20:53:14,465 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:14] "GET /houtai/userinfo HTTP/1.1" 302 -
+2019-05-07 20:53:14,508 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:14] "GET /houtai/?next=%2Fhoutai%2Fuserinfo HTTP/1.1" 200 -
+2019-05-07 20:53:14,690 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:14] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 -
+2019-05-07 20:53:14,844 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:14] "GET /static/css/login.css HTTP/1.1" 304 -
+2019-05-07 20:53:14,848 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:14] "GET /static/css/toastr.css HTTP/1.1" 304 -
+2019-05-07 20:53:14,851 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:14] "GET /static/js/jquery.min.js HTTP/1.1" 304 -
+2019-05-07 20:53:14,854 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:14] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 -
+2019-05-07 20:53:14,856 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:14] "GET /static/js/toastr.js HTTP/1.1" 304 -
+2019-05-07 20:53:15,196 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:15] "GET /houtai/?next=%2Fhoutai%2Fuserinfo HTTP/1.1" 200 -
+2019-05-07 20:53:15,262 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:15] "GET /static/img/7.jpg HTTP/1.1" 304 -
+2019-05-07 20:53:15,935 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:15] "GET /favicon.ico HTTP/1.1" 404 -
+2019-05-07 20:53:20,294 [Thread-1:8220 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SHOW VARIABLES LIKE 'sql_mode'
+2019-05-07 20:53:20,296 [Thread-1:8220 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {}
+2019-05-07 20:53:20,316 [Thread-1:8220 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT DATABASE()
+2019-05-07 20:53:20,317 [Thread-1:8220 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {}
+2019-05-07 20:53:20,321 [Thread-1:8220 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT CAST('test plain returns' AS CHAR(60)) AS anon_1
+2019-05-07 20:53:20,321 [Thread-1:8220 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {}
+2019-05-07 20:53:20,324 [Thread-1:8220 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT CAST('test unicode returns' AS CHAR(60)) AS anon_1
+2019-05-07 20:53:20,325 [Thread-1:8220 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {}
+2019-05-07 20:53:20,326 [Thread-1:8220 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-07 20:53:20,328 [Thread-1:8220 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.username = %(username_1)s AND sv_users.password_hash = %(password_hash_1)s 
+ LIMIT %(param_1)s
+2019-05-07 20:53:20,329 [Thread-1:8220 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'username_1': 'houtai', 'password_hash_1': 'houtai', 'param_1': 1}
+2019-05-07 20:53:20,340 [Thread-1:8220 in api_resources:] [task_id:flask.app] [flask.app:45] [INFO]- 用户houtai登录了...
+2019-05-07 20:53:20,343 [Thread-1:8220 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-07 20:53:20,344 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:20] "POST /houtai/Login HTTP/1.1" 200 -
+2019-05-07 20:53:20,450 [Thread-1:8220 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-07 20:53:20,451 [Thread-1:8220 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.id = %(param_1)s
+2019-05-07 20:53:20,453 [Thread-1:8220 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'param_1': 1}
+2019-05-07 20:53:20,512 [Thread-1:8220 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-07 20:53:20,514 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:20] "GET / HTTP/1.1" 200 -
+2019-05-07 20:53:20,675 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:20] "GET /static/css/adminlte/font-awesome.min.css HTTP/1.1" 304 -
+2019-05-07 20:53:20,849 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:20] "GET /static/css/adminlte/ionicons.min.css HTTP/1.1" 304 -
+2019-05-07 20:53:20,851 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:20] "GET /static/css/adminlte/AdminLTE.min.css HTTP/1.1" 304 -
+2019-05-07 20:53:20,854 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:20] "GET /static/css/adminlte/_all-skins.min.css HTTP/1.1" 304 -
+2019-05-07 20:53:20,857 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:20] "GET /static/css/adminlte/morris.css HTTP/1.1" 304 -
+2019-05-07 20:53:20,859 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:20] "GET /static/css/adminlte/jquery-jvectormap.css HTTP/1.1" 304 -
+2019-05-07 20:53:20,981 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:20] "GET /static/css/adminlte/bootstrap-datepicker.min.css HTTP/1.1" 304 -
+2019-05-07 20:53:21,154 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:21] "GET /static/css/adminlte/daterangepicker.css HTTP/1.1" 304 -
+2019-05-07 20:53:21,157 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:21] "GET /static/css/adminlte/dataTables.bootstrap.min.css HTTP/1.1" 304 -
+2019-05-07 20:53:21,159 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:21] "GET /static/css/adminlte/bootstrap3-wysihtml5.min.css HTTP/1.1" 304 -
+2019-05-07 20:53:21,162 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:21] "GET /static/css/fileinput.css HTTP/1.1" 304 -
+2019-05-07 20:53:21,165 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:21] "GET /static/toastr/toastr.css HTTP/1.1" 304 -
+2019-05-07 20:53:21,287 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:21] "GET /static/bootstrap-select/bootstrap-select.css HTTP/1.1" 304 -
+2019-05-07 20:53:21,459 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:21] "GET /static/css/adminlte/css.css%20 HTTP/1.1" 304 -
+2019-05-07 20:53:21,461 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:21] "GET /static/bootstrap-table/bootstrap-table.min.css HTTP/1.1" 304 -
+2019-05-07 20:53:21,464 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:21] "GET /static/bootstrap-table/bootstrap-editable.css HTTP/1.1" 304 -
+2019-05-07 20:53:21,466 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:21] "GET /static/css/font-awesome.min.css HTTP/1.1" 304 -
+2019-05-07 20:53:21,469 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:21] "GET /static/js/adminlte/jquery.min.js HTTP/1.1" 304 -
+2019-05-07 20:53:21,592 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:21] "GET /static/js/jquery.searchFilter.js HTTP/1.1" 304 -
+2019-05-07 20:53:21,764 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:21] "GET /static/js/adminlte/jquery-ui.min.js HTTP/1.1" 304 -
+2019-05-07 20:53:21,767 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:21] "GET /static/toastr/toastr.min.js HTTP/1.1" 304 -
+2019-05-07 20:53:21,769 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:21] "GET /static/bootstrap-select/bootstrap-select.js HTTP/1.1" 304 -
+2019-05-07 20:53:21,772 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:21] "GET /static/bootstrap-select/defaults-zh_CN.min.js HTTP/1.1" 304 -
+2019-05-07 20:53:21,776 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:21] "GET /static/bootstrap-table/bootstrap-table.min.js HTTP/1.1" 304 -
+2019-05-07 20:53:21,897 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:21] "GET /static/bootstrap-table/bootstrap-table-export.js HTTP/1.1" 304 -
+2019-05-07 20:53:22,070 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:22] "GET /static/bootstrap-table/bootstrap-table-editable.js HTTP/1.1" 304 -
+2019-05-07 20:53:22,072 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:22] "GET /static/bootstrap-table/bootstrap-editable.js HTTP/1.1" 304 -
+2019-05-07 20:53:22,076 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:22] "GET /static/bootstrap-table/FileSaver.min.js HTTP/1.1" 304 -
+2019-05-07 20:53:22,079 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:22] "GET /static/bootstrap-table/xlsx.core.min.js HTTP/1.1" 304 -
+2019-05-07 20:53:22,082 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:22] "GET /static/bootstrap-table/bootstrap-table-zh-CN.js HTTP/1.1" 304 -
+2019-05-07 20:53:22,205 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:22] "GET /static/img/boot1.jpg HTTP/1.1" 304 -
+2019-05-07 20:53:22,376 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:22] "GET /static/js/adminlte/raphael.min.js HTTP/1.1" 304 -
+2019-05-07 20:53:22,512 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:22] "GET /static/js/adminlte/morris.min.js HTTP/1.1" 304 -
+2019-05-07 20:53:22,689 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:22] "GET /static/js/adminlte/bootstrap.min.js HTTP/1.1" 304 -
+2019-05-07 20:53:22,841 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:22] "GET /static/js/adminlte/jquery.sparkline.min.js HTTP/1.1" 304 -
+2019-05-07 20:53:23,000 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:23] "GET /static/js/adminlte/jquery-jvectormap-1.2.2.min.js HTTP/1.1" 304 -
+2019-05-07 20:53:23,278 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:23] "GET /static/fonts/fontawesome-webfont93e3.woff2?v=4.4.0 HTTP/1.1" 304 -
+2019-05-07 20:53:23,353 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:23] "GET /static/css/fonts/fontawesome-webfont.woff2?v=4.7.0 HTTP/1.1" 304 -
+2019-05-07 20:53:23,356 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:23] "GET /static/js/adminlte/jquery-jvectormap-world-mill-en.js HTTP/1.1" 304 -
+2019-05-07 20:53:23,358 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:23] "GET /static/js/adminlte/jquery.knob.min.js HTTP/1.1" 304 -
+2019-05-07 20:53:23,361 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:23] "GET /static/js/adminlte/moment.min.js HTTP/1.1" 304 -
+2019-05-07 20:53:23,363 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:23] "GET /static/js/adminlte/daterangepicker.js HTTP/1.1" 304 -
+2019-05-07 20:53:23,583 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:23] "GET /static/js/fileinput.js HTTP/1.1" 304 -
+2019-05-07 20:53:23,659 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:23] "GET /static/js/fileinput-zh.js HTTP/1.1" 304 -
+2019-05-07 20:53:23,678 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:23] "GET /static/js/bootbox.min.js HTTP/1.1" 304 -
+2019-05-07 20:53:23,682 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:23] "GET /static/js/adminlte/bootstrap-datepicker.min.js HTTP/1.1" 304 -
+2019-05-07 20:53:23,686 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:23] "GET /static/js/adminlte/bootstrap3-wysihtml5.all.min.js HTTP/1.1" 304 -
+2019-05-07 20:53:23,689 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:23] "GET /static/js/adminlte/jquery.slimscroll.min.js HTTP/1.1" 304 -
+2019-05-07 20:53:23,894 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:23] "GET /static/js/adminlte/fastclick.js HTTP/1.1" 304 -
+2019-05-07 20:53:23,964 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:23] "GET /static/js/adminlte/adminlte.min.js HTTP/1.1" 304 -
+2019-05-07 20:53:23,986 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:23] "GET /static/js/adminlte/jquery.dataTables.min.js HTTP/1.1" 304 -
+2019-05-07 20:53:24,001 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:24] "GET /static/js/adminlte/dataTables.bootstrap.min.js HTTP/1.1" 304 -
+2019-05-07 20:53:24,009 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:24] "GET /static/js/adminlte/demo.js HTTP/1.1" 304 -
+2019-05-07 20:53:24,012 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:24] "GET /static/img/favicon.ico HTTP/1.1" 304 -
+2019-05-07 20:53:26,765 [Thread-1:8220 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-07 20:53:26,767 [Thread-1:8220 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.id = %(param_1)s
+2019-05-07 20:53:26,770 [Thread-1:8220 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'param_1': 1}
+2019-05-07 20:53:26,804 [Thread-1:8220 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-07 20:53:26,805 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:26] "GET /houtai/userinfo HTTP/1.1" 200 -
+2019-05-07 20:53:27,064 [Thread-1:8220 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-07 20:53:27,066 [Thread-1:8220 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.username = %(username_1)s 
+ LIMIT %(param_1)s
+2019-05-07 20:53:27,067 [Thread-1:8220 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'username_1': 'houtai', 'param_1': 1}
+2019-05-07 20:53:27,070 [Thread-1:8220 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-07 20:53:27,071 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:27] "GET /houtai/user/info?username=houtai HTTP/1.1" 200 -
+2019-05-07 20:53:27,158 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:27] "GET /static/img/users/default.jpg HTTP/1.1" 304 -
+2019-05-07 20:53:43,413 [Thread-1:8220 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-07 20:53:43,414 [Thread-1:8220 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.id = %(param_1)s
+2019-05-07 20:53:43,416 [Thread-1:8220 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'param_1': 1}
+2019-05-07 20:53:43,424 [Thread-1:8220 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-07 20:53:43,425 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:43] "GET /houtai/userinfo HTTP/1.1" 200 -
+2019-05-07 20:53:43,693 [Thread-1:8220 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-07 20:53:43,695 [Thread-1:8220 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.username = %(username_1)s 
+ LIMIT %(param_1)s
+2019-05-07 20:53:43,696 [Thread-1:8220 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'username_1': 'houtai', 'param_1': 1}
+2019-05-07 20:53:43,699 [Thread-1:8220 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-07 20:53:43,699 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:43] "GET /houtai/user/info?username=houtai HTTP/1.1" 200 -
+2019-05-07 20:53:45,832 [Thread-1:8220 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- BEGIN (implicit)
+2019-05-07 20:53:45,833 [Thread-1:8220 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash 
+FROM sv_users 
+WHERE sv_users.id = %(param_1)s
+2019-05-07 20:53:45,835 [Thread-1:8220 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- {'param_1': 1}
+2019-05-07 20:53:45,837 [Thread-1:8220 in views:] [task_id:flask.app] [flask.app:26] [INFO]- 用户houtai退出登录了...
+2019-05-07 20:53:45,839 [Thread-1:8220 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:109] [INFO]- ROLLBACK
+2019-05-07 20:53:45,840 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:45] "GET /houtai/Logout HTTP/1.1" 302 -
+2019-05-07 20:53:46,132 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:46] "GET /houtai/ HTTP/1.1" 200 -
+2019-05-07 20:53:48,362 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:48] "GET /houtai/register HTTP/1.1" 200 -
+2019-05-07 20:53:48,374 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:48] "GET /static/css/register.css HTTP/1.1" 304 -
+2019-05-07 20:53:48,603 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:48] "GET /static/img/4.jpg HTTP/1.1" 304 -
+2019-05-07 20:53:51,298 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:51] "GET / HTTP/1.1" 302 -
+2019-05-07 20:53:51,304 [Thread-1:8220 in _internal:] [task_id:werkzeug] [werkzeug:88] [INFO]- 127.0.0.1 - - [07/May/2019 20:53:51] "GET /houtai/?next=%2F HTTP/1.1" 200 -
