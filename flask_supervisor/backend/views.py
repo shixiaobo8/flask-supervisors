@@ -40,3 +40,10 @@ def userInfo():
 @login_required
 def userTouXiang():
     return  render_template("index/user/userTouXiang.html")
+
+
+# 系统url管理
+@backend.route('NavManager',methods=('GET','POST'))
+@login_required
+def navShow():
+    return render_template("index/NavList.html")

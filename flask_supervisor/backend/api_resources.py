@@ -7,7 +7,7 @@ from flask_restful import abort,Resource,reqparse,fields,marshal_with,marshal
 # from flask_supervisor.supervisor.models import Nav,subNav
 from flask_supervisor import mysql_db
 from sqlalchemy import and_
-from flask_supervisor.supervisor.models import Host,Group,Node,User
+from flask_supervisor.supervisor.models import Host,Group,Node,User,Nav,subNav
 from flask_login import login_user,logout_user,LoginManager
 from ..utils import generate_response,CustomFlaskErr
 from flask import request,current_app,logging
@@ -208,6 +208,61 @@ class UserTouXiangApi(Resource):
         pass
 
 
+# 导航栏 单个处理类
+class NavApi(Resource):
+    # 请求参数处理
+    def __init__(self):
+        self.reqparse = reqparse.RequestParser()
+        self.args = self.reqparse.parse_args()
+        # 获取request json 参数
+        self.json_args = request.json
+        super(NavApi, self).__init__()
+
+    # 查询单个
+    def get(self):
+        return self.args
+
+    # 新增一个
+    def post(self):
+        # 获取request json 参数
+        json_args = self.json_args
+        # 获取二级导航栏参数
+        sNavs = json_args['sNavs']
+        # 查询是否含有相同的菜单名称和url
+        exists_fName = Nav.query.filter_by(navTitle=json_args['fNavName']).first()
+        exists_fUrl = ''
+        if json_args['fNavUrl'] != '':
+            exists_fUrl = Nav.query.filter_by(navUrl=json_args['fNavUrl']).first()
+        if exists_fUrl or exists_fName:
+            current_app.logger.error("查询出错: 已存在相同的一级导航栏信息")
+            raise CustomFlaskErr("vAlreadyExistsError1")
+        else:
+            # 先添加一级菜单,然后关联二级菜单
+            firstNav = Nav(json_args['fNavName'], json_args['fNavUrl'], int(json_args['type']),
+                           int(json_args['navPris'][0]))
+            for secondNav in sNavs:
+                # 检查是否含有存在的二级菜单
+                exists_sNav = subNav.query.filter_by(title=secondNav['sNavName'], nav_url=secondNav['sNavUrl']).first()
+                if exists_sNav:
+                    current_app.logger.error("查询出错: 已存在相同的二级导航栏信息")
+                    raise CustomFlaskErr("NavAlreadyExistsError2")
+                else:
+                    sub_nav = subNav(secondNav['sNavName'], secondNav['sNavUrl'])
+                    mysql_db.session.add(sub_nav)
+                    # 关联二级菜单
+                    firstNav.subnavs.append(sub_nav)
+            mysql_db.session.add(firstNav)
+            mysql_db.session.commit()
+        return generate_response(data=json_args)
+
+    # 修改一个
+    def put(self):
+        self.post()
+
+    # 删除一个
+    def delete(self):
+        pass
+
 
 # 输出字段
 subNav_fields = {
@@ -240,9 +295,9 @@ class NavListApi(Resource):
         page_index = args['page']
         page_size = args['limit']
         # # 先获取所有满足条件的nav isouter=True 表示left join all 方法得到一个列表,这里不使用paginate,会报错
-        # navall = mysql_db.session.query(Nav).filter(Nav.is_del==0).join(subNav,Nav.id==subNav.nav_Id,isouter=True).all()
+        navall = mysql_db.session.query(Nav).filter(Nav.is_del==0).join(subNav,Nav.id==subNav.nav_Id,isouter=True).all()
         # 分页
-        # page_navs = navall[(page_index-1)*page_size:page_size*page_index]
+        page_navs = navall[(page_index-1)*page_size:page_size*page_index]
         return {'code':0,'count':len(navall),'cureent_page':page_index,"page_size":page_size,'data':marshal(page_navs,Nav_fields)}
 
     # 修改多个nav列表
