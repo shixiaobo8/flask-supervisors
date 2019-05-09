@@ -78,28 +78,22 @@
             <el-dialog title="创建用户" v-model="dialogCreateVisible" :close-on-click-modal="false"
                        :close-on-press-escape="false" @close="reset">
                 <el-form id="#create" :model="create" :rules="rules" ref="create" label-width="100px">
-                    <el-form-item label="用户名" prop="username">
+                    <el-form-item label="一级导航栏名称" prop="username">
                         <el-input v-model="create.username"></el-input>
                     </el-form-item>
-                    <el-form-item label="姓名" prop="name">
+                    <el-form-item label="一级导航栏url" prop="name">
                         <el-input v-model="create.name"></el-input>
                     </el-form-item>
-                    <el-form-item label="密码" prop="password">
+                    <el-form-item label="前后/台" prop="password">
                         <el-input v-model="create.password" type="password" auto-complete="off"></el-input>
                     </el-form-item>
-                    <el-form-item label="确认密码" prop="checkPass">
+                    <el-form-item label="二级导航栏名称" prop="checkPass">
                         <el-input v-model="create.checkPass" type="password"></el-input>
                     </el-form-item>
-                    <el-form-item label="电话" prop="phone">
+                    <el-form-item label="一级导航栏url" prop="phone">
                         <el-input v-model="create.phone"></el-input>
                     </el-form-item>
-                    <el-form-item label="邮箱" prop="email">
-                        <el-input v-model="create.email"></el-input>
-                    </el-form-item>
-                    <el-form-item label="是否启用">
-                        <el-switch on-text="" off-text="" v-model="create.is_active"></el-switch>
-                    </el-form-item>
-                </el-form>
+                   </el-form>
                 <div slot="footer" class="dialog-footer">
                     <el-button @click="dialogCreateVisible = false">取 消</el-button>
                     <el-button type="primary" :loading="createLoading" @click="createUser">确 定</el-button>
