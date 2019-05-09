@@ -185,7 +185,7 @@ class UserTouXiangApi(Resource):
             if file:
                 filename = secure_filename(file.filename)
                 print(filename)
-                if not os.path.exists(os.getcwd()+os.sep+os.path.join(current_app.config['UPLOAD_FOLDER']+os.sep+username, filename)):
+                if not os.path.exists(os.getcwd()+os.sep+os.path.join(current_app.config['UPLOAD_FOLDER']+os.sep,username)):
                     os.mkdir(os.getcwd()+os.sep+current_app.config['UPLOAD_FOLDER']+os.sep+username)
                 file.save(os.path.join(os.getcwd()+os.sep+current_app.config['UPLOAD_FOLDER']+os.sep+username, filename))
             user = User.query.filter_by(username=username).first()
