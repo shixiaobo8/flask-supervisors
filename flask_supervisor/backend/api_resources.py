@@ -291,6 +291,7 @@ class NavListApi(Resource):
     # 获取(查询)nav 列表
     #@marshal_with(Nav_fields,envelope='Nav')
     def get(self):
+        return [{"count":1,"data":{"nav_name":"test","nav_type":"qian","subnav_name":"sfdasf","subnav_url":"/test/test"}}]
         args = self.reqparse.parse_args()
         page_index = args['page']
         page_size = args['limit']

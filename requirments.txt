@@ -3,7 +3,7 @@ Flask-SQLAlchemy==2.3.2
 Flask-Migrate==2.3.0
 Flask-login
 flask-restful
-flask-scirpt
+flask-script
 mysql-connector
 flask-bootstrap
 flask-mongoalchemy
