@@ -291,7 +291,6 @@ class NavListApi(Resource):
     # 获取(查询)nav 列表
     #@marshal_with(Nav_fields,envelope='Nav')
     def get(self):
-        return [{"count":1,"data":{"nav_name":"test","nav_type":"qian","subnav_name":"sfdasf","subnav_url":"/test/test"}}]
         args = self.reqparse.parse_args()
         page_index = args['page']
         page_size = args['limit']
@@ -299,7 +298,9 @@ class NavListApi(Resource):
         navall = mysql_db.session.query(Nav).filter(Nav.is_del==0).join(subNav,Nav.id==subNav.nav_Id,isouter=True).all()
         # 分页
         page_navs = navall[(page_index-1)*page_size:page_size*page_index]
-        return {'code':0,'count':len(navall),'cureent_page':page_index,"page_size":page_size,'data':marshal(page_navs,Nav_fields)}
+        return {'code':0,'count':len(navall),'cureent_page':page_index,"page_sizes":page_size,'data':marshal(page_navs,Nav_fields)}
+        # return {"count": 1, "current_page": 1, "page_sizes": 10,
+        #     "data": [{"nav_name": "test", "nav_type": "qian", "subnav_name": "sfdasf", "subnav_url": "/test/test"}]}
 
     # 修改多个nav列表
     def post(self):

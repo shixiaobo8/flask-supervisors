@@ -4,7 +4,16 @@
 <div id="app">
     <template>
         <el-container>
-            <el-header>
+            <el-row style="height:40px;margin-top:20px;">
+  <el-col :span="24" ><div class="grid-content bg-purple-dark" style="backgroud-color:#85934D;">
+      <el-breadcrumb separator-class="el-icon-arrow-right" style="padding-left:20px;">
+  <el-breadcrumb-item :to="{ path: '/' }">后台首页</el-breadcrumb-item>
+  <el-breadcrumb-item>导航栏列表</el-breadcrumb-item>
+</el-breadcrumb>
+  </div></el-col>
+</el-row>
+
+            <el-header style="height:40px;">
                 <el-row>
                     <el-col :span="24">
                         <div class="grid-content bg-purple-dark">
@@ -27,24 +36,33 @@
                     </el-table-column>
                     <el-table-column
                             fixed
-                            label="日期"
+                            label="一级导航栏名称"
                             width="180">
                         <template slot-scope="scope">
-                            <i class="el-icon-time"></i>
-                            <span style="margin-left: 10px">{[ scope.row.date ]}</span>
+                            <span style="margin-left: 10px">{[ scope.row.nav_name ]}</span>
                         </template>
                     </el-table-column>
                     <el-table-column
-                            label="姓名"
+                            label="前后/台"
                             width="180">
                         <template slot-scope="scope">
-                            <el-popover trigger="hover" placement="top">
-                                <p>姓名: {[ scope.row.name ]}</p>
-                                <p>住址: {[ scope.row.address ]}</p>
-                                <div slot="reference" class="name-wrapper">
-                                    <el-tag size="medium">{[ scope.row.name ]}</el-tag>
-                                </div>
-                            </el-popover>
+                            <span style="margin-left: 10px">{[ scope.row.nav_type ]}</span>
+                        </template>
+                    </el-table-column>
+
+                    <el-table-column
+                            label="二级导航栏名称"
+                            width="180">
+                        <template slot-scope="scope">
+                            <span style="margin-left: 10px">{[ scope.row.subnav_name ]}</span>
+                        </template>
+                    </el-table-column>
+
+                    <el-table-column
+                            label="二级导航栏url"
+                            width="180">
+                        <template slot-scope="scope">
+                            <span style="margin-left: 10px">{[ scope.row.subnav_url ]}</span>
                         </template>
                     </el-table-column>
                     <el-table-column
@@ -74,7 +92,7 @@
                 <el-row>
                     <el-col :span="12">
                         <div class="grid-content bg-purple-light">
-                            <el-button @click="toggleSelection([tableData[1], tableData[2]])">切换第二、第三行的选中状态</el-button>
+<!--                            <el-button @click="toggleSelection([tableData[1], tableData[2]])">切换第二、第三行的选中状态</el-button>-->
                             <el-button @click="toggleSelection()">取消选择</el-button>
                         </div>
                     </el-col>
@@ -83,11 +101,11 @@
                             <el-pagination
                                     @size-change="handleSizeChange"
                                     @current-change="handleCurrentChange"
-                                    :current-page="currentPage4"
-                                    :page-sizes="[100, 200, 300, 400]"
-                                    :page-size="100"
+                                    :current-page="currentPage"
+                                    :page-sizes="[10,20,50]"
+                                    :page-size="page_size"
                                     layout="total, sizes, prev, pager, next, jumper"
-                                    :total="400">
+                                    :total="count">
                             </el-pagination>
 
                         </div>
@@ -117,30 +135,33 @@ var Main = {
     delimiters: ['{[', ']}'],
     data() {
       return {
-      currentPage1: 5,
-        currentPage2: 5,
-        currentPage3: 5,
-        currentPage4: 4,
+        currentPage: 1,
+        count:0,
+        page_size:10,
         search: '',
-        tableData: [{
-          date: '2016-05-02',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
-          date: '2016-05-04',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1517 弄'
-        }, {
-          date: '2016-05-01',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1519 弄'
-        }, {
-          date: '2016-05-03',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1516 弄'
-        }]
+        tableData: []
       }
     },
+    mounted: function () {
+            var _this = this;  //很重要！！
+            axios({
+                method: 'get',
+                url: '/houtai/NavList',
+                params: {
+                    username: '{{ current_user.username }}'
+                }
+            })
+                .then(function (response) {
+                    console.log(response.data.data);
+                    _this.tableData = response.data.data;
+                    _this.count = response.data.count;
+                    _this.current_page = response.data.current_page;
+                    _this.page_size = response.data.page_size;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        },
     methods: {
       handleEdit(index, row) {
         console.log(index, row);
@@ -171,8 +192,12 @@ var Main = {
       },
       handleCurrentChange(val) {
         console.log(`当前页: ${val}`);
+      },
+      goBack() {
+        console.log('go back');
       }
     }
+
 };
     var Ctor = Vue.extend(Main);
     new Ctor().$mount('#app');
