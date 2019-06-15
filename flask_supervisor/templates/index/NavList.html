@@ -5,19 +5,63 @@
     <template>
         <el-container>
             <el-row style="height:40px;margin-top:20px;">
-  <el-col :span="24" ><div class="grid-content bg-purple-dark" style="backgroud-color:#85934D;">
-      <el-breadcrumb separator-class="el-icon-arrow-right" style="padding-left:20px;">
-  <el-breadcrumb-item :to="{ path: '/' }">后台首页</el-breadcrumb-item>
-  <el-breadcrumb-item>导航栏列表</el-breadcrumb-item>
-</el-breadcrumb>
-  </div></el-col>
-</el-row>
+                <el-col :span="24">
+                    <div class="grid-content bg-purple-dark" style="backgroud-color:#85934D;">
+                        <el-breadcrumb separator-class="el-icon-arrow-right" style="padding-left:20px;">
+                            <el-breadcrumb-item :to="{ path: '/' }">后台首页</el-breadcrumb-item>
+                            <el-breadcrumb-item>导航栏列表</el-breadcrumb-item>
+                        </el-breadcrumb>
+                    </div>
+                </el-col>
+            </el-row>
 
             <el-header style="height:40px;">
                 <el-row>
                     <el-col :span="24">
                         <div class="grid-content bg-purple-dark">
+                            <!-- Form -->
                             <el-button @click="newAdd" type="success" icon="el-icon-plus" round>新增</el-button>
+
+                            <el-dialog title="新增导航栏" :visible.sync="dialogFormVisible">
+                                <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="100px"
+                                         class="demo-ruleForm">
+                                    <el-form-item label="一级导航栏名称" :label-width="selectWidth" prop="nav_name">
+                                        <template>
+                                            <el-select
+                                                    v-model="value"
+                                                    value-key = "nav_name"
+                                                    filterable
+                                                    allow-create
+                                                    placeholder="请选择已有一级导航栏或直接填写新增"
+                                                    @change="selectNavNameGet">
+                                                <el-option
+                                                        v-for="item in options"
+                                                        :key="item.value"
+                                                        :label="item.label"
+                                                        :value="item.value">
+                                                </el-option>
+                                            </el-select>
+                                        </template>
+                                    </el-form-item>
+                                    <el-form-item label="二级导航栏名称" :label-width="formLabelWidth" prop="subnav_name">
+                                        <el-input v-model="ruleForm.subnav_name" autocomplete="off"></el-input>
+                                    </el-form-item>
+                                    <el-form-item label="二级导航栏url" :label-width="formLabelWidth" prop="subnav_url">
+                                        <el-input v-model="ruleForm.subnav_url" autocomplete="off"></el-input>
+                                    </el-form-item>
+                                    <el-form-item label="导航栏类型" :label-width="formLabelWidth" prop="nav_type">
+                                        <el-select v-model="ruleForm.nav_type" placeholder="请选择导航栏类型">
+                                            <el-option label="前台" value="前台"></el-option>
+                                            <el-option label="后台" value="后台"></el-option>
+                                        </el-select>
+                                    </el-form-item>
+                                </el-form>
+                                <div slot="footer" class="dialog-footer">
+                                    <el-button @click="resetForm('ruleForm')" native-type="reset">重置</el-button>
+                                    <el-button type="primary" @click="submitForm('ruleForm')">新增</el-button>
+                                </div>
+                            </el-dialog>
+
                             <el-button @click="delMul" type="danger" icon="el-icon-delete" round>删除</el-button>
                         </div>
                     </el-col>
@@ -26,9 +70,15 @@
 
             <el-main>
                 <el-table
-                        :data="tableData.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))"
+                        :data="tableData.filter(data => !search || data.nav_name.toLowerCase().includes(search.toLowerCase()))"
                         ref="multipleTable"
                         @selection-change="handleSelectionChange"
+                        border
+                        row-key="id"
+                        lazy
+                        :load="load"
+                        default-expand-all
+                        :tree-props="{children: 'subnavs', hasChildren: 'hasChildren'}"
                         style="width: 100%">
                     <el-table-column
                             type="selection"
@@ -92,7 +142,6 @@
                 <el-row>
                     <el-col :span="12">
                         <div class="grid-content bg-purple-light">
-<!--                            <el-button @click="toggleSelection([tableData[1], tableData[2]])">切换第二、第三行的选中状态</el-button>-->
                             <el-button @click="toggleSelection()">取消选择</el-button>
                         </div>
                     </el-col>
@@ -128,18 +177,85 @@
   .el-pagination {
     padding:2px 280px;
   }
+  .el-select {
+    width: 450px;
+  }
+
+
+
+
 
 </style>
 <script>
 var Main = {
     delimiters: ['{[', ']}'],
     data() {
+      var checkUri = (rule, value, callback) => {
+        if (!value) {
+          return callback(new Error('url不能为空'));
+        }
+        setTimeout(() => {
+          if (!value.startsWith('/')) {
+            callback(new Error('请输入有效的url,例如/abc/sss'));
+          } else {
+            if (value.length < 4) {
+              callback(new Error('url长度必须大于4!'));
+            } else {
+              callback();
+            }
+          }
+        }, 1000);
+      };
+      var checkNavName = (rule, value, callback) => {
+        if (!value) {
+          return callback(new Error('一级导航名称不能为空'));
+        }
+        setTimeout(() => {
+          if (!value.startsWith('/')) {
+            callback(new Error('请输入有效的url,例如/abc/sss'));
+          } else {
+            if ((value.length < 4)||(value.length > 4)) {
+              callback(new Error('url长度必须大于4并且小于12位!'));
+            } else {
+              callback();
+            }
+          }
+        }, 1000);
+      };
       return {
         currentPage: 1,
         count:0,
         page_size:10,
         search: '',
-        tableData: []
+        loading: true,
+         dialogTableVisible: false,
+        dialogFormVisible: false,
+        ruleForm: {
+          nav_name: '',
+          nav_type: '',
+          subnav_name: '',
+          subnav_url: '',
+        },
+        formLabelWidth: '120px',
+        selectWidth: '120px',
+        options: [],
+        value:[],
+        tableData: [],
+        rules: {
+          nav_name: [
+            { required: true, message: '请选择一级导航栏名称或直接填写新增', trigger:['blur', 'change']}
+          ],
+          nav_type: [
+            { required: true, message: '请选择导航栏分类', trigger:['blur', 'change']}
+          ],
+          subnav_name: [
+            { required: true, message: '请输入二级导航栏名称', trigger: 'blur',type:'string' },
+            { min: 4, max: 12, message: '长度在 4 到 12 个字符', trigger: 'blur' }
+          ],
+          subnav_url: [
+            {required: true,validator: checkUri, trigger: ['blur', 'change']}
+          ]
+        }
       }
     },
     mounted: function () {
@@ -157,6 +273,10 @@ var Main = {
                     _this.count = response.data.count;
                     _this.current_page = response.data.current_page;
                     _this.page_size = response.data.page_size;
+                    for (i = 0; i < response.data.data.length; i++) {
+                          _this.options.push({label:response.data.data[i].nav_name,value:response.data.data[i].nav_name});
+                    }
+                    console.log(_this.options);
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -170,7 +290,7 @@ var Main = {
         console.log(index, row);
       },
       newAdd() {
-            console.log("正在新增行");
+            this.dialogFormVisible = true;
       },
       delMul() {
             console.log("正在删除行");
@@ -195,12 +315,57 @@ var Main = {
       },
       goBack() {
         console.log('go back');
+      },
+      selectNavNameGet(value){
+           console.log("选中"+value);
+          let obj = {};
+          obj = this.options.find((item)=>{
+              return item.value === value;
+          });
+          this.ruleForm.nav_name = value;
+          return obj;
+      },
+      submitForm(formName) {
+        this.startUsingLoading = true;
+        var that = this;
+        this.$refs[formName].validate((valid) => {
+          if (valid) {
+                        axios({
+                            method: 'POST',
+                            url: '/houtai/Nav',
+                            data: this.ruleForm,
+                        })
+                            .then(function (response) {
+                                return;
+                                setTimeout(() => {
+                                    toastr.info("修改成功!");
+                                    console.log(that);
+                                    that.startUsingDialog = false;
+                                    that.startUsingLoading = false;
+                                    that.dialogFormVisible = false;
+                                    that.$refs[formName].resetFields();
+                                }, 1000);
+                                window.location.reload();
+                            })
+                            .catch(function (error) {
+                                console.log(error);
+                            });
+                        ;
+                    } else {
+                        console.log('error submit!!');
+                        return false;
+                    }
+                });
+            },
+      resetForm(formName) {
+        this.$refs[formName].resetFields();
       }
     }
 
 };
     var Ctor = Vue.extend(Main);
     new Ctor().$mount('#app');
+
 
 
 </script>

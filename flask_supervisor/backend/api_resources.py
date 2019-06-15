@@ -6,7 +6,7 @@
 from flask_restful import abort,Resource,reqparse,fields,marshal_with,marshal
 # from flask_supervisor.supervisor.models import Nav,subNav
 from flask_supervisor import mysql_db
-from sqlalchemy import and_
+from sqlalchemy import and_,or_
 from flask_supervisor.supervisor.models import Host,Group,Node,User,Nav,subNav
 from flask_login import login_user,logout_user,LoginManager
 from ..utils import generate_response,CustomFlaskErr
@@ -21,6 +21,13 @@ import time,os
 class TouXiangUrl(fields.Raw):
     def format(self, value):
         return "/static/" + value;
+
+class NavType(fields.Raw):
+    def format(self, value):
+        if value:
+            return '前台'
+        else:
+            return '后台'
 
 @login_manager.user_loader
 def load_user(userid):
@@ -227,31 +234,33 @@ class NavApi(Resource):
         # 获取request json 参数
         json_args = self.json_args
         # 获取二级导航栏参数
-        sNavs = json_args['sNavs']
-        # 查询是否含有相同的菜单名称和url
-        exists_fName = Nav.query.filter_by(navTitle=json_args['fNavName']).first()
-        exists_fUrl = ''
-        if json_args['fNavUrl'] != '':
-            exists_fUrl = Nav.query.filter_by(navUrl=json_args['fNavUrl']).first()
-        if exists_fUrl or exists_fName:
-            current_app.logger.error("查询出错: 已存在相同的一级导航栏信息")
-            raise CustomFlaskErr("vAlreadyExistsError1")
-        else:
-            # 先添加一级菜单,然后关联二级菜单
-            firstNav = Nav(json_args['fNavName'], json_args['fNavUrl'], int(json_args['type']),
-                           int(json_args['navPris'][0]))
-            for secondNav in sNavs:
-                # 检查是否含有存在的二级菜单
-                exists_sNav = subNav.query.filter_by(title=secondNav['sNavName'], nav_url=secondNav['sNavUrl']).first()
-                if exists_sNav:
-                    current_app.logger.error("查询出错: 已存在相同的二级导航栏信息")
-                    raise CustomFlaskErr("NavAlreadyExistsError2")
-                else:
-                    sub_nav = subNav(secondNav['sNavName'], secondNav['sNavUrl'])
-                    mysql_db.session.add(sub_nav)
-                    # 关联二级菜单
-                    firstNav.subnavs.append(sub_nav)
+        nav_name = json_args['nav_name']
+        nav_type = json_args['nav_type']
+        if nav_type == '前台':
+            nav_type = 1
+        elif nav_type == '后台':
+            nav_type = 0
+        subnav_url = json_args['subnav_url']
+        subnav_name = json_args['subnav_name']
+        # 查询是否含有相同的一级导航栏
+        exists_fName = Nav.query.filter_by(navTitle=nav_name).first()
+        firstNav = Nav(nav_name, '', nav_type, 1)
+        sub_nav = subNav(subnav_name, subnav_url)
+        # 检查是否含有存在的二级菜单
+        exists_sNav = subNav.query.filter(or_(subNav.title == subnav_name, subNav.nav_url == subnav_url)).first()
+        if exists_sNav:
+            current_app.logger.error("查询出错: 已存在相同的二级导航栏信息")
+            raise CustomFlaskErr("NavAlreadyExistsError2")
+        # 先添加一级菜单,然后关联二级菜单
+        if not exists_fName:
+            mysql_db.session.add(sub_nav)
+            # 关联二级菜单
+            firstNav.subnavs.append(sub_nav)
             mysql_db.session.add(firstNav)
+            mysql_db.session.commit()
+        else:
+            sub_nav.nav_Id=exists_fName.id
+            mysql_db.session.add(sub_nav)
             mysql_db.session.commit()
         return generate_response(data=json_args)
 
@@ -266,14 +275,14 @@ class NavApi(Resource):
 
 # 输出字段
 subNav_fields = {
-    'subtitle':fields.String(attribute='title'),
-    'suburl': fields.String(attribute='nav_url'),
+    'subnav_name':fields.String(attribute='title'),
+    'subnav_url': fields.String(attribute='nav_url'),
 }
 
 Nav_fields = {
     'id':fields.Integer,
-    'title':fields.String(attribute='navTitle'),
-    'type':fields.Integer(attribute='navType'),
+    'nav_name':fields.String(attribute='navTitle'),
+    'nav_type':NavType(attribute='navType'),
     'url': fields.String(attribute='navUrl'),
     'subnavs': fields.List(fields.Nested(subNav_fields,allow_null=True,default=''),default='')
 }
