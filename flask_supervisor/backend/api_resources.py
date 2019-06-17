@@ -7,6 +7,7 @@ from flask_restful import abort,Resource,reqparse,fields,marshal_with,marshal
 # from flask_supervisor.supervisor.models import Nav,subNav
 from flask_supervisor import mysql_db
 from sqlalchemy import and_,or_
+from sqlalchemy.orm import joinedload,contains_eager,subqueryload
 from flask_supervisor.supervisor.models import Host,Group,Node,User,Nav,subNav
 from flask_login import login_user,logout_user,LoginManager
 from ..utils import generate_response,CustomFlaskErr
@@ -304,12 +305,32 @@ class NavListApi(Resource):
         page_index = args['page']
         page_size = args['limit']
         # # 先获取所有满足条件的nav isouter=True 表示left join all 方法得到一个列表,这里不使用paginate,会报错
-        navall = mysql_db.session.query(Nav).filter(Nav.is_del==0).join(subNav,Nav.id==subNav.nav_Id,isouter=True).all()
+        # navall = mysql_db.session.query(Nav).filter(Nav.is_del==0).join(subNav,Nav.id==subNav.nav_Id,isouter=True).all()
+        # navall = mysql_db.session.query(subNav).join(subNav.nav_Id).filter(Nav.is_del==0).options(contains_eager(Nav.subnavs)).all()
+        # navall = mysql_db.session.query(Nav).options(joinedload(Nav.subnavs)).filter(Nav.is_del==0).all()
+        # navall = mysql_db.session.query(subNav).options(subqueryload(subNav.nav_Id)).filter(Nav.is_del==0).all()
+        navall = mysql_db.session.query(subNav.id,Nav.id,subNav.title,subNav.nav_url,Nav.navTitle,Nav.navType,Nav.navUrl).filter(Nav.is_del==0).join(subNav,Nav.id==subNav.nav_Id,isouter=True).all()
+        # sql = '''select `sv_subnavs`.*,`sv_navs`.navTitle,`sv_navs`.navType from sv_subnavs  LEFT JOIN `sv_navs` on `sv_subnavs`.nav_Id = `sv_navs`.id where sv_subnavs.`is_del` = 0;'''
+        # navall = mysql_db.session.query(sql)
         # 分页
         page_navs = navall[(page_index-1)*page_size:page_size*page_index]
-        return {'code':0,'count':len(navall),'cureent_page':page_index,"page_sizes":page_size,'data':marshal(page_navs,Nav_fields)}
+        res_obj=[]
+        for nav in page_navs:
+            new_nav_obj = {}
+            new_nav_obj['id'] = nav[0]
+            new_nav_obj['nav_id'] = nav[1]
+            new_nav_obj['subnav_name'] = nav[2]
+            new_nav_obj['subnav_url'] = nav[3]
+            new_nav_obj['nav_name'] = nav[4]
+            if nav[5]:
+                new_nav_obj['nav_type'] = 1
+            else:
+                new_nav_obj['nav_type'] = 0
+            new_nav_obj['nav_url'] = nav[6]
+            res_obj.append(new_nav_obj)
+        return {'code':0,'count':len(navall),'cureent_page':page_index,"page_sizes":page_size,'data':res_obj}
         # return {"count": 1, "current_page": 1, "page_sizes": 10,
-        #     "data": [{"nav_name": "test", "nav_type": "qian", "subnav_name": "sfdasf", "subnav_url": "/test/test"}]}
+            # "data": [{"nav_name": "test", "nav_type": "qian", "subnav_name": "sfdasf", "subnav_url": "/test/test"},{"nav_name": "test", "nav_type": "qian", "subnav_name": "sfdasf", "subnav_url": "/test/test"}]}
 
     # 修改多个nav列表
     def post(self):

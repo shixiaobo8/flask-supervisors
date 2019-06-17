@@ -29,14 +29,14 @@
                                         <template>
                                             <el-select
                                                     v-model="value"
-                                                    value-key = "nav_name"
+                                                    value-key="nav_name"
                                                     filterable
                                                     allow-create
                                                     placeholder="请选择已有一级导航栏或直接填写新增"
                                                     @change="selectNavNameGet">
                                                 <el-option
-                                                        v-for="item in options"
-                                                        :key="item.value"
+                                                        v-for="(item,index) in options"
+                                                        :key="item.id"
                                                         :label="item.label"
                                                         :value="item.value">
                                                 </el-option>
@@ -72,47 +72,77 @@
                 <el-table
                         :data="tableData.filter(data => !search || data.nav_name.toLowerCase().includes(search.toLowerCase()))"
                         ref="multipleTable"
+                        class="tb-edit"
+                        highlight-current-row
+                        @row-click="handleCurrentChange"
                         @selection-change="handleSelectionChange"
                         border
-                        row-key="id"
-                        lazy
-                        :load="load"
-                        default-expand-all
-                        :tree-props="{children: 'subnavs', hasChildren: 'hasChildren'}"
+                        :default-sort="{prop: 'id', order: 'descending'}"
                         style="width: 100%">
                     <el-table-column
                             type="selection"
                             width="55">
                     </el-table-column>
+
+                    <el-table-column
+                            prop="id"
+                            fixed
+                            sortable
+                            label="ID"
+                            width="180">
+                        <template slot-scope="scope">
+                            <span style="margin-left: 10px">{[ scope.row.id ]}</span>
+                        </template>
+                    </el-table-column>
                     <el-table-column
                             fixed
                             label="一级导航栏名称"
+                            @change="handleEdit(scope.$index, scope.row)"
                             width="180">
                         <template slot-scope="scope">
-                            <span style="margin-left: 10px">{[ scope.row.nav_name ]}</span>
+                            <span v-if="scope.row.isSet">
+                                <el-input size="mini" placeholder="请输入内容" v-model="scope.row.nav_name">
+                                </el-input>
+                            </span>
+                            <span v-else style="margin-left: 10px">{[ scope.row.nav_name ]}</span>
                         </template>
                     </el-table-column>
                     <el-table-column
                             label="前后/台"
+                            @change="handleEdit(scope.$index, scope.row)"
                             width="180">
                         <template slot-scope="scope">
-                            <span style="margin-left: 10px">{[ scope.row.nav_type ]}</span>
+                            <span v-if="scope.row.isSet">
+                                <el-input size="mini" placeholder="请输入选择类型" v-model="scope.row.nav_type">
+                                </el-input>
+                            </span>
+                            <span v-else style="margin-left: 10px">{[ scope.row.nav_type ]}</span>
                         </template>
                     </el-table-column>
 
                     <el-table-column
                             label="二级导航栏名称"
+                            @change="handleEdit(scope.$index, scope.row)"
                             width="180">
                         <template slot-scope="scope">
-                            <span style="margin-left: 10px">{[ scope.row.subnav_name ]}</span>
+                            <span v-if="scope.row.isSet">
+                                <el-input size="mini" placeholder="请输入内容" v-model="scope.row.subnav_name">
+                                </el-input>
+                            </span>
+                            <span v-else style="margin-left: 10px">{[ scope.row.subnav_name ]}</span>
                         </template>
                     </el-table-column>
 
                     <el-table-column
                             label="二级导航栏url"
+                            @change="handleEdit(scope.$index, scope.row)"
                             width="180">
                         <template slot-scope="scope">
-                            <span style="margin-left: 10px">{[ scope.row.subnav_url ]}</span>
+                            <span v-if="scope.row.isSet">
+                                <el-input size="mini" placeholder="请输入内容" v-model="scope.row.subnav_url">
+                                </el-input>
+                            </span>
+                            <span v-else style="margin-left: 10px">{[ scope.row.subnav_url ]}</span>
                         </template>
                     </el-table-column>
                     <el-table-column
@@ -121,18 +151,30 @@
                             <el-input
                                     v-model="search"
                                     size="mini"
-                                    placeholder="输入关键字搜索"/>
+                                    placeholder="输入一级导航栏关键字搜索"/>
                         </template>
                         <template slot-scope="scope">
-                            <el-button
-                                    size="mini"
-                                    @click="handleEdit(scope.$index, scope.row)">编辑
-                            </el-button>
-                            <el-button
-                                    size="mini"
-                                    type="danger"
-                                    @click="handleDelete(scope.$index, scope.row)">删除
-                            </el-button>
+                            <span class="el-tag el-tag--info el-tag--mini" style="cursor: pointer;"
+                                  @click="pwdChange(scope.row,scope.$index,true)">
+                                {[scope.row.isSet?'保存':"修改"]}
+                            </span>
+                            <span v-if="!scope.row.isSet" class="el-tag el-tag--danger el-tag--mini"
+                                  style="cursor: pointer;">
+                                删除
+                            </span>
+                            <span v-else class="el-tag  el-tag--mini" style="cursor: pointer;"
+                                  @click="pwdChange(scope.row,scope.$index,false)">
+                                取消
+                            </span>
+                            <!--                            <el-button-->
+                            <!--                                    size="mini"-->
+                            <!--                                    @click="handleEdit(scope.$index, scope.row)">编辑-->
+                            <!--                            </el-button>-->
+                            <!--                            <el-button-->
+                            <!--                                    size="mini"-->
+                            <!--                                    type="danger"-->
+                            <!--                                    @click="handleDelete(scope.$index, scope.row)">删除-->
+                            <!--                            </el-button>-->
                         </template>
                     </el-table-column>
                 </el-table>
@@ -149,14 +191,12 @@
                         <div class="grid-content bg-purple-light" style="margin-right:10px;">
                             <el-pagination
                                     @size-change="handleSizeChange"
-                                    @current-change="handleCurrentChange"
                                     :current-page="currentPage"
                                     :page-sizes="[10,20,50]"
                                     :page-size="page_size"
                                     layout="total, sizes, prev, pager, next, jumper"
                                     :total="count">
                             </el-pagination>
-
                         </div>
                     </el-col>
                 </el-row>
@@ -175,11 +215,31 @@
     border-radius: 4px;
   }
   .el-pagination {
-    padding:2px 280px;
+    padding:2px 20px;
   }
   .el-select {
     width: 450px;
   }
+.tb-edit .el-input {
+    display: none
+}
+.tb-edit .current-row .el-input {
+    display: block
+}
+.tb-edit .current-row .el-input+span {
+    display: none
+}
+.el-table-add-row {
+    margin-top: 10px;
+    width: 100%;
+    height: 34px;
+    border: 1px dashed #c1c1cd;
+    border-radius: 3px;
+    cursor: pointer;
+    justify-content: center;
+    display: flex;
+    line-height: 34px;
+ }
 
 
 
@@ -238,7 +298,10 @@ var Main = {
         },
         formLabelWidth: '120px',
         selectWidth: '120px',
+        showEdit: [], //显示编辑框
+        showBtn: [],
         options: [],
+        showBtnOrdinary: true,
         value:[],
         tableData: [],
         rules: {
@@ -256,10 +319,11 @@ var Main = {
             {required: true,validator: checkUri, trigger: ['blur', 'change']}
           ]
         }
-      }
+        }
     },
-    mounted: function () {
-            var _this = this;  //很重要！！
+    methods: {
+      getNavList() {
+            var _this = this;
             axios({
                 method: 'get',
                 url: '/houtai/NavList',
@@ -282,12 +346,68 @@ var Main = {
                     console.log(error);
                 });
         },
-    methods: {
+        //修改
+                pwdChange(row, index, cg) {
+                    var _this = this;
+                    console.log(cg);
+                    console.log(row.isSet);
+                    //点击修改 判断是否已经保存所有操作
+                    console.log("正在修改行数据");
+                    for (let i of _this.tableData) {
+                        flag = false;
+                        for( let j in Object.getOwnPropertyNames(i)){
+                            let key = Object.getOwnPropertyNames(i)[j];
+                            let val = i[key];
+                            if(val.length == 0 && key != "nav_url"){
+                                flag = true;
+                                return flag;
+                            }
+                        }
+                        if (flag) {
+                            _this.$message.warning("请先保存当前编辑项");
+                            return false;
+                        }
+                    }
+                    //是否是取消操作
+                    if (!cg) {
+                        console.log(222);
+                       // 删除行
+                       // if (!_this.tableData.id) _this.tableData.splice(index, 1);
+                        if(row.tableData){
+                            cg=true;
+                        }
+                        return row.isSet = !row.isSet;
+                        pwdChange(row, index, true);
+                    }
+                    //提交数据
+                    if (row.isSet) {
+                        //项目是模拟请求操作  自己修改下
+                        (function () {
+                            let data = JSON.parse(JSON.stringify( _this.tableData));
+                            console.log(row[index]);
+                            for (let k in data) row[k] = data[k];
+                            _this.$message({
+                                type: 'success',
+                                message: "保存成功!"
+                            });
+                            //然后这边重新读取表格数据
+                            _this.getNavList;
+                            row.isSet = false;
+                        })();
+                    } else {
+                        _this.tableData.sel = JSON.parse(JSON.stringify(row));
+                        row.isSet = true;
+                    }
+                },
       handleEdit(index, row) {
-        console.log(index, row);
+                console.log(index, row);
       },
       handleDelete(index, row) {
         console.log(index, row);
+      },
+      handleCurrentChange(row, event, column) {
+                return false;
+                //console.log(row, event, column, event.currentTarget)
       },
       newAdd() {
             this.dialogFormVisible = true;
@@ -310,9 +430,7 @@ var Main = {
       handleSizeChange(val) {
         console.log(`每页 ${val} 条`);
       },
-      handleCurrentChange(val) {
-        console.log(`当前页: ${val}`);
-      },
+
       goBack() {
         console.log('go back');
       },
@@ -336,35 +454,43 @@ var Main = {
                             data: this.ruleForm,
                         })
                             .then(function (response) {
-                                return;
-                                setTimeout(() => {
-                                    toastr.info("修改成功!");
-                                    console.log(that);
+                                       that.$message({
+								        message: '新增成功',
+								        type: 'success'
+								        });
                                     that.startUsingDialog = false;
                                     that.startUsingLoading = false;
                                     that.dialogFormVisible = false;
                                     that.$refs[formName].resetFields();
-                                }, 1000);
-                                window.location.reload();
+                                that.getNavList();
                             })
                             .catch(function (error) {
-                                console.log(error);
+                                that.$message({
+								        message: '新增失败,可能出现服务器错误!',
+								        type: 'error'
+								        });
                             });
                         ;
                     } else {
-                        console.log('error submit!!');
-                        return false;
+                        that.$message({
+								        message: '表单验证失败!',
+								        type: 'error'
+					    });
                     }
                 });
             },
       resetForm(formName) {
         this.$refs[formName].resetFields();
       }
+    },
+    mounted(){
+        this.getNavList();
     }
-
 };
     var Ctor = Vue.extend(Main);
     new Ctor().$mount('#app');
+
+
 
 
 
