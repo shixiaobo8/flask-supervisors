@@ -267,11 +267,53 @@ class NavApi(Resource):
 
     # 修改一个
     def put(self):
-        self.post()
+        # 获取request json 参数
+        json_args = self.json_args
+        # 获取二级导航栏参数
+        nav_name = json_args['nav_name']
+        nav_type = json_args['nav_type']
+        subnav_id = json_args['id']
+        nav_id = json_args['nav_id']
+        if nav_type == '前台':
+            nav_type = 1
+        elif nav_type == '后台':
+            nav_type = 0
+        subnav_url = json_args['subnav_url']
+        subnav_name = json_args['subnav_name']
+        # 查询是否含有相同的一级导航栏
+        exists_fName = Nav.query.filter_by(id=nav_id).first()
+        # 检查是否含有存在的二级菜单
+        exists_sNav = subNav.query.filter_by(id=subnav_id).first()
+        try:
+            # 修改数据库信息
+            exists_sNav.title = subnav_name
+            exists_sNav.nav_url = subnav_url
+            exists_fName.nav_name = nav_name
+            exists_fName.nav_type = nav_type
+            mysql_db.session.commit()
+            return {'code': 20000, 'message': "更新成功!"}
+        except Exception as e:
+            message = "更新失败:" + str(e)
+            return {'code': 20002, 'message': message}
+
+
 
     # 删除一个
     def delete(self):
-        pass
+        # 获取request json 参数
+        json_args = self.json_args
+        # 获取二级导航栏参数
+        subnav_id = json_args['subnav_id']
+        # 检查是否含有存在的二级菜单
+        exists_sNav = subNav.query.filter_by(id=subnav_id).first()
+        try:
+            # 修改数据库信息
+            exists_sNav.is_del = 1
+            mysql_db.session.commit()
+            return {'code': 20000, 'message': "删除成功!"}
+        except Exception as e:
+            message = "删除失败:" + str(e)
+            return {'code': 20002, 'message': message}
 
 
 # 输出字段
@@ -294,22 +336,25 @@ class NavListApi(Resource):
     # 请求参数处理
     def __init__(self):
         self.reqparse = reqparse.RequestParser()
-        self.reqparse.add_argument('page', type = int, default=1, location='args',help='第几个分页')
-        self.reqparse.add_argument('limit', type = int, default=10 , location='args',help='每页显示多少')
+        self.reqparse.add_argument('currentPage', type = int, default=1, location='args',help='第几个分页')
+        self.reqparse.add_argument('page_size', type = int, default=10 , location='args',help='每页显示多少')
+        # 获取request json 参数
+        self.json_args = request.json
         super(NavListApi,self).__init__()
 
     # 获取(查询)nav 列表
     #@marshal_with(Nav_fields,envelope='Nav')
     def get(self):
         args = self.reqparse.parse_args()
-        page_index = args['page']
-        page_size = args['limit']
+        print(args)
+        page_index = args['currentPage']
+        page_size = args['page_size']
         # # 先获取所有满足条件的nav isouter=True 表示left join all 方法得到一个列表,这里不使用paginate,会报错
         # navall = mysql_db.session.query(Nav).filter(Nav.is_del==0).join(subNav,Nav.id==subNav.nav_Id,isouter=True).all()
         # navall = mysql_db.session.query(subNav).join(subNav.nav_Id).filter(Nav.is_del==0).options(contains_eager(Nav.subnavs)).all()
         # navall = mysql_db.session.query(Nav).options(joinedload(Nav.subnavs)).filter(Nav.is_del==0).all()
         # navall = mysql_db.session.query(subNav).options(subqueryload(subNav.nav_Id)).filter(Nav.is_del==0).all()
-        navall = mysql_db.session.query(subNav.id,Nav.id,subNav.title,subNav.nav_url,Nav.navTitle,Nav.navType,Nav.navUrl).filter(Nav.is_del==0).join(subNav,Nav.id==subNav.nav_Id,isouter=True).all()
+        navall = mysql_db.session.query(subNav.id,Nav.id,subNav.title,subNav.nav_url,Nav.navTitle,Nav.navType,Nav.navUrl).filter(Nav.is_del==0).join(subNav,Nav.id==subNav.nav_Id,isouter=True).filter(subNav.is_del==0).all()
         # sql = '''select `sv_subnavs`.*,`sv_navs`.navTitle,`sv_navs`.navType from sv_subnavs  LEFT JOIN `sv_navs` on `sv_subnavs`.nav_Id = `sv_navs`.id where sv_subnavs.`is_del` = 0;'''
         # navall = mysql_db.session.query(sql)
         # 分页
@@ -328,7 +373,7 @@ class NavListApi(Resource):
                 new_nav_obj['nav_type'] = 0
             new_nav_obj['nav_url'] = nav[6]
             res_obj.append(new_nav_obj)
-        return {'code':0,'count':len(navall),'cureent_page':page_index,"page_sizes":page_size,'data':res_obj}
+        return {'code':0,'count':len(navall),'cureent_page':page_index,"page_size":page_size,'data':res_obj}
         # return {"count": 1, "current_page": 1, "page_sizes": 10,
             # "data": [{"nav_name": "test", "nav_type": "qian", "subnav_name": "sfdasf", "subnav_url": "/test/test"},{"nav_name": "test", "nav_type": "qian", "subnav_name": "sfdasf", "subnav_url": "/test/test"}]}
 
@@ -343,4 +388,17 @@ class NavListApi(Resource):
 
     # 删除多个列表
     def delete(self):
-        pass
+        # 获取request json 参数
+        json_args = self.json_args
+        # 获取二级导航栏参数
+        delete_data = json_args['delete_data']
+        ids = [ data['id'] for data in delete_data ]
+        try:
+            # 修改数据库信息
+            for id in ids:
+                subNav.query.filter(subNav.id==id).update({"is_del":1})
+            mysql_db.session.commit()
+            return {'code': 20000, 'message': "删除成功!"}
+        except Exception as e:
+            message = "删除失败:" + str(e)
+            return {'code': 20002, 'message': message}

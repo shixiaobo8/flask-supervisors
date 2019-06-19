@@ -72,7 +72,6 @@
                 <el-table
                         :data="tableData.filter(data => !search || data.nav_name.toLowerCase().includes(search.toLowerCase()))"
                         ref="multipleTable"
-                        class="tb-edit"
                         highlight-current-row
                         @row-click="handleCurrentChange"
                         @selection-change="handleSelectionChange"
@@ -87,6 +86,7 @@
                     <el-table-column
                             prop="id"
                             fixed
+                            align="center"
                             sortable
                             label="ID"
                             width="180">
@@ -95,8 +95,8 @@
                         </template>
                     </el-table-column>
                     <el-table-column
-                            fixed
                             label="一级导航栏名称"
+                            align="center"
                             @change="handleEdit(scope.$index, scope.row)"
                             width="180">
                         <template slot-scope="scope">
@@ -109,20 +109,30 @@
                     </el-table-column>
                     <el-table-column
                             label="前后/台"
+                            align="center"
                             @change="handleEdit(scope.$index, scope.row)"
                             width="180">
                         <template slot-scope="scope">
                             <span v-if="scope.row.isSet">
-                                <el-input size="mini" placeholder="请输入选择类型" v-model="scope.row.nav_type">
-                                </el-input>
+                                <el-switch
+                                  v-model="scope.row.nav_type"
+                                  active-text="前台"
+                                  inactive-text="后台"
+                                active-value="1"
+                                  on-value="1"
+                                  off-value="0"
+                                inactive-value="0"
+                                :change="navTypeChange(scope.row)">
+                                </el-switch>
                             </span>
-                            <span v-else style="margin-left: 10px">{[ scope.row.nav_type ]}</span>
+                            <span v-else style="margin-left: 10px" >{[ scope.row.nav_type == 0?"后台":"前台" ]}</span>
                         </template>
                     </el-table-column>
 
                     <el-table-column
                             label="二级导航栏名称"
                             @change="handleEdit(scope.$index, scope.row)"
+                            align="center"
                             width="180">
                         <template slot-scope="scope">
                             <span v-if="scope.row.isSet">
@@ -136,6 +146,7 @@
                     <el-table-column
                             label="二级导航栏url"
                             @change="handleEdit(scope.$index, scope.row)"
+                            align="center"
                             width="180">
                         <template slot-scope="scope">
                             <span v-if="scope.row.isSet">
@@ -145,36 +156,36 @@
                             <span v-else style="margin-left: 10px">{[ scope.row.subnav_url ]}</span>
                         </template>
                     </el-table-column>
-                    <el-table-column
-                            align="right">
-                        <template slot="header" slot-scope="scope">
+                    <el-table-column align="center" label="请搜索">
+                        <template slot="header" slot-scope="scope" >
                             <el-input
                                     v-model="search"
                                     size="mini"
                                     placeholder="输入一级导航栏关键字搜索"/>
                         </template>
                         <template slot-scope="scope">
-                            <span class="el-tag el-tag--info el-tag--mini" style="cursor: pointer;"
-                                  @click="pwdChange(scope.row,scope.$index,true)">
-                                {[scope.row.isSet?'保存':"修改"]}
+                            <div v-if="!scope.row.isSet">
+                            <span v-if="!scope.row.isSet" class="el-tag el-tag--info el-tag--mini" style="cursor: pointer;"
+                                  @click="rowEditChange(scope.row,scope.$index,true)">
+                                 修改
                             </span>
-                            <span v-if="!scope.row.isSet" class="el-tag el-tag--danger el-tag--mini"
-                                  style="cursor: pointer;">
-                                删除
+                            <span  class="el-tag el-tag--danger el-tag--mini"
+                                      style="cursor: pointer;"
+                                      @click="rowDeleteChange(scope.row,scope.$index,true)">
+                                  删除
                             </span>
-                            <span v-else class="el-tag  el-tag--mini" style="cursor: pointer;"
-                                  @click="pwdChange(scope.row,scope.$index,false)">
-                                取消
-                            </span>
-                            <!--                            <el-button-->
-                            <!--                                    size="mini"-->
-                            <!--                                    @click="handleEdit(scope.$index, scope.row)">编辑-->
-                            <!--                            </el-button>-->
-                            <!--                            <el-button-->
-                            <!--                                    size="mini"-->
-                            <!--                                    type="danger"-->
-                            <!--                                    @click="handleDelete(scope.$index, scope.row)">删除-->
-                            <!--                            </el-button>-->
+                            </div>
+                            <div v-else>
+                                <span class="el-tag el-tag--info el-tag--mini" style="cursor: pointer;"
+                                          @click="saveEditChange(scope.row,scope.$index,true)">
+                                    保存
+                                </span>
+
+                                <span class="el-tag  el-tag--mini" style="cursor: pointer;"
+                                          @click="cancelEditChange(scope.row,scope.$index,false)">
+                                    取消
+                                </span>
+                            </div>
                         </template>
                     </el-table-column>
                 </el-table>
@@ -191,6 +202,7 @@
                         <div class="grid-content bg-purple-light" style="margin-right:10px;">
                             <el-pagination
                                     @size-change="handleSizeChange"
+                                    @current-change="handleCurrentPageChange"
                                     :current-page="currentPage"
                                     :page-sizes="[10,20,50]"
                                     :page-size="page_size"
@@ -240,7 +252,13 @@
     display: flex;
     line-height: 34px;
  }
+ .el-table .warning-row {
+    background: oldlace;
+  }
 
+  .el-table .success-row {
+    background: #f0f9eb;
+  }
 
 
 
@@ -322,17 +340,45 @@ var Main = {
         }
     },
     methods: {
+      changeLineData(data){
+            var _this = this;
+            axios({
+                method: 'put',
+                url: '/houtai/Nav',
+                data:data
+            })
+                .then(function (response) {
+                    if(response.data.code==20000){
+                        _this.$message({
+                           type: 'success',
+                           message: "更新成功!"
+                        });
+                    }else{
+                        _this.$message({
+                           type: 'warning',
+                           message: response.message
+                        });
+                    }
+                })
+                .catch(function (error) {
+                    _this.$message({
+                           type: 'error',
+                           message: "服务器内部错误,请联系管理员!"
+                        });
+                });
+      },
       getNavList() {
             var _this = this;
             axios({
                 method: 'get',
                 url: '/houtai/NavList',
                 params: {
-                    username: '{{ current_user.username }}'
+                    username: '{{ current_user.username }}',
+                    page_size: _this.page_size,
+                    currentPage: _this.currentPage
                 }
             })
                 .then(function (response) {
-                    console.log(response.data.data);
                     _this.tableData = response.data.data;
                     _this.count = response.data.count;
                     _this.current_page = response.data.current_page;
@@ -340,80 +386,167 @@ var Main = {
                     for (i = 0; i < response.data.data.length; i++) {
                           _this.options.push({label:response.data.data[i].nav_name,value:response.data.data[i].nav_name});
                     }
-                    console.log(_this.options);
                 })
                 .catch(function (error) {
                     console.log(error);
                 });
         },
-        //修改
-                pwdChange(row, index, cg) {
+        // 行内取消修改
+        cancelEditChange(row, index, cg) {
+                console.log(row.isSet);
+                console.log("正在进行行内取消操作!");
+               row.isSet=false;
+        },
+        // 行内保存修改
+        saveEditChange(row,index,cg){
+            let _this = this;
+            let flag = false;
+            // 修改后的数据
+            var new_row_obj = Object.assign({}, row);
+            delete new_row_obj.isSet;
+            let data = JSON.parse(JSON.stringify(new_row_obj));
+            let err_message = "";
+            // 拉取下来的数据
+            let old_data = {};
+            // 判断新数据是否为空
+            if(new_row_obj.nav_name == ''||new_row_obj.nav_name=='undefined'||new_row_obj.nav_type == ''||new_row_obj.nav_type=='undefined'||new_row_obj.subnav_name == ''||new_row_obj.subnav_name=='undefined'||new_row_obj.subnav_url == ''||new_row_obj.subnav_url=='undefined'){
+                flag = true;
+            }
+            // 比较新旧数据
+            if(old_data.nav_name == new_row_obj.nav_name && old_data.nav_type == new_row_obj.nav_type && old_data.subnav_name == new_row_obj.subnav_name && old_data.subnav_url == new_row_obj.subnav_url){
+                flag = true;
+            }
+            if (flag) {
+               _this.$message.warning(err_message+"数据未变动或有数据为空,请确认!");
+               return;
+            }else{
+               //提交数据
+               _this.changeLineData(new_row_obj);
+                //然后这边重新读取表格数据
+                _this.getNavList();
+                row.isSet = false;
+            }
+        },
+        // 行内删除
+        rowDeleteChange(row, index, cg) {
+          var _this = this;
+          this.$confirm('此操作将永久删除这条二级导航栏吗, 是否继续?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+            }).then(() => {
+              axios({
+                method: 'delete',
+                url: '/houtai/Nav',
+                data:{"subnav_id":row.id}
+            })
+                .then(function (response) {
+                    if(response.data.code==20000){
+                        _this.$message({
+                           type: 'success',
+                           message: "删除成功!"
+                        });
+                    }else{
+                        _this.$message({
+                           type: 'warning',
+                           message: response.message
+                        });
+                    }
+                })
+                .catch(function (error) {
+                    _this.$message({
+                           type: 'error',
+                           message: "服务器内部错误,请联系管理员!"
+                        });
+                });
+            }).catch(() => {
+              this.$message({
+                type: 'info',
+                message: '已取消删除'
+              });
+            });
+            //然后这边重新读取表格数据
+             _this.getNavList();
+        },
+        //行内修改
+        rowEditChange(row, index, cg) {
                     var _this = this;
-                    console.log(cg);
-                    console.log(row.isSet);
                     //点击修改 判断是否已经保存所有操作
                     console.log("正在修改行数据");
-                    for (let i of _this.tableData) {
-                        flag = false;
-                        for( let j in Object.getOwnPropertyNames(i)){
-                            let key = Object.getOwnPropertyNames(i)[j];
-                            let val = i[key];
-                            if(val.length == 0 && key != "nav_url"){
-                                flag = true;
-                                return flag;
-                            }
-                        }
-                        if (flag) {
-                            _this.$message.warning("请先保存当前编辑项");
-                            return false;
-                        }
-                    }
-                    //是否是取消操作
-                    if (!cg) {
-                        console.log(222);
-                       // 删除行
-                       // if (!_this.tableData.id) _this.tableData.splice(index, 1);
-                        if(row.tableData){
-                            cg=true;
-                        }
-                        return row.isSet = !row.isSet;
-                        pwdChange(row, index, true);
-                    }
-                    //提交数据
-                    if (row.isSet) {
-                        //项目是模拟请求操作  自己修改下
-                        (function () {
-                            let data = JSON.parse(JSON.stringify( _this.tableData));
-                            console.log(row[index]);
-                            for (let k in data) row[k] = data[k];
-                            _this.$message({
-                                type: 'success',
-                                message: "保存成功!"
-                            });
-                            //然后这边重新读取表格数据
-                            _this.getNavList;
-                            row.isSet = false;
-                        })();
-                    } else {
-                        _this.tableData.sel = JSON.parse(JSON.stringify(row));
-                        row.isSet = true;
-                    }
-                },
-      handleEdit(index, row) {
-                console.log(index, row);
+                    row.isSet=true;
+                    return;
       },
-      handleDelete(index, row) {
-        console.log(index, row);
+      formatterType(row,column){
+            if(row.nav_type == 0){
+                return "后台";
+            }else{
+                return "前台";
+            }
+      },
+      navTypeChange(data){
+            console.log(data.nav_type);
       },
       handleCurrentChange(row, event, column) {
+                this.$refs.multipleTable.toggleRowSelection(row);
                 return false;
-                //console.log(row, event, column, event.currentTarget)
       },
       newAdd() {
             this.dialogFormVisible = true;
       },
       delMul() {
-            console.log("正在删除行");
+           let _this = this;
+          let select_data = this.multipleSelection;
+          if(typeof(select_data) == "undefined"){
+                _this.$message({
+                               type: 'warning',
+                               message: "没有选中数据!"
+                 });
+                 return;
+          }
+          if(select_data.length == 0){
+                _this.$message({
+                               type: 'warning',
+                               message: "没有选中数据!"
+                 });
+                 return;
+          }
+          this.$confirm('此操作将删除选中的'+select_data.length+'行记录, 是否继续?', '提示', {
+          confirmButtonText: '删除',
+          cancelButtonText: '取消',
+          type: 'warning'
+            }).then(() => {
+              axios({
+                method: 'delete',
+                url: '/houtai/NavList',
+                data:{"delete_data":select_data}
+            })
+                .then(function (response) {
+                    if(response.data.code==20000){
+                        _this.$message({
+                           type: 'success',
+                           message: "批量删除成功!"
+                        });
+                    }else{
+                        _this.$message({
+                           type: 'warning',
+                           message: response.message
+                        });
+                    }
+                })
+                .catch(function (error) {
+                    _this.$message({
+                           type: 'error',
+                           message: "服务器内部错误,请联系管理员!"
+                        });
+                });
+            }).catch(() => {
+              this.$message({
+                type: 'info',
+                message: '已取消批量删除'
+              });
+            });
+            //然后这边重新读取表格数据
+             _this.getNavList();
       },
       handleSelectionChange(val) {
         this.multipleSelection = val;
@@ -427,12 +560,17 @@ var Main = {
           this.$refs.multipleTable.clearSelection();
         }
       },
+      // 翻页操作
+      handleCurrentPageChange(val){
+        this.currentPage = val;
+        this.getNavList();
+      },
+      // 页面size
       handleSizeChange(val) {
         console.log(`每页 ${val} 条`);
-      },
-
-      goBack() {
-        console.log('go back');
+        this.page_size=val;
+        console.log("每页"+this.page_size);
+        this.getNavList();
       },
       selectNavNameGet(value){
            console.log("选中"+value);
@@ -489,10 +627,6 @@ var Main = {
 };
     var Ctor = Vue.extend(Main);
     new Ctor().$mount('#app');
-
-
-
-
 
 </script>
 {% endblock %}
