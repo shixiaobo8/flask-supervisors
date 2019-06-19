@@ -35,7 +35,7 @@ def userInfo():
     return  render_template("index/user/userInfo.html")
 
 
-# 修改用户信息
+# 修改头像信息
 @backend.route('userinfo/TouXiang',methods=('GET','POST'))
 @login_required
 def userTouXiang():

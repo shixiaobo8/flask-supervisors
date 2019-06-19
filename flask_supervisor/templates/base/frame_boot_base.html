@@ -212,6 +212,27 @@
                     <!-- 左侧导航栏二级 end -->
                 </li>
                 <!-- 左侧导航栏  end -->
+                {% for nav in session.navs %}
+                {% if nav.nav_type == "后台" %}
+                <li class="active treeview">
+                    <a href="#">
+                        <i class="fa fa-dashboard"></i> <span>{{ nav.nav_name }}</span>
+                        <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                    </a>
+                    <!-- 左侧导航栏二级 start -->
+                    {% for sub_nav in nav.subnavs %}
+                    <ul class="treeview-menu">
+                        <li ><a href="{{ sub_nav.subnav_url }}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i
+                                class="{{ firstNavIconName }}"></i>{{ sub_nav.subnav_name }}</a>
+                        </li>
+                    </ul>
+                    {% endfor %}
+                    <!-- 左侧导航栏二级 end -->
+                </li>
+                {% endif %}
+                {% endfor %}
             </ul>
         </section>
         <!-- /.sidebar -->

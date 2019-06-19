@@ -12,12 +12,16 @@ from flask_supervisor.supervisor.models import Host,Group,Node,User,Nav,subNav
 from flask_login import login_user,logout_user,LoginManager
 from ..utils import generate_response,CustomFlaskErr
 from flask import request,current_app,logging
-from flask import jsonify,flash,redirect
+from flask import jsonify,flash,redirect,session
 from datetime import timedelta
 from flask_supervisor import login_manager
 from werkzeug.utils import secure_filename
 import werkzeug
 import time,os
+
+def getUserNavList(username):
+    subnavs = mysql_db.session.query(Nav).filter(Nav.is_del==0).join(subNav,Nav.id==subNav.nav_Id,isouter=True).filter(subNav.is_del==0).all()
+    return marshal(subnavs,Nav_fields)
 
 class TouXiangUrl(fields.Raw):
     def format(self, value):
@@ -52,6 +56,7 @@ class LoginApi(Resource):
         user = User.query.filter(and_(User.username==username,User.password_hash==password)).first()
         if user:
             login_user(user,duration=timedelta(minutes=1))
+            session["navs"] = getUserNavList(username)
             current_app.logger.info("用户"+username+"登录了...")
         if not user:
             res_data  = "not ok"
