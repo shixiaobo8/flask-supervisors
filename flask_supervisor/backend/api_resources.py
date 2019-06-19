@@ -19,6 +19,10 @@ from werkzeug.utils import secure_filename
 import werkzeug
 import time,os
 
+def getUserTouxiang(username):
+    user_touxiang = mysql_db.session.query(User.avatar).filter_by(username=username).first()[0]
+    return "/static/" + user_touxiang
+
 def getUserNavList(username):
     subnavs = mysql_db.session.query(Nav).filter(Nav.is_del==0).join(subNav,Nav.id==subNav.nav_Id,isouter=True).filter(subNav.is_del==0).all()
     return marshal(subnavs,Nav_fields)
@@ -57,6 +61,7 @@ class LoginApi(Resource):
         if user:
             login_user(user,duration=timedelta(minutes=1))
             session["navs"] = getUserNavList(username)
+            session["touxiang"] = getUserTouxiang(username)
             current_app.logger.info("用户"+username+"登录了...")
         if not user:
             res_data  = "not ok"

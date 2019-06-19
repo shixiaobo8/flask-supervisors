@@ -136,13 +136,13 @@
                     <!-- User Account: style can be found in dropdown.less -->
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="{{ url_for('static',filename='img/boot1.jpg') }}" class="user-image" alt="User Image">
+                            <img src="{{ session.touxiang }}" class="user-image" alt="User Image">
                             <span class="hidden-xs">{{ current_user.username }}</span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- User image -->
                             <li class="user-header">
-                                <img src="{{ url_for('static',filename='img/boot1.jpg') }}" class="img-circle" alt="User Image">
+                                <img src="{{ session.touxiang }}" class="img-circle" alt="User Image">
 
                                 <p>
                                     {{ current_user.username }},你好
@@ -175,7 +175,7 @@
             <!-- Sidebar user panel -->
             <div class="user-panel">
                 <div class="pull-left image">
-                    <img src="{{ url_for('static',filename='img/favicon.ico') }}" class="img-circle" alt="User Image">
+                    <img src="{{ session.touxiang }}" class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info">
                     <p>{{ current_user.username }}</p>
@@ -198,15 +198,15 @@
                 <!-- 左侧导航栏  start -->
                 <li class="active treeview">
                     <a href="#">
-                        <i class="fa fa-dashboard"></i> <span>页面管理</span>
+                        <i class="fa fa-dashboard"></i> <span>系统管理</span>
                         <span class="pull-right-container">
                       <i class="fa fa-angle-left pull-right"></i>
                     </span>
                     </a>
                     <!-- 左侧导航栏二级 start -->
-                    <ul class="treeview-menu">
+                    <ul class="treeview-menu" style="display: block;">
                         <li class="active"><a href="/houtai/NavManager">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i
-                                class="{{ firstNavIconName }}"></i>系统管理</a>
+                                class="fa fa-circle-o"></i>导航栏列表</a>
                         </li>
                     </ul>
                     <!-- 左侧导航栏二级 end -->
@@ -214,7 +214,7 @@
                 <!-- 左侧导航栏  end -->
                 {% for nav in session.navs %}
                 {% if nav.nav_type == "后台" %}
-                <li class="active treeview">
+                <li class="treeview">
                     <a href="#">
                         <i class="fa fa-dashboard"></i> <span>{{ nav.nav_name }}</span>
                         <span class="pull-right-container">
@@ -222,13 +222,13 @@
                     </span>
                     </a>
                     <!-- 左侧导航栏二级 start -->
-                    {% for sub_nav in nav.subnavs %}
-                    <ul class="treeview-menu">
+                    <ul class="treeview-menu" style="display: block;">
+                        {% for sub_nav in nav.subnavs %}
                         <li ><a href="{{ sub_nav.subnav_url }}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i
-                                class="{{ firstNavIconName }}"></i>{{ sub_nav.subnav_name }}</a>
+                                class="fa fa-circle-o"></i>{{ sub_nav.subnav_name }}</a>
                         </li>
+                        {% endfor %}
                     </ul>
-                    {% endfor %}
                     <!-- 左侧导航栏二级 end -->
                 </li>
                 {% endif %}
@@ -240,9 +240,6 @@
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-         {% for nav in navs %}
-                {{ nav.ThirdNavName }}
-            {% endfor %}
         <!-- Content Header (Page header) -->
         <section class="content-header">
             {% block content %}{% endblock %}
