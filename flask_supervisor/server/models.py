@@ -32,6 +32,7 @@ class userGroup(mysql_db.Model):
         return "<userGroup %r>" %self.userGroupName
 
 
+
 class Nav(mysql_db.Model):
     __tablename__ = "sv_navs"
     id = mysql_db.Column(mysql_db.Integer,primary_key=True,autoincrement=True)
@@ -128,47 +129,24 @@ class Host(mysql_db.Model):
     id = mysql_db.Column(mysql_db.Integer,primary_key=True,autoincrement=True)
     # 主机名称
     hostname = mysql_db.Column(mysql_db.String(120),unique=True,nullable=False,comment='主机名称')
-    # 主机信息
-    info = mysql_db.Column(mysql_db.String(120), unique=True, nullable=False, comment='主机信息')
-    # 主机内网ip
-    host_inner_ip = mysql_db.Column(mysql_db.String(120),nullable=True,default='',index=True,comment='主机内网ip')
-    # 主机公网ip
-    host_public_ip = mysql_db.Column(mysql_db.String(120), nullable=True, default='', index=True, comment='主机公网ip')
-    # 主机ssh端口
-    sv_port = mysql_db.Column(mysql_db.Boolean(),default=False,comment='主机ssh端口')
+    # 主机ip
+    host_ip = mysql_db.Column(mysql_db.String(120),nullable=True,default='',index=True,comment='主机ip')
+    # 主机端口
+    sv_port = mysql_db.Column(mysql_db.Boolean(),default=False,comment='主机supervisor端口')
     # 逻辑删除
     is_del = mysql_db.Column(mysql_db.Boolean(),default=False,comment='逻辑删除')
     # 组外键
     sv_group_id = mysql_db.Column(mysql_db.Integer,mysql_db.ForeignKey('sv_groups.id'),comment='关联组,多对一')
     # 节点外键
     sv_node_id = mysql_db.Column(mysql_db.Integer,mysql_db.ForeignKey('sv_nodes.id'),comment='关联节点,多对一')
-    def __init__(self,hostname,host_inner_ip,host_public_ip,sv_port,sv_group_id,sv_node_id):
+    def __init__(self,hostname,host_ip,sv_port,sv_group_id,sv_node_id):
         self.hostname = hostname
-        self.host_inner_ip = host_inner_ip
-        self.host_public_ip = host_public_ip
+        self.host_ip = host_ip
         self.sv_port = sv_port
         self.sv_group_id = sv_group_id
         self.sv_node_id = sv_node_id
     def __repr__(self):
         return "<Host %r>" %self.hostname
-
-
-# 服务表
-class Service(mysql_db.Model):
-    __tablename__ = "sv_services"
-    id = mysql_db.Column(mysql_db.Integer, primary_key=True, autoincrement=True)
-    # 服务名称
-    service_name = mysql_db.Column(mysql_db.String(120), unique=True, index=True,nullable=False, comment='服务名称')
-    # 服务部署路径
-    deploy_dir = mysql_db.Column(mysql_db.String(120), index=True, nullable=False, comment='服务部署路径')
-    # 服务启动命令
-    service_start_cmd = mysql_db.Column(mysql_db.String(120), nullable=True, default='', index=True, comment='服务启动命令')
-    # 开发/维护人员(外键)
-    devops_user_id =  mysql_db.Column(mysql_db.Integer, mysql_db.ForeignKey('sv_users.id'), comment='关联用户,多对一')
-    # 部署机器(外键)
-    deploy_host_id = mysql_db.Column(mysql_db.Integer, mysql_db.ForeignKey('sv_hosts.id'), comment='关联主机,多对一')
-    # 逻辑删除
-    is_del = mysql_db.Column(mysql_db.Boolean(), default=False, comment='逻辑删除')
 
 
 # 用户

@@ -7,3 +7,4 @@ flask-script
 mysql-connector
 flask-bootstrap
 flask-mongoalchemy
+aliyun-python-sdk-ecs

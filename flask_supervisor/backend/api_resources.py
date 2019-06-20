@@ -60,6 +60,7 @@ class LoginApi(Resource):
         user = User.query.filter(and_(User.username==username,User.password_hash==password)).first()
         if user:
             login_user(user,duration=timedelta(minutes=1))
+            session["username"] = username
             session["navs"] = getUserNavList(username)
             session["touxiang"] = getUserTouxiang(username)
             current_app.logger.info("用户"+username+"登录了...")
@@ -202,7 +203,6 @@ class UserTouXiangApi(Resource):
                 message='No selected file'
             if file:
                 filename = secure_filename(file.filename)
-                print(filename)
                 if not os.path.exists(os.getcwd()+os.sep+os.path.join(current_app.config['UPLOAD_FOLDER']+os.sep,username)):
                     os.mkdir(os.getcwd()+os.sep+current_app.config['UPLOAD_FOLDER']+os.sep+username)
                 file.save(os.path.join(os.getcwd()+os.sep+current_app.config['UPLOAD_FOLDER']+os.sep+username, filename))
@@ -211,6 +211,7 @@ class UserTouXiangApi(Resource):
             user.avatar=os.path.join(current_app.config['UPLOAD_FOLDER']+os.sep+username, filename).replace("flask_supervisor"+os.sep,'').replace('static'+os.sep,'')
             user.last_modify = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
             mysql_db.session.commit()
+            session["touxiang"] = getUserTouxiang(username)
         except Exception as e:
             print(e)
             code = '20002'
@@ -273,12 +274,14 @@ class NavApi(Resource):
             sub_nav.nav_Id=exists_fName.id
             mysql_db.session.add(sub_nav)
             mysql_db.session.commit()
+        session["navs"] = getUserNavList(session.get("username"))
         return generate_response(data=json_args)
 
     # 修改一个
     def put(self):
         # 获取request json 参数
         json_args = self.json_args
+        username = self.args['username']
         # 获取二级导航栏参数
         nav_name = json_args['nav_name']
         nav_type = json_args['nav_type']
@@ -301,6 +304,7 @@ class NavApi(Resource):
             exists_fName.nav_name = nav_name
             exists_fName.nav_type = nav_type
             mysql_db.session.commit()
+            session["navs"] = getUserNavList(session.get("username"))
             return {'code': 20000, 'message': "更新成功!"}
         except Exception as e:
             message = "更新失败:" + str(e)
@@ -312,6 +316,7 @@ class NavApi(Resource):
     def delete(self):
         # 获取request json 参数
         json_args = self.json_args
+        username = self.args['username']
         # 获取二级导航栏参数
         subnav_id = json_args['subnav_id']
         # 检查是否含有存在的二级菜单
@@ -320,6 +325,7 @@ class NavApi(Resource):
             # 修改数据库信息
             exists_sNav.is_del = 1
             mysql_db.session.commit()
+            session["navs"] = getUserNavList(session.get("username"))
             return {'code': 20000, 'message': "删除成功!"}
         except Exception as e:
             message = "删除失败:" + str(e)
@@ -348,17 +354,18 @@ class NavListApi(Resource):
         self.reqparse = reqparse.RequestParser()
         self.reqparse.add_argument('currentPage', type = int, default=1, location='args',help='第几个分页')
         self.reqparse.add_argument('page_size', type = int, default=10 , location='args',help='每页显示多少')
+        self.reqparse.add_argument('username', type = str, default=session.get("username") , location='args',help='用户名')
         # 获取request json 参数
         self.json_args = request.json
+        self.args = self.reqparse.parse_args()
         super(NavListApi,self).__init__()
 
     # 获取(查询)nav 列表
     #@marshal_with(Nav_fields,envelope='Nav')
     def get(self):
-        args = self.reqparse.parse_args()
-        print(args)
-        page_index = args['currentPage']
-        page_size = args['page_size']
+        username = self.args['username']
+        page_index = self.args['currentPage']
+        page_size = self.args['page_size']
         # # 先获取所有满足条件的nav isouter=True 表示left join all 方法得到一个列表,这里不使用paginate,会报错
         # navall = mysql_db.session.query(Nav).filter(Nav.is_del==0).join(subNav,Nav.id==subNav.nav_Id,isouter=True).all()
         # navall = mysql_db.session.query(subNav).join(subNav.nav_Id).filter(Nav.is_del==0).options(contains_eager(Nav.subnavs)).all()
@@ -400,6 +407,7 @@ class NavListApi(Resource):
     def delete(self):
         # 获取request json 参数
         json_args = self.json_args
+        username = self.args['username']
         # 获取二级导航栏参数
         delete_data = json_args['delete_data']
         ids = [ data['id'] for data in delete_data ]
@@ -408,6 +416,7 @@ class NavListApi(Resource):
             for id in ids:
                 subNav.query.filter(subNav.id==id).update({"is_del":1})
             mysql_db.session.commit()
+            session["navs"] = getUserNavList(session.get("username"))
             return {'code': 20000, 'message': "删除成功!"}
         except Exception as e:
             message = "删除失败:" + str(e)

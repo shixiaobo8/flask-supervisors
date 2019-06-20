@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
-from flask import jsonify,make_response,request,g
+from flask import jsonify,make_response,request,g,session,redirect,url_for,flash
 from flask_supervisor import create_app
 from flask_script import Manager,Server,Shell
 from flask_supervisor.commands import Hello
@@ -61,6 +61,13 @@ def inter_server_error(e):
 
 
 # 应用情景
+# session 会话过期
+@supervisor_app.before_request
+def checkSession():
+    if not session.get('username'):
+        flash("session会话过期,请手动刷新重新登陆!")
+
+
 # 第一次请求的时候做初始化导航栏nav数据
 # @supervisor_app.before_first_request
 # def print_request_info():
@@ -85,4 +92,3 @@ def inter_server_error(e):
 
 if __name__ == "__main__":
     manager.run()
-#    supervisor_app.run(debug=True,host='0.0.0.0',port=89)

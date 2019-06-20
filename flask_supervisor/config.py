@@ -67,6 +67,8 @@ class Config:
     SQLALCHEMY_NATIVE_UNICODE = 'utf8'
     UPLOAD_FOLDER = 'flask_supervisor'+os.sep+'static'+os.sep+'img'+os.sep+'users'
     ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
+    ACCESSKEYID = 'LTAI1aTbTiPWINmZ'
+    ACCESSSECRET = 'bhzSeQhw3vAnZbf9HNcAwHSf4Y0RmL'
 
 
 # 生产环境配置
@@ -98,6 +100,8 @@ class ProductionConfig(Config):
     MAIL_PASSWORD = 'Ykbmail89!@#'
     AA = '2323'
     SECRET_KEY = b'233#_2L"3dQ8zc-\xcc]/'
+    ACCESSKEYID = 'LTAI1aTbTiPWINmZ'
+    ACCESSSECRET = 'bhzSeQhw3vAnZbf9HNcAwHSf4Y0RmL'
 
 
 # 开发环境配置
@@ -129,6 +133,8 @@ class DevelopmentConfig(Config):
     MAIL_USERNAME = 'devops@yikaobang.com.cn'
     MAIL_PASSWORD = 'Ykbmail89!@#'
     SECRET_KEY = b'ab#_2L"3dQ8zc-\xcc]/'
+    ACCESSKEYID = 'LTAI1aTbTiPWINmZ'
+    ACCESSSECRET = 'bhzSeQhw3vAnZbf9HNcAwHSf4Y0RmL'
 
 
 # 测试配置

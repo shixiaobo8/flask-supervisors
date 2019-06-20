@@ -67,4 +67,6 @@ def create_app(flask_env='default'):
     app.add_url_rule('/',endpoint='supervisor.index')
     from .backend import backend as backend_bp
     app.register_blueprint(backend_bp,url_prefix='/houtai')
+    from .server import server as server_bp
+    app.register_blueprint(server_bp, url_prefix='/server')
     return app
