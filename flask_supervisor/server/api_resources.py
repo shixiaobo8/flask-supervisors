@@ -77,10 +77,11 @@ class HostListApi(Resource):
         host_inner_ip = self.json_args['NetworkInterfaces']['NetworkInterface'][0]['PrimaryIpAddress']
         host_public_ip = self.json_args['PublicIpAddress']['IpAddress']
         host_info = self.json_args['OSType'] + "/" + self.json_args['OSName'] + "/" + str(self.json_args['Cpu']) + "/" + str(self.json_args['Memory']) + "M"
+        print(host_info)
         try:
-            new_host = Host(host_name,host_inner_ip,host_public_ip,22,1,1)
+            new_host = Host(host_name,host_info,"".join(host_inner_ip),"".join(host_public_ip),22,1,1)
             mysql_db.session.add(new_host)
             mysql_db.session.commit()
             return {'code': 20000, 'message': "更新成功!"}
         except Exception as e:
-            return {'code': 20000, 'message': str(e)}
+            return {'code': 20002, 'message': str(e)}

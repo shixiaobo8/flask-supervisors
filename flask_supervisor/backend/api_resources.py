@@ -232,6 +232,7 @@ class NavApi(Resource):
     # 请求参数处理
     def __init__(self):
         self.reqparse = reqparse.RequestParser()
+        self.reqparse.add_argument('username', type = str, default=session.get("username") , location='args',help='用户名')
         self.args = self.reqparse.parse_args()
         # 获取request json 参数
         self.json_args = request.json

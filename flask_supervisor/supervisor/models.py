@@ -135,14 +135,14 @@ class Host(mysql_db.Model):
     # 主机公网ip
     host_public_ip = mysql_db.Column(mysql_db.String(120), nullable=True, default='', index=True, comment='主机公网ip')
     # 主机ssh端口
-    sv_port = mysql_db.Column(mysql_db.Boolean(),default=False,comment='主机ssh端口')
+    sv_port = mysql_db.Column(mysql_db.Integer,default=22,comment='主机ssh端口')
     # 逻辑删除
     is_del = mysql_db.Column(mysql_db.Boolean(),default=False,comment='逻辑删除')
     # 组外键
     sv_group_id = mysql_db.Column(mysql_db.Integer,mysql_db.ForeignKey('sv_groups.id'),comment='关联组,多对一')
     # 节点外键
     sv_node_id = mysql_db.Column(mysql_db.Integer,mysql_db.ForeignKey('sv_nodes.id'),comment='关联节点,多对一')
-    def __init__(self,hostname,host_inner_ip,host_public_ip,sv_port,sv_group_id,sv_node_id):
+    def __init__(self,hostname,info,host_inner_ip,host_public_ip,sv_port,sv_group_id,sv_node_id):
         self.hostname = hostname
         self.host_inner_ip = host_inner_ip
         self.host_public_ip = host_public_ip

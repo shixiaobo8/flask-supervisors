@@ -345,6 +345,9 @@ var Main = {
             axios({
                 method: 'put',
                 url: '/houtai/Nav',
+                params: {
+                    username: '{{ current_user.username }}',
+                 },
                 data:data
             })
                 .then(function (response) {
@@ -438,6 +441,9 @@ var Main = {
               axios({
                 method: 'delete',
                 url: '/houtai/Nav',
+                 params: {
+                    username: '{{ current_user.username }}',
+                 },
                 data:{"subnav_id":row.id}
             })
                 .then(function (response) {
@@ -589,6 +595,9 @@ var Main = {
                         axios({
                             method: 'POST',
                             url: '/houtai/Nav',
+                            params: {
+                                username: '{{ current_user.username }}',
+                            },
                             data: this.ruleForm,
                         })
                             .then(function (response) {
