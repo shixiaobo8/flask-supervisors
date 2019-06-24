@@ -8,7 +8,7 @@ from flask_restful import abort,Resource,reqparse,fields,marshal_with,marshal
 from flask_supervisor import mysql_db
 from sqlalchemy import and_,or_
 from sqlalchemy.orm import joinedload,contains_eager,subqueryload
-from flask_supervisor.supervisor.models import Host,Group,Node,User,Nav,subNav
+from flask_supervisor.supervisor.models import Host,Node,User,Nav,subNav
 from flask_login import login_user,logout_user,LoginManager
 from ..utils import generate_response,CustomFlaskErr
 from flask import request,current_app,logging

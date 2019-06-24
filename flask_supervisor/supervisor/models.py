@@ -10,19 +10,19 @@ from datetime import datetime
 import six
 from werkzeug.security import generate_password_hash,check_password_hash#转换密码用到的库
 
-# 多对多配置 用户<--->用户组
-users = mysql_db.Table('users_groups',
-    mysql_db.Column('user_id', mysql_db.Integer, mysql_db.ForeignKey('sv_users.id')),
-    mysql_db.Column('userGroup_id', mysql_db.Integer, mysql_db.ForeignKey('sv_userGroups.id'))
-    )
+# # 多对多配置 用户<--->用户组
+# users = mysql_db.Table('users_groups',
+#     mysql_db.Column('user_id', mysql_db.Integer, mysql_db.ForeignKey('sv_users.id')),
+#     mysql_db.Column('userGroup_id', mysql_db.Integer, mysql_db.ForeignKey('sv_userGroups.id'))
+#     )
 
 
 # # 用户组
 class userGroup(mysql_db.Model):
     __tablename__ = "sv_userGroups"
     id = mysql_db.Column(mysql_db.Integer, primary_key=True,autoincrement=True)
-    # 多对多关联用户组
-    users = mysql_db.relationship('User', secondary=users,backref=mysql_db.backref('userGroup', lazy='dynamic'))
+    # # 多对多关联用户组
+    # users = mysql_db.relationship('User', secondary=users,backref=mysql_db.backref('userGroup', lazy='dynamic'))
     # 角色关联(一对多)
     roles = mysql_db.relationship('Role', backref='userGroups',lazy='dynamic')
     def __init__(self,userGroupName):
@@ -108,28 +108,16 @@ class Node(mysql_db.Model):
         return "<Node %r>" %self.nodeName
 
 
-#  主机组表
-class Group(mysql_db.Model):
-    __tablename__ = "sv_groups"
-    id = mysql_db.Column(mysql_db.Integer,primary_key=True,autoincrement=True)
-    groupName = mysql_db.Column(mysql_db.String(120),unique=True,index=True,nullable=False)
-    sv_groups = mysql_db.relationship('Host', backref='Group',lazy='dynamic')
-
-    def __init__(self,groupName):
-        self.groupName = groupName
-
-    def __repr__(self):
-        return "<Group %r>" %self.groupName
-
-
 # 主机表
 class Host(mysql_db.Model):
     __tablename__ = "sv_hosts"
     id = mysql_db.Column(mysql_db.Integer,primary_key=True,autoincrement=True)
     # 主机名称
     hostname = mysql_db.Column(mysql_db.String(120),unique=True,nullable=False,comment='主机名称')
-    # 主机信息
-    info = mysql_db.Column(mysql_db.String(120), unique=True, nullable=False, comment='主机信息')
+    # 主机信息instance_id
+    host_info = mysql_db.Column(mysql_db.String(120), nullable=False, comment='主机信息')
+    # 阿里云实例id
+    ali_instance_id = mysql_db.Column(mysql_db.String(120), unique=True, nullable=False, comment='阿里云实例id')
     # 主机内网ip
     host_inner_ip = mysql_db.Column(mysql_db.String(120),nullable=True,default='',index=True,comment='主机内网ip')
     # 主机公网ip
@@ -138,16 +126,17 @@ class Host(mysql_db.Model):
     sv_port = mysql_db.Column(mysql_db.Integer,default=22,comment='主机ssh端口')
     # 逻辑删除
     is_del = mysql_db.Column(mysql_db.Boolean(),default=False,comment='逻辑删除')
-    # 组外键
-    sv_group_id = mysql_db.Column(mysql_db.Integer,mysql_db.ForeignKey('sv_groups.id'),comment='关联组,多对一')
     # 节点外键
     sv_node_id = mysql_db.Column(mysql_db.Integer,mysql_db.ForeignKey('sv_nodes.id'),comment='关联节点,多对一')
-    def __init__(self,hostname,info,host_inner_ip,host_public_ip,sv_port,sv_group_id,sv_node_id):
+
+
+    def __init__(self,hostname,host_info,host_inner_ip,host_public_ip,sv_node_id,ali_intance_id="",sv_port=22):
         self.hostname = hostname
+        self.host_info = host_info
+        self.ali_instance_id = ali_intance_id
         self.host_inner_ip = host_inner_ip
         self.host_public_ip = host_public_ip
         self.sv_port = sv_port
-        self.sv_group_id = sv_group_id
         self.sv_node_id = sv_node_id
     def __repr__(self):
         return "<Host %r>" %self.hostname

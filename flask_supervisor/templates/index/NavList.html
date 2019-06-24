@@ -331,7 +331,7 @@ var Main = {
           ],
           subnav_name: [
             { required: true, message: '请输入二级导航栏名称', trigger: 'blur',type:'string' },
-            { min: 4, max: 12, message: '长度在 4 到 12 个字符', trigger: 'blur' }
+            { min: 4, max: 18, message: '长度在 4 到 18 个字符', trigger: 'blur' }
           ],
           subnav_url: [
             {required: true,validator: checkUri, trigger: ['blur', 'change']}

@@ -95,7 +95,7 @@
                                 </div>
                             </el-dialog>
 
-                            <el-button @click="delMul" type="danger" icon="el-icon-delete" round>删除</el-button>
+                            <el-button @click="lotPri" type="success" plain icon="eel-icon-setting" round>批量业务授权</el-button>
                         </div>
                     </el-col>
                 </el-row>
@@ -103,7 +103,7 @@
 
             <el-main>
                 <el-table
-                        :data="tableData.filter(data => !search || data.InstanceName.toLowerCase().includes(search.toLowerCase()))"
+                        :data="tableData.filter(data => !search || data.host_name.toLowerCase().includes(search.toLowerCase()))"
                         ref="multipleTable"
                         highlight-current-row
                         @row-click="handleCurrentChange"
@@ -132,7 +132,16 @@
                             @change="handleEdit(scope.$index, scope.row)"
                             width="180">
                         <template slot-scope="scope">
-                            <span style="margin-left: 10px">{[ scope.row.InstanceName ]}</span>
+                            <span style="margin-left: 10px">{[ scope.row.host_name ]}</span>
+                        </template>
+                    </el-table-column>
+                    <el-table-column
+                            label="环境"
+                            align="center"
+                            @change="handleEdit(scope.$index, scope.row)"
+                            width="180">
+                        <template slot-scope="scope">
+                            <span style="margin-left: 10px">{[ scope.row.node_name ]}</span>
                         </template>
                     </el-table-column>
                                         <el-table-column
@@ -141,7 +150,7 @@
                             @change="handleEdit(scope.$index, scope.row)"
                             width="180">
                         <template slot-scope="scope">
-                            <span style="margin-left: 10px">{[ scope.row.HostName ]}</span>
+                            <span style="margin-left: 10px">{[ scope.row.ali_instance_id ]}</span>
                         </template>
                     </el-table-column>
                     </el-table-column>
@@ -151,7 +160,7 @@
                             @change="handleEdit(scope.$index, scope.row)"
                             width="180">
                         <template slot-scope="scope">
-                            <span style="margin-left: 10px">{[ scope.row.OSName ]}/{[ scope.row.InstanceNetworkType ]}/{[ scope.row.Cpu ]}核/{[ scope.row.Memory ]}G</span>
+                            <span style="margin-left: 10px">{[ scope.row.host_info ]}</span>
                         </template>
                     </el-table-column>
                     <el-table-column
@@ -160,7 +169,7 @@
                             @change="handleEdit(scope.$index, scope.row)"
                             width="180">
                         <template slot-scope="scope">
-                            <span  style="margin-left: 10px">{[ scope.row.NetworkInterfaces.NetworkInterface[0].PrimaryIpAddress ]}</span>
+                            <span style="margin-left: 10px">{[ scope.row.host_inner_ip ]}</span>
                         </template>
                     </el-table-column>
                     <el-table-column
@@ -169,25 +178,7 @@
                             @change="handleEdit(scope.$index, scope.row)"
                             width="180">
                         <template slot-scope="scope">
-                            <span style="margin-left: 10px">{[ scope.row.PublicIpAddress.IpAddress[0] ]}</span>
-                        </template>
-                    </el-table-column>
-                    <el-table-column
-                            label="运行状态"
-                            align="center"
-                            @change="handleEdit(scope.$index, scope.row)"
-                            width="180">
-                        <template slot-scope="scope">
-                            <span style="margin-left: 10px">{[ scope.row.Status ]}</span>
-                        </template>
-                    </el-table-column>
-                    <el-table-column
-                            label="区域id"
-                            align="center"
-                            @change="handleEdit(scope.$index, scope.row)"
-                            width="180">
-                        <template slot-scope="scope">
-                            <span style="margin-left: 10px">{[ scope.row.RegionId ]}</span>
+                            <span style="margin-left: 10px">{[ scope.row.host_public_ip ]}</span>
                         </template>
                     </el-table-column>
 
@@ -200,13 +191,13 @@
                         </template>
                         <template slot-scope="scope">
                             <span class="el-tag el-tag--info el-tag--mini" style="cursor: pointer;"
-                                  @click="rowEditChange(scope.row,scope.$index,true)">
-                                 同步
+                                  @click="sshConnect(scope.row)" >
+                                 ssh 连接
                             </span>
                             <span  class="el-tag el-tag--danger el-tag--mini"
                                       style="cursor: pointer;"
-                                      @click="rowDeleteChange(scope.row,scope.$index,true)">
-                                  解绑
+                                      @click="onePri(scope.row) " >
+                                  业务授权管理
                             </span>
                         </template>
                     </el-table-column>
@@ -308,6 +299,12 @@ var Main = {
          };
     },
     methods: {
+        sshConnect(row){
+            console.log("正在连接ssh....");
+        },
+        onePri(row){
+            console.log("正在授权单个服务....");
+        },
       changeLineData(data){
             var _this = this;
             axios({
@@ -347,7 +344,22 @@ var Main = {
                 }
             })
                 .then(function (response) {
-                    console.log(222);
+                    _this.tableData = response.data.data;
+                    _this.count = response.data.count;
+                    _this.current_page = response.data.cureent_page;
+                    _this.page_size = response.data.page_size;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        },
+        getAliHostList() {
+            var _this = this;
+            axios({
+                method: 'get',
+                url: '/server/ali/EcsList',
+            })
+                .then(function (response) {
                     _this.hostData = response.data.Instances.Instance;
                     _this.count = response.data.TotalCount;
                     _this.current_page = response.data.PageNumber;
@@ -388,6 +400,8 @@ var Main = {
                            message: "服务器内部错误,请联系管理员!"
                         });
                 });
+                _this.dialogVisible = false;
+                window.location.reload();
       },
       // 批量同步
         lottying(row, index, cg) {
@@ -404,38 +418,38 @@ var Main = {
       newAdd() {
             this.dialogVisible = true;
       },
-      delMul() {
+      lotPri() {
            let _this = this;
           let select_data = this.multipleSelection;
           if(typeof(select_data) == "undefined"){
                 _this.$message({
                                type: 'warning',
-                               message: "没有选中数据!"
+                               message: "没有选中行数据!"
                  });
                  return;
           }
           if(select_data.length == 0){
                 _this.$message({
                                type: 'warning',
-                               message: "没有选中数据!"
+                               message: "没有选中行数据!"
                  });
                  return;
           }
-          this.$confirm('此操作将删除选中的'+select_data.length+'行记录, 是否继续?', '提示', {
+          this.$confirm('此操作将批量授权选中的'+select_data.length+'行记录, 是否继续?', '提示', {
           confirmButtonText: '删除',
           cancelButtonText: '取消',
           type: 'warning'
             }).then(() => {
               axios({
                 method: 'delete',
-                url: '/houtai/NavList',
+                url: '/server/lotPri',
                 data:{"delete_data":select_data}
             })
                 .then(function (response) {
                     if(response.data.code==20000){
                         _this.$message({
                            type: 'success',
-                           message: "批量删除成功!"
+                           message: "批量授权成功!"
                         });
                     }else{
                         _this.$message({
@@ -533,6 +547,7 @@ var Main = {
       }
     },
     mounted(){
+        this.getAliHostList(),
         this.getHostList();
     }
 };
