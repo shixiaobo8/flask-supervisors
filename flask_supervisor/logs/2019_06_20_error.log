@@ -1,0 +1,7 @@
+2019-06-20 15:31:00,726 [MainThread:5844 in __init__:] [task_id:root] [root:97] [ERROR]- Error: Can't locate revision identified by ']'
+2019-06-20 15:31:18,928 [MainThread:6940 in __init__:] [task_id:root] [root:97] [ERROR]- Error: Can't locate revision identified by 'revisions'
+2019-06-20 15:31:31,961 [MainThread:12632 in __init__:] [task_id:root] [root:97] [ERROR]- Error: Can't locate revision identified by 'revisions'
+2019-06-20 15:33:41,610 [MainThread:15116 in __init__:] [task_id:root] [root:97] [ERROR]- Error: Directory F:\www\flask_supervisor\flask_supervisor\migrations already exists
+2019-06-20 15:40:23,194 [MainThread:11116 in __init__:] [task_id:root] [root:97] [ERROR]- Error: Can't locate revision identified by 'revisions'
+2019-06-20 15:40:25,699 [MainThread:11860 in __init__:] [task_id:root] [root:97] [ERROR]- Error: Directory F:\www\flask_supervisor\flask_supervisor\migrations already exists
+2019-06-20 16:32:52,673 [Thread-1:1732 in client:] [task_id:aliyunsdkcore.client] [aliyunsdkcore.client:421] [ERROR]- ServerException occurred. Host:location-readonly.aliyuncs.com SDK-Version:2.13.4 ServerException:HTTP Status: 404 Error:InvalidRegionId The specified region does not exist. RequestID: CD89E629-75C4-4946-A22A-CBA31145DD35

@@ -1,2 +1,0 @@
-2019-04-27 14:36:48,093 [MainThread:9028 in __init__:] [task_id:root] [root:97] [ERROR]- Error: Directory D:\www\flask_supervisors\flask_supervisors\flask_supervisor\migrations already exists
-2019-04-27 14:38:15,227 [MainThread:3912 in __init__:] [task_id:root] [root:97] [ERROR]- Error: Directory D:\www\flask_supervisors\flask_supervisors\flask_supervisor\migrations already exists
