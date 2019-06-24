@@ -340,7 +340,8 @@ var Main = {
                 params: {
                     username: '{{ current_user.username }}',
                     page_size: _this.page_size,
-                    currentPage: _this.currentPage
+                    currentPage: _this.currentPage,
+                    is_detail:0
                 }
             })
                 .then(function (response) {

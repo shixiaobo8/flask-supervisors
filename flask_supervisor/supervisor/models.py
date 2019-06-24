@@ -142,6 +142,18 @@ class Host(mysql_db.Model):
         return "<Host %r>" %self.hostname
 
 
+# 多对多 服务与主机
+service_hosts = mysql_db.Table("services_hosts",
+                          mysql_db.Column("service_id",mysql_db.Integer,mysql_db.ForeignKey("sv_services.id")),
+                          mysql_db.Column("host_id", mysql_db.Integer, mysql_db.ForeignKey("sv_hosts.id")),
+                          )
+
+# 多对多  服务与用户
+user_service = mysql_db.Table("services_users",
+                          mysql_db.Column("service_id",mysql_db.Integer,mysql_db.ForeignKey("sv_services.id")),
+                          mysql_db.Column("user_id", mysql_db.Integer, mysql_db.ForeignKey("sv_users.id")),
+                          )
+
 # 服务表
 class Service(mysql_db.Model):
     __tablename__ = "sv_services"
@@ -149,15 +161,32 @@ class Service(mysql_db.Model):
     # 服务名称
     service_name = mysql_db.Column(mysql_db.String(120), unique=True, index=True,nullable=False, comment='服务名称')
     # 服务部署路径
-    deploy_dir = mysql_db.Column(mysql_db.String(120), index=True, nullable=False, comment='服务部署路径')
+    service_deploy_dir = mysql_db.Column(mysql_db.String(120), index=True, nullable=False, comment='服务部署路径')
+    # 服务详情描述
+    service_detail = mysql_db.Column(mysql_db.String(120), index=True, nullable=False, comment='服务详情描述')
     # 服务启动命令
     service_start_cmd = mysql_db.Column(mysql_db.String(120), nullable=True, default='', index=True, comment='服务启动命令')
+    # 服务端口号
+    service_ports = mysql_db.Column(mysql_db.String(120), nullable=True, default='', index=True, comment='服务端口号')
     # 开发/维护人员(外键)
-    devops_user_id =  mysql_db.Column(mysql_db.Integer, mysql_db.ForeignKey('sv_users.id'), comment='关联用户,多对一')
+    devops_user_id =  mysql_db.Column(mysql_db.Integer, mysql_db.ForeignKey('sv_users.id'), comment='关联用户,多对多')
     # 部署机器(外键)
-    deploy_host_id = mysql_db.Column(mysql_db.Integer, mysql_db.ForeignKey('sv_hosts.id'), comment='关联主机,多对一')
+    deploy_host_id = mysql_db.Column(mysql_db.Integer, mysql_db.ForeignKey('sv_hosts.id'), comment='关联主机,多对多')
     # 逻辑删除
     is_del = mysql_db.Column(mysql_db.Boolean(), default=False, comment='逻辑删除')
+
+    def __init__(self,service_name,service_detail,service_start_cmd,service_ports,devops_user_id,deploy_host_id,is_del=0,service_deploy_dir=''):
+        self.service_name = service_name
+        self.service_detail = service_detail
+        self.service_start_cmd = service_start_cmd
+        self.service_ports = service_ports
+        self.deploy_host_id = deploy_host_id
+        self.devops_user_id = devops_user_id
+        self.is_del = is_del
+        self.service_deploy_dir = service_deploy_dir
+
+    def __repr__(self):
+        return "<Host %r>" %self.service_name
 
 
 # 用户

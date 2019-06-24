@@ -11,3 +11,10 @@ from flask_login import login_required
 @server.route('/serverList')
 def index():
     return render_template("server/index.html")
+
+
+# 服务列表管理
+@login_required
+@server.route('/serviceList')
+def serverList():
+    return render_template("server/services.html")

@@ -153,6 +153,37 @@ class UserApi(Resource):
         pass
 
 
+# 用户信息 单个处理类
+class UserListApi(Resource):
+    # 请求参数处理
+    def __init__(self):
+        self.reqparse = reqparse.RequestParser()
+        self.args = self.reqparse.parse_args()
+        # 获取request json 参数
+        self.json_args = request.json
+        self.reqparse.add_argument('username', type=str,location='args')
+
+    # 查询单个
+    def get(self):
+        args = self.reqparse.parse_args()
+        username = args['username']
+        users = mysql_db.session.query(User.username).filter(User.is_del == 0).all()
+        return {'code': 0,'data': users}
+
+    # 增加一个
+    def post(self):
+        pass
+
+    # 修改一个
+    def put(self):
+        pass
+
+    # 删除一个
+    def delete(self):
+        pass
+
+
+
 user_touxiang_fields = {
     'username':fields.String(attribute='username'),
     'touxiang': TouXiangUrl(attribute="avatar")

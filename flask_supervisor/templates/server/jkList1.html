@@ -100,8 +100,8 @@ $('#selectpickerField').on('changed.bs.select',function(e){
                                 data[i] = 'Yes';
                             }
                             optionStr+="<option  value='"+data[i]+"'>  "+data[i]+"</option>";
-                        }  
-                        $("#selectpickerValue").html("");  
+                        }
+                        $("#selectpickerValue").html("");
                         $('#selectpickerValue').append(optionStr);
                         $('#selectpickerValue').selectpicker('refresh');
                 }
