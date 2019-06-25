@@ -5,25 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a8680dea-a39b-4893-b5e7-3d8d52460e23" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/flask_supervisor.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flask_supervisor/logs/2019_06_13_access.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flask_supervisor/logs/2019_06_13_error.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flask_supervisor/logs/2019_06_14_access.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flask_supervisor/logs/2019_06_14_error.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flask_supervisor/logs/2019_06_15_access.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flask_supervisor/logs/2019_06_15_error.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flask_supervisor/logs/2019_06_17_access.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flask_supervisor/logs/2019_06_17_error.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flask_supervisor/migrations/versions/752bcfa203c7_.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_supervisor/backend/api_resources.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_supervisor/backend/api_resources.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_supervisor/migrations/versions/66176ec42974_.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_supervisor/migrations/versions/83e7aa52e848_.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_supervisor/templates/index/NavList.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_supervisor/templates/index/NavList.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flask_supervisor/ansible_hosts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flask_supervisor/logs/2019_06_25_access.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flask_supervisor/logs/2019_06_25_error.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flask_supervisor/migrations/versions/342e24e2eac2_.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flask_supervisor/migrations/versions/3d5f542b0925_.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flask_supervisor/migrations/versions/52fbd425208c_.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flask_supervisor/migrations/versions/bfa6fe1004c0_.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flask_supervisor/migrations/versions/d58d5fa44f63_.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flask_supervisor/migrations/versions/d6bb1006a4e8_.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flask_supervisor/templates/server/ansible_manage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_supervisor/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_supervisor/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_supervisor/logs/2019_06_24_access.log" beforeDir="false" afterPath="$PROJECT_DIR$/flask_supervisor/logs/2019_06_24_access.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_supervisor/server/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_supervisor/server/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_supervisor/server/api_resources.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_supervisor/server/api_resources.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_supervisor/server/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_supervisor/server/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirments.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirments.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -39,90 +37,144 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/flask_supervisor/backend/api_resources.py">
+        <entry file="file://$PROJECT_DIR$/flask_supervisor/server/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="233">
-              <caret line="329" column="39" lean-forward="true" selection-start-line="329" selection-start-column="39" selection-end-line="329" selection-end-column="39" />
-              <folding>
-                <element signature="e#79#156#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="418">
+              <caret line="24" column="11" selection-start-line="24" selection-start-column="11" selection-end-line="24" selection-end-column="11" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/flask_supervisor/templates/index/NavList.html">
+        <entry file="file://$PROJECT_DIR$/flask_supervisor/server/api_resources.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="385">
-              <caret line="376" column="36" selection-start-line="376" selection-start-column="36" selection-end-line="376" selection-end-column="36" />
+            <state relative-caret-position="266">
+              <caret line="242" column="39" selection-start-line="242" selection-start-column="39" selection-end-line="242" selection-end-column="39" />
               <folding>
-                <element signature="n#style#0;n#el-row#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#el-col#0;n#el-row#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#el-breadcrumb#0;n#div#0;n#el-col#0;n#el-row#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#el-header#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#2;n#template#0;n#el-table-column#2;n#el-table#0;n#el-main#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#template#0;n#el-table-column#2;n#el-table#0;n#el-main#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#template#0;n#el-table-column#3;n#el-table#0;n#el-main#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#template#0;n#el-table-column#4;n#el-table#0;n#el-main#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#el-input#0;n#template#0;n#el-table-column#5;n#el-table#0;n#el-main#0;n#el-container#0;n#template#0;n#div#0;n#!!top" />
-                <element signature="n#style#0;n#span#0;n#template#1;n#el-table-column#6;n#el-table#0;n#el-main#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#1;n#template#1;n#el-table-column#6;n#el-table#0;n#el-main#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#2;n#template#1;n#el-table-column#6;n#el-table#0;n#el-main#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#el-col#1;n#el-row#0;n#el-footer#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="e#44#78#1" />
+                <element signature="e#79#90#0" expanded="true" />
+                <element signature="e#2058#2133#0" />
+                <element signature="e#2157#2608#0" />
+                <element signature="e#2624#2772#0" />
+                <element signature="e#2807#5591#0" />
+                <element signature="e#7839#9665#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/flask_supervisor/templates/index/user/userInfo.html">
+        <entry file="file://$PROJECT_DIR$/flask_supervisor/backend/api_resources.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="401" column="41" lean-forward="true" selection-start-line="401" selection-start-column="41" selection-end-line="401" selection-end-column="41" />
+            <state relative-caret-position="186">
+              <caret line="236" column="88" selection-start-line="236" selection-start-column="70" selection-end-line="236" selection-end-column="88" />
+              <folding>
+                <element signature="e#79#156#0" expanded="true" />
+                <element signature="e#1449#1483#0" />
+                <element signature="e#1515#2598#0" />
+                <element signature="e#2615#3112#0" />
+                <element signature="e#3156#5327#0" />
+                <element signature="e#3463#3645#0" />
+                <element signature="e#3687#4381#0" />
+                <element signature="e#4151#4335#0" />
+                <element signature="e#4421#5280#0" />
+                <element signature="e#4766#5115#0" />
+                <element signature="e#5323#5327#0" />
+                <element signature="e#5417#5643#0" />
+                <element signature="e#5683#5878#0" />
+                <element signature="e#5963#5967#0" />
+                <element signature="e#8963#12589#0" />
+                <element signature="e#11982#12589#0" />
+                <element signature="e#12257#12464#0" />
+                <element signature="e#12508#12589#0" />
+                <element signature="e#12615#12724#0" />
+                <element signature="e#13055#16693#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/flask_supervisor/templates/server/ansible_manage.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1216">
+              <caret line="110" column="30" selection-start-line="110" selection-start-column="30" selection-end-line="110" selection-end-column="30" />
+              <folding>
+                <element signature="n#style#0;n#el-row#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#el-col#0;n#el-row#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#el-breadcrumb#0;n#div#0;n#el-col#0;n#el-row#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#el-header#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#el-table#0;n#el-dialog#0;n#div#0;n#el-col#0;n#el-row#0;n#el-header#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#template#0;n#el-table-column#1;n#el-table#0;n#el-dialog#0;n#div#0;n#el-col#0;n#el-row#0;n#el-header#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#template#0;n#el-table-column#2;n#el-table#0;n#el-dialog#0;n#div#0;n#el-col#0;n#el-row#0;n#el-header#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#template#0;n#el-table-column#3;n#el-table#0;n#el-dialog#0;n#div#0;n#el-col#0;n#el-row#0;n#el-header#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#template#0;n#el-table-column#4;n#el-table#0;n#el-dialog#0;n#div#0;n#el-col#0;n#el-row#0;n#el-header#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#template#1;n#el-table-column#5;n#el-table#0;n#el-dialog#0;n#div#0;n#el-col#0;n#el-row#0;n#el-header#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#el-table#0;n#el-main#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#template#0;n#el-table-column#1;n#el-table#0;n#el-main#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#template#0;n#el-table-column#2;n#el-table#0;n#el-main#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#template#0;n#el-table-column#3;n#el-table#0;n#el-main#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#template#0;n#el-table-column#4;n#el-table#0;n#el-main#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#template#0;n#el-table-column#5;n#el-table#0;n#el-main#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#template#0;n#el-table-column#6;n#el-table#0;n#el-main#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#template#0;n#el-table-column#7;n#el-table#0;n#el-main#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#template#1;n#el-table-column#8;n#el-table#0;n#el-main#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#1;n#template#1;n#el-table-column#8;n#el-table#0;n#el-main#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#el-col#1;n#el-row#0;n#el-footer#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>total</find>
-      <find>page_sizes</find>
-      <find>formLabelWidth</find>
-      <find>value</find>
-      <find>url</find>
-      <find>resetForm</find>
-      <find>$</find>
-      <find>nav_name</find>
-      <find>css.css</find>
-      <find>page_s</find>
-      <find>page_size</find>
-      <find>qian</find>
-      <find>or_</find>
-      <find>load</find>
-      <find>tableData</find>
-      <find>row-key</find>
-      <find>Object</find>
-      <find>关键</find>
-      <find>mounted</find>
-      <find>join</find>
-      <find>joined</find>
-      <find>oinedload+</find>
-      <find>v-for</find>
-      <find>Current</find>
-      <find>element</find>
-      <find>app</find>
-      <find>master_user</find>
-      <find>scope</find>
-      <find>oinedload</find>
-      <find>handleSelectionChange</find>
+      <find>&quot;selectNavNameGet</find>
+      <find>selectHostGet</find>
+      <find>allow-create</find>
+      <find>selectNavNameGet</find>
+      <find>New</find>
+      <find>saveTagInput</find>
+      <find>inputValue</find>
+      <find>v-model=&quot;inputValue&quot;</find>
+      <find>select</find>
+      <find>service_developers_option</find>
+      <find>selectDevloperGet</find>
+      <find>options</find>
+      <find>service_detail</find>
+      <find>service_ports</find>
+      <find>submit</find>
+      <find>services_rules</find>
+      <find>service_rules</find>
+      <find>devopler</find>
+      <find>reset</find>
+      <find>服务详情</find>
+      <find>message</find>
+      <find>service/</find>
+      <find>filter</find>
+      <find>exists</find>
+      <find>getRan</find>
+      <find>Ran</find>
+      <find>Host</find>
+      <find>StringTo</find>
+      <find>ServiceForm</find>
+      <find>config</find>
     </findStrings>
     <replaceStrings>
       <replace>current_user.user_name</replace>
       <replace>ztiao</replace>
       <replace>delMul</replace>
       <replace>tableData</replace>
+      <replace>serviceForm</replace>
+      <replace>developer</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -134,21 +186,31 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/requirments.txt" />
         <option value="E:/python36/Lib/site-packages/flask_login/utils.py" />
-        <option value="$PROJECT_DIR$/flask_supervisor/templates/base/frame_boot_base.html" />
         <option value="$PROJECT_DIR$/flask_supervisor/start.sql" />
         <option value="$PROJECT_DIR$/flask_supervisor/templates/index/user/userInfo.html" />
-        <option value="$PROJECT_DIR$/flask_supervisor/backend/api_resources.py" />
+        <option value="$PROJECT_DIR$/flask_supervisor/templates/base/frame_boot_base.html" />
+        <option value="$PROJECT_DIR$/flask_supervisor/templates/server/jkList1.html" />
+        <option value="$PROJECT_DIR$/flask_supervisor/templates/server/index.html" />
         <option value="$PROJECT_DIR$/flask_supervisor/templates/index/NavList.html" />
+        <option value="$PROJECT_DIR$/flask_supervisor/backend/api_resources.py" />
+        <option value="$PROJECT_DIR$/flask_supervisor/supervisor/models.py" />
+        <option value="$PROJECT_DIR$/flask_supervisor/templates/server/services.html" />
+        <option value="$PROJECT_DIR$/flask_supervisor/server/views.py" />
+        <option value="$PROJECT_DIR$/flask_supervisor/config.py" />
+        <option value="$PROJECT_DIR$/requirments.txt" />
+        <option value="$PROJECT_DIR$/flask_supervisor/templates/server/ansible_manage.html" />
+        <option value="$PROJECT_DIR$/flask_supervisor/backend/__init__.py" />
+        <option value="$PROJECT_DIR$/flask_supervisor/server/__init__.py" />
+        <option value="$PROJECT_DIR$/flask_supervisor/server/api_resources.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="371" />
-    <option name="y" value="543" />
+    <option name="x" value="223" />
+    <option name="y" value="284" />
     <option name="width" value="1400" />
-    <option name="height" value="732" />
+    <option name="height" value="641" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -172,6 +234,18 @@
               <item name="flask_supervisor" type="b2602c69:ProjectViewProjectNode" />
               <item name="flask_supervisor" type="462c0819:PsiDirectoryNode" />
               <item name="flask_supervisor" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="flask_supervisor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="flask_supervisor" type="462c0819:PsiDirectoryNode" />
+              <item name="flask_supervisor" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="flask_supervisor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="flask_supervisor" type="462c0819:PsiDirectoryNode" />
+              <item name="flask_supervisor" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -179,7 +253,7 @@
               <item name="flask_supervisor" type="462c0819:PsiDirectoryNode" />
               <item name="flask_supervisor" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="base" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -189,18 +263,20 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/flask_supervisor/static/img" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/flask_supervisor" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.General" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="F:\www\flask_supervisor\flask_supervisor\templates\index" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\www\flask_supervisor\flask_supervisor" />
       <recent name="F:\www\flask_supervisor\flask_supervisor\static\img" />
       <recent name="F:\www\flask_supervisor\flask_supervisor\static\img\users\houtai" />
       <recent name="F:\www\flask_supervisor\flask_supervisor\templates\index\user" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\www\flask_supervisor\flask_supervisor\templates\index" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -247,13 +323,27 @@
       <option name="project" value="LOCAL" />
       <updated>1560595493777</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="服务列表添加">
+      <created>1561377661893</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1561377661893</updated>
+    </task>
+    <task id="LOCAL-00005" summary="服务列表展示">
+      <created>1561456846818</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1561456846818</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17913593" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17913593" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -263,9 +353,9 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.30911064" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.329718" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49947312" visible="true" weight="0.30694142" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50052685" side_tool="true" weight="0.30911064" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.3290993" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -275,7 +365,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="zt" />
     <MESSAGE value="element ui table" />
-    <option name="LAST_COMMIT_MESSAGE" value="element ui table" />
+    <MESSAGE value="服务列表添加" />
+    <MESSAGE value="服务列表展示" />
+    <option name="LAST_COMMIT_MESSAGE" value="服务列表展示" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -289,16 +381,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/flask_supervisor/config.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/requirments.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://E:/python36/Lib/site-packages/flask_login/utils.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="185">
@@ -336,9 +418,6 @@
     <entry file="file://$PROJECT_DIR$/flask_supervisor/backend/views.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/flask_supervisor/backend/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/flask_supervisor/start.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -360,48 +439,245 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/flask_supervisor/supervisor/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="71" column="4" selection-start-line="71" selection-start-column="4" selection-end-line="71" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/flask_supervisor/templates/base/frame_boot_base.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-43">
-          <caret line="71" column="32" selection-start-line="71" selection-start-column="25" selection-end-line="71" selection-end-column="32" />
+        <state relative-caret-position="247">
+          <caret line="83" column="94" selection-start-line="83" selection-start-column="94" selection-end-line="83" selection-end-column="94" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/flask_supervisor/backend/api_resources.py">
+    <entry file="file://$PROJECT_DIR$/flask_supervisor/templates/server/jkList1.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
-          <caret line="329" column="39" lean-forward="true" selection-start-line="329" selection-start-column="39" selection-end-line="329" selection-end-column="39" />
+        <state relative-caret-position="-4600">
+          <caret line="4" column="19" lean-forward="true" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
           <folding>
-            <element signature="e#79#156#0" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#form#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#0;n#form#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#2;n#div#0;n#form#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="e#2766#2772#0" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="e#3315#3321#0" expanded="true" />
+            <element signature="n#style#0;n#button#1;n#div#1;n#!!top" expanded="true" />
+            <element signature="e#3479#3485#0" expanded="true" />
+            <element signature="n#style#0;n#button#2;n#div#1;n#!!top" expanded="true" />
+            <element signature="e#3641#3647#0" expanded="true" />
+            <element signature="n#style#0;n#button#3;n#div#1;n#!!top" expanded="true" />
+            <element signature="e#3811#3817#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://E:/python36/Lib/site-packages/flask/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="122">
+          <caret line="87" selection-start-line="87" selection-end-line="87" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://E:/python36/Lib/site-packages/sqlalchemy/orm/attributes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="1456" selection-start-line="1456" selection-end-line="1456" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://E:/python36/Lib/site-packages/sqlalchemy/orm/collections.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="714" selection-start-line="714" selection-end-line="714" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/flask_supervisor/templates/index/NavList.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="376" column="36" selection-start-line="376" selection-start-column="36" selection-end-line="376" selection-end-column="36" />
+        <state relative-caret-position="590">
+          <caret line="348" column="20" selection-start-line="348" selection-start-column="20" selection-end-line="348" selection-end-column="60" />
           <folding>
             <element signature="n#style#0;n#el-row#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#el-col#0;n#el-row#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#el-breadcrumb#0;n#div#0;n#el-col#0;n#el-row#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#el-header#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#2;n#template#0;n#el-table-column#2;n#el-table#0;n#el-main#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#el-table#0;n#el-main#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#1;n#template#0;n#el-table-column#3;n#el-table#0;n#el-main#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#1;n#div#1;n#template#1;n#el-table-column#6;n#el-table#0;n#el-main#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#el-col#1;n#el-row#0;n#el-footer#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_supervisor/supervisor/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="123" column="4" selection-start-line="123" selection-start-column="4" selection-end-line="123" selection-end-column="18" />
+          <folding>
+            <element signature="e#70#93#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_supervisor/templates/server/services.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4670">
+          <caret line="470" column="30" selection-start-line="470" selection-start-column="30" selection-end-line="470" selection-end-column="30" />
+          <folding>
+            <element signature="n#style#0;n#el-row#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#el-header#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#el-table#0;n#el-main#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#template#0;n#el-table-column#1;n#el-table#0;n#el-main#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#template#0;n#el-table-column#2;n#el-table#0;n#el-main#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#template#0;n#el-table-column#3;n#el-table#0;n#el-main#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#template#0;n#el-table-column#5;n#el-table#0;n#el-main#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#template#1;n#el-table-column#8;n#el-table#0;n#el-main#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#1;n#template#1;n#el-table-column#8;n#el-table#0;n#el-main#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#el-col#1;n#el-row#0;n#el-footer#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_supervisor/templates/server/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="283" column="16" lean-forward="true" selection-end-line="558" selection-end-column="14" />
+          <folding>
+            <element signature="n#style#0;n#el-row#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#el-col#0;n#el-row#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#el-breadcrumb#0;n#div#0;n#el-col#0;n#el-row#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#el-header#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#el-table#0;n#el-dialog#0;n#div#0;n#el-col#0;n#el-row#0;n#el-header#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#template#0;n#el-table-column#1;n#el-table#0;n#el-dialog#0;n#div#0;n#el-col#0;n#el-row#0;n#el-header#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#template#0;n#el-table-column#2;n#el-table#0;n#el-dialog#0;n#div#0;n#el-col#0;n#el-row#0;n#el-header#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#template#0;n#el-table-column#3;n#el-table#0;n#el-dialog#0;n#div#0;n#el-col#0;n#el-row#0;n#el-header#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#template#0;n#el-table-column#4;n#el-table#0;n#el-dialog#0;n#div#0;n#el-col#0;n#el-row#0;n#el-header#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#template#1;n#el-table-column#5;n#el-table#0;n#el-dialog#0;n#div#0;n#el-col#0;n#el-row#0;n#el-header#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#el-table#0;n#el-main#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#template#0;n#el-table-column#1;n#el-table#0;n#el-main#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#template#0;n#el-table-column#2;n#el-table#0;n#el-main#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#template#0;n#el-table-column#3;n#el-table#0;n#el-main#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#template#0;n#el-table-column#4;n#el-table#0;n#el-main#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#el-input#0;n#template#0;n#el-table-column#5;n#el-table#0;n#el-main#0;n#el-container#0;n#template#0;n#div#0;n#!!top" />
-            <element signature="n#style#0;n#span#0;n#template#1;n#el-table-column#6;n#el-table#0;n#el-main#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#1;n#template#1;n#el-table-column#6;n#el-table#0;n#el-main#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#2;n#template#1;n#el-table-column#6;n#el-table#0;n#el-main#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#template#0;n#el-table-column#6;n#el-table#0;n#el-main#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#el-col#1;n#el-row#0;n#el-footer#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirments.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="10" column="12" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_supervisor/ansible_hosts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-71" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_supervisor/backend/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="22" column="73" selection-start-line="22" selection-start-column="73" selection-end-line="22" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_supervisor/templates/server/ansible_manage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1216">
+          <caret line="110" column="30" selection-start-line="110" selection-start-column="30" selection-end-line="110" selection-end-column="30" />
+          <folding>
+            <element signature="n#style#0;n#el-row#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#el-col#0;n#el-row#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#el-breadcrumb#0;n#div#0;n#el-col#0;n#el-row#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#el-header#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#el-table#0;n#el-dialog#0;n#div#0;n#el-col#0;n#el-row#0;n#el-header#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#template#0;n#el-table-column#1;n#el-table#0;n#el-dialog#0;n#div#0;n#el-col#0;n#el-row#0;n#el-header#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#template#0;n#el-table-column#2;n#el-table#0;n#el-dialog#0;n#div#0;n#el-col#0;n#el-row#0;n#el-header#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#template#0;n#el-table-column#3;n#el-table#0;n#el-dialog#0;n#div#0;n#el-col#0;n#el-row#0;n#el-header#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#template#0;n#el-table-column#4;n#el-table#0;n#el-dialog#0;n#div#0;n#el-col#0;n#el-row#0;n#el-header#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#template#1;n#el-table-column#5;n#el-table#0;n#el-dialog#0;n#div#0;n#el-col#0;n#el-row#0;n#el-header#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#el-table#0;n#el-main#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#template#0;n#el-table-column#1;n#el-table#0;n#el-main#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#template#0;n#el-table-column#2;n#el-table#0;n#el-main#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#template#0;n#el-table-column#3;n#el-table#0;n#el-main#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#template#0;n#el-table-column#4;n#el-table#0;n#el-main#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#template#0;n#el-table-column#5;n#el-table#0;n#el-main#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#template#0;n#el-table-column#6;n#el-table#0;n#el-main#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#template#0;n#el-table-column#7;n#el-table#0;n#el-main#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#template#1;n#el-table-column#8;n#el-table#0;n#el-main#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#1;n#template#1;n#el-table-column#8;n#el-table#0;n#el-main#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#el-col#1;n#el-row#0;n#el-footer#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_supervisor/server/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="18" column="34" selection-start-line="18" selection-start-column="34" selection-end-line="18" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_supervisor/server/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="24" column="11" selection-start-line="24" selection-start-column="11" selection-end-line="24" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_supervisor/backend/api_resources.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="236" column="88" selection-start-line="236" selection-start-column="70" selection-end-line="236" selection-end-column="88" />
+          <folding>
+            <element signature="e#79#156#0" expanded="true" />
+            <element signature="e#1449#1483#0" />
+            <element signature="e#1515#2598#0" />
+            <element signature="e#2615#3112#0" />
+            <element signature="e#3156#5327#0" />
+            <element signature="e#3463#3645#0" />
+            <element signature="e#3687#4381#0" />
+            <element signature="e#4151#4335#0" />
+            <element signature="e#4421#5280#0" />
+            <element signature="e#4766#5115#0" />
+            <element signature="e#5323#5327#0" />
+            <element signature="e#5417#5643#0" />
+            <element signature="e#5683#5878#0" />
+            <element signature="e#5963#5967#0" />
+            <element signature="e#8963#12589#0" />
+            <element signature="e#11982#12589#0" />
+            <element signature="e#12257#12464#0" />
+            <element signature="e#12508#12589#0" />
+            <element signature="e#12615#12724#0" />
+            <element signature="e#13055#16693#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_supervisor/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="71" column="4" selection-start-line="71" selection-start-column="4" selection-end-line="71" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://E:/python36/Lib/configparser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1164">
+          <caret line="1183" column="6" selection-start-line="1183" selection-start-column="6" selection-end-line="1183" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_supervisor/server/api_resources.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="242" column="39" selection-start-line="242" selection-start-column="39" selection-end-line="242" selection-end-column="39" />
+          <folding>
+            <element signature="e#44#78#1" />
+            <element signature="e#79#90#0" expanded="true" />
+            <element signature="e#2058#2133#0" />
+            <element signature="e#2157#2608#0" />
+            <element signature="e#2624#2772#0" />
+            <element signature="e#2807#5591#0" />
+            <element signature="e#7839#9665#0" />
           </folding>
         </state>
       </provider>

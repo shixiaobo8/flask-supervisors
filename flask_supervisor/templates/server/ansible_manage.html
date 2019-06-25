@@ -1,0 +1,559 @@
+{% extends "base/frame_boot_base.html" %}
+{% block title %} ansible列表 {% endblock %}
+{% block content %}
+<div id="app">
+    <template>
+        <el-container>
+            <el-row style="height:40px;margin-top:20px;">
+                <el-col :span="24">
+                    <div class="grid-content bg-purple-dark" style="backgroud-color:#85934D;">
+                        <el-breadcrumb separator-class="el-icon-arrow-right" style="padding-left:20px;">
+                            <el-breadcrumb-item :to="{ path: '/' }">ansible管理</el-breadcrumb-item>
+                            <el-breadcrumb-item>ansible列表</el-breadcrumb-item>
+                        </el-breadcrumb>
+                    </div>
+                </el-col>
+            </el-row>
+
+            <el-header style="height:40px;">
+                <el-row>
+                    <el-col :span="24">
+                        <div class="grid-content bg-purple-dark">
+                            <!-- Form -->
+                            <el-button @click="newAdd" type="success" icon="el-icon-plus" round>ansible主机列表 </el-button>
+
+                            <el-dialog title="同步阿里ecs" :visible.sync="dialogVisible">
+                                <el-table
+                        :data="hostData.filter(data => !search || data.InstanceName.toLowerCase().includes(search.toLowerCase()))"
+                        ref="multipleTable"
+                        highlight-current-row
+                        @row-click="handleCurrentChange"
+                        @selection-change="handleSelectionChange"
+                        border
+                        style="width: 100%">
+                    <el-table-column
+                            type="selection"
+                            width="55">
+                    </el-table-column>
+
+                    </el-table-column>
+                    <el-table-column
+                            label="主机名称"
+                            align="center"
+                            @change="handleEdit(scope.$index, scope.row)"
+                            width="120">
+                        <template slot-scope="scope">
+                            <span style="margin-left: 10px">{[ scope.row.InstanceName ]}</span>
+                        </template>
+                    </el-table-column>
+                                        <el-table-column
+                            label="实例id"
+                            align="center"
+                            @change="handleEdit(scope.$index, scope.row)"
+                            width="120">
+                        <template slot-scope="scope">
+                            <span style="margin-left: 10px">{[ scope.row.HostName ]}</span>
+                        </template>
+                    </el-table-column>
+                    </el-table-column>
+                                        <el-table-column
+                            label="主机信息"
+                            align="center"
+                            @change="handleEdit(scope.$index, scope.row)"
+                            width="180">
+                        <template slot-scope="scope">
+                            <span style="margin-left: 10px">{[ scope.row.RegionId ]}/{[ scope.row.OSName ]}/{[ scope.row.InstanceNetworkType ]}/{[ scope.row.Cpu ]}核/{[ scope.row.Memory ]}G/{[ scope.row.NetworkInterfaces.NetworkInterface[0].PrimaryIpAddress ]}/{[ scope.row.PublicIpAddress.IpAddress[0] ]}</span>
+                        </template>
+                    </el-table-column>
+                    <el-table-column
+                            label="运行状态"
+                            align="center"
+                            @change="handleEdit(scope.$index, scope.row)"
+                            width="120">
+                        <template slot-scope="scope">
+                            <span style="margin-left: 10px">{[ scope.row.Status ]}</span>
+                        </template>
+                    </el-table-column>
+                    <el-table-column align="center" label="请搜索">
+                        <template slot="header" slot-scope="scope" >
+                            <el-input
+                                    v-model="search"
+                                    size="mini"
+                                    placeholder="输入主机名称关键字搜索"/>
+                        </template>
+                        <template slot-scope="scope">
+                            <span class="el-tag el-tag--info el-tag--mini" style="cursor: pointer;"
+                                  @click="onetying(scope.row,scope.$index,true)">
+                                 同步
+                            </span>
+                        </template>
+                    </el-table-column>
+                </el-table>
+                                <div slot="footer" class="dialog-footer">
+                                    <el-button @click="lottying" >批量绑定/同步</el-button>
+                                    <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+                                </div>
+                            </el-dialog>
+
+                            <el-button @click="lotPri" type="success" plain icon="eel-icon-setting" round>批量业务授权</el-button>
+                        </div>
+                    </el-col>
+                </el-row>
+            </el-header>
+
+            <el-main>
+                <el-table
+                        :data="tableData.filter(data => !search || data.host_name.toLowerCase().includes(search.toLowerCase()))"
+                        ref="multipleTable"
+                        highlight-current-row
+                        @row-click="handleCurrentChange"
+                        @selection-change="handleSelectionChange"
+                        border
+                        style="width: 100%">
+                    <el-table-column
+                            type="selection"
+                            width="55">
+                    </el-table-column>
+                    <el-table-column
+                            prop="id"
+                            fixed
+                            align="center"
+                            sortable
+                            label="ID"
+                            width="180">
+                        <template slot-scope="scope">
+                            <span style="margin-left: 10px">{[ scope.row.id ]}</span>
+                        </template>
+                    </el-table-column>
+                    </el-table-column>
+                    <el-table-column
+                            label="主机名称"
+                            align="center"
+                            @change="handleEdit(scope.$index, scope.row)"
+                            width="180">
+                        <template slot-scope="scope">
+                            <span style="margin-left: 10px">{[ scope.row.host_name ]}</span>
+                        </template>
+                    </el-table-column>
+                    <el-table-column
+                            label="环境"
+                            align="center"
+                            @change="handleEdit(scope.$index, scope.row)"
+                            width="180">
+                        <template slot-scope="scope">
+                            <span style="margin-left: 10px">{[ scope.row.node_name ]}</span>
+                        </template>
+                    </el-table-column>
+                                        <el-table-column
+                            label="实例id"
+                            align="center"
+                            @change="handleEdit(scope.$index, scope.row)"
+                            width="180">
+                        <template slot-scope="scope">
+                            <span style="margin-left: 10px">{[ scope.row.ali_instance_id ]}</span>
+                        </template>
+                    </el-table-column>
+                    </el-table-column>
+                                        <el-table-column
+                            label="主机信息"
+                            align="center"
+                            @change="handleEdit(scope.$index, scope.row)"
+                            width="180">
+                        <template slot-scope="scope">
+                            <span style="margin-left: 10px">{[ scope.row.host_info ]}</span>
+                        </template>
+                    </el-table-column>
+                    <el-table-column
+                            label="内网ip"
+                            align="center"
+                            @change="handleEdit(scope.$index, scope.row)"
+                            width="180">
+                        <template slot-scope="scope">
+                            <span style="margin-left: 10px">{[ scope.row.host_inner_ip ]}</span>
+                        </template>
+                    </el-table-column>
+                    <el-table-column
+                            label="公网ip"
+                            align="center"
+                            @change="handleEdit(scope.$index, scope.row)"
+                            width="180">
+                        <template slot-scope="scope">
+                            <span style="margin-left: 10px">{[ scope.row.host_public_ip ]}</span>
+                        </template>
+                    </el-table-column>
+
+                    <el-table-column align="center" label="请搜索">
+                        <template slot="header" slot-scope="scope" >
+                            <el-input
+                                    v-model="search"
+                                    size="mini"
+                                    placeholder="输入主机名称关键字搜索"/>
+                        </template>
+                        <template slot-scope="scope">
+                            <span class="el-tag el-tag--info el-tag--mini" style="cursor: pointer;"
+                                  @click="sshConnect(scope.row)" >
+                                 ssh 连接
+                            </span>
+                            <span  class="el-tag el-tag--danger el-tag--mini"
+                                      style="cursor: pointer;"
+                                      @click="onePri(scope.row) " >
+                                  业务授权管理
+                            </span>
+                        </template>
+                    </el-table-column>
+                </el-table>
+            </el-main>
+
+            <el-footer>
+                <el-row>
+                    <el-col :span="12">
+                        <div class="grid-content bg-purple-light">
+                            <el-button @click="toggleSelection()">取消选择</el-button>
+                        </div>
+                    </el-col>
+                    <el-col :span="12">
+                        <div class="grid-content bg-purple-light" style="margin-right:10px;">
+                            <el-pagination
+                                    @size-change="handleSizeChange"
+                                    @current-change="handleCurrentPageChange"
+                                    :current-page="currentPage"
+                                    :page-sizes="[10,20,50]"
+                                    :page-size="page_size"
+                                    layout="total, sizes, prev, pager, next, jumper"
+                                    :total="count">
+                            </el-pagination>
+                        </div>
+                    </el-col>
+                </el-row>
+            </el-footer>
+        </el-container>
+    </template>
+</div>
+<style>
+    .el-row {
+    margin-bottom: 20px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  .el-col {
+    border-radius: 4px;
+  }
+  .el-pagination {
+    padding:2px 20px;
+  }
+  .el-select {
+    width: 450px;
+  }
+.tb-edit .el-input {
+    display: none
+}
+.tb-edit .current-row .el-input {
+    display: block
+}
+.tb-edit .current-row .el-input+span {
+    display: none
+}
+.el-table-add-row {
+    margin-top: 10px;
+    width: 100%;
+    height: 34px;
+    border: 1px dashed #c1c1cd;
+    border-radius: 3px;
+    cursor: pointer;
+    justify-content: center;
+    display: flex;
+    line-height: 34px;
+ }
+ .el-table .warning-row {
+    background: oldlace;
+  }
+
+  .el-table .success-row {
+    background: #f0f9eb;
+  }
+
+
+
+
+</style>
+<script>
+var Main = {
+    delimiters: ['{[', ']}'],
+    data(){
+        return {
+            currentPage: 1,
+            count:0,
+            page_size:10,
+            search: '',
+            loading: true,
+             dialogTableVisible: false,
+             dialogVisible: false,
+            dialogVisible: false,
+            formLabelWidth: '120px',
+            selectWidth: '120px',
+            showBtnOrdinary: true,
+            value:[],
+            tableData: [],
+            hostData: []
+         };
+    },
+    methods: {
+        sshConnect(row){
+            console.log("正在连接ssh....");
+        },
+        onePri(row){
+            console.log("正在授权单个服务....");
+        },
+      changeLineData(data){
+            var _this = this;
+            axios({
+                method: 'put',
+                url: '/houtai/Nav',
+                data:data
+            })
+                .then(function (response) {
+                    if(response.data.code==20000){
+                        _this.$message({
+                           type: 'success',
+                           message: "更新成功!"
+                        });
+                    }else{
+                        _this.$message({
+                           type: 'warning',
+                           message: response.message
+                        });
+                    }
+                })
+                .catch(function (error) {
+                    _this.$message({
+                           type: 'error',
+                           message: "服务器内部错误,请联系管理员!"
+                        });
+                });
+      },
+      getHostList() {
+            var _this = this;
+            axios({
+                method: 'get',
+                url: '/server/HostList',
+                params: {
+                    username: '{{ current_user.username }}',
+                    page_size: _this.page_size,
+                    currentPage: _this.currentPage,
+                    is_detail:0
+                }
+            })
+                .then(function (response) {
+                    _this.tableData = response.data.data;
+                    _this.count = response.data.count;
+                    _this.current_page = response.data.cureent_page;
+                    _this.page_size = response.data.page_size;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        },
+        getAliHostList() {
+            var _this = this;
+            axios({
+                method: 'get',
+                url: '/server/ali/EcsList',
+            })
+                .then(function (response) {
+                    _this.hostData = response.data.Instances.Instance;
+                    _this.count = response.data.TotalCount;
+                    _this.current_page = response.data.PageNumber;
+                    _this.page_size = response.data.PageSize;
+                    for (i = 0; i < response.data.Instances.Instance.length; i++) {
+                          _this.options.push({label:response.data.Instances.Instance[i].HostName,value:response.data.Instances.Instance[i].HostName});
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        },
+        //行内单条同步
+        onetying(row, index, cg) {
+                    var _this = this;
+                    let data = row;
+                    axios({
+                method: 'post',
+                url: '/server/HostList',
+                data:data
+            })
+                .then(function (response) {
+                    if(response.data.code==20000){
+                        _this.$message({
+                           type: 'success',
+                           message: "同步成功!"
+                        });
+                    }else{
+                        _this.$message({
+                           type: 'warning',
+                           message: response.message
+                        });
+                    }
+                })
+                .catch(function (error) {
+                    _this.$message({
+                           type: 'error',
+                           message: "服务器内部错误,请联系管理员!"
+                        });
+                });
+                _this.dialogVisible = false;
+                window.location.reload();
+      },
+      // 批量同步
+        lottying(row, index, cg) {
+                    var _this = this;
+                    //点击修改 判断是否已经保存所有操作
+                    console.log("正在修改行数据");
+                    row.isSet=true;
+                    return;
+      },
+      handleCurrentChange(row, event, column) {
+                this.$refs.multipleTable.toggleRowSelection(row);
+                return false;
+      },
+      newAdd() {
+            this.dialogVisible = true;
+      },
+      lotPri() {
+           let _this = this;
+          let select_data = this.multipleSelection;
+          if(typeof(select_data) == "undefined"){
+                _this.$message({
+                               type: 'warning',
+                               message: "没有选中行数据!"
+                 });
+                 return;
+          }
+          if(select_data.length == 0){
+                _this.$message({
+                               type: 'warning',
+                               message: "没有选中行数据!"
+                 });
+                 return;
+          }
+          this.$confirm('此操作将批量授权选中的'+select_data.length+'行记录, 是否继续?', '提示', {
+          confirmButtonText: '删除',
+          cancelButtonText: '取消',
+          type: 'warning'
+            }).then(() => {
+              axios({
+                method: 'delete',
+                url: '/server/lotPri',
+                data:{"delete_data":select_data}
+            })
+                .then(function (response) {
+                    if(response.data.code==20000){
+                        _this.$message({
+                           type: 'success',
+                           message: "批量授权成功!"
+                        });
+                    }else{
+                        _this.$message({
+                           type: 'warning',
+                           message: response.message
+                        });
+                    }
+                })
+                .catch(function (error) {
+                    _this.$message({
+                           type: 'error',
+                           message: "服务器内部错误,请联系管理员!"
+                        });
+                });
+            }).catch(() => {
+              this.$message({
+                type: 'info',
+                message: '已取消批量删除'
+              });
+            });
+            //然后这边重新读取表格数据
+             _this.getHostList();
+      },
+      handleSelectionChange(val) {
+        this.multipleSelection = val;
+      },
+      toggleSelection(rows) {
+        if (rows) {
+          rows.forEach(row => {
+            this.$refs.multipleTable.toggleRowSelection(row);
+          });
+        } else {
+          this.$refs.multipleTable.clearSelection();
+        }
+      },
+      // 翻页操作
+      handleCurrentPageChange(val){
+        this.currentPage = val;
+        this.getHostList();
+      },
+      // 页面size
+      handleSizeChange(val) {
+        console.log(`每页 ${val} 条`);
+        this.page_size=val;
+        console.log("每页"+this.page_size);
+        this.getHostList();
+      },
+      selectNavNameGet(value){
+           console.log("选中"+value);
+          let obj = {};
+          obj = this.options.find((item)=>{
+              return item.value === value;
+          });
+          this.ruleForm.nav_name = value;
+          return obj;
+      },
+      submitForm(formName) {
+        this.startUsingLoading = true;
+        var that = this;
+        this.$refs[formName].validate((valid) => {
+          if (valid) {
+                        axios({
+                            method: 'POST',
+                            url: '/houtai/Nav',
+                            data: this.ruleForm,
+                        })
+                            .then(function (response) {
+                                       that.$message({
+								        message: '新增成功',
+								        type: 'success'
+								        });
+                                    that.startUsingDialog = false;
+                                    that.startUsingLoading = false;
+                                    that.dialogVisible = false;
+                                    that.$refs[formName].resetFields();
+                                that.getHostList();
+                            })
+                            .catch(function (error) {
+                                that.$message({
+								        message: '新增失败,可能出现服务器错误!',
+								        type: 'error'
+								        });
+                            });
+                        ;
+                    } else {
+                        that.$message({
+								        message: '表单验证失败!',
+								        type: 'error'
+					    });
+                    }
+                });
+            },
+      resetForm(formName) {
+        this.$refs[formName].resetFields();
+      }
+    },
+    mounted(){
+        this.getAliHostList(),
+        this.getHostList();
+    }
+};
+    var Ctor = Vue.extend(Main);
+    new Ctor().$mount('#app');
+
+</script>
+{% endblock %}

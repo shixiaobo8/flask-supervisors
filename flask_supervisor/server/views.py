@@ -18,3 +18,10 @@ def index():
 @server.route('/serviceList')
 def serverList():
     return render_template("server/services.html")
+
+
+# ansible分组管理
+@login_required
+@server.route('/ansible/manage')
+def anisble():
+    return render_template("server/ansible_manage.html")

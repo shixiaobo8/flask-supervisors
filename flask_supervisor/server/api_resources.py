@@ -3,7 +3,7 @@
 """
 	restful api route 类和类注册文件
 """
-import json
+import json,configparser
 from flask import current_app,request,session
 from flask_supervisor import mysql_db
 from aliyunsdkcore.client import AcsClient
@@ -225,6 +225,26 @@ class ServiceApi(Resource):
                 mysql_db.session.add(new_service)
                 mysql_db.session.commit()
             return {'code': 20000, "message": "更新成功"}
+
+    def delete(self):
+        pass
+
+    def put(self):
+        pass
+
+
+# AnsibleManagerApi  ansible管理主机
+class AnsibleManagerApi(Resource):
+    def __init__(self):
+        self.ansible_conf = current_app.config["ANSIBLE_CONFIG_FILE"]
+        self.cf = configparser.ConfigParser()
+
+    def get(self):
+        self.cf.read(self.ansible_conf,encoding='gbk')
+
+
+    def post(self):
+        pass
 
     def delete(self):
         pass
