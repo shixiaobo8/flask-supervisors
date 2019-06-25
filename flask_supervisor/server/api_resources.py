@@ -118,26 +118,44 @@ class HostListApi(Resource):
             return {'code': 20002, 'message': str(e)}
 
 
+
+# 输出字段
+
+shost_fields = {
+    "hostname":fields.String(attribute='hostname'),
+    "host_inner_ip": fields.String(attribute='host_inner_ip'),
+    "host_public_ip": fields.String(attribute='host_public_ip'),
+}
+
+sdevops_fields = {
+    "username":fields.String(attribute='username'),
+}
+
 class getServiceHosts(fields.Raw):
     def format(self, value):
-        return mysql_db.session.query(Host.host_inner_ip,Host.host_public_ip).filter_by(id=value).all()
-
+        return [ marshal(v,shost_fields)  for v in value ]
 
 class getServiceDevUser(fields.Raw):
     def format(self, value):
-        return mysql_db.session.query(User.username).filter_by(id=value).all()
+        return [ marshal(v,sdevops_fields) for v in value ]
 
 
-# 输出字段
+class getServicePorts(fields.Raw):
+    def format(self, value):
+        return value
+
+
+
 service_fields = {
     'id':fields.Integer(attribute="id"),
     'service_name':fields.String(attribute='service_name'),
     'service_detail':fields.String(attribute='service_detail'),
-    'service_mathines':getServiceHosts(attribute='deploy_host_id '),
-    'service_devlopers':getServiceDevUser(attribute='devops_user_id'),
+    'service_mathines':getServiceHosts(attribute='services_hosts'),
+    'service_developers':getServiceDevUser(attribute='services_developers'),
     'service_cmd':fields.String(attribute='service_start_cmd'),
-    'service_ports':fields.Integer(attribute='service_ports'),
+    'service_ports':getServicePorts(attribute='service_ports'),
 }
+
 
 # 服务列表 api
 class ServiceListApi(Resource):
@@ -155,7 +173,7 @@ class ServiceListApi(Resource):
         username = self.args['username']
         page_index = self.args['currentPage']
         page_size = self.args['page_size']
-        servives = mysql_db.session.query(Service).filter(Service.is_del == 0).join(Host,Host.id == Service.deploy_host_id).join(User,User.id == Service.devops_user_id).all()
+        servives = mysql_db.session.query(Service).filter(Service.is_del == 0).all()
         page_services = servives[(page_index - 1) * page_size:page_size * page_index]
         return {'code':0,'count':len(servives),'cureent_page':page_index,"page_size":page_size,'data':marshal(page_services,service_fields)}
 
@@ -197,9 +215,15 @@ class ServiceApi(Resource):
         if exists_service:
             return {'code': 20002, "message":"服务名已存在"}
         else:
-            new_service = Service(service_name,service_detail,service_cmd,service_ports,service_developers,service_mathines)
-            mysql_db.session.add(new_service)
-            mysql_db.session.commit()
+            for user in service_developers:
+                new_service = Service(service_name, service_detail, service_cmd, ",".join(service_ports))
+                eu = User.query.filter_by(username=user).first()
+                new_service.services_developers.append(eu)
+                for host in service_mathines:
+                    eh = Host.query.filter_by(hostname=host.split("/")[0]).first()
+                    new_service.services_hosts.append(eh)
+                mysql_db.session.add(new_service)
+                mysql_db.session.commit()
             return {'code': 20000, "message": "更新成功"}
 
     def delete(self):
