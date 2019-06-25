@@ -67,8 +67,8 @@ class Config:
     SQLALCHEMY_NATIVE_UNICODE = 'utf8'
     UPLOAD_FOLDER = 'flask_supervisor'+os.sep+'static'+os.sep+'img'+os.sep+'users'
     ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
-    ACCESSKEYID = 'LTAI1aTbTiPWINmZ'
-    ACCESSSECRET = 'bhzSeQhw3vAnZbf9HNcAwHSf4Y0RmL'
+    ACCESSKEYID = 'LTAI13333333333aTbTiPWINmZ'
+    ACCESSSECRET = 'xxx333333333333xxxxxxxxxxxx'
 
 
 # 生产环境配置
