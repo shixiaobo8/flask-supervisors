@@ -69,6 +69,7 @@ class Config:
     ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
     ACCESSKEYID = 'LTAI13333333333aTbTiPWINmZ'
     ACCESSSECRET = 'xxx333333333333xxxxxxxxxxxx'
+    UPLOAD_VERSION_FILE_DIR = "C:/Users/yunwei/Desktop/test333"
 
 
 # 生产环境配置
@@ -97,7 +98,7 @@ class ProductionConfig(Config):
     MAIL_PORT = 465 
     MAIL_USE_SSL = True
     MAIL_USERNAME = 'devops@yikaobang.com.cn'
-    MAIL_PASSWORD = 'Ykbmail89!@#'
+    MAIL_PASSWORD = '222222111'
     AA = '2323'
     SECRET_KEY = b'233#_2L"3dQ8zc-\xcc]/'
     ACCESSKEYID = 'LTAI1aTbTiPWINmZ'
@@ -131,7 +132,7 @@ class DevelopmentConfig(Config):
     MAIL_PORT = 465 
     MAIL_USE_SSL = True
     MAIL_USERNAME = 'devops@yikaobang.com.cn'
-    MAIL_PASSWORD = 'Ykbmail89!@#'
+    MAIL_PASSWORD = '22222111'
     SECRET_KEY = b'ab#_2L"3dQ8zc-\xcc]/'
     ACCESSKEYID = 'LTAI1aTbTiPWINmZ'
     ACCESSSECRET = 'bhzSeQhw3vAnZbf9HNcAwHSf4Y0RmL'

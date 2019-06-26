@@ -25,3 +25,10 @@ def serverList():
 @server.route('/ansible/manage')
 def anisble():
     return render_template("server/ansible_manage.html")
+
+
+# ansible分组管理
+@login_required
+@server.route('/ci-cd')
+def cicd():
+    return render_template("server/cicd.html")

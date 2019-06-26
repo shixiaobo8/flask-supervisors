@@ -3,7 +3,7 @@
 """
 	restful api route 类和类注册文件
 """
-import json,configparser
+import json,configparser,os,time
 from flask import current_app,request,session
 from flask_supervisor import mysql_db
 from aliyunsdkcore.client import AcsClient
@@ -250,4 +250,38 @@ class AnsibleManagerApi(Resource):
         pass
 
     def put(self):
+        pass
+
+
+# 服务器文件上传api ServerFileApi
+class ServerFileApi(Resource):
+    def __init__(self):
+        self.upload_version_file_dir = current_app.config["UPLOAD_VERSION_FILE_DIR"]
+        self.reqparse = reqparse.RequestParser()
+        self.reqparse.add_argument('currentPage', type=int, default=1, location='args', help='第几个分页')
+        self.reqparse.add_argument('page_size', type=int, default=10, location='args', help='每页显示多少')
+        self.reqparse.add_argument('username', type=str, default=session.get("username"), location='args', help='用户名')
+        # 获取request json 参数
+        self.json_args = request.json
+        self.args = self.reqparse.parse_args()
+
+    def get(self):
+        service_files = os.listdir(self.upload_version_file_dir)
+        res = []
+        for file in service_files:
+            file_obj = {}
+            file_obj['file_path'] = self.upload_version_file_dir + "/" + file
+            file_obj['file_size'] = str(os.path.getsize(self.upload_version_file_dir + "/" + file)/1024/1024) + "M"
+            file_obj['file_ctime'] =  time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(os.path.getctime(self.upload_version_file_dir + "/" + file)))
+            file_obj['file_mtime'] =  time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(os.path.getmtime(self.upload_version_file_dir + "/" + file)))
+            res.append(file_obj)
+        return res
+
+    def post(self):
+        pass
+
+    def put(self):
+        pass
+
+    def delete(self):
         pass
