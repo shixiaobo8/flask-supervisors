@@ -46,7 +46,7 @@
                                             <el-form-item style="padding-left:20px;">
                                                 <h4 style="color:red;">发布管理必选全局条件:</h4>
                                             </el-form-item>
-                                            <el-form-item label="请选择业务:" style="padding-left:100px;">
+                                            <el-form-item label="请选择业务:" >
                                                 <el-select v-model="formInline.service" placeholder="选择业务"  @change="selectServiceChange" width="100px">
                                                     <el-option
                                                       v-for="item in service_options"
@@ -57,7 +57,7 @@
                                                 </el-select>
                                             </el-form-item>
 
-                                            <el-form-item label="请选择业务对应机器:" style="padding-left:100px;">
+                                            <el-form-item label="请选择业务对应机器:" >
                                                 <el-select v-model="formInline.mathines" multiple placeholder="选择机器">
                                                     <el-option
                                                       v-for="item in mathine_options"
@@ -68,7 +68,7 @@
                                                 </el-select>
                                             </el-form-item>
 
-                                            <el-form-item style="padding-left:100px;">
+                                            <el-form-item style="padding-left:10px;">
                                                 <el-button type="primary" @click="selectSubmit" icon="el-icon-search">查询</el-button>
                                             </el-form-item>
                                         </el-form>
@@ -86,11 +86,12 @@
                                             <el-upload
                                               class="upload-demo"
                                               ref="upload"
-                                              action="https://jsonplaceholder.typicode.com/posts/"
+                                              action="/server/ServerFile"
                                               :limit="1"
                                               :on-preview="handlePreview"
                                               :on-remove="handleRemove"
                                               :file-list="fileList"
+                                              :http-request="uploadZipFile"
                                               :on-success="handleFileSuccess"
                                               :before-upload="beforeFileUpload"
                                               :on-change="handleFileChange"
@@ -115,7 +116,7 @@
                                             </el-table-column>
                                             <el-table-column
                                               label="文件名"
-                                              width="520">
+                                              width="380">
                                                 <template slot-scope="scope">{[ scope.row.file_path ]}</template>
                                             </el-table-column>
                                             <el-table-column
@@ -347,6 +348,7 @@ var Main = {
         return {
             data:[],
             select_service:'',
+            select_service_mathines:'',
             select_service_num:'',
             service_options:[],
             mathine_options:[],
@@ -431,6 +433,7 @@ var Main = {
       selectServiceChange(value){
            console.log("选中服务"+value);
           let obj = {};
+          this.select_service = value;
           obj = this.service_options.find((item)=>{
               return item.value === value;
           });
@@ -467,7 +470,7 @@ var Main = {
       },
       beforeFileUpload(file) {
         console.log(file.type);
-        const isGZIP = file.type === 'application/x-zip-compressed' || file.type === 'application/x-zip-compressed';
+        const isGZIP = file.type === 'application/x-zip-compressed' || file.type === 'application/x-gzip'|| file.type === 'application/x-compressed';
         const isLt100M = file.size / 1024 / 1024 < 100;
         if (!isGZIP) {
           this.$message.error('上传发布文件只能是指定格式zip/tgz/tar.gz!');
@@ -483,6 +486,54 @@ var Main = {
       handleExceed(files, fileList){
         this.$message.warning(`当前限制选择 1 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);
       },
+      uploadZipFile(f) {
+                    // 判断是否选中服务
+                    let upload_service = this.select_service;
+                    if(!upload_service){
+                        this.$message({
+                                    type: 'error',
+                                    message: "请先筛选全局查询条件(服务和对应主机)",
+                                    duration: 6000
+                                 });
+                         return;
+                    }
+                    let param = new FormData(); //创建form对象
+                    let username = '{{ current_user.username }}';
+                    param.append('file', f.file);//通过append向form对象添加数据
+                    param.append('username', username);//通过append向form对象添加数据
+                    param.append("service_name",upload_service);//通过append向form对象添加数据
+                    let config = {
+                        headers: {'Content-Type': 'multipart/form-data'}
+                    };  //添加请求头
+                    axios.post(f.action, param, config)//上传图片
+                        .then(response => {
+                            if(response.data.code='20000'){
+                                this.$message({
+                                    type: 'success',
+                                    message: '文件上传成功',
+                                    duration: 6000
+                                 });
+                                 return ;
+                                window.location.reload();
+                            }else{
+                                 this.$message({
+                                    type: 'error',
+                                    message: response.data.message,
+                                    duration: 6000
+                                 });
+                            }
+                        })
+                        .catch(({err}) => {
+                            this.$message({
+                                    type: 'error',
+                                    message: "上传失败,服务器内部错误!",
+                                    duration: 6000
+                                 });
+                        })
+                    .catch(() => {
+                        this.onError()
+                    })
+        },
       cancelPublishTag(rows) {
         console.log("正在取消发布标记");
       },

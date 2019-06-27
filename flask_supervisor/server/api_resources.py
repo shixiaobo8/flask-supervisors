@@ -3,9 +3,11 @@
 """
 	restful api route 类和类注册文件
 """
-import json,configparser,os,time
-from flask import current_app,request,session
-from flask_supervisor import mysql_db
+import json,configparser,os,time,werkzeug,datetime
+from flask import current_app,request,session,flash,redirect,jsonify
+from werkzeug.utils import secure_filename
+from .models import  Operation,serviceOperation
+from flask_supervisor import mysql_db,mongo_db
 from aliyunsdkcore.client import AcsClient
 from aliyunsdkcore.acs_exception.exceptions import ClientException
 from aliyunsdkcore.acs_exception.exceptions import ServerException
@@ -265,6 +267,7 @@ class ServerFileApi(Resource):
         self.json_args = request.json
         self.args = self.reqparse.parse_args()
 
+    # 文件列表
     def get(self):
         service_files = os.listdir(self.upload_version_file_dir)
         res = []
@@ -277,11 +280,49 @@ class ServerFileApi(Resource):
             res.append(file_obj)
         return res
 
+
+    # 文件上传
     def post(self):
-        pass
+        parser = reqparse.RequestParser()
+        parser.add_argument('file', type=werkzeug.datastructures.FileStorage, location='files')
+        user_name = request.form.get('username')
+        service_name = request.form.get('service_name')
+        store_path = current_app.config['UPLOAD_VERSION_FILE_DIR'] + os.sep + service_name
+        message = "更新成功!"
+        code = '20000'
+        # 上传文件
+        try:
+        # check if the post request has the file part
+            if 'file' not in request.files:
+                flash('No file part')
+                message = 'No file part'
+                return redirect(request.url)
+            file = request.files['file']
+            # if user does not select file, browser also
+            # submit an empty part without filename
+            if file.filename == '':
+                flash('No selected file')
+                message = 'No selected file'
+            if file:
+                print(222222)
+                filename = secure_filename(file.filename)
+            if not os.path.exists(store_path):
+                os.mkdir(store_path)
+                file.save(store_path + os.sep + filename)
+                op = Operation(operator_time=datetime.datetime.now(),operator_user=user_name,event="上传了文件"+filename)
+                sop = serviceOperation(server_name=service_name,service_operator_event=op)
+                op.save()
+                sop.save()
+        except Exception as e:
+            print(e)
+            code = '20002'
+            message = "更新失败!"
+        return jsonify({"code": code, 'message': message})
+
 
     def put(self):
         pass
+
 
     def delete(self):
         pass
