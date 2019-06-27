@@ -1,5 +1,5 @@
 {% extends "base/frame_boot_base.html" %}
-{% block title %} ansible列表 {% endblock %}
+{% block title %} cicd/发布管理 {% endblock %}
 {% block content %}
 <div id="app">
     <template>
@@ -43,128 +43,194 @@
                         <div slot="header" class="clearfix">
                                   <span>
                                         <el-form :inline="true" :model="formInline" class="demo-form-inline">
-                                            <el-form-item style="padding-left:20px;">
-                                                <h4 style="color:red;">发布管理必选全局条件:</h4>
+                                                        <span style="color:red;line-height: 3px;">*必选条件*:</span>
+
                                             </el-form-item>
-                                            <el-form-item label="请选择业务:" >
-                                                <el-select v-model="formInline.service" placeholder="选择业务"  @change="selectServiceChange" width="100px">
+                                            <el-form-item label="服务:">
+                                                <el-select v-model="formInline.service" placeholder="请选择服务业务"
+                                                           @change="selectServiceChange">
                                                     <el-option
-                                                      v-for="item in service_options"
-                                                      :key="item.value"
-                                                      :label="item.label"
-                                                      :value="item.value">
+                                                            v-for="item in service_options"
+                                                            :key="item.value"
+                                                            :label="item.label"
+                                                            :value="item.value">
                                                     </el-option>
                                                 </el-select>
                                             </el-form-item>
 
-                                            <el-form-item label="请选择业务对应机器:" >
+                                            <el-form-item label="操作:">
+                                                <el-select v-model="formInline.service" placeholder="请选择操作类型"
+                                                           @change="selectServiceOperatorChange">
+                                                    <el-option
+                                                            v-for="item in service_operator_options"
+                                                            :key="item.value"
+                                                            :label="item.label"
+                                                            :value="item.value">
+                                                    </el-option>
+                                                </el-select>
+                                            </el-form-item>
+                                                <el-form-item v-if="select_operatior == 'backup'" label="备份版本:">
+                                                    <el-select v-model="formInline.service" placeholder="选择备份版本"
+                                                               @change="selectServiceBakChange">
+                                                        <el-option
+                                                                v-for="item in service_bak_options"
+                                                                :key="item.value"
+                                                                :label="item.label"
+                                                                :value="item.value">
+                                                        </el-option>
+                                                    </el-select>
+                                                </el-form-item>
+                                                <el-form-item v-else-if="select_operatior == 'rollback'" label="回滚版本:">
+                                                    <el-select v-model="formInline.service" placeholder="选择回滚版本"
+                                                               @change="selectServiceRollbackChange">
+                                                        <el-option
+                                                                v-for="item in service_rollback_options"
+                                                                :key="item.value"
+                                                                :label="item.label"
+                                                                :value="item.value">
+                                                        </el-option>
+                                                    </el-select>
+                                                </el-form-item>
+                                                <el-form-item v-else-if="select_operatior == 'publish'" label="发布版本:">
+                                                    <el-select v-model="formInline.service" placeholder="选择发布版本"
+                                                               @change="selectServicePublishChange">
+                                                        <el-option
+                                                                v-for="item in service_publish_options"
+                                                                :key="item.value"
+                                                                :label="item.label"
+                                                                :value="item.value">
+                                                        </el-option>
+                                                    </el-select>
+                                                </el-form-item>
+
+                                            <el-form-item label="请选择业务对应机器:">
                                                 <el-select v-model="formInline.mathines" multiple placeholder="选择机器">
                                                     <el-option
-                                                      v-for="item in mathine_options"
-                                                      :key="item.value"
-                                                      :label="item.label"
-                                                      :value="item.value">
+                                                            v-for="item in mathine_options"
+                                                            :key="item.value"
+                                                            :label="item.label"
+                                                            :value="item.value">
                                                     </el-option>
                                                 </el-select>
                                             </el-form-item>
 
                                             <el-form-item style="padding-left:10px;">
-                                                <el-button type="primary" @click="selectSubmit" icon="el-icon-search">查询</el-button>
+                                                <el-button type="primary" @click="selectSubmit" icon="el-icon-search">执行操作</el-button>
                                             </el-form-item>
                                         </el-form>
                                   </span>
-                        </div>
-                        <div class="text item">
                         </div>
                     </el-card>
 
                     <el-tabs tab-position="left" type="border-card">
                         <el-tab-pane label="版本上传">
-                                <el-row>
-                                    <el-card shadow="hover" >
-                                        <div style="text-align:left;">
-                                            <el-upload
-                                              class="upload-demo"
-                                              ref="upload"
-                                              action="/server/ServerFile"
-                                              :limit="1"
-                                              :on-preview="handlePreview"
-                                              :on-remove="handleRemove"
-                                              :file-list="fileList"
-                                              :http-request="uploadZipFile"
-                                              :on-success="handleFileSuccess"
-                                              :before-upload="beforeFileUpload"
-                                              :on-change="handleFileChange"
-                                              :on-exceed="handleExceed"
-                                              :auto-upload="false">
-                                              <el-button slot="trigger" size="small" type="primary">选取文件</el-button>
-                                              <el-button style="margin-left: 10px;" size="small" type="success" @click="submitUpload">上传到服务器</el-button>
-                                                <div slot="tip" class="el-upload__tip">只能上传zip/tar/.tar.gz/.tgz格式文件，且不超100M</div>
-                                            </el-upload>
-                                        </div>
-                                        <el-divider></el-divider>
+                            <el-row>
+                                <el-card shadow="hover">
+                                    <div style="text-align:left;">
+                                        <el-upload
+                                                class="upload-demo"
+                                                ref="upload"
+                                                action="/server/ServerFile"
+                                                :limit="1"
+                                                :on-preview="handlePreview"
+                                                :on-remove="handleRemove"
+                                                :file-list="fileList"
+                                                :http-request="uploadZipFile"
+                                                :on-success="handleFileSuccess"
+                                                :before-upload="beforeFileUpload"
+                                                :on-change="handleFileChange"
+                                                :on-exceed="handleExceed"
+                                                :auto-upload="false">
+                                            <el-button slot="trigger" size="small" type="primary">选取文件</el-button>
+                                            <el-button style="margin-left: 10px;" size="small" type="success"
+                                                       @click="submitUpload">上传到服务器
+                                            </el-button>
+                                            <div slot="tip" class="el-upload__tip">
+                                                只能上传zip/tar/.tar.gz/.tgz格式文件，且不超100M
+                                            </div>
+                                        </el-upload>
+                                    </div>
+                                    <el-divider></el-divider>
+                                    <div v-if="version_upload_files.length!=0">
                                         <template>
-                                          <el-table
-                                            ref="multipleTable"
-                                            :data="version_upload_files"
-                                            tooltip-effect="dark"
-                                            style="width: 100%"
-                                            @selection-change="handleFileSelectionChange">
-                                            <el-table-column
-                                              type="selection"
-                                              width="55">
-                                            </el-table-column>
-                                            <el-table-column
-                                              label="文件名"
-                                              width="380">
-                                                <template slot-scope="scope">{[ scope.row.file_path ]}</template>
-                                            </el-table-column>
-                                            <el-table-column
-                                              label="文件大小"
-                                              width="200">
-                                                <template slot-scope="scope">{[ scope.row.file_size ]}</template>
-                                            </el-table-column>
-                                              <el-table-column
-                                              label="创建日期/上传日期"
-                                              width="160">
-                                              <template slot-scope="scope">{[ scope.row.file_mtime ]}</template>
-                                            </el-table-column>
-                                              <el-table-column
-                                              label="服务器最后修改日期"
-                                              width="160">
-                                              <template slot-scope="scope">{[ scope.row.file_ctime ]}</template>
-                                            </el-table-column>
-                                              <el-table-column
-                                              label="操作"
-                                              width="260">
-                                              <template slot-scope="scope">
-                                                  <el-button  style="margin-left: 10px;" size="small" type="success" @click="signPublishTag(scope.row)">标记上线包</el-button>
-                                                <el-button  style="margin-left: 10px;" size="small" type="error" @click="cancelPublishTag(scope.row)">取消标记上线包</el-button>
-                                              </template>
-                                            </el-table-column>
+                                            <el-table
+                                                    ref="multipleTable"
+                                                    :data="version_upload_files"
+                                                    tooltip-effect="dark"
+                                                    :default-sort="{prop: 'file_mtime', order: 'descending'}"
+                                                    style="width: 100%"
+                                                    @selection-change="handleFileSelectionChange">
+                                                <el-table-column
+                                                        type="selection"
+                                                        width="55">
+                                                </el-table-column>
+                                                <el-table-column
+                                                        label="文件名"
+                                                        prop="file_path"
+                                                        width="380">
+                                                    <template slot-scope="scope">{[ scope.row.file_path ]}</template>
+                                                </el-table-column>
+                                                <el-table-column
+                                                        label="文件大小"
+                                                        sortable
+                                                        prop="file_size"
+                                                        width="200">
+                                                    <template slot-scope="scope">{[ scope.row.file_size ]}</template>
+                                                </el-table-column>
+                                                <el-table-column
+                                                        label="创建日期/上传日期"
+                                                        sortable
+                                                        prop="file_mtime"
+                                                        width="160">
+                                                    <template slot-scope="scope">{[ scope.row.file_mtime ]}</template>
+                                                </el-table-column>
+                                                <el-table-column
+                                                        label="服务器最后修改日期"
+                                                        sortable
+                                                        prop="file_ctime"
+                                                        width="160">
+                                                    <template slot-scope="scope">{[ scope.row.file_ctime ]}</template>
+                                                </el-table-column>
+                                                <el-table-column
+                                                        label="操作"
+                                                        width="260">
+                                                    <template slot-scope="scope">
+                                                        <el-button style="margin-left: 10px;" size="small"
+                                                                   type="success" @click="signPublishTag(scope.row)">
+                                                            标记上线包
+                                                        </el-button>
+                                                        <el-button style="margin-left: 10px;" size="small" type="error"
+                                                                   @click="cancelPublishTag(scope.row)">取消标记上线包
+                                                        </el-button>
+                                                    </template>
+                                                </el-table-column>
 
-                                          </el-table>
+                                            </el-table>
                                         </template>
-<!--                                        <ul class="infinite-list" v-infinite-scroll="loadVersionUploads">-->
-<!--                                            <el-row class="serverFiles" >-->
-<!--                                                <li class="columnhead">文件名</li>-->
-<!--                                                <li class="columnhead">文件大小</li>-->
-<!--                                                <li class="columnhead">创建日期/上传日期</li>-->
-<!--                                                <li class="columnhead">服务器最后修改日期</li>-->
-<!--                                            </el-row>-->
-<!--                                            <el-row v-for="version_upload in version_upload_files">-->
-<!--                                                    <li class="infinite-list-item">{[ version_upload.file_path ]}</li>-->
-<!--                                                    <li class="infinite-list-item">{[ version_upload.file_size ]}</li>-->
-<!--                                                    <li class="infinite-list-item">{[ version_upload.file_mtime ]}</li>-->
-<!--                                                    <li class="infinite-list-item">{[ version_upload.file_ctime ]}</li>-->
-<!--                                             </el-row>-->
-<!--                                            <li v-for="version_upload in version_upload_files" class="infinite-list-item">{[ version_upload.file_path ]}</li>-->
-<!--                                            <li v-for="version_upload in version_upload_files" class="infinite-list-item">{[ version_upload.file_size ]}</li>-->
-<!--                                            <li v-for="version_upload in version_upload_files" class="infinite-list-item">{[ version_upload.file_mtime ]}</li>-->
-<!--                                            <li v-for="version_upload in version_upload_files" class="infinite-list-item">{[ version_upload.file_ctime ]}</li>-->
-<!--                                        </ul>-->
-                                    </el-card>
-                                </el-row>
+                                    </div>
+                                    <div v-else style="align:center;color;">
+                                        <h4>{[ this.no_data_message ]}</h4>
+                                    </div>
+                                    <!--                                        <ul class="infinite-list" v-infinite-scroll="loadVersionUploads">-->
+                                    <!--                                            <el-row class="serverFiles" >-->
+                                    <!--                                                <li class="columnhead">文件名</li>-->
+                                    <!--                                                <li class="columnhead">文件大小</li>-->
+                                    <!--                                                <li class="columnhead">创建日期/上传日期</li>-->
+                                    <!--                                                <li class="columnhead">服务器最后修改日期</li>-->
+                                    <!--                                            </el-row>-->
+                                    <!--                                            <el-row v-for="version_upload in version_upload_files">-->
+                                    <!--                                                    <li class="infinite-list-item">{[ version_upload.file_path ]}</li>-->
+                                    <!--                                                    <li class="infinite-list-item">{[ version_upload.file_size ]}</li>-->
+                                    <!--                                                    <li class="infinite-list-item">{[ version_upload.file_mtime ]}</li>-->
+                                    <!--                                                    <li class="infinite-list-item">{[ version_upload.file_ctime ]}</li>-->
+                                    <!--                                             </el-row>-->
+                                    <!--                                            <li v-for="version_upload in version_upload_files" class="infinite-list-item">{[ version_upload.file_path ]}</li>-->
+                                    <!--                                            <li v-for="version_upload in version_upload_files" class="infinite-list-item">{[ version_upload.file_size ]}</li>-->
+                                    <!--                                            <li v-for="version_upload in version_upload_files" class="infinite-list-item">{[ version_upload.file_mtime ]}</li>-->
+                                    <!--                                            <li v-for="version_upload in version_upload_files" class="infinite-list-item">{[ version_upload.file_ctime ]}</li>-->
+                                    <!--                                        </ul>-->
+                                </el-card>
+                            </el-row>
                         </el-tab-pane>
 
                         <el-tab-pane label="版本备份">
@@ -299,6 +365,12 @@
     clear: both
   }
 
+  #condition > .el-form-item__content > .el-card__body{
+    line-height: 2px;
+    padding:1px;
+
+  }
+
   .box-card {
     margin-bottom:10px;
     height:100px;
@@ -338,6 +410,7 @@
         padding:0px 0px;
     }
 
+
 </style>
 
 
@@ -352,16 +425,34 @@ var Main = {
             select_service_num:'',
             service_options:[],
             mathine_options:[],
-            currentVersionUploads:0,
+            service_bak_options:[],
+            service_rollback_options:[],
+            service_publish_options:[],
+            currentVersionUploads:[],
             version_upload_files:[],
             multipleFileSelection: [],
+            select_operatior:'',
             services:[],
             fileList: [],
+            is_backup:false,
+            is_rollback:false,
+            is_publish:false,
+            no_data_message:'请先在全局条件中选择业务,然后才会显示服务器文件列表!',
             activeNames: ['1'],
             formInline: {
                 user: '',
                 region: ''
-            }
+            },
+            service_operator_options:[{
+                value: 'backup',
+                label: '备份'
+                }, {
+                value: 'publish',
+                label: '发布'
+                }, {
+                value: 'rollback',
+                label: '回滚'
+                }]
         };
     },
     methods: {
@@ -388,16 +479,30 @@ var Main = {
                 });
       },
       getServerFileList() {
+            // 判断是否选中服务
+            let upload_service = this.select_service;
+            if(!upload_service){
+               this.$message({
+                    type: 'error',
+                     message: "请先筛选全局查询条件(服务和对应主机)",
+                      duration: 6000
+                });
+                return;
+            }
             var _this = this;
             axios({
                 method: 'get',
                 url: '/server/ServerFile',
                 params: {
-                    username: '{{ current_user.username }}'
+                    username: '{{ current_user.username }}',
+                    service: upload_service,
                 }
             })
                 .then(function (response) {
                     _this.version_upload_files = response.data;
+                    if(response.data.length==0){
+                        _this.no_data_message = "服务器暂无数据,请先操作增加!";
+                    }
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -430,6 +535,7 @@ var Main = {
       handleChange(val) {
         console.log(val);
       },
+      // 服务更改
       selectServiceChange(value){
            console.log("选中服务"+value);
           let obj = {};
@@ -442,14 +548,108 @@ var Main = {
             this.mathine_options = [];
           }
           for(let i=0;i<this.services.length;i++){
-                console.log(this.services[i].service_name);
                 if(this.services[i].service_name == value){
                     for (let j=0;j<this.services[i].service_mathines.length;j++){
                         this.mathine_options.push({label:_.values(this.services[i].service_mathines[j]).join("/"),value:_.values(this.services[i].service_mathines[j]).join("/")});
                     }
                  }
            }
-           console.log(this.mathine_options);
+           this.getServerFileList();
+          return obj;
+      },
+      // 操作类型更改
+     selectServiceOperatorChange(value){
+           console.log("选中操作类型"+value);
+          let obj = {};
+          this.select_operatior = value;
+          if(value == 'backup'){
+            this.is_backup = true;
+          }else if(value == 'publish'){
+            this.is_publish = true;
+          }else if(value == 'rollback'){
+            this.is_rollback = true;
+          }
+          obj = this.service_operator_options.find((item)=>{
+              return item.value === value;
+          });
+          // 先清空mathine_options 数组选项
+          if(this.mathine_options.length != 0){
+            this.mathine_options = [];
+          }
+          for(let i=0;i<this.services.length;i++){
+                if(this.services[i].service_name == value){
+                    for (let j=0;j<this.services[i].service_mathines.length;j++){
+                        this.mathine_options.push({label:_.values(this.services[i].service_mathines[j]).join("/"),value:_.values(this.services[i].service_mathines[j]).join("/")});
+                    }
+                 }
+           }
+           this.getServerFileList();
+          return obj;
+      },
+       // 备份选项变更
+     selectServiceBakChange(value){
+           console.log("选中服务"+value);
+          let obj = {};
+          this.select_service = value;
+          obj = this.service_options.find((item)=>{
+              return item.value === value;
+          });
+          // 先清空mathine_options 数组选项
+          if(this.mathine_options.length != 0){
+            this.mathine_options = [];
+          }
+          for(let i=0;i<this.services.length;i++){
+                if(this.services[i].service_name == value){
+                    for (let j=0;j<this.services[i].service_mathines.length;j++){
+                        this.mathine_options.push({label:_.values(this.services[i].service_mathines[j]).join("/"),value:_.values(this.services[i].service_mathines[j]).join("/")});
+                    }
+                 }
+           }
+           this.getServerFileList();
+          return obj;
+      },
+       // 回滚选项变更
+     selectServiceRollbackChange(value){
+           console.log("选中服务"+value);
+          let obj = {};
+          this.select_service = value;
+          obj = this.service_options.find((item)=>{
+              return item.value === value;
+          });
+          // 先清空mathine_options 数组选项
+          if(this.mathine_options.length != 0){
+            this.mathine_options = [];
+          }
+          for(let i=0;i<this.services.length;i++){
+                if(this.services[i].service_name == value){
+                    for (let j=0;j<this.services[i].service_mathines.length;j++){
+                        this.mathine_options.push({label:_.values(this.services[i].service_mathines[j]).join("/"),value:_.values(this.services[i].service_mathines[j]).join("/")});
+                    }
+                 }
+           }
+           this.getServerFileList();
+          return obj;
+      },
+        // 发布选项变更
+     selectServicePublishChange(value){
+           console.log("选中发布版本"+value);
+          let obj = {};
+          this.select_service = value;
+          obj = this.service_options.find((item)=>{
+              return item.value === value;
+          });
+          // 先清空mathine_options 数组选项
+          if(this.mathine_options.length != 0){
+            this.mathine_options = [];
+          }
+          for(let i=0;i<this.services.length;i++){
+                if(this.services[i].service_name == value){
+                    for (let j=0;j<this.services[i].service_mathines.length;j++){
+                        this.mathine_options.push({label:_.values(this.services[i].service_mathines[j]).join("/"),value:_.values(this.services[i].service_mathines[j]).join("/")});
+                    }
+                 }
+           }
+           this.getServerFileList();
           return obj;
       },
       loadVersionUploads(){
@@ -487,13 +687,14 @@ var Main = {
         this.$message.warning(`当前限制选择 1 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);
       },
       uploadZipFile(f) {
+                    var _this = this;
                     // 判断是否选中服务
-                    let upload_service = this.select_service;
+                    let upload_service = _this.select_service;
                     if(!upload_service){
                         this.$message({
                                     type: 'error',
                                     message: "请先筛选全局查询条件(服务和对应主机)",
-                                    duration: 6000
+                                    duration: 3000
                                  });
                          return;
                     }
@@ -505,34 +706,24 @@ var Main = {
                     let config = {
                         headers: {'Content-Type': 'multipart/form-data'}
                     };  //添加请求头
-                    axios.post(f.action, param, config)//上传图片
-                        .then(response => {
+                    axios.post(f.action, param, config)//上传文件
+                        .then(function (response) {
                             if(response.data.code='20000'){
-                                this.$message({
+                                _this.$message({
                                     type: 'success',
-                                    message: '文件上传成功',
-                                    duration: 6000
-                                 });
-                                 return ;
-                                window.location.reload();
-                            }else{
-                                 this.$message({
-                                    type: 'error',
                                     message: response.data.message,
-                                    duration: 6000
+                                    duration: 3000
                                  });
                             }
-                        })
-                        .catch(({err}) => {
-                            this.$message({
+                          })
+                          .catch(function (error) {
+                            _this.$message({
                                     type: 'error',
                                     message: "上传失败,服务器内部错误!",
-                                    duration: 6000
+                                    duration: 3000
                                  });
-                        })
-                    .catch(() => {
-                        this.onError()
-                    })
+                          });
+                           _this.getServerFileList();
         },
       cancelPublishTag(rows) {
         console.log("正在取消发布标记");
@@ -548,11 +739,11 @@ var Main = {
     mounted(){
         this.getHostList();
         this.getServiceList();
-        this.getServerFileList();
     }
 }
     var Ctor = Vue.extend(Main);
     new Ctor().$mount('#app');
+
 
 
 

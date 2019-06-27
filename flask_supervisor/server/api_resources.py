@@ -263,20 +263,22 @@ class ServerFileApi(Resource):
         self.reqparse.add_argument('currentPage', type=int, default=1, location='args', help='第几个分页')
         self.reqparse.add_argument('page_size', type=int, default=10, location='args', help='每页显示多少')
         self.reqparse.add_argument('username', type=str, default=session.get("username"), location='args', help='用户名')
+        self.reqparse.add_argument('service', type=str, location='args', help='服务名')
         # 获取request json 参数
         self.json_args = request.json
         self.args = self.reqparse.parse_args()
 
     # 文件列表
     def get(self):
-        service_files = os.listdir(self.upload_version_file_dir)
+        service_name = self.args.get("service")
+        service_files = os.listdir(self.upload_version_file_dir + "/" + service_name)
         res = []
         for file in service_files:
             file_obj = {}
-            file_obj['file_path'] = self.upload_version_file_dir + "/" + file
-            file_obj['file_size'] = str(os.path.getsize(self.upload_version_file_dir + "/" + file)/1024/1024) + "M"
-            file_obj['file_ctime'] =  time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(os.path.getctime(self.upload_version_file_dir + "/" + file)))
-            file_obj['file_mtime'] =  time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(os.path.getmtime(self.upload_version_file_dir + "/" + file)))
+            file_obj['file_path'] = self.upload_version_file_dir+ "/" + service_name + "/" + file
+            file_obj['file_size'] = str(os.path.getsize(self.upload_version_file_dir + "/" + service_name + "/" + file)/1024/1024) + "M"
+            file_obj['file_ctime'] =  time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(os.path.getctime(self.upload_version_file_dir + "/" + service_name + "/" + file)))
+            file_obj['file_mtime'] =  time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(os.path.getmtime(self.upload_version_file_dir + "/" + service_name + "/" + file)))
             res.append(file_obj)
         return res
 
@@ -288,7 +290,7 @@ class ServerFileApi(Resource):
         user_name = request.form.get('username')
         service_name = request.form.get('service_name')
         store_path = current_app.config['UPLOAD_VERSION_FILE_DIR'] + os.sep + service_name
-        message = "更新成功!"
+        message = "文件上传成功!"
         code = '20000'
         # 上传文件
         try:
@@ -304,19 +306,31 @@ class ServerFileApi(Resource):
                 flash('No selected file')
                 message = 'No selected file'
             if file:
-                print(222222)
                 filename = secure_filename(file.filename)
             if not os.path.exists(store_path):
                 os.mkdir(store_path)
-                file.save(store_path + os.sep + filename)
-                op = Operation(operator_time=datetime.datetime.now(),operator_user=user_name,event="上传了文件"+filename)
-                sop = serviceOperation(server_name=service_name,service_operator_event=op)
-                op.save()
-                sop.save()
+            t_now = time.strftime('%Y_%m_%d_%H_%M_%S',time.localtime(time.time()))
+            version = ''
+            n_file_name = ''
+            if filename.endswith(".tar.gz"):
+                version = filename.replace(".tar.gz",'') + "-" + t_now
+                n_file_name = version + ".tar.gz"
+            if filename.endswith(".tgz"):
+                version = filename.replace(".tgz",'') + "-" + t_now
+                n_file_name = version + ".tgz"
+            if filename.endswith(".zip"):
+                version = filename.replace(".zip",'') + "-" + t_now
+                n_file_name = version + ".zip"
+            store_file_name = store_path + os.sep + n_file_name
+            file.save(store_file_name)
+            op = Operation(operator_time=datetime.datetime.now(),operator_user=user_name,event="上传了文件"+store_file_name)
+            sop = serviceOperation(service_name=service_name,version=version,service_operator_event=op)
+            op.save()
+            sop.save()
         except Exception as e:
             print(e)
             code = '20002'
-            message = "更新失败!"
+            message = "文件上传失败!"
         return jsonify({"code": code, 'message': message})
 
 
