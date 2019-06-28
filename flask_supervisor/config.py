@@ -69,7 +69,10 @@ class Config:
     ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
     ACCESSKEYID = 'LTAI13333333333aTbTiPWINmZ'
     ACCESSSECRET = 'xxx333333333333xxxxxxxxxxxx'
-    UPLOAD_VERSION_FILE_DIR = "C:/Users/yunwei/Desktop/test333"
+    UPLOAD_VERSION_FILE_DIR = "C:/Users/yunwei/Desktop/services/uploads/"
+    SERVICE_BACKUP_FILE_DIR = "C:/Users/yunwei/Desktop/services/backups/"
+    SERVICE_ROLLBACK_FILE_DIR = "C:/Users/yunwei/Desktop/services/rollbacks/"
+    MONGODB_SETTINGS = {'host': 'mongodb://127.0.0.1:27017/flask_blog', 'connect': False}
 
 
 # 生产环境配置
@@ -82,7 +85,7 @@ class ProductionConfig(Config):
     # 测试模式
     TESTING = False
     # mongodb 连接
-    MONGOALCHEMY_CONNECTION_STRING='mongodb://127.0.0.1:27017/flask_blog'
+    MONGODB_SETTINGS = {'host': 'mongodb://127.0.0.1:27017/flask_blog','connect': False}
     MONGOALCHEMY_DATABASE = 'flask_blog'
     # mysql 连接
     SQLALCHEMY_DATABASE_URI='mysql+mysqlconnector://root:123456@localhost:3306/flask_blog'
@@ -115,7 +118,7 @@ class DevelopmentConfig(Config):
     # 测试模式
     TESTING = False
     # mongodb 连接
-    MONGOALCHEMY_CONNECTION_STRING='mongodb://127.0.0.1:27017/flask_blog'
+    MONGODB_SETTINGS = {'host': 'mongodb://127.0.0.1:27017/flask_blog','connect': False}
     MONGOALCHEMY_DATABASE = 'flask_blog'
     # mysql 连接
     SQLALCHEMY_DATABASE_URI="mysql+mysqlconnector://root:123456@127.0.0.1:3306/flask_blog"

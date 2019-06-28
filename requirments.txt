@@ -6,6 +6,9 @@ flask-restful
 flask-script
 mysql-connector
 flask-bootstrap
-flask-mongoalchemy
+pymongo
+flask-mongoengine
+marshmallow-mongoengine
+marshmallow
 aliyun-python-sdk-ecs
 configparser

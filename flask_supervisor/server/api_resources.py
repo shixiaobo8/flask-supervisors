@@ -3,10 +3,10 @@
 """
 	restful api route 类和类注册文件
 """
-import json,configparser,os,time,werkzeug,datetime
+import json,configparser,os,time,werkzeug,datetime,traceback
 from flask import current_app,request,session,flash,redirect,jsonify
 from werkzeug.utils import secure_filename
-from .models import  Operation,serviceOperation
+from .models import  Operation,serviceOperation,OperationSchema,serviceOperationSchema
 from flask_supervisor import mysql_db,mongo_db
 from aliyunsdkcore.client import AcsClient
 from aliyunsdkcore.acs_exception.exceptions import ClientException
@@ -259,6 +259,8 @@ class AnsibleManagerApi(Resource):
 class ServerFileApi(Resource):
     def __init__(self):
         self.upload_version_file_dir = current_app.config["UPLOAD_VERSION_FILE_DIR"]
+        self.service_backup_file_dir = current_app.config["SERVICE_BACKUP_FILE_DIR"]
+        self.service_rollback_file_dir = current_app.config["SERVICE_ROLLBACK_FILE_DIR"]
         self.reqparse = reqparse.RequestParser()
         self.reqparse.add_argument('currentPage', type=int, default=1, location='args', help='第几个分页')
         self.reqparse.add_argument('page_size', type=int, default=10, location='args', help='每页显示多少')
@@ -268,18 +270,33 @@ class ServerFileApi(Resource):
         self.json_args = request.json
         self.args = self.reqparse.parse_args()
 
-    # 文件列表
+    # 文件列表 一次返回服务器发布/备份/回滚的所有文件
     def get(self):
         service_name = self.args.get("service")
-        service_files = os.listdir(self.upload_version_file_dir + "/" + service_name)
-        res = []
-        for file in service_files:
-            file_obj = {}
-            file_obj['file_path'] = self.upload_version_file_dir+ "/" + service_name + "/" + file
-            file_obj['file_size'] = str(os.path.getsize(self.upload_version_file_dir + "/" + service_name + "/" + file)/1024/1024) + "M"
-            file_obj['file_ctime'] =  time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(os.path.getctime(self.upload_version_file_dir + "/" + service_name + "/" + file)))
-            file_obj['file_mtime'] =  time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(os.path.getmtime(self.upload_version_file_dir + "/" + service_name + "/" + file)))
-            res.append(file_obj)
+        res = dict()
+        all_files = [self.upload_version_file_dir, self.service_backup_file_dir, self.service_rollback_file_dir]
+        for dir_step in range(0,len(all_files)):
+            if not os.path.exists(all_files[dir_step]):
+                return {"message":"服务器目录不存在,请联系服务器管理人员!",'code':'20002'}
+            if dir_step == 0:
+                res['uploads'] = []
+            if dir_step == 1:
+                res['backups'] = []
+            if dir_step == 2:
+                res['rollbacks'] = []
+            service_files = os.listdir(all_files[dir_step] + "/" + service_name)
+            for file in service_files:
+                file_obj = {}
+                file_obj['file_path'] = all_files[dir_step] + "/" + service_name + "/" + file
+                file_obj['file_size'] = str(os.path.getsize(all_files[dir_step] + "/" + service_name + "/" + file)/1024/1024) + "M"
+                file_obj['file_ctime'] =  time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(os.path.getctime(all_files[dir_step] + "/" + service_name + "/" + file)))
+                file_obj['file_mtime'] =  time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(os.path.getmtime(all_files[dir_step] + "/" + service_name + "/" + file)))
+                if dir_step == 0:
+                    res['uploads'].append(file_obj)
+                if dir_step == 1:
+                    res['backups'].append(file_obj)
+                if dir_step == 2:
+                    res['rollbacks'].append(file_obj)
         return res
 
 
@@ -323,10 +340,88 @@ class ServerFileApi(Resource):
                 n_file_name = version + ".zip"
             store_file_name = store_path + os.sep + n_file_name
             file.save(store_file_name)
-            op = Operation(operator_time=datetime.datetime.now(),operator_user=user_name,event="上传了文件"+store_file_name)
+            op = Operation(operator_time=datetime.datetime.now(),operator_user=user_name,operator_type="上传",operator_object="新文件  "+store_file_name)
             sop = serviceOperation(service_name=service_name,version=version,service_operator_event=op)
             op.save()
             sop.save()
+        except Exception as e:
+            traceback.print_exc()
+            print(e)
+            code = '20002'
+            message = "文件上传失败!"
+        return jsonify({"code": code, 'message': message})
+
+
+    def put(self):
+        pass
+
+
+    def delete(self):
+        pass
+
+
+# 版本控制VersionControllsApi
+class VersionControllsApi(Resource):
+    def __init__(self):
+        self.reqparse = reqparse.RequestParser()
+        self.reqparse.add_argument('currentPage', type=int, default=1, location='args', help='第几个分页')
+        self.reqparse.add_argument('page_size', type=int, default=10, location='args', help='每页显示多少')
+        self.reqparse.add_argument('username', type=str, default=session.get("username"), location='args', help='用户名')
+        self.reqparse.add_argument('service', type=str, location='args', help='服务名')
+        # 获取request json 参数
+        self.json_args = request.json
+        self.args = self.reqparse.parse_args()
+
+
+    #  一次返回服务器发布历史记录服务历史
+    def get(self):
+        service_name = self.args.get("service")
+        sobj = serviceOperation.objects(service_name=service_name)
+        return json.loads(sobj.to_json())
+
+    # 文件上传
+    def post(self):
+        parser = reqparse.RequestParser()
+        parser.add_argument('file', type=werkzeug.datastructures.FileStorage, location='files')
+        user_name = request.form.get('username')
+        service_name = request.form.get('service_name')
+        store_path = current_app.config['UPLOAD_VERSION_FILE_DIR'] + os.sep + service_name
+        message = "文件上传成功!"
+        code = '20000'
+        # 上传文件
+        try:
+            # check if the post request has the file part
+            if 'file' not in request.files:
+                flash('No file part')
+                message = 'No file part'
+                return redirect(request.url)
+            file = request.files['file']
+            # if user does not select file, browser also
+            # submit an empty part without filename
+            if file.filename == '':
+                flash('No selected file')
+                message = 'No selected file'
+            if file:
+                filename = secure_filename(file.filename)
+            if not os.path.exists(store_path):
+                os.mkdir(store_path)
+            t_now = time.strftime('%Y_%m_%d_%H_%M_%S', time.localtime(time.time()))
+            version = ''
+            n_file_name = ''
+            if filename.endswith(".tar.gz"):
+                version = filename.replace(".tar.gz", '') + "-" + t_now
+                n_file_name = version + ".tar.gz"
+            if filename.endswith(".tgz"):
+                version = filename.replace(".tgz", '') + "-" + t_now
+                n_file_name = version + ".tgz"
+            if filename.endswith(".zip"):
+                version = filename.replace(".zip", '') + "-" + t_now
+                n_file_name = version + ".zip"
+            store_file_name = store_path + os.sep + n_file_name
+            file.save(store_file_name)
+            op = Operation(operator_time=datetime.datetime.now(), operator_user=user_name,operator_type="上传了",
+                           operator_object="新文件" + store_file_name).save()
+            sop = serviceOperation(service_name=service_name, version=version, service_operator_event=op).save()
         except Exception as e:
             print(e)
             code = '20002'

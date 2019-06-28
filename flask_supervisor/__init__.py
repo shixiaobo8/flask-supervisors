@@ -9,10 +9,10 @@ from flask import Flask, jsonify
 from flask import render_template
 # 导入falsk bootstrap 应用
 from flask_bootstrap import Bootstrap
-# 导入 sqlAlchemy python orm 模块
+# 导入 flask_sqlalchemy orm 模块
 from flask_sqlalchemy import SQLAlchemy
 # 导入 sqlAlchemy mongo orm 模块
-from flask_mongoalchemy import MongoAlchemy
+from flask_mongoengine import MongoEngine
 # 导入 falsk_migrate
 from flask_migrate import Migrate
 # 导入flask restfull api
@@ -29,7 +29,7 @@ from datetime import timedelta
 # 初始化mysql数据库连接
 mysql_db = SQLAlchemy()
 # 初始化mongo数据库连接
-mongo_db = MongoAlchemy()
+mongo_db = MongoEngine()
 migrate = Migrate()
 login_manager = LoginManager()
 #登陆认证的处理视图
