@@ -45,10 +45,10 @@
                                                 </el-select>
                                             </el-form-item>
                                                 <el-form-item v-if="select_operatior == 'backup'" label="备份版本:">
-                                                    <el-select v-model="formInline.backup" placeholder="选择备份版本"
+                                                    <el-select v-model="formInline.backup" placeholder="指定备份的上传版本"
                                                                @change="selectServiceBakChange">
                                                         <el-option
-                                                                v-for="item in service_backup_options"
+                                                                v-for="item in service_upload_options"
                                                                 :key="item.value"
                                                                 :label="item.label"
                                                                 :value="item.value">
@@ -56,7 +56,7 @@
                                                     </el-select>
                                                 </el-form-item>
                                                 <el-form-item v-else-if="select_operatior == 'rollback'" label="回滚版本:">
-                                                    <el-select v-model="formInline.rollback" placeholder="选择回滚版本"
+                                                    <el-select v-model="formInline.rollback" placeholder="指定回滚的备份版本"
                                                                @change="selectServiceRollbackChange">
                                                         <el-option
                                                                 v-for="item in service_rollback_options"
@@ -79,7 +79,7 @@
                                                 </el-form-item>
 
                                             <el-form-item label="请选择业务对应机器:">
-                                                <el-select v-model="formInline.mathines" multiple placeholder="选择机器">
+                                                <el-select v-model="formInline.mathines" multiple placeholder="选择机器" @change="selectServiceMachinesChange">
                                                     <el-option
                                                             v-for="item in mathine_options"
                                                             :key="item.value"
@@ -280,10 +280,10 @@
                                 </div>
                                 <el-divider></el-divider>
                                 <el-timeline>
-                                    <el-timeline-item v-for="history in operation_historys" timestamp="history.operator_time" placement="top">
+                                    <el-timeline-item v-for="history in operation_historys" :timestamp="getUinxTime(history.service_operator_event.operator_time.$date)" placement="top">
                                         <el-card>
-                                            <h5>{[ history.operator_type ]}</h5>
-                                            <p>{[ history.operator_event ]}</p>
+                                            <p>服务:{[ history.service_name ]}:  用户:{[ history.service_operator_event.operator_user ]} 事件:  {[ history.service_operator_event.operator_type ]}
+                                            {[ history.service_operator_event.operator_object ]} 版本号:{[ history.version ]}</p>
                                         </el-card>
                                     </el-timeline-item>
                                 </el-timeline>
@@ -462,9 +462,10 @@ var Main = {
             select_service_num:'',
             service_options:[],
             mathine_options:[],
+            websock: null,
             service_backup_options:[],
-            service_rollback_options:[],
             service_upload_options:[],
+            service_rollback_options:[],
             currentVersionUploads:[],
             version_upload_files:[],
             version_backup_files:[],
@@ -501,6 +502,33 @@ var Main = {
         };
     },
     methods: {
+   getUinxTime(udate,format="yyyy-MM-dd h:m:s"){
+        if (udate) {
+            udate=parseInt(udate-8*3600000);
+            var newDate = new Date(udate);
+        } else {
+            var newDate = new Date()
+        }
+        var date = {
+           "M+": newDate.getMonth() + 1,
+           "d+": newDate.getDate(),
+           "h+": newDate.getHours(),
+           "m+": newDate.getMinutes(),
+           "s+": newDate.getSeconds(),
+           "q+": Math.floor((newDate.getMonth() + 3) / 3),
+           "S+": newDate.getMilliseconds()
+        };
+        if (/(y+)/i.test(format)) {
+           format = format.replace(RegExp.$1, (newDate.getFullYear() + '').substr(4 - RegExp.$1.length));
+        }
+        for (var k in date) {
+           if (new RegExp("(" + k + ")").test(format)) {
+               format = format.replace(RegExp.$1, RegExp.$1.length == 1
+                  ? date[k] : ("00" + date[k]).substr(("" + date[k]).length));
+           }
+        }
+        return format;
+    },
     getOperationHistory() {
             // 判断是否选中服务
             let upload_service = this.select_service;
@@ -523,8 +551,9 @@ var Main = {
             })
                 .then(function (response) {
                     // 渲染数据表格
-                    _this.version_upload_files = [];
-                    _this.version_upload_files = response.data.uploads;
+                    _this.operation_historys = [];
+                    _this.operation_historys = response.data;
+                    console.log(typeof(_this.operation_historys));
                     if(response.data.length==0){
                         _this.no_data_message = "服务器暂无数据,请先操作(上传/备份/回滚)增加!";
                     }
@@ -583,26 +612,27 @@ var Main = {
                     _this.version_backup_files = response.data.backups;
                     _this.version_rollback_files = [];
                     _this.version_rollback_files = response.data.rollbacks;
-                    // 添加service_upload_options
-                    if(_this.service_upload_options.length==0){
-                        for(let i=0;i<response.data.uploads.length;i++){
-                            _this.service_upload_options.push({label:response.data.uploads[i].file_path.split("/").slice(-1)[0],value:response.data.uploads[i].file_path.split("/").slice(-1)[0]});
-                        }
-                    }
-                    // 添加service_backup_options
-                    if(_this.service_backup_options.length==0){
-                        for(let i=0;i<response.data.backups.length;i++){
-                            _this.service_backup_options.push({label:response.data.backups[i].file_path.split("/").slice(-1)[0],value:response.data.backups[i].file_path.split("/").slice(-1)[0]});
-                        }
-                    }
-                    // 添加service_rollback_options
-                    if(_this.service_rollback_options.length==0){
-                        for(let i=0;i<response.data.rollbacks.length;i++){
-                            _this.service_rollback_options.push({label:response.data.rollbacks[i].file_path.split("/").slice(-1)[0],value:response.data.rollbacks[i].file_path.split("/").slice(-1)[0]});
-                        }
-                    }
-                    if(response.data.length==0){
+                    _this.service_upload_options = [];
+                    _this.service_backup_options = [];
+                    if(response.data.uploads.length==0){
                         _this.no_data_message = "服务器暂无数据,请先操作(上传/备份/回滚)增加!";
+                    }else{
+                        // 添加service_upload_options
+                        if(_this.service_upload_options.length==0){
+                            for(let i=0;i<response.data.uploads.length;i++){
+                                _this.service_upload_options.push({label:response.data.uploads[i].file_path.split("/").slice(-1)[0],value:response.data.uploads[i].file_path.split("/").slice(-1)[0]});
+                            }
+                        }
+                    }
+                    if(response.data.backups.length==0){
+                        _this.no_data_message = "服务器暂无数据,请先操作(上传/备份/回滚)增加!";
+                    }else{
+                        // 添加service_rollback_options
+                        if(_this.service_rollback_options.length==0){
+                            for(let i=0;i<response.data.backups.length;i++){
+                                _this.service_rollback_options.push({label:response.data.backups[i].file_path.split("/").slice(-1)[0],value:response.data.backups[i].file_path.split("/").slice(-1)[0]});
+                            }
+                         }
                     }
                 })
                 .catch(function (error) {
@@ -635,11 +665,53 @@ var Main = {
         // 自动切换展示列表
         this.activeTabName = "log_tab"
         console.log("正在选择业务和相应的机器....");
+        // 检查远程执行参数
+        console.log("执行的操作是"+this.select_operatior);
+        // 判断是否选中服务
+        let operation_service = this.select_service;
+        if(!operation_service){
+             this.$message({
+                type: 'error',
+                message: "请先筛选全局查询条件(服务和对应主机)",
+                duration: 3000
+              });
+              return;
+         }
+        let select_operation_pkg = '';
+        let operation = '';
+        //  执行发布/更新操作
+        if(this.select_operatior == 'upload'){
+            operation = 'upload';
+            select_operation_pkg = this.select_upload;
+        }
+        //  执行备份操作
+        if(this.select_operatior == 'backup'){
+            operation = 'backup';
+            select_operation_pkg = this.select_backup;
+        }
+        //  执行回滚操作
+        if(this.select_operatior == 'rollback'){
+            operation = 'rollback';
+            select_operation_pkg = this.select_rollback;
+        }
+        // 发起请求
+
       },
       // tab 切换事件
       handleTabsClick(tab,event){
         console.log("正在进行tab切换"+tab.name);
         //console.log(tab, event);
+      },
+      // 业务机器更改
+      selectServiceMachinesChange(value){
+          var _this = this;
+          console.log("选中服务机器"+value);
+          let obj = {};
+          this.select_service = value;
+          obj = this.mathine_options.find((item)=>{
+              return item.value === value;
+          });
+          return obj;
       },
       // 服务更改
       selectServiceChange(value){
@@ -705,7 +777,7 @@ var Main = {
            console.log("选中回滚包"+value);
           let obj = {};
           this.select_rollback = value;
-          obj = this.service_rollback_options.find((item)=>{
+          obj = this.service_backup_options.find((item)=>{
               return item.value === value;
           });
           this.getServerFileList();
@@ -814,11 +886,47 @@ var Main = {
       cancelPublishTag(rows) {
         console.log("正在取消发布/更新标记");
       },
+      initWebSocket(){ //初始化weosocket
+　　　　　　　　const wsuri =  "ws://localhost:81/server/websocket";//ws地址
+　　　　　　　　this.websock = new WebSocket(wsuri);
+　　　　　　　　this.websocket.onopen = this.websocketonopen;
+　　　　　　　　this.websocket.onerror = this.websocketonerror;
+　　　　　　　　this.websock.onmessage = this.websocketonmessage;
+　　　　　　　　this.websock.onclose = this.websocketclose;
+　　　　   },
+　　　　　　websocketonopen() {
+　　　　　　　　console.log("WebSocket连接成功");
+　　　　　　},
+　　　　　　websocketonerror(e) { //错误
+ 　　　　　　 console.log("WebSocket连接发生错误");
+　　　　　　},
+　　　　　　websocketonmessage(e){ //数据接收
+　　　　　　　　const redata = JSON.parse(e.data);
+　　　　　　　　//注意：长连接我们是后台直接1秒推送一条数据，
+                //但是点击某个列表时，会发送给后台一个标识，后台根据此标识返回相对应的数据，
+                //这个时候数据就只能从一个出口出，所以让后台加了一个键，例如键为1时，是每隔1秒推送的数据，为2时是发送标识后再推送的数据，以作区分
+　　　　　　　　console.log(redata.value);
+　　　　　　},
+　　　　　　websocketsend(agentData){//数据发送
+　　　　　　　　this.websock.send(agentData);
+　　　　　　},
+
+　　　　　 websocketclose(e){ //关闭
+　　　　　　　　console.log("connection closed (" + e.code + ")");
+　　　　　},
     },
     mounted(){
         this.getHostList();
         this.getServiceList();
-    }
+    },
+    created(){
+           //页面刚进入时开启长连接
+            this.initWebSocket()
+    },
+    destroyed: function() {
+　　　　//页面销毁时关闭长连接
+　　　　　　this.websocketclose();
+　  }
 }
     var Ctor = Vue.extend(Main);
     new Ctor().$mount('#app');

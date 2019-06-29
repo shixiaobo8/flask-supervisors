@@ -15,6 +15,8 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_mongoengine import MongoEngine
 # 导入 falsk_migrate
 from flask_migrate import Migrate
+# 导入flask-socketio
+from flask_socketio import SocketIO
 # 导入flask restfull api
 from flask_restful import Api
 # 导入配置文件全局环境变量
@@ -26,6 +28,9 @@ from flask import session
 from datetime import timedelta
 
 
+# 初始化socketio
+async_mode = None
+socketio = SocketIO()
 # 初始化mysql数据库连接
 mysql_db = SQLAlchemy()
 # 初始化mongo数据库连接
@@ -52,6 +57,8 @@ def create_app(flask_env='default'):
     mysql_db.init_app(app)
     # 初始化mongo数据库连接
     mongo_db.init_app(app)
+    # 初始化socketio
+    socketio.init_app(app,async_mode=async_mode)
     # 初始化 登陆
     login_manager.init_app(app)
     # 初始化mysql据库migrate

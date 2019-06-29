@@ -71,7 +71,6 @@ class Config:
     ACCESSSECRET = 'xxx333333333333xxxxxxxxxxxx'
     UPLOAD_VERSION_FILE_DIR = "C:/Users/yunwei/Desktop/services/uploads/"
     SERVICE_BACKUP_FILE_DIR = "C:/Users/yunwei/Desktop/services/backups/"
-    SERVICE_ROLLBACK_FILE_DIR = "C:/Users/yunwei/Desktop/services/rollbacks/"
     MONGODB_SETTINGS = {'host': 'mongodb://127.0.0.1:27017/flask_blog', 'connect': False}
 
 

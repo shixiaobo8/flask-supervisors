@@ -12,3 +12,5 @@ marshmallow-mongoengine
 marshmallow
 aliyun-python-sdk-ecs
 configparser
+paramiko
+flask-socketio

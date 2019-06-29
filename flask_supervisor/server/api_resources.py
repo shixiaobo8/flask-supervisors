@@ -260,7 +260,6 @@ class ServerFileApi(Resource):
     def __init__(self):
         self.upload_version_file_dir = current_app.config["UPLOAD_VERSION_FILE_DIR"]
         self.service_backup_file_dir = current_app.config["SERVICE_BACKUP_FILE_DIR"]
-        self.service_rollback_file_dir = current_app.config["SERVICE_ROLLBACK_FILE_DIR"]
         self.reqparse = reqparse.RequestParser()
         self.reqparse.add_argument('currentPage', type=int, default=1, location='args', help='第几个分页')
         self.reqparse.add_argument('page_size', type=int, default=10, location='args', help='每页显示多少')
@@ -274,7 +273,7 @@ class ServerFileApi(Resource):
     def get(self):
         service_name = self.args.get("service")
         res = dict()
-        all_files = [self.upload_version_file_dir, self.service_backup_file_dir, self.service_rollback_file_dir]
+        all_files = [self.upload_version_file_dir, self.service_backup_file_dir]
         for dir_step in range(0,len(all_files)):
             if not os.path.exists(all_files[dir_step]):
                 return {"message":"服务器目录不存在,请联系服务器管理人员!",'code':'20002'}

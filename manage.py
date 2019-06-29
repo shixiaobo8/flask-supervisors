@@ -1,17 +1,17 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
-from flask import jsonify,make_response,request,g,session,redirect,url_for,flash
+from flask import jsonify,make_response, session, flash
 from flask_supervisor import create_app
 from flask_script import Manager,Server,Shell
-from flask_supervisor.commands import Hello
+from flask_supervisor.commands import  Hello,runsocketio
+from flask_script import Command,Option
+from flask_supervisor import socketio
 from flask_migrate import MigrateCommand
-from flask import current_app
 # 导入自定义错误类
 from flask_supervisor.utils import CustomFlaskErr
 # 导入所有migrate需要操作的model 类
-from flask_supervisor.supervisor.models import *
-import os
-import werkzeug
+import os,sys
+
 
 def _make_context(app):
     return dict(app=app)
@@ -27,12 +27,16 @@ def _make_context():
 
 
 manager = Manager(supervisor_app)
+
+
 # 添加shell 命令交互器
 manager.add_command("shell", Shell(make_context=_make_context),user_ipython=True)
 # 添加hello 打印命令测试
 manager.add_command("hello", Hello())
 # 添加执行server命令
 manager.add_command("runserver",Server())
+# 使用socketio 监听
+manager.add_command("run",runsocketio(app=supervisor_app))
 # 添加数据 migrate 工具
 manager.add_command('db',MigrateCommand)
 
