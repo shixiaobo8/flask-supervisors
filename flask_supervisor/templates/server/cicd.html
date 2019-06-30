@@ -125,6 +125,7 @@
                                                     title="服务器上传包列表"
                                                     description="1.在这里可以选择标记上线/更新/备份包 2:只能上传zip/tar/.tar.gz/.tgz格式文件，且不超100M"
                                                     type="info" show-icon
+                                                    type="info" show-icon
                                                     :closable="false"
                                                     style="text-align:left;margin-top:10px;color:red;font-weight:blod;">
                                                 </el-alert>
@@ -297,30 +298,18 @@
                                         </el-alert>
                                 </div>
                                 <el-divider></el-divider>
-                                <ul class="infinite-list" v-infinite-scroll="loadVersionUploads">
-                                    <el-row class="serverFiles">
-                                        <li class="columnhead">文件名</li>
+                                <ul class="infinite-list" v-infinite-scroll="current_log_lines">
+                                    <el-row class="current_log">
+                                        <li class="columnhead">log</li>
                                         <li class="columnhead">文件大小</li>
                                         <li class="columnhead">创建日期/上传日期</li>
                                         <li class="columnhead">服务器最后修改日期</li>
                                     </el-row>
-                                    <el-row v-for="version_upload in version_upload_files">
-                                        <li class="infinite-list-item">{[ version_upload.file_path ]}</li>
-                                        <li class="infinite-list-item">{[ version_upload.file_size ]}</li>
-                                        <li class="infinite-list-item">{[ version_upload.file_mtime ]}</li>
-                                        <li class="infinite-list-item">{[ version_upload.file_ctime ]}</li>
-                                    </el-row>
-                                    <li v-for="version_upload in version_upload_files" class="infinite-list-item">{[
-                                        version_upload.file_path ]}
-                                    </li>
-                                    <li v-for="version_upload in version_upload_files" class="infinite-list-item">{[
-                                        version_upload.file_size ]}
-                                    </li>
-                                    <li v-for="version_upload in version_upload_files" class="infinite-list-item">{[
-                                        version_upload.file_mtime ]}
-                                    </li>
-                                    <li v-for="version_upload in version_upload_files" class="infinite-list-item">{[
-                                        version_upload.file_ctime ]}
+                                    <el-row v-for="current_log_line in current_log_lines">
+                                        <li class="infinite-list-item">{[ current_log_line ]}</li>
+                                        </el-row>
+                                    <li v-for="current_log_line in current_log_lines" class="infinite-list-item">{[
+                                        current_log_line ]}
                                     </li>
                                 </ul>
                             </div>
@@ -463,6 +452,7 @@ var Main = {
             service_options:[],
             mathine_options:[],
             websock: null,
+            current_log_lines:[],
             service_backup_options:[],
             service_upload_options:[],
             service_rollback_options:[],
@@ -605,34 +595,42 @@ var Main = {
                 }
             })
                 .then(function (response) {
-                    // 渲染数据表格
-                    _this.version_upload_files = [];
-                    _this.version_upload_files = response.data.uploads;
-                    _this.version_backup_files = [];
-                    _this.version_backup_files = response.data.backups;
-                    _this.version_rollback_files = [];
-                    _this.version_rollback_files = response.data.rollbacks;
-                    _this.service_upload_options = [];
-                    _this.service_backup_options = [];
-                    if(response.data.uploads.length==0){
-                        _this.no_data_message = "服务器暂无数据,请先操作(上传/备份/回滚)增加!";
+                    if(response.data.code=='20002'){
+                        _this.$message({
+                            type: 'error',
+                            message: response.data.message,
+                            duration: 3000
+                        });
                     }else{
-                        // 添加service_upload_options
-                        if(_this.service_upload_options.length==0){
-                            for(let i=0;i<response.data.uploads.length;i++){
-                                _this.service_upload_options.push({label:response.data.uploads[i].file_path.split("/").slice(-1)[0],value:response.data.uploads[i].file_path.split("/").slice(-1)[0]});
+                        // 渲染数据表格
+                        _this.version_upload_files = [];
+                        _this.version_upload_files = response.data.uploads;
+                        _this.version_backup_files = [];
+                        _this.version_backup_files = response.data.backups;
+                        _this.version_rollback_files = [];
+                        _this.version_rollback_files = response.data.rollbacks;
+                        _this.service_upload_options = [];
+                        _this.service_backup_options = [];
+                        if(response.data.uploads.length==0){
+                            _this.no_data_message = "服务器暂无数据,请先操作(上传/备份/回滚)增加!";
+                        }else{
+                            // 添加service_upload_options
+                            if(_this.service_upload_options.length==0){
+                                for(let i=0;i<response.data.uploads.length;i++){
+                                    _this.service_upload_options.push({label:response.data.uploads[i].file_path.split("/").slice(-1)[0],value:response.data.uploads[i].file_path.split("/").slice(-1)[0]});
+                                }
                             }
                         }
-                    }
-                    if(response.data.backups.length==0){
-                        _this.no_data_message = "服务器暂无数据,请先操作(上传/备份/回滚)增加!";
-                    }else{
-                        // 添加service_rollback_options
-                        if(_this.service_rollback_options.length==0){
-                            for(let i=0;i<response.data.backups.length;i++){
-                                _this.service_rollback_options.push({label:response.data.backups[i].file_path.split("/").slice(-1)[0],value:response.data.backups[i].file_path.split("/").slice(-1)[0]});
-                            }
-                         }
+                        if(response.data.backups.length==0){
+                            _this.no_data_message = "服务器暂无数据,请先操作(上传/备份/回滚)增加!";
+                        }else{
+                            // 添加service_rollback_options
+                            if(_this.service_rollback_options.length==0){
+                                for(let i=0;i<response.data.backups.length;i++){
+                                    _this.service_rollback_options.push({label:response.data.backups[i].file_path.split("/").slice(-1)[0],value:response.data.backups[i].file_path.split("/").slice(-1)[0]});
+                                }
+                             }
+                        }
                     }
                 })
                 .catch(function (error) {
@@ -695,6 +693,22 @@ var Main = {
             select_operation_pkg = this.select_rollback;
         }
         // 发起请求
+        var _this = this;
+            axios({
+                method: 'post',
+                url: '/server/VersionControlls',
+                params: {
+                    username: '{{ current_user.username }}',
+                    service_name: operation_service,
+                },
+                data:{"select_operation_pkg":select_operation_pkg,"operation":operation}
+            })
+                .then(function (response) {
+                        console.log(response.data);
+                 })
+                .catch(function (error) {
+                    console.log(error);
+                });
 
       },
       // tab 切换事件
@@ -812,7 +826,7 @@ var Main = {
       },
       beforeFileUpload(file) {
         console.log(file.type);
-        const isGZIP = file.type === 'application/x-zip-compressed' || file.type === 'application/x-gzip'|| file.type === 'application/x-compressed';
+        const isGZIP = file.type === 'application/x-zip-compressed' || file.type === 'application/x-gzip'|| file.type === 'application/x-compressed' || file.type === 'application/zip';
         const isLt100M = file.size / 1024 / 1024 < 100;
         if (!isGZIP) {
           this.$message.error('上传发布文件只能是指定格式zip/tgz/tar.gz!');
@@ -887,33 +901,20 @@ var Main = {
         console.log("正在取消发布/更新标记");
       },
       initWebSocket(){ //初始化weosocket
-　　　　　　　　const wsuri =  "ws://localhost:81/server/websocket";//ws地址
-　　　　　　　　this.websock = new WebSocket(wsuri);
-　　　　　　　　this.websocket.onopen = this.websocketonopen;
-　　　　　　　　this.websocket.onerror = this.websocketonerror;
-　　　　　　　　this.websock.onmessage = this.websocketonmessage;
-　　　　　　　　this.websock.onclose = this.websocketclose;
-　　　　   },
-　　　　　　websocketonopen() {
-　　　　　　　　console.log("WebSocket连接成功");
-　　　　　　},
-　　　　　　websocketonerror(e) { //错误
- 　　　　　　 console.log("WebSocket连接发生错误");
-　　　　　　},
-　　　　　　websocketonmessage(e){ //数据接收
-　　　　　　　　const redata = JSON.parse(e.data);
-　　　　　　　　//注意：长连接我们是后台直接1秒推送一条数据，
-                //但是点击某个列表时，会发送给后台一个标识，后台根据此标识返回相对应的数据，
-                //这个时候数据就只能从一个出口出，所以让后台加了一个键，例如键为1时，是每隔1秒推送的数据，为2时是发送标识后再推送的数据，以作区分
-　　　　　　　　console.log(redata.value);
-　　　　　　},
-　　　　　　websocketsend(agentData){//数据发送
-　　　　　　　　this.websock.send(agentData);
-　　　　　　},
-
-　　　　　 websocketclose(e){ //关闭
-　　　　　　　　console.log("connection closed (" + e.code + ")");
-　　　　　},
+                let _this = this;
+                // 请参考socket.io 官方文档 https://socket.io/get-started/
+　　　　　　　　var url = 'http://' + document.domain + ':' + location.port + "/testwebsocket";
+                // 初始化连接
+                let io_client = io.connect(url);
+                // 绑定的事件, 对应py文件中的event参数的值
+                io_client.on("my_response", function(resp){
+                    // 向服务器端socket io 发送消息
+                    // io_client.emit('my_response', "服务器端socket.io,你好");
+                    console.log(resp);
+                    console.log(_this.current_log_lines);
+                    _this.current_log_lines.push(resp);
+                });
+        }
     },
     mounted(){
         this.getHostList();
@@ -922,17 +923,10 @@ var Main = {
     created(){
            //页面刚进入时开启长连接
             this.initWebSocket()
-    },
-    destroyed: function() {
-　　　　//页面销毁时关闭长连接
-　　　　　　this.websocketclose();
-　  }
+    }
 }
     var Ctor = Vue.extend(Main);
     new Ctor().$mount('#app');
-
-
-
 
 </script>
 {% endblock %}

@@ -14,6 +14,8 @@ from aliyunsdkcore.acs_exception.exceptions import ServerException
 from aliyunsdkecs.request.v20140526.DescribeInstancesRequest import DescribeInstancesRequest
 from ..supervisor.models import Host,Node,Service,User
 from flask_restful import abort,Resource,reqparse,fields,marshal_with,marshal
+from .views import handle_my_response_testwebsocket_event
+
 
 class EcsListApi(Resource):
     def __init__(self):
@@ -378,54 +380,15 @@ class VersionControllsApi(Resource):
         sobj = serviceOperation.objects(service_name=service_name)
         return json.loads(sobj.to_json())
 
-    # 文件上传
+    # 远程操作api
     def post(self):
         parser = reqparse.RequestParser()
-        parser.add_argument('file', type=werkzeug.datastructures.FileStorage, location='files')
-        user_name = request.form.get('username')
-        service_name = request.form.get('service_name')
-        store_path = current_app.config['UPLOAD_VERSION_FILE_DIR'] + os.sep + service_name
-        message = "文件上传成功!"
-        code = '20000'
-        # 上传文件
-        try:
-            # check if the post request has the file part
-            if 'file' not in request.files:
-                flash('No file part')
-                message = 'No file part'
-                return redirect(request.url)
-            file = request.files['file']
-            # if user does not select file, browser also
-            # submit an empty part without filename
-            if file.filename == '':
-                flash('No selected file')
-                message = 'No selected file'
-            if file:
-                filename = secure_filename(file.filename)
-            if not os.path.exists(store_path):
-                os.mkdir(store_path)
-            t_now = time.strftime('%Y_%m_%d_%H_%M_%S', time.localtime(time.time()))
-            version = ''
-            n_file_name = ''
-            if filename.endswith(".tar.gz"):
-                version = filename.replace(".tar.gz", '') + "-" + t_now
-                n_file_name = version + ".tar.gz"
-            if filename.endswith(".tgz"):
-                version = filename.replace(".tgz", '') + "-" + t_now
-                n_file_name = version + ".tgz"
-            if filename.endswith(".zip"):
-                version = filename.replace(".zip", '') + "-" + t_now
-                n_file_name = version + ".zip"
-            store_file_name = store_path + os.sep + n_file_name
-            file.save(store_file_name)
-            op = Operation(operator_time=datetime.datetime.now(), operator_user=user_name,operator_type="上传了",
-                           operator_object="新文件" + store_file_name).save()
-            sop = serviceOperation(service_name=service_name, version=version, service_operator_event=op).save()
-        except Exception as e:
-            print(e)
-            code = '20002'
-            message = "文件上传失败!"
-        return jsonify({"code": code, 'message': message})
+        user_name = self.args.get('username')
+        service_name = self.args.get('service_name')
+        operation = self.json_args['operation']
+        select_operation_pkg = self.json_args['select_operation_pkg']
+        handle_my_response_testwebsocket_event(data=self.json_args)
+        return jsonify({"code": '2000', 'message': self.json_args})
 
 
     def put(self):

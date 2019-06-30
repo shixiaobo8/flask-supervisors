@@ -14,3 +14,4 @@ aliyun-python-sdk-ecs
 configparser
 paramiko
 flask-socketio
+eventlet
