@@ -6,6 +6,11 @@ from flask_login import login_required
 from flask_supervisor import socketio
 from flask_socketio import emit,send,Namespace
 from flask import request,current_app
+from flask_supervisor.config import dictConfig
+from threading import Lock
+import logging
+thread = None
+thread_lock = Lock()
 
 
 
@@ -23,6 +28,13 @@ def serverList():
     return render_template("server/services.html")
 
 
+# app 版本管理
+@login_required
+@server.route('/appVersion.html')
+def appVersion():
+    return render_template("server/appVersion.html")
+
+
 # ansible分组管理
 @login_required
 @server.route('/ansible/manage')
@@ -36,45 +48,43 @@ def anisble():
 def cicd():
     return render_template("server/cicd.html")
 
-#
-# class MyCustomNamespace(Namespace):
-#     def on_connect(self):
-#         print("有客户端连接了...")
-#         send_message = "你好client"
-#         print("向客户端发送消息"+ send_message)
-#         emit('my_response', send_message)
-#
-#     def on_disconnect(self):
-#         print("有客户端退出连接了...")
-#
-#     def on_my_event(self, data):
-#         print(data)
-#         emit('my_response', data+"11111111166000011")
-#
-# socketio.on_namespace(MyCustomNamespace('/testwebsocket'))
 
 # webscoket 连接
-@socketio.on('connect', namespace='/testwebsocket')
+@socketio.on('connect', namespace='/runtime_logging')
 def test_connect():
     print("客户端连接了..")
-    emit('my_response', "client ，你好....")
+    # emit('my_response', "client ，你好....")
+    operation_log = logging.getLogger("operation_logger").handlers[0].baseFilename
+    global thread
+    with thread_lock:
+        if thread_lock:
+            thread = socketio.start_background_task(target=background_thread,logfile=operation_log)
 
-@socketio.on('disconnect',namespace='/testwebsocket')
+@socketio.on('disconnect',namespace='/runtime_logging')
 def test_disconnect():
     print('Client disconnected')
 
-@socketio.on('my_response',namespace='/testwebsocket')
-def handle_my_response_testwebsocket_event(data):
-    print("my_event")
-    emit("my_response",data)
+@socketio.on('my_response',namespace='/runtime_logging')
+def handle_my_response_runtime_logging_event(data):
     print(data)
-    # import time
-    # #进行一些对value的处理或者其他操作,在此期间可以随时会调用emit方法向前台发送消息
-    # emit('my_response',{'code':'200','msg':'start to process...'})
-    # time.sleep(5)
-    # emit('my_response',{'code':'200','msg':'processed111'})
+    global thread
+    with thread_lock:
+        if thread_lock:
+            thread = socketio.start_background_task(target=background_thread)
 
 @login_required
-@server.route("/testwebsocket")
+@server.route("/runtime_logging")
 def websockettest():
-    return render_template("server/testwebsocket.html")
+    # print(logging.getLogger("operation_logger").handlers[0].baseFilename)
+    return render_template("server/runtime_logging.html")
+
+
+# socketio的start_background_task函数用于新建一个线程，处理业务，在线程中在请求上下文中调用收发功能函数
+def background_thread(logfile=None):
+    """Example of how to send server generated events to clients."""
+    with open(logfile,"r", encoding='UTF-8') as f:
+        while True:
+            socketio.sleep(3)
+            for line in f.readlines():
+                # 注意：这里不需要客户端连接的上下文，默认 broadcast = True ！！！！！！！
+                socketio.emit('my_response',{'line': line},namespace='/runtime_logging')

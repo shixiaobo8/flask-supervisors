@@ -489,6 +489,14 @@
 <!-- AdminLTE for demo purposes -->
 <script src="{{ url_for('static',filename='js/adminlte/demo.js') }}"></script>
     <script>
+    // 判断session 是否过期
+    $(function(){
+        let session_username = '{{ current_user.username }}';
+        if(session_username==''){
+            console.log('session过期,请求重新登录');
+            window.location.href = "/";
+        }
+    });
 $(function(){
         toastr.options = {
             "closeButton": false,

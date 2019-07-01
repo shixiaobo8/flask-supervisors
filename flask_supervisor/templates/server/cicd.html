@@ -44,7 +44,7 @@
                                                     </el-option>
                                                 </el-select>
                                             </el-form-item>
-                                                <el-form-item v-if="select_operatior == 'backup'" label="备份版本:">
+                                                <el-form-item v-if="select_operator == 'backup'" label="备份版本:">
                                                     <el-select v-model="formInline.backup" placeholder="指定备份的上传版本"
                                                                @change="selectServiceBakChange">
                                                         <el-option
@@ -55,7 +55,7 @@
                                                         </el-option>
                                                     </el-select>
                                                 </el-form-item>
-                                                <el-form-item v-else-if="select_operatior == 'rollback'" label="回滚版本:">
+                                                <el-form-item v-else-if="select_operator == 'rollback'" label="回滚版本:">
                                                     <el-select v-model="formInline.rollback" placeholder="指定回滚的备份版本"
                                                                @change="selectServiceRollbackChange">
                                                         <el-option
@@ -66,7 +66,7 @@
                                                         </el-option>
                                                     </el-select>
                                                 </el-form-item>
-                                                <el-form-item v-else-if="select_operatior == 'upload'" label="发布版本:">
+                                                <el-form-item v-else-if="select_operator == 'upload'" label="发布版本:">
                                                     <el-select v-model="formInline.upload" placeholder="选择发布版本"
                                                                @change="selectServiceuploadChange">
                                                         <el-option
@@ -294,22 +294,15 @@
                         <el-tab-pane label="实时日志" name="log_tab">
                             <div class="block">
                                 <div style="text-align:left;color:red;">
-                                        <el-alert title="日志展示"  description="websocket实时日志展示" type="info" :closable="false" show-icon style="text-align:left;color:green;font-size:19px;">
+                                        <el-alert title="日志展示"  description="websocket实时日志展示: 1.如果有重复的日志请点击右侧刷新按钮 2.看所有日志请联系管理登录服务器查看" type="info" :closable="false" show-icon style="text-align:left;color:green;font-size:19px;">
                                         </el-alert>
+                                        <el-button type="primary" circle icon="el-icon-refresh"></el-button>
                                 </div>
                                 <el-divider></el-divider>
-                                <ul class="infinite-list" v-infinite-scroll="current_log_lines">
-                                    <el-row class="current_log">
-                                        <li class="columnhead">log</li>
-                                        <li class="columnhead">文件大小</li>
-                                        <li class="columnhead">创建日期/上传日期</li>
-                                        <li class="columnhead">服务器最后修改日期</li>
-                                    </el-row>
-                                    <el-row v-for="current_log_line in current_log_lines">
-                                        <li class="infinite-list-item">{[ current_log_line ]}</li>
-                                        </el-row>
-                                    <li v-for="current_log_line in current_log_lines" class="infinite-list-item">{[
-                                        current_log_line ]}
+                                <ul class="infinite-list" >
+                                    <li v-for="current_log_line in current_log_lines" class="infinite-list-item" style="line-height:20px;">
+                                        <p v-if="current_log_line.is_error == true" style="color:red;">{[ current_log_line.data ]}</p>
+                                        <p v-else>{[ current_log_line.data ]}</p>
                                     </li>
                                 </ul>
                             </div>
@@ -402,26 +395,7 @@
     height:100px;
   }
 
-  .infinite-list {
-        margin: 2px auto;
-        width: 98%;
-    }
 
-    .infinite-list li.columnhead {
-        font-size: 14px;
-        font-weight: bold;
-    }
-
-    .infinite-list li,
-    .infinite-list li.columnhead {
-        width: 24%;
-        line-height: 15px;
-        height: 50px;
-        text-align: center;
-        float: left;
-        margin: 0 0 1px 1px;
-        list-style: none;
-    }
 
     input[type=file] {
         display:none;
@@ -461,7 +435,7 @@ var Main = {
             version_backup_files:[],
             version_rollback_files:[],
             multipleFileSelection: [],
-            select_operatior:'',
+            select_operator:'',
             select_backup:'',
             select_upload:'',
             select_rollback:'',
@@ -660,11 +634,9 @@ var Main = {
       },
       // 执行远程操作
       selectSubmit(){
-        // 自动切换展示列表
-        this.activeTabName = "log_tab"
         console.log("正在选择业务和相应的机器....");
         // 检查远程执行参数
-        console.log("执行的操作是"+this.select_operatior);
+        console.log("执行的操作是"+this.select_operator);
         // 判断是否选中服务
         let operation_service = this.select_service;
         if(!operation_service){
@@ -677,21 +649,36 @@ var Main = {
          }
         let select_operation_pkg = '';
         let operation = '';
+        let select_hosts = '';
         //  执行发布/更新操作
-        if(this.select_operatior == 'upload'){
+        if(this.select_operator == 'upload'){
             operation = 'upload';
             select_operation_pkg = this.select_upload;
         }
         //  执行备份操作
-        if(this.select_operatior == 'backup'){
+        if(this.select_operator == 'backup'){
             operation = 'backup';
             select_operation_pkg = this.select_backup;
         }
         //  执行回滚操作
-        if(this.select_operatior == 'rollback'){
+        if(this.select_operator == 'rollback'){
             operation = 'rollback';
             select_operation_pkg = this.select_rollback;
         }
+        // 获取远程执行机器
+        select_hosts = this.select_service_mathines;
+        console.log("选择执行机器"+this.select_service_mathines);
+        // 判断是否满足执行远程操作条件
+        if(select_hosts.length==0||operation==''||select_operation_pkg==''){
+             this.$message({
+                type: 'error',
+                message: "请先筛选全局查询条件(服务和操作条件和对应主机)",
+                duration: 3000
+              });
+              return;
+        }
+        // 自动切换展示列表
+        this.activeTabName = "log_tab"
         // 发起请求
         var _this = this;
             axios({
@@ -701,7 +688,7 @@ var Main = {
                     username: '{{ current_user.username }}',
                     service_name: operation_service,
                 },
-                data:{"select_operation_pkg":select_operation_pkg,"operation":operation}
+                data:{"select_operation_pkg":select_operation_pkg,"operation":operation,"select_hosts":select_hosts}
             })
                 .then(function (response) {
                         console.log(response.data);
@@ -721,7 +708,7 @@ var Main = {
           var _this = this;
           console.log("选中服务机器"+value);
           let obj = {};
-          this.select_service = value;
+          this.select_service_mathines = value;
           obj = this.mathine_options.find((item)=>{
               return item.value === value;
           });
@@ -755,7 +742,7 @@ var Main = {
      selectServiceOperatorChange(value){
            console.log("选中操作类型"+value);
           let obj = {};
-          this.select_operatior = value;
+          this.select_operator = value;
           if(value == 'backup'){
             this.is_backup = true;
             // 自动切换展示列表
@@ -903,16 +890,19 @@ var Main = {
       initWebSocket(){ //初始化weosocket
                 let _this = this;
                 // 请参考socket.io 官方文档 https://socket.io/get-started/
-　　　　　　　　var url = 'http://' + document.domain + ':' + location.port + "/testwebsocket";
+　　　　　　　　var url = 'http://' + document.domain + ':' + location.port + "/runtime_logging";
                 // 初始化连接
                 let io_client = io.connect(url);
                 // 绑定的事件, 对应py文件中的event参数的值
                 io_client.on("my_response", function(resp){
                     // 向服务器端socket io 发送消息
                     // io_client.emit('my_response', "服务器端socket.io,你好");
-                    console.log(resp);
-                    console.log(_this.current_log_lines);
-                    _this.current_log_lines.push(resp);
+                    let is_error_line = false;
+                    if(resp.line.indexOf("ERROR") != -1){
+                        is_error_line = true;
+                    }
+                     _this.current_log_lines.unshift({"is_error":is_error_line,"data":resp.line});
+                    // _this.current_log_lines.push(resp.line);
                 });
         }
     },

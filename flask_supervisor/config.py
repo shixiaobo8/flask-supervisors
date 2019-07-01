@@ -30,6 +30,9 @@ dictConfig({
                 'file_error': {
                             'format': '%(asctime)s [%(threadName)s:%(thread)d in %(module)s:] [task_id:%(name)s] [%(name)s:%(lineno)d] [%(levelname)s]- %(message)s'
                  },
+                'file_operation': {
+                            'format': '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+                 },
             },
             'handlers': {
                         'wsgi': {
@@ -54,11 +57,27 @@ dictConfig({
                             'level': 'ERROR',
                             'formatter': 'file_error', 
                             'encoding': 'utf8'
+                        },
+                        'file_server_operator_handler':{
+                            'class': 'logging.handlers.RotatingFileHandler', # 自动切割
+                            'maxBytes': 1024 * 100, # 100k 一个日志文件避免websocket 发送太多
+                            'filename': os.path.join(log_path, time.strftime('%Y_%m_%d',time.localtime())+"_operation.log"),  # 日志文件
+                            'backupCount': 50, # 最多备份几个
+                            'level': 'NOTSET',
+                            'formatter': 'file_operation',
+                            'encoding': 'utf8',
                         }
             },
+            'loggers':{
+                'operation_logger': {
+                    'handlers': ['file_server_operator_handler'],
+                    'level': 'INFO',
+                    'propagate': False,
+                }
+            },
             'root': {
-                    'level': 'DEBUG',
-                    'handlers': ['wsgi','file_access_handler','file_error_handler']
+                    'handlers': ['wsgi','file_access_handler','file_error_handler'],
+                    'propagate': False,
             }
 })
 

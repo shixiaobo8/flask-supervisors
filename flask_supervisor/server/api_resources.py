@@ -14,7 +14,7 @@ from aliyunsdkcore.acs_exception.exceptions import ServerException
 from aliyunsdkecs.request.v20140526.DescribeInstancesRequest import DescribeInstancesRequest
 from ..supervisor.models import Host,Node,Service,User
 from flask_restful import abort,Resource,reqparse,fields,marshal_with,marshal
-from .views import handle_my_response_testwebsocket_event
+from .paramiko_util import SSHConnection,operation_logger
 
 
 class EcsListApi(Resource):
@@ -368,7 +368,7 @@ class VersionControllsApi(Resource):
         self.reqparse.add_argument('currentPage', type=int, default=1, location='args', help='第几个分页')
         self.reqparse.add_argument('page_size', type=int, default=10, location='args', help='每页显示多少')
         self.reqparse.add_argument('username', type=str, default=session.get("username"), location='args', help='用户名')
-        self.reqparse.add_argument('service', type=str, location='args', help='服务名')
+        self.reqparse.add_argument('service_name', type=str, location='args', help='服务名')
         # 获取request json 参数
         self.json_args = request.json
         self.args = self.reqparse.parse_args()
@@ -382,13 +382,44 @@ class VersionControllsApi(Resource):
 
     # 远程操作api
     def post(self):
-        parser = reqparse.RequestParser()
         user_name = self.args.get('username')
         service_name = self.args.get('service_name')
         operation = self.json_args['operation']
         select_operation_pkg = self.json_args['select_operation_pkg']
-        handle_my_response_testwebsocket_event(data=self.json_args)
-        return jsonify({"code": '2000', 'message': self.json_args})
+        select_hosts = self.json_args['select_hosts']
+        operation_logger.info("=====开始执行远程操作======.....")
+        operation_logger.info("获取到远程操作参数:"+str(self.args) + "  " + str(self.json_args))
+        # 判断参数完整性
+        if not operation or not service_name or not user_name or not select_operation_pkg or not select_hosts:
+            return jsonify({"code":'20003','message':"参数不完整!"})
+        # 获取远程主机信息
+        for host in select_hosts:
+            try:
+                # 获取内网ip
+                host_publicip = host.split("/")[-1]
+                host_innerip = host.split("/")[-2]
+                exec_host = Host.query.filter_by(host_inner_ip=host_innerip).first()
+                print(exec_host)
+                # 建立ssh 连接
+                # ssh_client = SSHConnection({"host":exec_host.host_inner_ip,"port":exec_host.sv_port,"username":"root","pwd":"123456"})
+                ssh_client = SSHConnection({"host":'',"port":exec_host.sv_port,"username":"root","pwd":"123456"})
+                ssh_client.connect()
+                # 远程执行命令
+                # 先管理系统内部进行备份
+                # 发布
+                if operation == 'upload':
+                    pass
+                # 备份
+                elif operation == 'backup':
+                    pass
+                # 回滚
+                elif operation == 'rollback':
+                    pass
+            except Exception as e:
+                traceback.print_exc()
+                operation_logger.error("=====执行远程操作中捕获到异常error======....."+repr(traceback._context_message))
+                return jsonify({"code": '20000', 'message': "服务器内部错误!"})
+        return jsonify({"code": '20000', 'message': self.json_args})
 
 
     def put(self):

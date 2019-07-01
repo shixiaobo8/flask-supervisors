@@ -1,0 +1,576 @@
+{% extends "base/frame_boot_base.html" %}
+{% block title %} app线上版本列表 {% endblock %}
+{% block content %}
+<div id="app">
+    <template>
+        <el-container>
+            <el-row style="height:40px;margin-top:20px;">
+                <el-col :span="24">
+                    <el-card shadow="hover">
+                        <div class="grid-content bg-purple-dark" style="backgroud-color:#85934D;">
+                            <el-breadcrumb separator-class="el-icon-arrow-right" style="padding-left:20px;">
+                                <el-breadcrumb-item :to="{ path: '/' }">服务器管理</el-breadcrumb-item>
+                                <el-breadcrumb-item>app版本管理</el-breadcrumb-item>
+                            </el-breadcrumb>
+                        </div>
+                    </el-card>
+                </el-col>
+            </el-row>
+
+            <el-header style="height:40px;">
+                <el-row>
+                    <el-col :span="24">
+                        <div class="grid-content bg-purple-dark">
+                            <!-- Form -->
+                            <el-button @click="newAdd" type="primary" icon="el-icon-plus">新增app版本</el-button>
+
+                            <el-dialog title="新增app版本" :visible.sync="dialogVisible">
+                                <el-form :model="versionForm" status-icon :rules="service_rules" ref="versionForm"
+                                         label-width="100px" class="demo-versionForm">
+                                    <el-form-item label="版本号" prop="app类型">
+                                        <el-input v-model="versionForm.version_num"></el-input>
+                                    </el-form-item>
+                                    <el-form-item label="操作系统版本" prop="os_versions">
+                                        <el-select
+                                                v-model="versionForm.os_versions"
+                                                multiple
+                                                filterable
+                                                allow-create
+                                                value-key="os_versions"
+                                                placeholder="app操作系统版本"
+                                                @change="selectHostGet">
+                                            <el-option
+                                              v-for="(item,index) in os_version"
+                                              :key="item.value"
+                                              :label="item.label"
+                                              :value="item.value">
+                                            </el-option>
+                                          </el-select>
+                                    </el-form-item>
+                                    <el-form-item label="版本描述" prop="version_detail">
+                                        <el-input v-model="versionForm.version_detail"></el-input>
+                                    </el-form-item>
+                                    <el-form-item label="下载地址" prop="download_url">
+                                        <el-input v-model="versionForm.download_url"></el-input>
+                                    </el-form-item>
+                                    </el-form>
+                                    <div slot="footer" class="dialog-footer">
+                                             <el-button @click="resetForm('versionForm')">重置</el-button>
+                                            <el-button type="primary" @click="submitForm('versionForm')">提交</el-button>
+                                    </div>
+                            </el-dialog>
+
+                        </div>
+                    </el-col>
+                </el-row>
+            </el-header>
+
+            <el-main>
+                <el-table
+                        :data="serviceData.filter(data => !search || data.service_name.toLowerCase().includes(search.toLowerCase()))"
+                        ref="multipleTable"
+                        highlight-current-row
+                        @row-click="handleCurrentChange"
+                        @selection-change="handleSelectionChange"
+                        border
+                        style="width: 100%">
+                    <el-table-column
+                            type="selection"
+                            width="55">
+                    </el-table-column>
+                    <el-table-column
+                            prop="id"
+                            fixed
+                            align="center"
+                            sortable
+                            label="ID"
+                            width="180">
+                        <template slot-scope="scope">
+                            <span style="margin-left: 10px">{[ scope.row.id ]}</span>
+                        </template>
+                    </el-table-column>
+                    </el-table-column>
+                    <el-table-column
+                            label="版本号"
+                            align="center"
+                            @change="handleEdit(scope.$index, scope.row)"
+                            width="180">
+                        <template slot-scope="scope">
+                            <span style="margin-left: 10px">{[ scope.row.version_num ]}</span>
+                        </template>
+                    </el-table-column>
+                    <el-table-column
+                            label="版本描述"
+                            align="center"
+                            @change="handleEdit(scope.$index, scope.row)"
+                            width="180">
+                        <template slot-scope="scope">
+                            <span style="margin-left: 10px">{[ scope.row.version_desc ]}</span>
+                        </template>
+                    </el-table-column>
+                    <el-table-column
+                            label="下载地址"
+                            align="center"
+                            @change="handleEdit(scope.$index, scope.row)"
+                            width="180">
+                        <template slot-scope="scope">
+                            <span style="margin-left: 10px">{[ scope.row.download_url ]}</span>
+                        </template>
+                    </el-table-column>
+                    <el-table-column
+                            label="软件版本"
+                            align="center"
+                            @change="handleEdit(scope.$index, scope.row)"
+                            width="180">
+                        <template slot-scope="scope">
+                            <el-tooltip placement="right" v-for="item in scope.row.app_versions">
+                              <div slot="content">{[ scope.row.app_versions ]}</div>
+                            </el-tooltip>
+                        </template>
+                    </el-table-column>
+
+                    <el-table-column align="center" label="请搜索">
+                        <template slot="header" slot-scope="scope">
+                            <el-input
+                                    v-model="search"
+                                    size="mini"
+                                    placeholder="输入服务名称关键字搜索"/>
+                        </template>
+                        <template slot-scope="scope">
+                            <span class="el-tag el-tag--info el-tag--mini" style="cursor: pointer;"
+                                  @click="delRowData(scope.row)">
+                                 删除
+                            </span>
+                            <span class="el-tag el-tag--danger el-tag--mini"
+                                  style="cursor: pointer;"
+                                  @click="editRowData(scope.row) ">
+                                  编辑
+                            </span>
+                        </template>
+                    </el-table-column>
+                </el-table>
+            </el-main>
+
+            <el-footer>
+                <el-row>
+                    <el-col :span="12">
+                        <div class="grid-content bg-purple-light">
+                            <el-button @click="toggleSelection()">取消选择</el-button>
+                        </div>
+                    </el-col>
+                    <el-col :span="12">
+                        <div class="grid-content bg-purple-light" style="margin-right:10px;">
+                            <el-pagination
+                                    @size-change="handleSizeChange"
+                                    @current-change="handleCurrentPageChange"
+                                    :current-page="currentPage"
+                                    :page-sizes="[10,20,50]"
+                                    :page-size="page_size"
+                                    layout="total, sizes, prev, pager, next, jumper"
+                                    :total="count">
+                            </el-pagination>
+                        </div>
+                    </el-col>
+                </el-row>
+            </el-footer>
+        </el-container>
+    </template>
+</div>
+
+<style>
+    .el-row {
+    margin-bottom: 20px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  .el-col {
+    border-radius: 4px;
+  }
+  .el-pagination {
+    padding:2px 20px;
+  }
+  .el-select {
+    width: 450px;
+  }
+.tb-edit .el-input {
+    display: none
+}
+.tb-edit .current-row .el-input {
+    display: block
+}
+.tb-edit .current-row .el-input+span {
+    display: none
+}
+.el-table-add-row {
+    margin-top: 10px;
+    width: 100%;
+    height: 34px;
+    border: 1px dashed #c1c1cd;
+    border-radius: 3px;
+    cursor: pointer;
+    justify-content: center;
+    display: flex;
+    line-height: 34px;
+ }
+ .el-table .warning-row {
+    background: oldlace;
+  }
+
+  .el-table .success-row {
+    background: #f0f9eb;
+  }
+
+  .el-tag + .el-tag {
+    margin-left: 10px;
+  }
+  .button-new-tag {
+    margin-left: 10px;
+    height: 32px;
+    line-height: 30px;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .input-new-tag {
+    width: 90px;
+    margin-left: 10px;
+    vertical-align: bottom;
+  }
+
+
+</style>
+
+
+<script>
+var Main = {
+    delimiters: ['{[', ']}'],
+    data(){
+        return {
+            RandomColor:"",
+            labelPosition: 'right',
+            currentPage: 1,
+            count:0,
+            page_size:10,
+            search: '',
+            loading: true,
+            dialogTableVisible: false,
+            dialogVisible: false,
+            dialogVisible: false,
+            formLabelWidth: '120px',
+            versionForm:{
+                service_name:'',
+                service_ports:'',
+                service_detail:'',
+                service_developers:'',
+                service_mathines:'',
+                service_cmd: '',
+            },
+            host_options:[],
+            service_developers_options:[],
+            developer_options:[],
+            selectWidth: '120px',
+            showBtnOrdinary: true,
+            dynamicTags: [],
+            inputVisible: false,
+            inputValue: '',
+            serviceData: [],
+            service_rules:{
+                 service_name: [
+                        { required: true, message: '请输入服务名称', trigger: 'blur' },
+                        { min: 3, max: 200, message: '长度在 3 到 200 个字符', trigger: 'blur' }
+                  ],
+                  service_cmd: [
+                        { required: true, message: '请输入服务执行命令', trigger: 'blur' },
+                        { min: 3, max: 200, message: '长度在 3 到 200 个字符', trigger: 'blur' }
+                  ],
+                  service_detail: [
+                        { required: true, message: '请输入服务详情/描述', trigger: 'blur' },
+                        { min: 3, max: 200, message: '长度在 3 到 200 个字符', trigger: 'blur' }
+                 ],
+                 service_developers:[
+                        { required: true, message: '请服务器开发人员', trigger: 'change' },
+                 ],
+                 service_mathines:[
+                         { required: true, message: '请选择关联部署机器' , trigger: 'change' },
+                 ],
+                 service_ports:[
+                        { required: true, message: '请填写服务端口号', trigger: 'change' },
+                 ]
+            },
+         }
+    },
+    methods: {
+      getRandomColor(){
+        this.RandomColor = { color: '#'+Math.floor(Math.random()*0xffffff).toString(16)};
+      },
+      delRowData(data){
+            var _this = this;
+            axios({
+                method: 'put',
+                url: '/service/service',
+                data:data
+            })
+                .then(function (response) {
+                    if(response.data.code==20000){
+                        _this.$message({
+                           type: 'success',
+                           message: "更新成功!"
+                        });
+                    }else{
+                        _this.$message({
+                           type: 'warning',
+                           message: response.message
+                        });
+                    }
+                })
+                .catch(function (error) {
+                    _this.$message({
+                           type: 'error',
+                           message: "服务器内部错误,请联系管理员!"
+                        });
+                });
+      },
+      getServiceList() {
+            var _this = this;
+            axios({
+                method: 'get',
+                url: '/server/ServiceList',
+                params: {
+                    username: '{{ current_user.username }}',
+                    page_size: _this.page_size,
+                    currentPage: _this.currentPage
+                }
+            })
+                .then(function (response) {
+                    _this.serviceData = response.data.data;
+                    _this.count = response.data.count;
+                    _this.current_page = response.data.cureent_page;
+                    _this.page_size = response.data.page_size;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        },
+        getallHosts(query) {
+            var _this = this;
+            axios({
+                method: 'get',
+                url: '/server/HostList',
+                params: {
+                    username: '{{ current_user.username }}',
+                    page_size: _this.page_size,
+                    currentPage: _this.currentPage,
+                    is_detail: 1
+                }
+            })
+                .then(function (response) {
+                    for (i = 0; i < response.data.data.length; i++) {
+                        if(!_this.host_options[response.data.data[i][0]+"/"+response.data.data[i][1]+"/"+response.data.data[i][2]]){
+                            _this.host_options.push({label:response.data.data[i][0]+"/"+response.data.data[i][1]+"/"+response.data.data[i][2],value:response.data.data[i][0]+"/"+response.data.data[i][1]+"/"+response.data.data[i][2]})
+                        }
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        },
+        getdevelopers(){
+            var _this = this;
+            axios({
+                method: 'get',
+                url: '/houtai/user/userList',
+                params:{
+                    username:'{{ current_user.username }}',
+
+                }
+            })
+                .then(function (response) {
+                    for (i = 0; i < response.data.data.length; i++) {
+                        if(! _this.service_developers_options[response.data.data[i][0]]){
+                            _this.service_developers_options.push({label:response.data.data[i][0],value:response.data.data[i][0]});
+                        }
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        },
+        //行内修改
+        editRowData(row){
+            console.log("正在编辑行数据");
+            console.log(this);
+            this.dialog.title = "正在修改";
+            this.dialogVisible = true;
+            this.versionForm = row;
+
+        },
+        handleClose(tag) {
+            this.dynamicTags.splice(this.dynamicTags.indexOf(tag), 1);
+        },
+       showInput() {
+            this.inputVisible = true;
+            this.$nextTick(_ => {
+              this.$refs.saveTagInput.$refs.input.focus();
+            });
+        },
+        handleInputConfirm() {
+            let inputValue = this.inputValue;
+            if(!isNaN(inputValue)){
+                if (inputValue > 1024 ) {
+                    this.dynamicTags.push(inputValue);
+                    this.versionForm['service_ports'] =  this.dynamicTags;
+                }else{
+                     if(inputValue == ''){
+                        return;
+                     }
+                     this.$message({
+                           type: 'error',
+                           message: "端口号必须是大于1024的数字!"
+                       });
+                       return;
+               }
+            }else{
+                console.log(11111);
+                this.$message({
+                           type: 'error',
+                           message: "端口号必须是大于1024的数字!"
+                });
+                return;
+            }
+            this.inputVisible = false;
+            this.inputValue = '';
+        },
+      // 批量删除
+       lotdel(row, index, cg) {
+                    var _this = this;
+                    //点击修改 判断是否已经保存所有操作
+                    console.log("正在修改行数据");
+                    row.isSet=true;
+                    return;
+      },
+      handleCurrentChange(row, event, column) {
+                this.$refs.multipleTable.toggleRowSelection(row);
+                return false;
+      },
+      newAdd() {
+            this.dialogVisible = true;
+      },
+      handleSelectionChange(val) {
+        this.multipleSelection = val;
+      },
+      toggleSelection(rows) {
+        if (rows) {
+          rows.forEach(row => {
+            this.$refs.multipleTable.toggleRowSelection(row);
+          });
+        } else {
+          this.$refs.multipleTable.clearSelection();
+        }
+      },
+      // 翻页操作
+      handleCurrentPageChange(val){
+        this.currentPage = val;
+        this.getServiceList();
+      },
+      // 页面size
+      handleSizeChange(val) {
+        console.log(`每页 ${val} 条`);
+        this.page_size=val;
+        console.log("每页"+this.page_size);
+        this.getServiceList();
+      },
+      selectHostGet(value){
+           console.log("选中"+value);
+          let obj = {};
+          obj = this.host_options.find((item)=>{
+              return item.value === value;
+          });
+          this.versionForm.service_mathines = value;
+          return obj;
+      },
+      selectDevloperGet(value){
+         console.log("选中"+value);
+          let obj = {};
+          obj = this.service_developers_options.find((item)=>{
+              return item.value === value;
+          });
+          this.versionForm.service_developers = value;
+          return obj;
+      },
+      submitForm(formName) {
+        this.startUsingLoading = true;
+        var that = this;
+        this.$refs[formName].validate((valid) => {
+          if (valid) {
+                        axios({
+                            method: 'POST',
+                            url: '/server/Service',
+                            params:{
+                                username: '{{ current_user.username }}',
+                            },
+                            data: this.versionForm,
+                        })
+                            .then(function (response) {
+                                    let mess = "";
+                                    let t = "";
+                                    if(response.data.code=="20000"){
+                                        mess = '新增成功';
+                                        t = "success";
+                                    }else{
+                                        mess = response.data.message;
+                                        t = "error";
+                                    }
+                                       that.$message({
+								        message: mess,
+								        type: t
+								        });
+                                    that.startUsingDialog = false;
+                                    that.startUsingLoading = false;
+                                    that.dialogVisible = false;
+                                    that.$refs[formName].resetFields();
+                                    that.$refs['service_ports'];
+                                that.getServiceList();
+                            })
+                            .catch(function (error) {
+                                that.$message({
+								        message: '新增失败,可能出现服务器错误!',
+								        type: 'error'
+								        });
+                            });
+                        ;
+                    } else {
+                        that.$message({
+								        message: '表单验证失败!',
+								        type: 'error'
+					    });
+                    }
+                });
+            },
+      resetForm(formName) {
+        this.$refs[formName].resetFields();
+        this.dynamicTags = [];
+      }
+    },
+    mounted(){
+        this.getRandomColor();
+        this.getServiceList();
+        this.getallHosts();
+        this.getdevelopers();
+    },
+    filters: {
+      StringToList: function (value) {
+        return value.split(",");
+      }
+    },
+    computed: {
+        StringToList1: function (value) {
+            return value.split(",");
+         }
+    }
+};
+    var Ctor = Vue.extend(Main);
+    new Ctor().$mount('#app');
+
+
+</script>
+{% endblock %}
