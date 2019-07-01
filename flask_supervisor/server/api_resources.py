@@ -402,7 +402,7 @@ class VersionControllsApi(Resource):
                 print(exec_host)
                 # 建立ssh 连接
                 # ssh_client = SSHConnection({"host":exec_host.host_inner_ip,"port":exec_host.sv_port,"username":"root","pwd":"123456"})
-                ssh_client = SSHConnection({"host":'',"port":exec_host.sv_port,"username":"root","pwd":"123456"})
+                ssh_client = SSHConnection({"host":'10.0.0.4',"port":exec_host.sv_port,"username":"root","pwd":"123456"})
                 ssh_client.connect()
                 # 远程执行命令
                 # 先管理系统内部进行备份
@@ -411,7 +411,8 @@ class VersionControllsApi(Resource):
                     pass
                 # 备份
                 elif operation == 'backup':
-                    pass
+                    cmd = "ls /222"
+                    ssh_client.run_cmd(cmd)
                 # 回滚
                 elif operation == 'rollback':
                     pass
