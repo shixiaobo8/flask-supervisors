@@ -194,7 +194,7 @@
                                             </el-table>
                                         </template>
                                     </div>
-                                    <div v-else style="align:center;color;">
+                                    <div v-else style="align:center;color:red;">
                                         <h4>{[ this.no_data_message ]}</h4>
                                     </div>
                                 </el-card>
@@ -266,7 +266,7 @@
                                             </el-table>
                                         </template>
                                     </div>
-                                    <div v-else style="align:center;color;">
+                                    <div v-else style="align:center;color:red;">
                                         <h4>{[ this.no_data_message ]}</h4>
                                     </div>
                                 </el-card>
@@ -280,14 +280,19 @@
                                         </el-alert>
                                 </div>
                                 <el-divider></el-divider>
-                                <el-timeline>
-                                    <el-timeline-item v-for="history in operation_historys" :timestamp="getUinxTime(history.service_operator_event.operator_time.$date)" placement="top">
-                                        <el-card>
-                                            <p>服务:{[ history.service_name ]}:  用户:{[ history.service_operator_event.operator_user ]} 事件:  {[ history.service_operator_event.operator_type ]}
-                                            {[ history.service_operator_event.operator_object ]} 版本号:{[ history.version ]}</p>
-                                        </el-card>
-                                    </el-timeline-item>
-                                </el-timeline>
+                                <div v-if="operation_historys.length!=0" >
+                                    <el-timeline>
+                                        <el-timeline-item v-for="history in operation_historys" :timestamp="getUinxTime(history.service_operator_event.operator_time.$date)" placement="top">
+                                            <el-card>
+                                                <p>服务:{[ history.service_name ]}:  用户:{[ history.service_operator_event.operator_user ]} 事件:  {[ history.service_operator_event.operator_type ]}
+                                                {[ history.service_operator_event.operator_object ]} 版本号:{[ history.version ]}</p>
+                                            </el-card>
+                                        </el-timeline-item>
+                                    </el-timeline>
+                                </div>
+                                <div v-else style="align:center;color:red;">
+                                        <h4>{[ this.no_data_message ]}</h4>
+                            </div>
                             </div>
                         </el-tab-pane>
 
@@ -296,7 +301,7 @@
                                 <div style="text-align:left;color:red;">
                                         <el-alert title="日志展示"  description="websocket实时日志展示: 1.如果有重复的日志请点击右侧刷新按钮 2.看所有日志请联系管理登录服务器查看" type="info" :closable="false" show-icon style="text-align:left;color:green;font-size:19px;">
                                         </el-alert>
-                                        <el-button type="primary" circle icon="el-icon-refresh"></el-button>
+                                        <el-button type="primary" circle icon="el-icon-refresh" @click="reconnectwebsocket()" v-loading.fullscreen.lock="fullscreenLoading"></el-button>
                                 </div>
                                 <el-divider></el-divider>
                                 <ul class="infinite-list" >
@@ -420,12 +425,15 @@ var Main = {
     data(){
         return {
             data:[],
+            io_client:'',
             select_service:'',
             select_service_mathines:'',
             select_service_num:'',
             service_options:[],
             mathine_options:[],
             websock: null,
+            loading:true,
+            fullscreenLoading: false,
             current_log_lines:[],
             service_backup_options:[],
             service_upload_options:[],
@@ -510,7 +518,7 @@ var Main = {
                 url: '/server/VersionControlls',
                 params: {
                     username: '{{ current_user.username }}',
-                    service: upload_service,
+                    service_name: upload_service,
                 }
             })
                 .then(function (response) {
@@ -519,7 +527,7 @@ var Main = {
                     _this.operation_historys = response.data;
                     console.log(typeof(_this.operation_historys));
                     if(response.data.length==0){
-                        _this.no_data_message = "服务器暂无数据,请先操作(上传/备份/回滚)增加!";
+                        _this.no_data_message = "服务器暂无历史数据,请先操作(上传/备份/回滚)增加!";
                     }
                 })
                 .catch(function (error) {
@@ -680,7 +688,46 @@ var Main = {
         // 自动切换展示列表
         this.activeTabName = "log_tab"
         // 发起请求
-        var _this = this;
+           // 添加临时请求拦截器
+           var myInterceptor =    axios.interceptors.request.use((config)=>{
+                        // 在发送请求之前做些什么
+                        const loading = this.$loading({
+                              lock: true,
+                              text: '正在执行远程命令,过程最多需要5s,请稍后...',
+                              spinner: 'el-icon-loading',
+                              background: 'rgba(0, 0, 0, 0.7)'
+                        });
+                        setTimeout(() => {
+                            loading.close();
+                        }, 5000);
+                       return config;
+                    }, function (error) {
+                        // 对请求错误做些什么
+                        return Promise.reject(error);
+                    });
+                    // 添加响应拦截器
+                    axios.interceptors.response.use((response)=> {
+                        // 对响应数据做点什么
+                        if(response.data.code='20000'){
+                            this.$message({
+                                type: 'success',
+                                message: "恭喜,执行成功!",
+                                duration: 10000
+                            });
+                        }else{
+                            this.$message({
+                                type: 'error',
+                                message: "执行失败,请查看实时日志!",
+                                duration: 10000
+                            });
+                        }
+                        _this.reconnectwebsocket();
+                        return response;
+                    }, function (error) {
+                        // 对响应错误做点什么
+                        return Promise.reject(error);
+                    });
+
             axios({
                 method: 'post',
                 url: '/server/VersionControlls',
@@ -696,7 +743,8 @@ var Main = {
                 .catch(function (error) {
                     console.log(error);
                 });
-
+            // 注销临时请求拦截器
+            axios.interceptors.request.eject(myInterceptor);
       },
       // tab 切换事件
       handleTabsClick(tab,event){
@@ -892,11 +940,11 @@ var Main = {
                 // 请参考socket.io 官方文档 https://socket.io/get-started/
 　　　　　　　　var url = 'http://' + document.domain + ':' + location.port + "/runtime_logging";
                 // 初始化连接
-                let io_client = io.connect(url);
+                _this.io_client = io.connect(url);
                 // 绑定的事件, 对应py文件中的event参数的值
-                io_client.on("my_response", function(resp){
+               _this.io_client.on("my_response", function(resp){
                     // 向服务器端socket io 发送消息
-                    // io_client.emit('my_response', "服务器端socket.io,你好");
+                    // _this.io_client.emit('my_response', "服务器端socket.io,你好");
                     let is_error_line = false;
                     if(resp.line.indexOf("ERROR") != -1){
                         is_error_line = true;
@@ -904,7 +952,39 @@ var Main = {
                      _this.current_log_lines.unshift({"is_error":is_error_line,"data":resp.line});
                     // _this.current_log_lines.push(resp.line);
                 });
-        }
+        },
+        // 重连websocket
+        reconnectwebsocket(){
+            let _this = this;
+            // 清空页面日志
+            _this.current_log_lines = [];
+            console.log(222);
+            console.log("重新连接成功websocket中");
+            _this.io_client.disconnect();
+             console.log("websocket连接已关闭..");
+            var url = 'http://' + document.domain + ':' + location.port + "/runtime_logging";
+            const loading = this.$loading({
+              lock: true,
+              text: '正在刷新日志,请稍后...',
+              spinner: 'el-icon-loading',
+              background: 'rgba(0, 0, 0, 0.7)'
+            });
+            setTimeout(() => {
+              loading.close();
+            }, 2000);
+             // 初始化连接
+            _this.io_client = io.connect(url);
+            _this.io_client.on("my_response", function(resp){
+                    // 向服务器端socket io 发送消息
+                    // _this.io_client.emit('my_response', "服务器端socket.io,你好");
+                    let is_error_line = false;
+                    if(resp.line.indexOf("ERROR") != -1 || resp.line.indexOf("Error") !=-1){
+                        is_error_line = true;
+                    }
+                     _this.current_log_lines.unshift({"is_error":is_error_line,"data":resp.line});
+                    // _this.current_log_lines.push(resp.line);
+             });
+        },
     },
     mounted(){
         this.getHostList();

@@ -3,7 +3,7 @@
 """
 ssh 连接 封装类
 """
-import paramiko,logging
+import paramiko,logging,os
 
 operation_logger = logging.getLogger("operation_logger")
 
@@ -43,18 +43,18 @@ class SSHConnection(object):
         # 如果有错误信息，返回error
         # 否则返回res
         if error.strip():
-            operation_logger.info(error)
+            operation_logger.error(error)
             return {'color': 'red', 'res': error}
         else:
             operation_logger.info(res)
             return {'color': 'green', 'res': res}
 
-    def upload(self, local_path, target_path):
+    def upload(self, local_path, target_path,pkg_fname):
         # 连接，上传
         sftp = paramiko.SFTPClient.from_transport(self.__transport)
         # 将location.py 上传至服务器 /tmp/test.py
-        sftp.put(local_path, target_path, confirm=True)
-        # print(os.stat(local_path).st_mode)
+        sftp.put(local_path, os.path.join(target_path,pkg_fname), confirm=True)
+        print(os.stat(local_path).st_mode)
         # 增加权限
         # sftp.chmod(target_path, os.stat(local_path).st_mode)
         sftp.chmod(target_path, 0o755)  # 注意这里的权限是八进制的，八进制需要使用0o作为前缀
