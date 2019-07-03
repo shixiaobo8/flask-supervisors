@@ -232,7 +232,14 @@ class ServiceApi(Resource):
             return {'code': 20000, "message": "更新成功"}
 
     def delete(self):
-        pass
+        service_id = self.json_args['id']
+        if service_id:
+            service = Service.query.filter_by(id=service_id).first()
+            service.is_del = 1
+            mysql_db.session.commit()
+            return {"code":"20000","message":"删除成功!"}
+        else:
+            return {"code":"20002","message":"缺少参数"}
 
     def put(self):
         pass
@@ -286,6 +293,8 @@ class ServerFileApi(Resource):
                 res['backups'] = []
             if dir_step == 2:
                 res['rollbacks'] = []
+            if not os.path.exists(all_files[dir_step] + "/" + service_name):
+                os.makedirs(all_files[dir_step] + "/" + service_name)
             service_files = os.listdir(all_files[dir_step] + "/" + service_name)
             for file in service_files:
                 file_obj = {}

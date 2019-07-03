@@ -375,16 +375,22 @@ var Main = {
       },
       delRowData(data){
             var _this = this;
-            axios({
-                method: 'put',
-                url: '/service/service',
+            console.log("正在删除:"+data.id);
+            this.$confirm('此操作将删除这条服务数据, 是否继续?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+            }).then(() => {
+              axios({
+                method: 'delete',
+                url: '/server/Service',
                 data:data
             })
                 .then(function (response) {
                     if(response.data.code==20000){
                         _this.$message({
                            type: 'success',
-                           message: "更新成功!"
+                           message: "删除成功!"
                         });
                     }else{
                         _this.$message({
@@ -399,6 +405,13 @@ var Main = {
                            message: "服务器内部错误,请联系管理员!"
                         });
                 });
+                _this.getServiceList();
+            }).catch(() => {
+              this.$message({
+                type: 'info',
+                message: '已取消删除'
+              });
+            });
       },
       getServiceList() {
             var _this = this;
