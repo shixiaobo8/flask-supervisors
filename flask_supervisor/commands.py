@@ -94,7 +94,7 @@ class runsocketio(Command):
             if use_debugger is None:
                 use_debugger = True
                 if sys.stderr.isatty():
-                    print("Debugging is on. DANGER: Do not allow random users to connect to this server.",file=sys.stderr)
+                    print("Debugging is on. DANGER: Do not allow random users to connect to this server.")
         if use_reloader is None:
             use_reloader = use_debugger
 
