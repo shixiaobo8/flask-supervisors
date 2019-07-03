@@ -15,3 +15,4 @@ configparser
 paramiko
 flask-socketio
 eventlet
+uwsgi
