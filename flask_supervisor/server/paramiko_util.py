@@ -18,7 +18,7 @@ class SSHConnection(object):
 
     def connect(self):
         transport = paramiko.Transport((self.host, self.port))
-        transport.connect(username=self.username, password=self.pwd)
+        transport.connect(username=self.username, pkey=paramiko.RSAKey.from_private_key_file('/root/.ssh/id_rsa'))
         self.__transport = transport
 
     def close(self):
@@ -33,6 +33,7 @@ class SSHConnection(object):
         :return:
         """
         ssh = paramiko.SSHClient()
+        ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
         ssh._transport = self.__transport
         # 执行命令
         stdin, stdout, stderr = ssh.exec_command(command)
