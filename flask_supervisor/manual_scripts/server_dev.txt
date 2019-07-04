@@ -1,0 +1,20 @@
+i-wz9gglwrfdrwui0jbwle	mysql1	CentOS  7.6 64位	IM-存储(mysql)	120.79.85.13	172.18.21.62		2	8192
+i-wz9gglwrfdrwui0jbwlc	mysql2	CentOS  7.6 64位	IM-存储(mysql)	120.79.135.250	172.18.21.61		2	8192
+i-wz9gglwrfdrwui0jbwlb	mongo1	CentOS  7.6 64位	IM-存储(mongo)	120.79.92.51	172.18.21.60		2	8192
+i-wz9gglwrfdrwui0jbwld	mongo2	CentOS  7.6 64位	IM-存储(mongo)	120.79.15.62	172.18.21.59		2	8192
+i-wz9gglwrfdrwui0jbwlf	mongo3	CentOS  7.6 64位	IM-存储(mongo)	120.79.10.163	172.18.21.58		2	8192
+i-wz96lf5qxtmkbqoz5iye	redis1	CentOS  7.6 64位	IM-存储(redis)	120.79.23.213	172.18.21.45		4	8192
+i-wz96lf5qxtmkbqoz5iy5	redis2	CentOS  7.6 64位	IM-存储(redis)	119.23.27.216	172.18.21.50		4	8192
+i-wz96lf5qxtmkbqoz5iy6	redis3	CentOS  7.6 64位	IM-存储(redis)	47.106.105.43	172.18.21.48		4	8192
+i-wz96lf5qxtmkbqoz5iy9	nav_buddy_mediaproxy_1	CentOS  7.6 64位	nav + buddy + mediaproxy	119.23.11.181	172.18.21.52		4	8192
+i-wz96lf5qxtmkbqoz5iyd	nav_buddy_mediaproxy_2	CentOS  7.6 64位	nav + buddy + mediaproxy	120.79.246.15	172.18.21.55		4	8192
+i-wz96lf5qxtmkbqoz5iyb	region_upload_1	CentOS  7.6 64位	region + upload	120.77.146.7	172.18.21.47		4	8192
+i-wz96lf5qxtmkbqoz5iy8	region_upload_2	CentOS  7.6 64位	region + upload	120.79.245.190	172.18.21.54		4	8192
+i-wz96lf5qxtmkbqoz5iyc	region_gateway_group_1	CentOS  7.6 64位	region_gateway +group	120.78.90.242	172.18.21.53		4	8192
+i-wz96lf5qxtmkbqoz5iy7	region_gateway_group_2	CentOS  7.6 64位	region_gateway + group	39.108.175.129	172.18.21.57		4	8192
+i-wz96lf5qxtmkbqoz5iy3	msgcenter_uss_1	CentOS  7.6 64位	msgcenter + uss	47.106.107.72	172.18.21.46		4	8192
+i-wz96lf5qxtmkbqoz5iy1	msgcenter_uss_2	CentOS  7.6 64位	msgcenter + uss	120.78.151.245	172.18.21.51		4	8192
+i-wz96lf5qxtmkbqoz5iy4	regionv2_usercenter_1	CentOS  7.6 64位	regionv2+usercenter	119.23.12.9	172.18.21.44		4	8192
+i-wz96lf5qxtmkbqoz5iya	regionv2_usercenter_2	CentOS  7.6 64位	regionv2+usercenter	112.74.41.124	172.18.21.49		4	8192
+i-wz96lf5qxtmkbqoz5iy2	resmgr_nginx_php_push_jumpserver	CentOS  7.6 64位	resmgr + nginx + php + push	120.79.10.234	172.18.21.56		4	8192
+i-wz92v3pf7ycf2r66g61a	test-grafana-prometheus	CentOS  7.6 64位	prometheus-test		172.18.21.63		4	8192

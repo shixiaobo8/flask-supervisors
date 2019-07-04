@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding:utf8 -*-
 """
-	flask-scripts 定制脚本文件
+	flask-manual_scripts 定制脚本文件
 	
 """
 import sys

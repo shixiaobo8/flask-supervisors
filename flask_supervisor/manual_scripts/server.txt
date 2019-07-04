@@ -1,0 +1,31 @@
+i-wz947i94k3xwcgm8sb83	resmgr-nginx-php	CentOS  7.6 64位	Running	resmgr-nginx-php	cn-shenzhen	cn-shenzhen-e	120.78.236.87	172.19.0.12		4	4096
+i-wz947i94k3xwcgm8sb4p	resmgr-dps	CentOS  7.6 64位	Running	resmgr-dps	cn-shenzhen	cn-shenzhen-e	120.78.74.219	172.19.0.11		4	4096
+i-wz9798ltehzplpqtaokj	usercenter002	CentOS  7.6 64位	Running	usercenter	cn-shenzhen	cn-shenzhen-e		172.19.0.9		4	4096
+i-wz9798ltehzplpqtaoki	usercenter001	CentOS  7.6 64位	Running	usercenter	cn-shenzhen	cn-shenzhen-e		172.19.0.10		4	4096
+i-wz90p2k5or2bw1beazst	uss002	CentOS  7.6 64位	Running	uss	cn-shenzhen	cn-shenzhen-e		172.19.0.7		4	4096
+i-wz90p2k5or2bw1beazss	uss001	CentOS  7.6 64位	Running	uss	cn-shenzhen	cn-shenzhen-e		172.19.0.8		4	4096
+i-wz92i73koztp07jjsllr	msgcenter001	CentOS  7.6 64位	Running	msgcenter	cn-shenzhen	cn-shenzhen-e		172.19.0.6		4	4096
+i-wz92i73koztp07jjslls	msgcenter002	CentOS  7.6 64位	Running	msgcenter	cn-shenzhen	cn-shenzhen-e		172.19.0.5		4	4096
+i-wz9cfujsdt5f8se15qq3	mediaproxy-push001	CentOS  7.6 64位	Running	mediaproxy-push	cn-shenzhen	cn-shenzhen-e		172.19.0.4		4	4096
+i-wz9cfujsdt5f8se15qq4	mediaproxy-push002	CentOS  7.6 64位	Running	mediaproxy-push	cn-shenzhen	cn-shenzhen-e		172.19.0.3		4	4096
+i-wz91p5e96ps9kgdknvjs	buddy001	CentOS  7.6 64位	Running	buddy	cn-shenzhen	cn-shenzhen-e		172.19.0.2		4	4096
+i-wz91p5e96ps9kgdknvjt	buddy002	CentOS  7.6 64位	Running	buddy	cn-shenzhen	cn-shenzhen-e		172.19.0.1		4	4096
+i-wz92i73koztp05kiojfv	group001	CentOS  7.6 64位	Running	group	cn-shenzhen	cn-shenzhen-e		172.19.0.251		4	4096
+i-wz92i73koztp05kiojfw	group002	CentOS  7.6 64位	Running	group	cn-shenzhen	cn-shenzhen-e		172.19.0.252		4	4096
+i-wz9hsugal67fdoqs27ve	regionv2001	CentOS  7.6 64位	Running	regionv2	cn-shenzhen	cn-shenzhen-e		172.19.0.249		4	4096
+i-wz9hsugal67fdoqs27vf	regionv2002	CentOS  7.6 64位	Running	regionv2	cn-shenzhen	cn-shenzhen-e		172.19.0.250		4	4096
+i-wz90f3ft5gqsopan4fuc	region002	CentOS  7.6 64位	Running	region	cn-shenzhen	cn-shenzhen-e		172.19.0.247		4	8192
+i-wz90f3ft5gqsopan4fub	region001	CentOS  7.6 64位	Running	region	cn-shenzhen	cn-shenzhen-e		172.19.0.248		4	8192
+i-wz93ap2p1nffteau8669	gateway002	CentOS  7.6 64位	Running	gateway	cn-shenzhen	cn-shenzhen-e		172.19.0.246	39.108.215.36	4	8192
+i-wz93ap2p1nffteau8668	gateway001	CentOS  7.6 64位	Running	gateway	cn-shenzhen	cn-shenzhen-e		172.19.0.245	47.107.76.62	4	8192
+i-wz9fhdzbks7wosgzqip6	nav_upload001	CentOS  7.6 64位	Running	nav_upload	cn-shenzhen	cn-shenzhen-e		172.19.0.244	47.106.233.71	4	4096
+i-wz9fhdzbks7wosgzqip7	nav_upload002	CentOS  7.6 64位	Running	nav_upload	cn-shenzhen	cn-shenzhen-e		172.19.0.243	47.106.240.43	4	4096
+i-wz92lvtw1kaa4gue48xa	IM-Cache-redis003	CentOS  7.6 64位	Running		cn-shenzhen	cn-shenzhen-e		172.19.0.240	47.107.90.78	4	16384
+i-wz92lvtw1kaa4gue48x9	IM-Cache-redis002	CentOS  7.6 64位	Running		cn-shenzhen	cn-shenzhen-e		172.19.0.242	47.106.177.128	4	16384
+i-wz92lvtw1kaa4gue48x8	IM-Cache-redis001	CentOS  7.6 64位	Running		cn-shenzhen	cn-shenzhen-e		172.19.0.241	47.106.180.192	4	16384
+i-wz9cxsilfrh7pgsntkxy	IM-Storage-mongo003	CentOS  7.6 64位	Running	IM-Storage-mongo	cn-shenzhen	cn-shenzhen-e		172.19.0.239	47.106.148.255	8	16384
+i-wz9cxsilfrh7pgsntkxx	IM-Storage-mongo002	CentOS  7.6 64位	Running	IM-Storage-mongo	cn-shenzhen	cn-shenzhen-e		172.19.0.238	47.106.148.171	8	16384
+i-wz9cxsilfrh7pgsntkxw	IM-Storage-mongo001	CentOS  7.6 64位	Running	IM-Storage-mongo	cn-shenzhen	cn-shenzhen-e		172.19.0.237	120.79.140.150	8	16384
+i-wz9eumzz9ehized66k62	IM-Storage-mysql1	CentOS  7.6 64位	Running		cn-shenzhen	cn-shenzhen-e		172.19.0.236	120.79.198.82	4	8192
+i-wz9eumzz9ehized66k61	IM-Stroage-mysql2	CentOS  7.6 64位	Running		cn-shenzhen	cn-shenzhen-e		172.19.0.235	120.79.175.139	4	8192
+i-wz9i1da6brgtva63chah	linux-jumpserver	CentOS  7.6 64位	Running	linux-jumpserver	cn-shenzhen	cn-shenzhen-e		172.19.0.13	120.76.57.171	4	8192
