@@ -718,6 +718,22 @@ var Main = {
                     // 添加响应拦截器
                     axios.interceptors.response.use((response)=> {
                         // 对响应数据做点什么
+                        return response;
+                    }, function (error) {
+                        // 对响应错误做点什么
+                        return Promise.reject(error);
+                    });
+
+            axios({
+                method: 'post',
+                url: '/server/VersionControlls',
+                params: {
+                    username: '{{ current_user.username }}',
+                    service_name: operation_service,
+                },
+                data:{"select_operation_pkg":select_operation_pkg,"operation":operation,"select_hosts":select_hosts}
+            })
+                .then(function (response) {
                         if(response.data.code='20000'){
                             this.$message({
                                 type: 'success',
@@ -738,22 +754,6 @@ var Main = {
                             });
                         }
                         _this.reconnectwebsocket();
-                        return response;
-                    }, function (error) {
-                        // 对响应错误做点什么
-                        return Promise.reject(error);
-                    });
-
-            axios({
-                method: 'post',
-                url: '/server/VersionControlls',
-                params: {
-                    username: '{{ current_user.username }}',
-                    service_name: operation_service,
-                },
-                data:{"select_operation_pkg":select_operation_pkg,"operation":operation,"select_hosts":select_hosts}
-            })
-                .then(function (response) {
                         console.log(response.data);
                  })
                 .catch(function (error) {
