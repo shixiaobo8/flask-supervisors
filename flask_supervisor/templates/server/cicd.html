@@ -724,6 +724,12 @@ var Main = {
                                 message: "恭喜,执行成功!",
                                 duration: 5000
                             });
+                        }else if(response.data.code='20005'){
+                            this.$message({
+                                type: 'error',
+                                message: "服务器内部错误,请联系管理员!",
+                                duration: 5000
+                            });
                         }else{
                             this.$message({
                                 type: 'error',
