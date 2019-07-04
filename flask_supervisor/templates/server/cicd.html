@@ -697,6 +697,7 @@ var Main = {
         // 自动切换展示列表
         this.activeTabName = "log_tab"
         // 发起请求
+            let _this = this;
            // 添加临时请求拦截器
            var myInterceptor =    axios.interceptors.request.use((config)=>{
                         // 在发送请求之前做些什么
