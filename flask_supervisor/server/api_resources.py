@@ -285,6 +285,8 @@ class ServerFileApi(Resource):
         res = dict()
         all_files = [self.upload_version_file_dir, self.service_backup_file_dir]
         for dir_step in range(0,len(all_files)):
+            if not os.path.exists(all_files[dir_step] + "/" + service_name):
+                os.makedirs(all_files[dir_step] + "/" + service_name)
             if not os.path.exists(all_files[dir_step]):
                 return {"message":"服务器目录不存在,请联系服务器管理人员!",'code':'20002'}
             if dir_step == 0:
@@ -293,8 +295,6 @@ class ServerFileApi(Resource):
                 res['backups'] = []
             if dir_step == 2:
                 res['rollbacks'] = []
-            if not os.path.exists(all_files[dir_step] + "/" + service_name):
-                os.makedirs(all_files[dir_step] + "/" + service_name)
             service_files = os.listdir(all_files[dir_step] + "/" + service_name)
             for file in service_files:
                 file_obj = {}
