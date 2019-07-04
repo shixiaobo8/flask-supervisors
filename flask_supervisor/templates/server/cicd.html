@@ -735,19 +735,19 @@ var Main = {
             })
                 .then(function (response) {
                         if(response.data.code='20000'){
-                            this.$message({
+                            _this.$message({
                                 type: 'success',
                                 message: "恭喜,执行成功!",
                                 duration: 5000
                             });
                         }else if(response.data.code='20005'){
-                            this.$message({
+                            _this.$message({
                                 type: 'error',
                                 message: "服务器内部错误,请联系管理员!",
                                 duration: 5000
                             });
                         }else{
-                            this.$message({
+                            _this.$message({
                                 type: 'error',
                                 message: "执行失败,请查看实时日志!",
                                 duration: 5000
