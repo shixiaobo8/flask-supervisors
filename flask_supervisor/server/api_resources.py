@@ -352,8 +352,8 @@ class ServerFileApi(Resource):
             store_file_name = store_path + os.sep + n_file_name
             file.save(store_file_name)
             op = Operation(operator_time=datetime.datetime.now(),operator_user=user_name,operator_type="上传",operator_object="新文件  "+store_file_name)
+            # op.save()
             sop = serviceOperation(service_name=service_name,version=version,service_operator_event=op)
-            op.save()
             sop.save()
         except Exception as e:
             traceback.print_exc(file=operation_logger.handlers[0].baseFilename)
