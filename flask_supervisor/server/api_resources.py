@@ -441,7 +441,7 @@ class VersionControllsApi(Resource):
                 print(e)
                 traceback.print_exc(file=open(operation_logger.handlers[0].baseFilename,"a+",encoding='UTF-8'))
                 operation_logger.error("服务器连接失败....请登陆服务器或联系管理员....")
-                return jsonify({"code": '20000', 'message': "服务器内部错误!"})
+                return jsonify({"code": '20005', 'message': "服务器内部错误!"})
         return jsonify({"code": '20000', 'message': self.json_args})
 
 
