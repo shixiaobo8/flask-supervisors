@@ -417,17 +417,21 @@ class VersionControllsApi(Resource):
                 ssh_client.connect()
                 local_upload_dir = current_app.config['UPLOAD_VERSION_FILE_DIR']
                 local_backup_dir = current_app.config['SERVICE_BACKUP_FILE_DIR']
+                pkg = select_operation_pkg
+                bpkg = pkg.replace(".tar.gz", "_backup.tar.gz").replace(".zip", "_backup.zip").replace(".tgz","_backup.tgz")
+                orign_backup_pkg = local_upload_dir + service_name + "/" + pkg
+                backup_pkg = local_backup_dir + service_name + "/" + bpkg
                 # 远程执行命令
                 # 先管理系统内部进行备份
                 # 发布
                 if operation == 'upload':
-                    pass
+                   remote_cmd = "/bin/bash /im_scripts/deploy_service.sh "+ service_name +" /im/backup_pkgs/"+ bpkg +" 1"
+                   operation_logger.info("开始执行在机器"+host_innerip+"上远程发布/更新命令"+remote_cmd)
+                   ssh_client.run_cmd(remote_cmd)
+                   operation_logger.info("机器"+host_innerip+"发布/更新完成!")
+                   return jsonify({"code": '20000', 'message': "ok!"})
                 # 备份
                 elif operation == 'backup':
-                    pkg = select_operation_pkg
-                    bpkg = pkg.replace(".tar.gz","_backup.tar.gz").replace(".zip","_backup.zip").replace(".tgz","_backup.tgz")
-                    orign_backup_pkg = local_upload_dir + service_name + "/" + pkg
-                    backup_pkg = local_backup_dir + service_name + "/"  + bpkg
                     operation_logger.info("正在本机进行程序备份..."+pkg +" 备份后的文件名是:" + backup_pkg)
                     copyfile(orign_backup_pkg,backup_pkg)
                     operation_logger.info("本地文件"+orign_backup_pkg+"备份完成..正在远程备份.....请稍后..")
@@ -436,7 +440,11 @@ class VersionControllsApi(Resource):
                     return jsonify({"code": '20000', 'message': "ok!"})
                 # 回滚
                 elif operation == 'rollback':
-                    pass
+                    remote_cmd = "/bin/bash /im_scripts/deploy_service.sh " + service_name + " /im/backup_pkgs/" + bpkg + " 2"
+                    operation_logger.info("开始执行在机器" + host_innerip + "上远程回滚命令" + remote_cmd)
+                    ssh_client.run_cmd(remote_cmd)
+                    operation_logger.info("机器" + host_innerip + "回滚完成!")
+                    return jsonify({"code": '20000', 'message': "ok!"})
             except Exception as e:
                 print(e)
                 traceback.print_exc(file=open(operation_logger.handlers[0].baseFilename,"a+",encoding='UTF-8'))
