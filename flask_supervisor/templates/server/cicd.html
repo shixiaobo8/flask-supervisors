@@ -734,13 +734,13 @@ var Main = {
                 data:{"select_operation_pkg":select_operation_pkg,"operation":operation,"select_hosts":select_hosts}
             })
                 .then(function (response) {
-                        if(response.data.code='20000'){
+                        if(response.data.code=='20000'){
                             _this.$message({
                                 type: 'success',
                                 message: "恭喜,执行成功!",
                                 duration: 5000
                             });
-                        }else if(response.data.code='20005'){
+                        }else if(response.data.code=='20005'){
                             _this.$message({
                                 type: 'error',
                                 message: "服务器内部错误,请联系管理员!",
