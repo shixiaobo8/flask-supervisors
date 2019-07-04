@@ -47,6 +47,7 @@ dictConfig({
                             'backupCount': 50, # 最多备份几个
                             'level': 'DEBUG',
                             'formatter': 'file_access', 
+                            'formatter': 'file_access', 
                             'encoding': 'utf8'
                             },
                         'file_error_handler':{
@@ -90,7 +91,7 @@ class Config:
     ACCESSSECRET = 'xxx333333333333xxxxxxxxxxxx'
     UPLOAD_VERSION_FILE_DIR = "C:/Users/yunwei/Desktop/services/uploads/"
     SERVICE_BACKUP_FILE_DIR = "C:/Users/yunwei/Desktop/services/backups/"
-    MONGODB_SETTINGS = {'host': 'mongodb://127.0.0.1:27017/flask_blog', 'connect': False}
+    MONGODB_SETTINGS = {'host': 'mongodb://xj_omsa:xj_omsa2019@127.0.0.1:27017/xj_omsa', 'connect': True}
 
 
 # 生产环境配置
@@ -103,10 +104,10 @@ class ProductionConfig(Config):
     # 测试模式
     TESTING = False
     # mongodb 连接
-    MONGODB_SETTINGS = {'host': 'mongodb://127.0.0.1:27017/flask_blog','connect': False}
-    MONGOALCHEMY_DATABASE = 'flask_blog'
+    MONGODB_SETTINGS = {'host': 'mongodb://xj_omsa:xj_omsa2019@127.0.0.1:27017/xj_omsa','connect': True}
+    MONGOALCHEMY_DATABASE = 'xj_omsa'
     # mysql 连接
-    SQLALCHEMY_DATABASE_URI='mysql+mysqlconnector://root:123456@localhost:3306/flask_blog'
+    SQLALCHEMY_DATABASE_URI='mysql+mysqlconnector://root:123456@localhost:3306/xj_omsa'
     SQLALCHEMY_TRACK_MODIFICATIONS = True
     # 域名配置
     SERVER_NAME = 'demo.devops89.cn'
@@ -136,10 +137,10 @@ class DevelopmentConfig(Config):
     # 测试模式
     TESTING = False
     # mongodb 连接
-    MONGODB_SETTINGS = {'host': 'mongodb://127.0.0.1:27017/flask_blog','connect': False}
-    MONGOALCHEMY_DATABASE = 'flask_blog'
+    MONGODB_SETTINGS = {'host': 'mongodb://xj_omsa:xj_omsa2019@127.0.0.1:27017/xj_omsa','connect': True}
+    MONGOALCHEMY_DATABASE = 'xj_omsa'
     # mysql 连接
-    SQLALCHEMY_DATABASE_URI="mysql+mysqlconnector://root:123456@127.0.0.1:3306/flask_blog"
+    SQLALCHEMY_DATABASE_URI="mysql+mysqlconnector://root:123456@127.0.0.1:3306/xj_omsa"
     SQLALCHEMY_ECHO = True
     SQLALCHEMY_TRACK_MODIFICATIONS = True
     # 域名配置 正式环境必须配置这个参数
