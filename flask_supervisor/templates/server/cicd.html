@@ -621,6 +621,7 @@ var Main = {
       },
       getServiceList() {
             var _this = this;
+            let username = '{{ current_user.username }}';
             axios({
                 method: 'get',
                 url: '/server/ServiceList',
@@ -633,7 +634,16 @@ var Main = {
                 .then(function (response) {
                     _this.services = response.data.data;
                     for(let i=0;i<response.data.data.length;i++){
-                        _this.service_options.push({label:response.data.data[i].service_name,value:response.data.data[i].service_name});
+                        let flag = false;
+                        for(let m=0;m<response.data.data[i].service_developers.length;m++){
+                            if(response.data.data[i].service_developers[m].username == username){
+                                console.log(333);
+                                flag = true;
+                            }
+                        }
+                        if(flag){
+                            _this.service_options.push({label:response.data.data[i].service_name,value:response.data.data[i].service_name});
+                        }
                     }
                  })
                 .catch(function (error) {

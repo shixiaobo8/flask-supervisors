@@ -1,12 +1,13 @@
 #!/usr/bin/env python
 # -*- coding:utf8 -*-
-from flask import render_template
+from flask import render_template,session
 from . import server
 from flask_login import login_required
-from flask_supervisor import socketio
+from flask_supervisor import socketio,mysql_db
 from flask_socketio import emit,send,Namespace
 from flask import request,current_app
 from flask_supervisor.config import dictConfig
+from flask_supervisor.supervisor.models import services_developers,Service,User
 from threading import Lock
 import logging
 thread = None
@@ -42,7 +43,7 @@ def anisble():
     return render_template("server/ansible_manage.html")
 
 
-# ansible分组管理
+# 发布管理
 @login_required
 @server.route('/ci-cd')
 def cicd():
