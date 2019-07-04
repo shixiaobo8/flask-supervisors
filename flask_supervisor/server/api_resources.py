@@ -356,10 +356,11 @@ class ServerFileApi(Resource):
             op.save()
             sop.save()
         except Exception as e:
-            traceback.print_exc()
+            traceback.print_exc(file=operation_logger.handlers[0].baseFilename)
             print(e)
             code = '20002'
             message = "文件上传失败!"
+            operation_logger.error("用户"+user_name+"上传文件"+filename+"失败了..")
         return jsonify({"code": code, 'message': message})
 
 
