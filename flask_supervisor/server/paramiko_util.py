@@ -18,7 +18,8 @@ class SSHConnection(object):
 
     def connect(self):
         transport = paramiko.Transport((self.host, self.port))
-        transport.connect(username=self.username, pkey=paramiko.RSAKey.from_private_key_file('/root/.ssh/id_rsa'))
+        # transport.connect(username=self.username, pkey=paramiko.RSAKey.from_private_key_file('C:/Users/yunwei/id_rsa'))
+        transport.connect(username=self.username, password=self.pwd)
         self.__transport = transport
 
     def close(self):
@@ -54,7 +55,9 @@ class SSHConnection(object):
         # 连接，上传
         sftp = paramiko.SFTPClient.from_transport(self.__transport)
         # 将location.py 上传至服务器 /tmp/test.py
-        sftp.put(local_path, os.path.join(target_path,pkg_fname), confirm=True)
+        rs=sftp.put(local_path, os.path.join(target_path,pkg_fname), confirm=True)
+        print(222)
+        print(rs)
         print(os.stat(local_path).st_mode)
         # 增加权限
         # sftp.chmod(target_path, os.stat(local_path).st_mode)

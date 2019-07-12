@@ -2,43 +2,24 @@
 <project version="4">
   <component name="BookmarkManager">
     <bookmark url="file://$PROJECT_DIR$/flask_supervisor/templates/index/NavList.html" line="393" />
-    <bookmark url="file://$PROJECT_DIR$/flask_supervisor/templates/server/cicd.html" />
-    <bookmark url="file://$PROJECT_DIR$/flask_supervisor/templates/server/cicd.html" line="442" />
     <bookmark url="file://$PROJECT_DIR$/flask_supervisor/server/paramiko_util.py" line="1" mnemonic="8" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a8680dea-a39b-4893-b5e7-3d8d52460e23" name="Default Changelist" comment="区分用户服务">
-      <change afterPath="$PROJECT_DIR$/flask_supervisor/logs/2019_06_25_access.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flask_supervisor/logs/2019_06_25_error.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flask_supervisor/logs/2019_06_26_access.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flask_supervisor/logs/2019_06_26_error.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flask_supervisor/logs/2019_06_27_access.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flask_supervisor/logs/2019_06_27_error.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flask_supervisor/logs/2019_06_28_access.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flask_supervisor/logs/2019_06_28_error.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flask_supervisor/logs/2019_06_29_access.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flask_supervisor/logs/2019_06_29_error.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flask_supervisor/logs/2019_07_01_access.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flask_supervisor/logs/2019_07_01_error.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flask_supervisor/logs/2019_07_01_operation.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flask_supervisor/logs/2019_07_01_operation.log.1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flask_supervisor/logs/2019_07_01_operation.log.3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flask_supervisor/logs/2019_07_02_access.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flask_supervisor/logs/2019_07_02_error.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flask_supervisor/logs/2019_07_02_operation.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flask_supervisor/logs/2019_07_03_access.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flask_supervisor/logs/2019_07_03_error.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flask_supervisor/logs/2019_07_03_operation.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flask_supervisor/logs/2019_07_04_access.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flask_supervisor/logs/2019_07_04_error.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flask_supervisor/logs/2019_07_04_operation.log" afterDir="false" />
+    <list default="true" id="a8680dea-a39b-4893-b5e7-3d8d52460e23" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/flask_supervisor/logs/2019_07_12_access.log" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/flask_supervisor/migrations/versions/9c853a99ebb5_.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/flask_supervisor/static/img/users/shiyiguo/23662.jpg" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/flask_supervisor/static/img/users/shiyiguo/292-11012511135849.jpg" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/flask_supervisor/static/img/users/shiyiguo/7092831_140036752037_2.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_supervisor/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_supervisor/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_supervisor/logs/2019_06_24_access.log" beforeDir="false" afterPath="$PROJECT_DIR$/flask_supervisor/logs/2019_06_24_access.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_supervisor/logs/2019_06_19_access.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_supervisor/logs/2019_06_19_error.log" beforeDir="false" afterPath="$PROJECT_DIR$/flask_supervisor/logs/2019_07_12_error.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_supervisor/logs/2019_06_20_access.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_supervisor/logs/2019_06_20_error.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_supervisor/logs/2019_06_21_access.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_supervisor/logs/2019_06_21_error.log" beforeDir="false" afterPath="$PROJECT_DIR$/flask_supervisor/logs/2019_07_12_operation.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_supervisor/logs/2019_06_24_access.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_supervisor/logs/2019_06_24_error.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_supervisor/migrations/versions/11cb4ab0e684_.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_supervisor/migrations/versions/22c3df548a77_.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_supervisor/migrations/versions/6dbe073e0ce1_.py" beforeDir="false" />
@@ -50,7 +31,7 @@
       <change beforePath="$PROJECT_DIR$/flask_supervisor/migrations/versions/ada17d3eb392_.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_supervisor/migrations/versions/c713f89bcfd7_.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_supervisor/server/api_resources.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_supervisor/server/api_resources.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_supervisor/templates/server/cicd.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_supervisor/templates/server/cicd.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_supervisor/server/paramiko_util.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_supervisor/server/paramiko_util.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -65,77 +46,30 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/flask_supervisor/server/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="383">
-              <caret line="57" column="58" selection-start-line="57" selection-start-column="58" selection-end-line="57" selection-end-column="82" />
-              <folding>
-                <element signature="e#44#77#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/flask_supervisor/templates/server/cicd.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="427">
-              <caret line="730" column="43" selection-start-line="730" selection-start-column="43" selection-end-line="730" selection-end-column="43" />
-              <folding>
-                <element signature="n#style#0;n#el-card#0;n#el-main#0;n#el-container#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#el-form-item#6;n#el-form#0;n#span#0;n#div#0;n#el-card#0;n#el-main#0;n#el-container#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#el-card#0;n#el-row#0;n#el-tab-pane#0;n#el-tabs#0;n#el-main#0;n#el-container#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#el-button#1;n#el-upload#0;n#div#0;n#el-card#0;n#el-row#0;n#el-tab-pane#0;n#el-tabs#0;n#el-main#0;n#el-container#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#el-alert#0;n#span#0;n#el-upload#0;n#div#0;n#el-card#0;n#el-row#0;n#el-tab-pane#0;n#el-tabs#0;n#el-main#0;n#el-container#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#el-table#0;n#template#0;n#div#1;n#el-card#0;n#el-row#0;n#el-tab-pane#0;n#el-tabs#0;n#el-main#0;n#el-container#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#el-button#0;n#template#0;n#el-table-column#5;n#el-table#0;n#template#0;n#div#1;n#el-card#0;n#el-row#0;n#el-tab-pane#0;n#el-tabs#0;n#el-main#0;n#el-container#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#el-button#1;n#template#0;n#el-table-column#5;n#el-table#0;n#template#0;n#div#1;n#el-card#0;n#el-row#0;n#el-tab-pane#0;n#el-tabs#0;n#el-main#0;n#el-container#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#el-button#2;n#template#0;n#el-table-column#5;n#el-table#0;n#template#0;n#div#1;n#el-card#0;n#el-row#0;n#el-tab-pane#0;n#el-tabs#0;n#el-main#0;n#el-container#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#el-card#0;n#el-row#0;n#el-tab-pane#0;n#el-tabs#0;n#el-main#0;n#el-container#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#el-card#0;n#el-row#0;n#el-tab-pane#1;n#el-tabs#0;n#el-main#0;n#el-container#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#el-alert#0;n#div#0;n#el-card#0;n#el-row#0;n#el-tab-pane#1;n#el-tabs#0;n#el-main#0;n#el-container#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#el-table#0;n#template#0;n#div#1;n#el-card#0;n#el-row#0;n#el-tab-pane#1;n#el-tabs#0;n#el-main#0;n#el-container#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#el-button#0;n#template#0;n#el-table-column#5;n#el-table#0;n#template#0;n#div#1;n#el-card#0;n#el-row#0;n#el-tab-pane#1;n#el-tabs#0;n#el-main#0;n#el-container#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#el-button#1;n#template#0;n#el-table-column#5;n#el-table#0;n#template#0;n#div#1;n#el-card#0;n#el-row#0;n#el-tab-pane#1;n#el-tabs#0;n#el-main#0;n#el-container#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#el-card#0;n#el-row#0;n#el-tab-pane#1;n#el-tabs#0;n#el-main#0;n#el-container#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#el-tab-pane#2;n#el-tabs#0;n#el-main#0;n#el-container#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#el-alert#0;n#div#0;n#div#0;n#el-tab-pane#2;n#el-tabs#0;n#el-main#0;n#el-container#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#div#0;n#el-tab-pane#2;n#el-tabs#0;n#el-main#0;n#el-container#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#el-tab-pane#3;n#el-tabs#0;n#el-main#0;n#el-container#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#el-alert#0;n#div#0;n#div#0;n#el-tab-pane#3;n#el-tabs#0;n#el-main#0;n#el-container#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#li#0;n#ul#0;n#div#0;n#el-tab-pane#3;n#el-tabs#0;n#el-main#0;n#el-container#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#p#0;n#li#0;n#ul#0;n#div#0;n#el-tab-pane#3;n#el-tabs#0;n#el-main#0;n#el-container#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/flask_supervisor/server/api_resources.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="362">
-              <caret line="443" column="46" selection-start-line="443" selection-start-column="46" selection-end-line="443" selection-end-column="46" />
+            <state relative-caret-position="440">
+              <caret line="447" column="50" selection-start-line="447" selection-start-column="50" selection-end-line="447" selection-end-column="50" />
               <folding>
                 <element signature="e#44#78#1" />
                 <element signature="e#79#139#0" expanded="true" />
                 <element signature="e#11548#13199#0" />
-                <element signature="e#13241#15646#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/flask_supervisor/server/models.py">
+        <entry file="file://$PROJECT_DIR$/flask_supervisor/templates/uploads/versionCheck.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-16">
-              <caret column="21" selection-start-column="21" selection-end-column="21" />
-              <folding>
-                <element signature="e#78#101#0" expanded="true" />
-              </folding>
-            </state>
+            <state relative-caret-position="-9861" />
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/flask_supervisor/templates/uploads/index_bak.html">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -150,8 +84,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>curr</find>
-      <find>first</find>
       <find>line</find>
       <find>host_inner_ip</find>
       <find>websocket实时日志展示</find>
@@ -180,6 +112,8 @@
       <find>service</find>
       <find>xj_omsa:xj_omsa2019@</find>
       <find>_this.reconnectwebsocket();</find>
+      <find>上传</find>
+      <find>serverFile</find>
     </findStrings>
     <replaceStrings>
       <replace>current_user.user_name</replace>
@@ -233,7 +167,6 @@
         <option value="$PROJECT_DIR$/flask_supervisor/logs/2019_07_01_operation.log" />
         <option value="$PROJECT_DIR$/manage.py" />
         <option value="$PROJECT_DIR$/flask_supervisor/templates/base/frame_boot_base.html" />
-        <option value="$PROJECT_DIR$/flask_supervisor/server/paramiko_util.py" />
         <option value="$PROJECT_DIR$/uwsgi.ini" />
         <option value="$PROJECT_DIR$/requirments.txt" />
         <option value="$PROJECT_DIR$/flask_supervisor/commands.py" />
@@ -241,14 +174,15 @@
         <option value="$PROJECT_DIR$/flask_supervisor/templates/server/index.html" />
         <option value="$PROJECT_DIR$/flask_supervisor/config.py" />
         <option value="$PROJECT_DIR$/flask_supervisor/server/views.py" />
-        <option value="$PROJECT_DIR$/flask_supervisor/server/api_resources.py" />
         <option value="$PROJECT_DIR$/flask_supervisor/templates/server/cicd.html" />
+        <option value="$PROJECT_DIR$/flask_supervisor/server/paramiko_util.py" />
+        <option value="$PROJECT_DIR$/flask_supervisor/server/api_resources.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="909" />
-    <option name="y" value="156" />
+    <option name="x" value="277" />
+    <option name="y" value="84" />
     <option name="width" value="1417" />
     <option name="height" value="1032" />
   </component>
@@ -257,7 +191,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -274,31 +207,19 @@
               <item name="flask_supervisor" type="b2602c69:ProjectViewProjectNode" />
               <item name="flask_supervisor" type="462c0819:PsiDirectoryNode" />
               <item name="flask_supervisor" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="flask_supervisor" type="b2602c69:ProjectViewProjectNode" />
-              <item name="flask_supervisor" type="462c0819:PsiDirectoryNode" />
-              <item name="flask_supervisor" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="flask_supervisor" type="b2602c69:ProjectViewProjectNode" />
               <item name="flask_supervisor" type="462c0819:PsiDirectoryNode" />
               <item name="flask_supervisor" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="flask_supervisor" type="b2602c69:ProjectViewProjectNode" />
-              <item name="flask_supervisor" type="462c0819:PsiDirectoryNode" />
-              <item name="flask_supervisor" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -556,11 +477,61 @@
       <option name="project" value="LOCAL" />
       <updated>1562243738361</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="区分用户服务">
+      <created>1562243895717</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1562243895717</updated>
+    </task>
+    <task id="LOCAL-00028" summary="区分用户服务">
+      <created>1562244211913</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1562244211913</updated>
+    </task>
+    <task id="LOCAL-00029" summary="区分用户服务">
+      <created>1562244355609</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1562244355609</updated>
+    </task>
+    <task id="LOCAL-00030" summary="区分用户服务">
+      <created>1562244425194</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1562244425194</updated>
+    </task>
+    <task id="LOCAL-00031" summary="区分用户服务">
+      <created>1562244577962</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1562244577962</updated>
+    </task>
+    <task id="LOCAL-00032" summary="区分用户服务">
+      <created>1562245347294</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1562245347294</updated>
+    </task>
+    <task id="LOCAL-00033" summary="区分用户服务">
+      <created>1562246918890</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1562246918890</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17913593" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -615,35 +586,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="区分用户服务" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://E:/python36/Lib/site-packages/gevent/pywsgi.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="1444" selection-start-line="1444" selection-end-line="1444" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://E:/python36/Lib/site-packages/flask_socketio/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="94">
-          <caret line="464" column="8" selection-start-line="464" selection-start-column="8" selection-end-line="464" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/flask_supervisor/logs/2019_06_20_error.log">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/flask_supervisor/logs/2019_06_19_error.log">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/flask_supervisor/logs/2019_06_25_error.log">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/flask_supervisor/logs/2019_06_28_error.log">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/flask_supervisor/logs/2019_06_29_error.log">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/flask_supervisor/logs/2019_07_01_error.log">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -763,31 +705,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://E:/python36/Lib/site-packages/paramiko/transport.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="444" column="25" selection-start-line="444" selection-start-column="18" selection-end-line="444" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://E:/python36/Lib/site-packages/paramiko/sftp_client.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-143">
-          <caret line="728" column="8" selection-start-line="728" selection-start-column="8" selection-end-line="728" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/flask_supervisor/logs/2019_07_02_operation.log">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1121">
           <caret line="73" column="77" selection-start-line="73" selection-start-column="77" selection-end-line="73" selection-end-column="82" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/flask_supervisor/server/paramiko_util.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1045">
-          <caret line="55" column="63" selection-start-line="55" selection-start-column="63" selection-end-line="55" selection-end-column="63" />
         </state>
       </provider>
     </entry>
@@ -841,11 +762,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/reg.patch">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-285" />
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/reg.patch" />
     <entry file="file://$PROJECT_DIR$/LICENSE">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -901,26 +818,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/flask_supervisor/server/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="383">
-          <caret line="57" column="58" selection-start-line="57" selection-start-column="58" selection-end-line="57" selection-end-column="82" />
-          <folding>
-            <element signature="e#44#77#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/flask_supervisor/logs/2019_07_04_operation.log">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/flask_supervisor/config.py">
+    <entry file="file://E:/python36/Lib/site-packages/mongoengine/document.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="816">
-          <caret line="139" column="63" selection-start-line="139" selection-start-column="63" selection-end-line="139" selection-end-column="63" />
-          <folding>
-            <element signature="e#271#308#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="199">
+          <caret line="96" selection-start-line="96" selection-end-line="96" />
         </state>
       </provider>
     </entry>
@@ -934,30 +838,65 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://E:/python36/Lib/site-packages/mongoengine/document.py">
+    <entry file="file://$PROJECT_DIR$/flask_supervisor/server/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="96" selection-start-line="96" selection-end-line="96" />
+        <state relative-caret-position="383">
+          <caret line="57" column="58" selection-start-line="57" selection-start-column="58" selection-end-line="57" selection-end-column="82" />
+          <folding>
+            <element signature="e#44#77#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/flask_supervisor/server/api_resources.py">
+    <entry file="file://$PROJECT_DIR$/flask_supervisor/config.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="443" column="46" selection-start-line="443" selection-start-column="46" selection-end-line="443" selection-end-column="46" />
+        <state relative-caret-position="673">
+          <caret line="139" column="63" selection-start-line="139" selection-start-column="63" selection-end-line="139" selection-end-column="63" />
           <folding>
-            <element signature="e#44#78#1" />
-            <element signature="e#79#139#0" expanded="true" />
-            <element signature="e#11548#13199#0" />
-            <element signature="e#13241#15646#0" />
+            <element signature="e#271#308#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://E:/python36/Lib/site-packages/paramiko/transport.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1405">
+          <caret line="287" column="8" selection-start-line="287" selection-start-column="8" selection-end-line="287" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://E:/python36/Lib/site-packages/paramiko/kex_ecdh_nist.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="38" selection-start-line="38" selection-end-line="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://E:/python36/Lib/site-packages/paramiko/sftp_client.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="28">
+          <caret line="728" column="8" selection-start-line="728" selection-start-column="8" selection-end-line="728" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_supervisor/logs/2019_07_08_operation.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5801">
+          <caret line="901" column="170" selection-start-line="901" selection-start-column="150" selection-end-line="901" selection-end-column="170" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_supervisor/server/paramiko_util.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="267">
+          <caret line="57" column="19" selection-start-line="57" selection-start-column="19" selection-end-line="57" selection-end-column="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/flask_supervisor/templates/server/cicd.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="427">
-          <caret line="730" column="43" selection-start-line="730" selection-start-column="43" selection-end-line="730" selection-end-column="43" />
+        <state relative-caret-position="10868">
+          <caret line="572" column="40" selection-start-line="572" selection-start-column="30" selection-end-line="572" selection-end-column="40" />
           <folding>
             <element signature="n#style#0;n#el-card#0;n#el-main#0;n#el-container#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#el-form-item#6;n#el-form#0;n#span#0;n#div#0;n#el-card#0;n#el-main#0;n#el-container#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
@@ -982,6 +921,41 @@
             <element signature="n#style#0;n#el-alert#0;n#div#0;n#div#0;n#el-tab-pane#3;n#el-tabs#0;n#el-main#0;n#el-container#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#li#0;n#ul#0;n#div#0;n#el-tab-pane#3;n#el-tabs#0;n#el-main#0;n#el-container#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#p#0;n#li#0;n#ul#0;n#div#0;n#el-tab-pane#3;n#el-tabs#0;n#el-main#0;n#el-container#0;n#el-container#0;n#template#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_supervisor/logs/2019_07_09_operation.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="327">
+          <caret line="36" selection-start-line="36" selection-end-line="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_supervisor/templates/uploads/ace_edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1254" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_supervisor/templates/uploads/versionCheck.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-9861" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_supervisor/templates/uploads/ace_editor_demo.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_supervisor/templates/uploads/index_bak.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_supervisor/server/api_resources.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="447" column="50" selection-start-line="447" selection-start-column="50" selection-end-line="447" selection-end-column="50" />
+          <folding>
+            <element signature="e#44#78#1" />
+            <element signature="e#79#139#0" expanded="true" />
+            <element signature="e#11548#13199#0" />
           </folding>
         </state>
       </provider>

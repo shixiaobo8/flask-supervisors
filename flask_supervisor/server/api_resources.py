@@ -411,8 +411,8 @@ class VersionControllsApi(Resource):
                 host_innerip = host.split("/")[-2]
                 exec_host = Host.query.filter_by(host_inner_ip=host_innerip).first()
                 # 建立ssh 连接
-                ssh_client = SSHConnection({"host":exec_host.host_inner_ip,"port":exec_host.sv_port,"username":"root","pwd":"123456"})
-                # ssh_client = SSHConnection({"host":'10.0.0.4',"port":exec_host.sv_port,"username":"root","pwd":"123456"})
+                # ssh_client = SSHConnection({"host":exec_host.host_inner_ip,"port":exec_host.sv_port,"username":"root","pwd":"123456"})
+                ssh_client = SSHConnection({"host":'10.0.0.4',"port":exec_host.sv_port,"username":"root","pwd":"123456"})
                 operation_logger.info("正在尝试连接服务器"+host_publicip+"/"+host_innerip+"   请稍后....")
                 ssh_client.connect()
                 local_upload_dir = current_app.config['UPLOAD_VERSION_FILE_DIR']
@@ -425,7 +425,10 @@ class VersionControllsApi(Resource):
                 # 先管理系统内部进行备份
                 # 发布
                 if operation == 'upload':
-                   remote_cmd = "/bin/bash /im_scripts/deploy_service.sh "+ service_name +" /im/backup_pkgs/"+ bpkg +" 1"
+                   operation_logger.info("本地文件" + orign_backup_pkg + "备份完成..正在远程备份到/im_backup_pkgs/"+service_name+"/"+bpkg+".....请稍后..")
+                   ssh_client.upload(backup_pkg, "/im_upload_pkgs/", bpkg)
+                   operation_logger.info("本地文件" + orign_backup_pkg + "在远程机器" + host + "上备份完成!.")
+                   remote_cmd = "/bin/bash -x /im_scripts/deploy_service.sh "+ service_name +" /im_upload_pkgs/"+ bpkg +" 1"
                    operation_logger.info("开始执行在机器"+host_innerip+"上远程发布/更新命令"+remote_cmd)
                    ssh_client.run_cmd(remote_cmd)
                    operation_logger.info("机器"+host_innerip+"发布/更新完成!")
@@ -440,7 +443,7 @@ class VersionControllsApi(Resource):
                     return jsonify({"code": '20000', 'message': "ok!"})
                 # 回滚
                 elif operation == 'rollback':
-                    remote_cmd = "/bin/bash /im_scripts/deploy_service.sh " + service_name + " /im/backup_pkgs/" + bpkg + " 2"
+                    remote_cmd = "/bin/bash /im_scripts/deploy_service.sh " + service_name + " /im_backup_pkgs/" + bpkg + " 2"
                     operation_logger.info("开始执行在机器" + host_innerip + "上远程回滚命令" + remote_cmd)
                     ssh_client.run_cmd(remote_cmd)
                     operation_logger.info("机器" + host_innerip + "回滚完成!")
