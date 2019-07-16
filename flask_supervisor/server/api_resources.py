@@ -443,7 +443,7 @@ class VersionControllsApi(Resource):
                     return jsonify({"code": '20000', 'message': "ok!"})
                 # 回滚
                 elif operation == 'rollback':
-                    remote_cmd = "/bin/bash /im_scripts/deploy_service.sh " + service_name + " /im_backup_pkgs/" + bpkg + " 2"
+                    remote_cmd = "/bin/bash -x /im_scripts/deploy_service.sh " + service_name + " /im_backup_pkgs/" + bpkg + " 2"
                     operation_logger.info("开始执行在机器" + host_innerip + "上远程回滚命令" + remote_cmd)
                     ssh_client.run_cmd(remote_cmd)
                     operation_logger.info("机器" + host_innerip + "回滚完成!")
