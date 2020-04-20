@@ -1,0 +1,71 @@
+version: "3.3"
+
+networks:
+  flask_blog_admin_net1:
+
+volumes:
+  mongodbdata:    
+
+services:
+  mongodb:
+    image: mongo:4.0.18
+    volumes:
+      - type: volume
+        source: mongodbdata
+        target: /var/lib/mongodb
+    #  - /data/mongo_datas/:/var/lib/mongodb
+    restart: always
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=123456
+    networks:
+      flask_blog_admin_net1:
+        aliases:
+          - flask_blog_admin_mongodb
+    container_name:
+      flask_blog_admin_mongodb
+    ports:
+      - "27017:27017"
+    expose:
+      - "27017"
+
+  mysqld:
+    image: mysql:5.7.27
+    volumes:
+      - /data/mysql_datas/:/var/lib/mysql_datas/
+      - ./docker/mysql/conf/my.cnf:/etc/mysql/my.cnf
+      - ./flask_supervisor:/tmp/flask_supervisor
+      - ./flask_supervisor/manual_scripts/:/docker-entrypoint-initdb.d/
+    networks:
+      flask_blog_admin_net1:
+          aliases:
+            - flask_blog_admin_mysql
+    ports:
+      - "63306:3306"
+    expose:
+      - "3306"
+    container_name:
+      flask_blog_admin_mysql
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: devops123456
+      MYSQL_ROOT_HOST: \%
+    restart: always
+        
+  flask_web_admin:
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    networks:
+      flask_blog_admin_net1:
+          aliases:
+            - flask_blog_admin_web
+    container_name:
+      flask_blog_admin_web
+    depends_on:
+      - mysqld
+      - mongodb
+    ports:
+      - "7002:7001"
+    expose:
+      - "7002"

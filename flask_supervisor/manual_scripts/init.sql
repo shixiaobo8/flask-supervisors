@@ -210,6 +210,8 @@ CREATE TABLE `sv_roles` (
   KEY `sv_userGroup_Id` (`sv_userGroup_Id`),
   CONSTRAINT `sv_roles_ibfk_1` FOREIGN KEY (`sv_userGroup_Id`) REFERENCES `sv_userGroups` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1271,3 +1273,7 @@ CREATE TABLE IF NOT EXISTS `slow_log` (
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2019-06-26 21:22:27
+use mysql;
+grant all privileges on *.* to root@"%" identified by "devops123456" with grant option; 
+ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'devops123456';
+flush privileges;

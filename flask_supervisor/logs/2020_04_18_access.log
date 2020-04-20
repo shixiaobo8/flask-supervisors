@@ -1,0 +1,14 @@
+2020-04-18 16:50:24,298 [MainThread:140142683043648 in _internal:] [task_id:werkzeug] [werkzeug:122] [WARNING]-  * Debugger is active!
+2020-04-18 16:50:24,300 [MainThread:140142683043648 in _internal:] [task_id:werkzeug] [werkzeug:122] [INFO]-  * Debugger PIN: 331-918-892
+2020-04-18 17:53:45,253 [MainThread:140142683043648 in _internal:] [task_id:werkzeug] [werkzeug:122] [INFO]-  * Detected change in '/www/web/flask_blog/flask_supervisor/config.py', reloading
+2020-04-18 17:53:53,124 [MainThread:140528577500992 in _internal:] [task_id:werkzeug] [werkzeug:122] [WARNING]-  * Debugger is active!
+2020-04-18 17:53:53,127 [MainThread:140528577500992 in _internal:] [task_id:werkzeug] [werkzeug:122] [INFO]-  * Debugger PIN: 331-918-892
+2020-04-18 18:23:36,603 [MainThread:140528577500992 in _internal:] [task_id:werkzeug] [werkzeug:122] [INFO]-  * Detected change in '/www/web/flask_blog/flask_supervisor/config.py', reloading
+2020-04-18 18:23:40,989 [MainThread:139880048678720 in _internal:] [task_id:werkzeug] [werkzeug:122] [WARNING]-  * Debugger is active!
+2020-04-18 18:23:40,992 [MainThread:139880048678720 in _internal:] [task_id:werkzeug] [werkzeug:122] [INFO]-  * Debugger PIN: 331-918-892
+2020-04-18 18:26:37,886 [MainThread:139880048678720 in _internal:] [task_id:werkzeug] [werkzeug:122] [INFO]-  * Detected change in '/www/web/flask_blog/flask_supervisor/config.py', reloading
+2020-04-18 18:26:40,060 [MainThread:139965679077184 in _internal:] [task_id:werkzeug] [werkzeug:122] [WARNING]-  * Debugger is active!
+2020-04-18 18:26:40,062 [MainThread:139965679077184 in _internal:] [task_id:werkzeug] [werkzeug:122] [INFO]-  * Debugger PIN: 331-918-892
+2020-04-18 18:30:33,028 [MainThread:139965679077184 in _internal:] [task_id:werkzeug] [werkzeug:122] [INFO]-  * Detected change in '/www/web/flask_blog/flask_supervisor/config.py', reloading
+2020-04-18 18:30:35,756 [MainThread:140052707813184 in _internal:] [task_id:werkzeug] [werkzeug:122] [WARNING]-  * Debugger is active!
+2020-04-18 18:30:35,758 [MainThread:140052707813184 in _internal:] [task_id:werkzeug] [werkzeug:122] [INFO]-  * Debugger PIN: 331-918-892

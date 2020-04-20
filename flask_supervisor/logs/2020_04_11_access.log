@@ -1,0 +1,229 @@
+2020-04-11 14:32:00,553 [MainThread:140638696019776 in _internal:] [task_id:werkzeug] [werkzeug:122] [INFO]-  * Restarting with stat
+2020-04-11 14:32:01,828 [MainThread:139902246082368 in _internal:] [task_id:werkzeug] [werkzeug:122] [WARNING]-  * Debugger is active!
+2020-04-11 14:32:01,830 [MainThread:139902246082368 in _internal:] [task_id:werkzeug] [werkzeug:122] [INFO]-  * Debugger PIN: 331-918-892
+2020-04-16 14:33:52,305 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- SHOW VARIABLES LIKE 'sql_mode'
+2020-04-16 14:33:52,348 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- {}
+2020-04-16 14:33:52,537 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- SHOW VARIABLES LIKE 'lower_case_table_names'
+2020-04-16 14:33:52,538 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- {}
+2020-04-16 14:33:52,548 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- SELECT DATABASE()
+2020-04-16 14:33:52,548 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- {}
+2020-04-16 14:33:52,567 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- SELECT CAST('test plain returns' AS CHAR(60)) AS anon_1
+2020-04-16 14:33:52,567 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- {}
+2020-04-16 14:33:52,569 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- SELECT CAST('test unicode returns' AS CHAR(60)) AS anon_1
+2020-04-16 14:33:52,569 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- {}
+2020-04-16 14:33:52,571 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- BEGIN (implicit)
+2020-04-16 14:33:52,578 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash, sv_users.`userGroup_Id` AS `sv_users_userGroup_Id` 
+FROM sv_users 
+WHERE sv_users.username = %(username_1)s AND sv_users.password_hash = %(password_hash_1)s 
+ LIMIT %(param_1)s
+2020-04-16 14:33:52,578 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- {'username_1': 'shixiaobo8', 'password_hash_1': '123456', 'param_1': 1}
+2020-04-16 14:33:52,605 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- SELECT sv_navs.id AS sv_navs_id, sv_navs.`navTitle` AS `sv_navs_navTitle`, sv_navs.`navUrl` AS `sv_navs_navUrl`, sv_navs.`navType` AS `sv_navs_navType`, sv_navs.is_del AS sv_navs_is_del, sv_navs.role_id AS sv_navs_role_id 
+FROM sv_navs LEFT OUTER JOIN sv_subnavs ON sv_navs.id = sv_subnavs.`nav_Id` 
+WHERE sv_navs.is_del = %(is_del_1)s AND sv_subnavs.is_del = %(is_del_2)s
+2020-04-16 14:33:52,605 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- {'is_del_1': 0, 'is_del_2': 0}
+2020-04-16 14:33:52,622 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- SELECT sv_subnavs.id AS sv_subnavs_id, sv_subnavs.title AS sv_subnavs_title, sv_subnavs.nav_url AS sv_subnavs_nav_url, sv_subnavs.`nav_Id` AS `sv_subnavs_nav_Id`, sv_subnavs.is_del AS sv_subnavs_is_del 
+FROM sv_subnavs 
+WHERE %(param_1)s = sv_subnavs.`nav_Id`
+2020-04-16 14:33:52,623 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- {'param_1': 10}
+2020-04-16 14:33:52,627 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- SELECT sv_subnavs.id AS sv_subnavs_id, sv_subnavs.title AS sv_subnavs_title, sv_subnavs.nav_url AS sv_subnavs_nav_url, sv_subnavs.`nav_Id` AS `sv_subnavs_nav_Id`, sv_subnavs.is_del AS sv_subnavs_is_del 
+FROM sv_subnavs 
+WHERE %(param_1)s = sv_subnavs.`nav_Id` 
+ LIMIT %(param_2)s
+2020-04-16 14:33:52,627 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- {'param_1': 10, 'param_2': 1}
+2020-04-16 14:33:52,632 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- SELECT sv_users.avatar AS sv_users_avatar 
+FROM sv_users 
+WHERE sv_users.username = %(username_1)s 
+ LIMIT %(param_1)s
+2020-04-16 14:33:52,632 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- {'username_1': 'shixiaobo8', 'param_1': 1}
+2020-04-16 14:33:52,636 [Thread-1:139901935298304 in api_resources:] [task_id:flask.app] [flask.app:66] [INFO]- 用户shixiaobo8登录了...
+2020-04-16 14:33:52,639 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- ROLLBACK
+2020-04-16 14:33:52,709 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- BEGIN (implicit)
+2020-04-16 14:33:52,711 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash, sv_users.`userGroup_Id` AS `sv_users_userGroup_Id` 
+FROM sv_users 
+WHERE sv_users.id = %(param_1)s
+2020-04-16 14:33:52,711 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- {'param_1': 1}
+2020-04-16 14:33:52,878 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- ROLLBACK
+2020-04-16 14:34:02,239 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- BEGIN (implicit)
+2020-04-16 14:34:02,241 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash, sv_users.`userGroup_Id` AS `sv_users_userGroup_Id` 
+FROM sv_users 
+WHERE sv_users.id = %(param_1)s
+2020-04-16 14:34:02,241 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- {'param_1': 1}
+2020-04-16 14:34:02,269 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- ROLLBACK
+2020-04-16 14:34:02,815 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- BEGIN (implicit)
+2020-04-16 14:34:02,817 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash, sv_users.`userGroup_Id` AS `sv_users_userGroup_Id` 
+FROM sv_users 
+WHERE sv_users.username = %(username_1)s 
+ LIMIT %(param_1)s
+2020-04-16 14:34:02,817 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- {'username_1': 'shixiaobo8', 'param_1': 1}
+2020-04-16 14:34:02,821 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- ROLLBACK
+2020-04-16 14:34:11,038 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- BEGIN (implicit)
+2020-04-16 14:34:11,040 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash, sv_users.`userGroup_Id` AS `sv_users_userGroup_Id` 
+FROM sv_users 
+WHERE sv_users.username = %(username_1)s 
+ LIMIT %(param_1)s
+2020-04-16 14:34:11,040 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- {'username_1': 'shixiaobo8', 'param_1': 1}
+2020-04-16 14:34:11,060 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- UPDATE sv_users SET last_modify=%(last_modify)s WHERE sv_users.id = %(sv_users_id)s
+2020-04-16 14:34:11,061 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- {'last_modify': '2020-04-16 14:34:11', 'sv_users_id': 1}
+2020-04-16 14:34:11,066 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- COMMIT
+2020-04-16 14:34:11,149 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- BEGIN (implicit)
+2020-04-16 14:34:11,150 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash, sv_users.`userGroup_Id` AS `sv_users_userGroup_Id` 
+FROM sv_users 
+WHERE sv_users.id = %(param_1)s
+2020-04-16 14:34:11,151 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- {'param_1': 1}
+2020-04-16 14:34:11,155 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- ROLLBACK
+2020-04-16 14:34:11,562 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- BEGIN (implicit)
+2020-04-16 14:34:11,564 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash, sv_users.`userGroup_Id` AS `sv_users_userGroup_Id` 
+FROM sv_users 
+WHERE sv_users.username = %(username_1)s 
+ LIMIT %(param_1)s
+2020-04-16 14:34:11,564 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- {'username_1': 'shixiaobo8', 'param_1': 1}
+2020-04-16 14:34:11,567 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- ROLLBACK
+2020-04-16 14:34:25,832 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- BEGIN (implicit)
+2020-04-16 14:34:25,834 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash, sv_users.`userGroup_Id` AS `sv_users_userGroup_Id` 
+FROM sv_users 
+WHERE sv_users.username = %(username_1)s 
+ LIMIT %(param_1)s
+2020-04-16 14:34:25,835 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- {'username_1': 'shixiaobo8', 'param_1': 1}
+2020-04-16 14:34:25,838 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- UPDATE sv_users SET avatar=%(avatar)s, last_modify=%(last_modify)s WHERE sv_users.id = %(sv_users_id)s
+2020-04-16 14:34:25,838 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- {'avatar': 'img/users/shixiaobo8/Img331047726.jpg', 'last_modify': '2020-04-16 14:34:25', 'sv_users_id': 1}
+2020-04-16 14:34:25,839 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- COMMIT
+2020-04-16 14:34:25,844 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- BEGIN (implicit)
+2020-04-16 14:34:25,845 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- SELECT sv_users.avatar AS sv_users_avatar 
+FROM sv_users 
+WHERE sv_users.username = %(username_1)s 
+ LIMIT %(param_1)s
+2020-04-16 14:34:25,845 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- {'username_1': 'shixiaobo8', 'param_1': 1}
+2020-04-16 14:34:25,850 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- ROLLBACK
+2020-04-16 14:34:25,927 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- BEGIN (implicit)
+2020-04-16 14:34:25,929 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash, sv_users.`userGroup_Id` AS `sv_users_userGroup_Id` 
+FROM sv_users 
+WHERE sv_users.id = %(param_1)s
+2020-04-16 14:34:25,929 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- {'param_1': 1}
+2020-04-16 14:34:25,934 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- ROLLBACK
+2020-04-16 14:34:26,442 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- BEGIN (implicit)
+2020-04-16 14:34:26,444 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash, sv_users.`userGroup_Id` AS `sv_users_userGroup_Id` 
+FROM sv_users 
+WHERE sv_users.username = %(username_1)s 
+ LIMIT %(param_1)s
+2020-04-16 14:34:26,444 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- {'username_1': 'shixiaobo8', 'param_1': 1}
+2020-04-16 14:34:26,447 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- ROLLBACK
+2020-04-16 14:34:49,011 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- BEGIN (implicit)
+2020-04-16 14:34:49,013 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash, sv_users.`userGroup_Id` AS `sv_users_userGroup_Id` 
+FROM sv_users 
+WHERE sv_users.id = %(param_1)s
+2020-04-16 14:34:49,013 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- {'param_1': 1}
+2020-04-16 14:34:49,043 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- ROLLBACK
+2020-04-16 14:34:49,787 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- BEGIN (implicit)
+2020-04-16 14:34:49,788 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- SELECT sv_subnavs.id AS sv_subnavs_id, sv_navs.id AS sv_navs_id, sv_subnavs.title AS sv_subnavs_title, sv_subnavs.nav_url AS sv_subnavs_nav_url, sv_navs.`navTitle` AS `sv_navs_navTitle`, sv_navs.`navType` AS `sv_navs_navType`, sv_navs.`navUrl` AS `sv_navs_navUrl` 
+FROM sv_navs LEFT OUTER JOIN sv_subnavs ON sv_navs.id = sv_subnavs.`nav_Id` 
+WHERE sv_navs.is_del = %(is_del_1)s AND sv_subnavs.is_del = %(is_del_2)s
+2020-04-16 14:34:49,789 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- {'is_del_1': 0, 'is_del_2': 0}
+2020-04-16 14:34:49,791 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- ROLLBACK
+2020-04-16 14:34:52,016 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- BEGIN (implicit)
+2020-04-16 14:34:52,018 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash, sv_users.`userGroup_Id` AS `sv_users_userGroup_Id` 
+FROM sv_users 
+WHERE sv_users.id = %(param_1)s
+2020-04-16 14:34:52,019 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- {'param_1': 1}
+2020-04-16 14:34:52,024 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- ROLLBACK
+2020-04-16 14:34:53,000 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- BEGIN (implicit)
+2020-04-16 14:34:53,003 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- SELECT sv_subnavs.id AS sv_subnavs_id, sv_navs.id AS sv_navs_id, sv_subnavs.title AS sv_subnavs_title, sv_subnavs.nav_url AS sv_subnavs_nav_url, sv_navs.`navTitle` AS `sv_navs_navTitle`, sv_navs.`navType` AS `sv_navs_navType`, sv_navs.`navUrl` AS `sv_navs_navUrl` 
+FROM sv_navs LEFT OUTER JOIN sv_subnavs ON sv_navs.id = sv_subnavs.`nav_Id` 
+WHERE sv_navs.is_del = %(is_del_1)s AND sv_subnavs.is_del = %(is_del_2)s
+2020-04-16 14:34:53,003 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- {'is_del_1': 0, 'is_del_2': 0}
+2020-04-16 14:34:53,005 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- ROLLBACK
+2020-04-16 14:34:53,898 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- BEGIN (implicit)
+2020-04-16 14:34:53,900 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash, sv_users.`userGroup_Id` AS `sv_users_userGroup_Id` 
+FROM sv_users 
+WHERE sv_users.id = %(param_1)s
+2020-04-16 14:34:53,900 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- {'param_1': 1}
+2020-04-16 14:34:53,905 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- ROLLBACK
+2020-04-16 14:34:54,630 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- BEGIN (implicit)
+2020-04-16 14:34:54,632 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- SELECT sv_subnavs.id AS sv_subnavs_id, sv_navs.id AS sv_navs_id, sv_subnavs.title AS sv_subnavs_title, sv_subnavs.nav_url AS sv_subnavs_nav_url, sv_navs.`navTitle` AS `sv_navs_navTitle`, sv_navs.`navType` AS `sv_navs_navType`, sv_navs.`navUrl` AS `sv_navs_navUrl` 
+FROM sv_navs LEFT OUTER JOIN sv_subnavs ON sv_navs.id = sv_subnavs.`nav_Id` 
+WHERE sv_navs.is_del = %(is_del_1)s AND sv_subnavs.is_del = %(is_del_2)s
+2020-04-16 14:34:54,632 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- {'is_del_1': 0, 'is_del_2': 0}
+2020-04-16 14:34:54,635 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- ROLLBACK
+2020-04-16 14:34:57,226 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- BEGIN (implicit)
+2020-04-16 14:34:57,228 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash, sv_users.`userGroup_Id` AS `sv_users_userGroup_Id` 
+FROM sv_users 
+WHERE sv_users.id = %(param_1)s
+2020-04-16 14:34:57,228 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- {'param_1': 1}
+2020-04-16 14:34:57,232 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- ROLLBACK
+2020-04-16 14:34:58,005 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- BEGIN (implicit)
+2020-04-16 14:34:58,006 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- SELECT sv_subnavs.id AS sv_subnavs_id, sv_navs.id AS sv_navs_id, sv_subnavs.title AS sv_subnavs_title, sv_subnavs.nav_url AS sv_subnavs_nav_url, sv_navs.`navTitle` AS `sv_navs_navTitle`, sv_navs.`navType` AS `sv_navs_navType`, sv_navs.`navUrl` AS `sv_navs_navUrl` 
+FROM sv_navs LEFT OUTER JOIN sv_subnavs ON sv_navs.id = sv_subnavs.`nav_Id` 
+WHERE sv_navs.is_del = %(is_del_1)s AND sv_subnavs.is_del = %(is_del_2)s
+2020-04-16 14:34:58,007 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- {'is_del_1': 0, 'is_del_2': 0}
+2020-04-16 14:34:58,009 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- ROLLBACK
+2020-04-16 14:35:01,016 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- BEGIN (implicit)
+2020-04-16 14:35:01,018 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash, sv_users.`userGroup_Id` AS `sv_users_userGroup_Id` 
+FROM sv_users 
+WHERE sv_users.id = %(param_1)s
+2020-04-16 14:35:01,018 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- {'param_1': 1}
+2020-04-16 14:35:01,020 [Thread-1:139901935298304 in views:] [task_id:flask.app] [flask.app:26] [INFO]- 用户shixiaobo8退出登录了...
+2020-04-16 14:35:01,022 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- ROLLBACK
+2020-04-16 14:35:04,535 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- BEGIN (implicit)
+2020-04-16 14:35:04,537 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash, sv_users.`userGroup_Id` AS `sv_users_userGroup_Id` 
+FROM sv_users 
+WHERE sv_users.username = %(username_1)s AND sv_users.password_hash = %(password_hash_1)s 
+ LIMIT %(param_1)s
+2020-04-16 14:35:04,538 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- {'username_1': 'shixiaobo8', 'password_hash_1': '123456', 'param_1': 1}
+2020-04-16 14:35:04,541 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- SELECT sv_navs.id AS sv_navs_id, sv_navs.`navTitle` AS `sv_navs_navTitle`, sv_navs.`navUrl` AS `sv_navs_navUrl`, sv_navs.`navType` AS `sv_navs_navType`, sv_navs.is_del AS sv_navs_is_del, sv_navs.role_id AS sv_navs_role_id 
+FROM sv_navs LEFT OUTER JOIN sv_subnavs ON sv_navs.id = sv_subnavs.`nav_Id` 
+WHERE sv_navs.is_del = %(is_del_1)s AND sv_subnavs.is_del = %(is_del_2)s
+2020-04-16 14:35:04,542 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- {'is_del_1': 0, 'is_del_2': 0}
+2020-04-16 14:35:04,544 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- SELECT sv_subnavs.id AS sv_subnavs_id, sv_subnavs.title AS sv_subnavs_title, sv_subnavs.nav_url AS sv_subnavs_nav_url, sv_subnavs.`nav_Id` AS `sv_subnavs_nav_Id`, sv_subnavs.is_del AS sv_subnavs_is_del 
+FROM sv_subnavs 
+WHERE %(param_1)s = sv_subnavs.`nav_Id`
+2020-04-16 14:35:04,545 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- {'param_1': 10}
+2020-04-16 14:35:04,547 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- SELECT sv_subnavs.id AS sv_subnavs_id, sv_subnavs.title AS sv_subnavs_title, sv_subnavs.nav_url AS sv_subnavs_nav_url, sv_subnavs.`nav_Id` AS `sv_subnavs_nav_Id`, sv_subnavs.is_del AS sv_subnavs_is_del 
+FROM sv_subnavs 
+WHERE %(param_1)s = sv_subnavs.`nav_Id` 
+ LIMIT %(param_2)s
+2020-04-16 14:35:04,547 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- {'param_1': 10, 'param_2': 1}
+2020-04-16 14:35:04,550 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- SELECT sv_users.avatar AS sv_users_avatar 
+FROM sv_users 
+WHERE sv_users.username = %(username_1)s 
+ LIMIT %(param_1)s
+2020-04-16 14:35:04,550 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- {'username_1': 'shixiaobo8', 'param_1': 1}
+2020-04-16 14:35:04,551 [Thread-1:139901935298304 in api_resources:] [task_id:flask.app] [flask.app:66] [INFO]- 用户shixiaobo8登录了...
+2020-04-16 14:35:04,553 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- ROLLBACK
+2020-04-16 14:35:04,619 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- BEGIN (implicit)
+2020-04-16 14:35:04,621 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash, sv_users.`userGroup_Id` AS `sv_users_userGroup_Id` 
+FROM sv_users 
+WHERE sv_users.id = %(param_1)s
+2020-04-16 14:35:04,621 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- {'param_1': 1}
+2020-04-16 14:35:04,625 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- ROLLBACK
+2020-04-16 14:35:27,160 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- BEGIN (implicit)
+2020-04-16 14:35:27,162 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash, sv_users.`userGroup_Id` AS `sv_users_userGroup_Id` 
+FROM sv_users 
+WHERE sv_users.id = %(param_1)s
+2020-04-16 14:35:27,162 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- {'param_1': 1}
+2020-04-16 14:35:27,167 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- ROLLBACK
+2020-04-16 14:35:28,066 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- BEGIN (implicit)
+2020-04-16 14:35:28,068 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- SELECT sv_subnavs.id AS sv_subnavs_id, sv_navs.id AS sv_navs_id, sv_subnavs.title AS sv_subnavs_title, sv_subnavs.nav_url AS sv_subnavs_nav_url, sv_navs.`navTitle` AS `sv_navs_navTitle`, sv_navs.`navType` AS `sv_navs_navType`, sv_navs.`navUrl` AS `sv_navs_navUrl` 
+FROM sv_navs LEFT OUTER JOIN sv_subnavs ON sv_navs.id = sv_subnavs.`nav_Id` 
+WHERE sv_navs.is_del = %(is_del_1)s AND sv_subnavs.is_del = %(is_del_2)s
+2020-04-16 14:35:28,068 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- {'is_del_1': 0, 'is_del_2': 0}
+2020-04-16 14:35:28,071 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- ROLLBACK
+2020-04-16 14:35:35,012 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- BEGIN (implicit)
+2020-04-16 14:35:35,014 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- SELECT sv_users.id AS sv_users_id, sv_users.username AS sv_users_username, sv_users.avatar AS sv_users_avatar, sv_users.email AS sv_users_email, sv_users.weixin_name AS sv_users_weixin_name, sv_users.phone AS sv_users_phone, sv_users.is_del AS sv_users_is_del, sv_users.join_date AS sv_users_join_date, sv_users.last_modify AS sv_users_last_modify, sv_users.password_hash AS sv_users_password_hash, sv_users.`userGroup_Id` AS `sv_users_userGroup_Id` 
+FROM sv_users 
+WHERE sv_users.id = %(param_1)s
+2020-04-16 14:35:35,014 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- {'param_1': 1}
+2020-04-16 14:35:35,019 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- ROLLBACK
+2020-04-16 14:35:35,781 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- BEGIN (implicit)
+2020-04-16 14:35:35,783 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- SELECT sv_subnavs.id AS sv_subnavs_id, sv_navs.id AS sv_navs_id, sv_subnavs.title AS sv_subnavs_title, sv_subnavs.nav_url AS sv_subnavs_nav_url, sv_navs.`navTitle` AS `sv_navs_navTitle`, sv_navs.`navType` AS `sv_navs_navType`, sv_navs.`navUrl` AS `sv_navs_navUrl` 
+FROM sv_navs LEFT OUTER JOIN sv_subnavs ON sv_navs.id = sv_subnavs.`nav_Id` 
+WHERE sv_navs.is_del = %(is_del_1)s AND sv_subnavs.is_del = %(is_del_2)s
+2020-04-16 14:35:35,783 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- {'is_del_1': 0, 'is_del_2': 0}
+2020-04-16 14:35:35,786 [Thread-1:139901935298304 in log:] [task_id:sqlalchemy.engine.base.Engine] [sqlalchemy.engine.base.Engine:110] [INFO]- ROLLBACK
+2020-04-17 16:38:47,874 [MainThread:139902246082368 in _internal:] [task_id:werkzeug] [werkzeug:122] [INFO]-  * Detected change in '/www/web/flask_blog/flask_supervisor/config.py', reloading
+2020-04-17 16:38:51,244 [MainThread:140638696019776 in _internal:] [task_id:werkzeug] [werkzeug:122] [INFO]-  * Restarting with stat
+2020-04-17 20:31:41,575 [MainThread:140638696019776 in _internal:] [task_id:werkzeug] [werkzeug:122] [INFO]-  * Restarting with stat
+2020-04-17 20:31:48,684 [MainThread:140638696019776 in _internal:] [task_id:werkzeug] [werkzeug:122] [INFO]-  * Restarting with stat
+2020-04-18 16:50:21,540 [MainThread:140638696019776 in _internal:] [task_id:werkzeug] [werkzeug:122] [INFO]-  * Restarting with stat
+2020-04-18 17:53:49,996 [MainThread:140638696019776 in _internal:] [task_id:werkzeug] [werkzeug:122] [INFO]-  * Restarting with stat
+2020-04-18 18:23:38,516 [MainThread:140638696019776 in _internal:] [task_id:werkzeug] [werkzeug:122] [INFO]-  * Restarting with stat
+2020-04-18 18:26:38,269 [MainThread:140638696019776 in _internal:] [task_id:werkzeug] [werkzeug:122] [INFO]-  * Restarting with stat
+2020-04-18 18:30:33,638 [MainThread:140638696019776 in _internal:] [task_id:werkzeug] [werkzeug:122] [INFO]-  * Restarting with stat

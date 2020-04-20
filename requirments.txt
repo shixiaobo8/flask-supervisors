@@ -9,7 +9,7 @@ flask-bootstrap
 pymongo
 flask-mongoengine
 marshmallow-mongoengine
-marshmallow
+marshmallow==2.8.0
 aliyun-python-sdk-ecs
 configparser
 paramiko

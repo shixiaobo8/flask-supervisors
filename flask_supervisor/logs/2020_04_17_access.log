@@ -1,0 +1,9 @@
+2020-04-17 16:38:53,929 [MainThread:140046772315968 in _internal:] [task_id:werkzeug] [werkzeug:122] [WARNING]-  * Debugger is active!
+2020-04-17 16:38:53,946 [MainThread:140046772315968 in _internal:] [task_id:werkzeug] [werkzeug:122] [INFO]-  * Debugger PIN: 331-918-892
+2020-04-17 20:31:41,028 [MainThread:140046772315968 in _internal:] [task_id:werkzeug] [werkzeug:122] [INFO]-  * Detected change in '/www/web/flask_blog/flask_supervisor/config.py', reloading
+2020-04-17 20:31:44,287 [MainThread:139723926714176 in _internal:] [task_id:werkzeug] [werkzeug:122] [WARNING]-  * Debugger is active!
+2020-04-17 20:31:44,290 [MainThread:139723926714176 in _internal:] [task_id:werkzeug] [werkzeug:122] [INFO]-  * Debugger PIN: 331-918-892
+2020-04-17 20:31:48,372 [MainThread:139723926714176 in _internal:] [task_id:werkzeug] [werkzeug:122] [INFO]-  * Detected change in '/www/web/flask_blog/flask_supervisor/config.py', reloading
+2020-04-17 20:31:49,896 [MainThread:140088239359808 in _internal:] [task_id:werkzeug] [werkzeug:122] [WARNING]-  * Debugger is active!
+2020-04-17 20:31:49,898 [MainThread:140088239359808 in _internal:] [task_id:werkzeug] [werkzeug:122] [INFO]-  * Debugger PIN: 331-918-892
+2020-04-18 16:50:16,936 [MainThread:140088239359808 in _internal:] [task_id:werkzeug] [werkzeug:122] [INFO]-  * Detected change in '/www/web/flask_blog/flask_supervisor/config.py', reloading

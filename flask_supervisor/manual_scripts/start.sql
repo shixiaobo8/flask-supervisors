@@ -1,1 +1,0 @@
-INSERT INTO `sv_roles` VALUES (1,'普通用户',NULL),(2,'管理员',NULL),(3,'其他用户',NULL),(4,'特殊用户',NULL);
