@@ -123,8 +123,8 @@ class ProductionConfig(Config):
     MAIL_PASSWORD = '222222111'
     AA = '2323'
     SECRET_KEY = b'233#_2L"3dQ8zc-\xcc]/'
-    ACCESSKEYID = 'LTAI1aTbTiPWINmZ'
-    ACCESSSECRET = 'bhzSeQhw3vAnZbf9HNcAwHSf4Y0RmL'
+    ACCESSKEYID = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+    ACCESSSECRET = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
 
 
 # 开发环境配置
